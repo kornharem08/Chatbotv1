@@ -330,7 +330,7 @@ case "send-carousel" :
     "imageUrl": "https://www.stepforwardmichigan.org/wp-content/uploads/2017/03/step-foward-fb-1200x628-house.jpg",
     "buttons": [
       {
-        "postback": "https://webviews-vue1.herokuapp.com/information",
+        "postback": "https://webviews-vue1.herokuapp.com/",
         "text": "View Website"
       }, {
         "text": "Start Chatting",
