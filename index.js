@@ -343,7 +343,7 @@ case "send-carousel" :
     "subtitle": "We have the right hat for everyone.We have the right hat for everyone.We have the right hat for everyone.",
     "buttons": [
       {
-        "postback": "http://192.168.1.49:8080/",
+        "postback": "https://www.google.com/",
         "text": "View Website"
       }, {
         "text": "Start Chatting",
