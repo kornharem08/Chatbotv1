@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-app.listen(3000);
+//app.listen(3000);
 function setupGetStartedButton(res){
   var messageData = {
           "get_started":[
@@ -47,7 +47,6 @@ function setupGetStartedButton(res){
 
 app.get("/", function (req, res) {
   res.send("Hello world, I am a chat bot 5555");
- 
 });
  
 
@@ -418,6 +417,6 @@ const sendGenericMessage = async (recipientId, elements) => {
 
 
 
-app.listen(app.get("port"), function () {
+/*app.listen(app.get("port"), function () {
   console.log("Magic Started on port", app.get("port"));
-});
+});*/
