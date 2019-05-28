@@ -343,7 +343,7 @@ case "send-carousel" :
     "subtitle": "We have the right hat for everyone.We have the right hat for everyone.We have the right hat for everyone.",
     "buttons": [
       {
-        "postback": "https://f1948e04.ngrok.io",
+        "postback": "http://192.168.1.49:8080/",
         "text": "View Website"
       }, {
         "text": "Start Chatting",
