@@ -26,6 +26,7 @@ function setupGetStartedButton(res){
           ]
   };
 
+  
   // Start the request
   request({
       url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+config.FB_PAGE_TOKEN,
@@ -46,7 +47,7 @@ function setupGetStartedButton(res){
 }        
 
 app.get("/", function (req, res) {
-  res.send("Hello world, I am a chat bot 5555555555+ JACKTANAKRON");
+  res.send("Hello world, I am a chat bot 5555555555+ JACKTANAKRON555+");
 });
 app.get("/ok", function (req, res) {
   res.send("ok");
