@@ -51,46 +51,46 @@ app.get("/", function (req, res) {
 app.get("/ok", function (req, res) {
   res.send("ok");
 });
-app.get('/webhook', (req, res) => {
+// app.get('/webhook', (req, res) => {
 
-  // Your verify token. Should be a random string.
-  let VERIFY_TOKEN = config.FB_VERIFY_TOKEN
+//   // Your verify token. Should be a random string.
+//   let VERIFY_TOKEN = config.FB_VERIFY_TOKEN
     
-  // Parse the query params
-  let mode = req.query['hub.mode'];
-  let token = req.query['hub.verify_token'];
-  let challenge = req.query['hub.challenge'];
+//   // Parse the query params
+//   let mode = req.query['hub.mode'];
+//   let token = req.query['hub.verify_token'];
+//   let challenge = req.query['hub.challenge'];
     
-  // Checks if a token and mode is in the query string of the request
-  if (mode && token) {
+//   // Checks if a token and mode is in the query string of the request
+//   if (mode && token) {
   
-    // Checks the mode and token sent is correct
-    if (mode === 'subscribe' && token === VERIFY_TOKEN) {
+//     // Checks the mode and token sent is correct
+//     if (mode === 'subscribe' && token === VERIFY_TOKEN) {
       
-      // Responds with the challenge token from the request
-      console.log('WEBHOOK_VERIFIED');
-      res.status(200).send(challenge);
+//       // Responds with the challenge token from the request
+//       console.log('WEBHOOK_VERIFIED');
+//       res.status(200).send(challenge);
     
-    } else {
-      // Responds with '403 Forbidden' if verify tokens do not match
-      res.sendStatus(403);      
-    }
-  }
-});
-
-// app.get("/webhook/", function (req, res) {
-//   setupGetStartedButton(res);
-//   console.log("request");
-//   if (
-//     req.query["hub.mode"] === "subscribe" &&
-//     req.query["hub.verify_token"] === config.FB_VERIFY_TOKEN
-//   ) {
-//     res.status(200).send(req.query["hub.challenge"]);
-//   } else {
-//     console.error("Failed validation. Make sure the validation tokens match.");
-//     res.sendStatus(403);
+//     } else {
+//       // Responds with '403 Forbidden' if verify tokens do not match
+//       res.sendStatus(403);      
+//     }
 //   }
 // });
+
+app.get("/webhook/", function (req, res) {
+  setupGetStartedButton(res);
+  console.log("request");
+  if (
+    req.query["hub.mode"] === "subscribe" &&
+    req.query["hub.verify_token"] === config.FB_VERIFY_TOKEN
+  ) {
+    res.status(200).send(req.query["hub.challenge"]);
+  } else {
+    console.error("Failed validation. Make sure the validation tokens match.");
+    res.sendStatus(403);
+  }
+});
 function receivedMessage(event) {
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
