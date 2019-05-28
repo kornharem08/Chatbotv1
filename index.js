@@ -28,7 +28,7 @@ function setupGetStartedButton(res){
 
   // Start the request
   request({
-      url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+FB_PAGE_TOKEN,
+      url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+config.FB_PAGE_TOKEN,
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       form: messageData
