@@ -82,13 +82,10 @@ app.get("/ok", function (req, res) {
 app.get("/webhook/", function (req, res) {
   setupGetStartedButton(res);
   console.log("request");
-  if (
-    req.query["hub.mode"] === "subscribe" &&
-    req.query["hub.verify_token"] === config.FB_VERIFY_TOKEN
-  ) {
+  console.log("verify_token:"+JSON.stringify(req.query["hub.verify_token"])); 
+  if (req.query["hub.mode"] === "subscribe" && req.query["hub.verify_token"] === config.FB_VERIFY_TOKEN) {
     res.status(200).send(req.query["hub.challenge"]);
   } else {
-    console.log("verify_token:"+req.query["hub.verify_token"]);
     console.error("Failed validation. Make sure the validation tokens match.");
     res.sendStatus(403);
   }
