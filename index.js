@@ -295,7 +295,7 @@ const exampleWebview = async (recipientId,messageForm) =>{
     }
 
 };
-  console.log("messageForm:"+JSON.stringify(messageForm));
+  //console.log("messageForm:"+JSON.stringify(messageForm));
 await callSendAPI(messageData);
 }
 
