@@ -291,30 +291,30 @@ case "send-music":
 var responseText = "The toys"
      sendTextMessage(sender, responseText);
 break;
-case "send-name":
-var responseText = {
-  recipient:{
-  id: recipientId
-  },
-    message:{
-    attachment:{
-    type:"template",
-      payload:{
-      template_type:"button",
-        Text:"YOUR TEXT HERE" + name+ " "+lname+" YOUR TEXT HERE ",
-        buttons:[{
-        type:"postback",
-          title:"TANAKORN",
-          payload:"start"
+// case "send-name":
+// var responseText = {
+//   recipient:{
+//   id: recipientId
+//   },
+//     message:{
+//     attachment:{
+//     type:"template",
+//       payload:{
+//       template_type:"button",
+//         Text:"YOUR TEXT HERE" + name+ " "+lname+" YOUR TEXT HERE ",
+//         buttons:[{
+//         type:"postback",
+//           title:"TANAKORN",
+//           payload:"start"
           
-        },]
-      }
-    }
-    }
-  };
+//         },]
+//       }
+//     }
+//     }
+//   };
   
-     sendTextMessage(sender, responseText);
-break;
+//      sendTextMessage(sender, responseText);
+// break;
 case "send-quick-reply":
     var responseText = "Choose the options"
     var replies = [{
