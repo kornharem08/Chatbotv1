@@ -110,7 +110,6 @@ function sendToApiAi(sender, text) {
 
 app.post("/webhook/", function (req, res) {
   var data = req.body; 
-  var data2 = JSON.parse(data);
   // Make sure this is a page subscription
   if (data.object == "page") {
     // Iterate over each entry
@@ -118,7 +117,7 @@ app.post("/webhook/", function (req, res) {
     data.entry.forEach(function (pageEntry) {
       var pageID = pageEntry.id;
       var timeOfEvent = pageEntry.time;
-      
+      console.log("=========Data========"+pageEntry)
       // Iterate over each messaging event
       pageEntry.messaging.forEach(function (messagingEvent) {
         if (messagingEvent.message) {
