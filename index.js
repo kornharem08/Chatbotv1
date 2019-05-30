@@ -117,7 +117,7 @@ app.post("/webhook/", function (req, res) {
     data.entry.forEach(function (pageEntry) {
       var pageID = pageEntry.id;
       var timeOfEvent = pageEntry.time;
-      console.log("=========Data========"+pageEntry)
+      console.log("=========Data========"+Object.values(pageEntry))
       // Iterate over each messaging event
       pageEntry.messaging.forEach(function (messagingEvent) {
         if (messagingEvent.message) {
