@@ -40,12 +40,12 @@ function setupGetStartedButton(res){
       if (!error && response.statusCode == 200) {
          // Print out the response body
          var bodyObj = JSON.parse(body)
-         var name = bodyObj.first_name
-           var lname = bodyObj.last_name
-           var pc = bodyObj.profile_pic
-          var locale = bodyObj.locale
-         var timezone = bodyObj.timezone
-         var gender = bodyObj.gender
+        //  var name = bodyObj.first_name
+        //    var lname = bodyObj.last_name
+        //    var pc = bodyObj.profile_pic
+        //   var locale = bodyObj.locale
+        //  var timezone = bodyObj.timezone
+        //  var gender = bodyObj.gender
            
            console.log(JSON.parse(body))
          
