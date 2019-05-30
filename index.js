@@ -125,9 +125,10 @@ function sendToApiAi(sender, text) {
   
 app.post("/webhook/", function (req, res) {
   var data = req.body; 
-  // var data2 = JSON.parse(req.body);
-  // var name = data2.timezone
-  console.log("TimeZone"+name)
+   var data2 = JSON.stringify(req.body);
+   var name = data2.timezone
+   console.log("TimeZone"+data2)
+   console.log("TimeZone"+name)
   // Make sure this is a page subscription
   if (data.object == "page") {
     // Iterate over each entry
