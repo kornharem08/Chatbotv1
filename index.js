@@ -388,7 +388,6 @@ async function handleCardMessages(messages, sender) {
       title: message.title,
       image_url: message.imageUrl,
       subtitle: message.subtitle,
-      default_action: message.default_action,
       buttons: buttons
     };
     elements.push(element);
