@@ -277,6 +277,57 @@ const sendQuickReply = async (recipientId, text, replies, metadata) => {
   await callSendAPI(messageData);
 }
 
+
+function sendGetStarted (recipientId){
+  request({
+    url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token=EAAD4BB3LHCIBALN3oGRT2f190z6NVkzSglLZBt4nZBUgXrZBoifnZByEKs9zUkCzT1UYWdWYTGFlOaSrcL8nEfuWEArICIxQZAghZCjjiG1C0pTvkxj4yXhvF3E2lmQ7b4ZBGhbyEhGIRSVySTNr7Um4dhm1HNAreWX7o1ny3h5RKIrPy4XxM60',
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    form: messageData
+
+  },function (error, response, body){
+  if(error){
+  console.log("error getting username")
+  }else{
+  
+  var bodyObj = JSON.parse(body)
+var name = bodyObj.first_name
+  var lname = bodyObj.last_name
+  var pc = bodyObj.profile_pic
+ var locale = bodyObj.locale
+var timezone = bodyObj.timezone
+var gender = bodyObj.gender
+  
+  console.log(JSON.parse(body))
+    
+var messageData = {
+recipient:{
+id: recipientId
+},
+  message:{
+  attachment:{
+  type:"template",
+    payload:{
+    template_type:"button",
+      Text:"YOUR TEXT HERE" + name+ " "+lname+" YOUR TEXT HERE ",
+      buttons:[{
+      type:"postback",
+        title:"TEST",
+        payload:"start"
+        
+      },]
+    }
+  }
+  }
+};
+    callSendAPI(messageData);
+  }
+  
+  })
+}
+
+
+
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
   switch (action) {
    case "send-text":
@@ -352,6 +403,25 @@ case "send-carousel" :
   handleCardMessages(elements, sender) 
   
 break;
+// case "test":
+//     let response = {
+//       attachment: {
+//           type: "template",
+//           payload: {
+//               template_type: "button",
+//               text: "OK, let's set your room preferences so I won't need to ask for them in the future.",
+//               buttons: [{
+//                   type: "web_url",
+//                   url: SERVER_URL + "/options",
+//                   title: "Set preferences",
+//                   webview_height_ratio: "full",
+//                   messenger_extensions: true
+//               }]
+//           }
+//       }
+//   };
+
+// break;
 
    default:
      //unhandled action, just send back the text
