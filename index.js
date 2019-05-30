@@ -127,8 +127,9 @@ app.post("/webhook/", function (req, res) {
   var data = req.body; 
    var data2 = JSON.stringify(req.body);
    var name = data2.timezone
-   console.log("TimeZone"+data2)
-   console.log("TimeZone"+name)
+   console.log("TimeZone1"+data2)
+   console.log("TimeZone2"+name)
+   information()//test information
   // Make sure this is a page subscription
   if (data.object == "page") {
     // Iterate over each entry
@@ -314,6 +315,24 @@ const exampleWebview = async (recipientId,messageForm) =>{
     }
 
 };
+  //console.log("messageForm:"+JSON.stringify(messageForm));
+await callSendAPI(messageData);
+}
+
+const information = async (recipientId) =>{
+ 
+  const url = "https://graph.facebook.com/"+recipientId+"?fields=first_name,last_name,profile_pic&access_token="+ config.FB_PAGE_TOKEN;
+    await axios.get(url, messageData)
+      .then(function (response) {
+        if (response.status == 200) {
+          var fname = response.data.first_name;
+          console.log("FNAME:"+fname);
+        }
+      })
+      .catch(function (error) {
+        console.log(error.response.headers);
+      });
+
   //console.log("messageForm:"+JSON.stringify(messageForm));
 await callSendAPI(messageData);
 }
