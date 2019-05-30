@@ -77,15 +77,12 @@ function receivedMessage(event) {
     sessionIds.set(senderID, uuid.v1());
   }
 
-  console.log("message"+message.text);
-  console.log("messageAttachments"+message.attachments);
   var messageId = message.mid;
   var appId = message.app_id;
   var metadata = message.metadata;
 
   // You may get a text or attachment but not both
-  //var messageText = message.text;
-  var messsageText = message.text;
+  var messageText = message.text;
   var messageAttachments = message.attachments;
 
   if (messageText) {
