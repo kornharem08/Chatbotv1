@@ -334,7 +334,7 @@ const information = async (recipientId) =>{
       });
 
   //console.log("messageForm:"+JSON.stringify(messageForm));
-await callSendAPI(messageData);
+//await callSendAPI(messageData);
 }
 
 
