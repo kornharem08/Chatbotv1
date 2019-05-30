@@ -40,16 +40,6 @@ function setupGetStartedButton(res){
       if (!error && response.statusCode == 200) {
          // Print out the response body        
           res.send(body);
-          var bodyObj = JSON.parse(body)
-          var name = bodyObj.first_name
-            var lname = bodyObj.last_name
-            var pc = bodyObj.profile_pic
-           var locale = bodyObj.locale
-          var timezone = bodyObj.timezone
-          var gender = bodyObj.gender
-          
-            console.log(JSON.parse(body)+"TEST"+name)
-          
 
       } else { 
           // TODO: Handle errors
@@ -287,7 +277,7 @@ const sendQuickReply = async (recipientId, text, replies, metadata) => {
   await callSendAPI(messageData);
 }
 
-function handleApiAiAction(sender, action, responseText, contexts, parameters,) {
+function handleApiAiAction(sender, action, responseText, contexts, parameters) {
   switch (action) {
    case "send-text":
      var responseText = "This is example of Text message."
@@ -302,7 +292,27 @@ var responseText = "The toys"
      sendTextMessage(sender, responseText);
 break;
 case "send-name":
-var responseText = "MY NAME IS Tanakorn Pitakchaichan 555+"
+var responseText = {
+  recipient:{
+  id: recipientId
+  },
+    message:{
+    attachment:{
+    type:"template",
+      payload:{
+      template_type:"button",
+        Text:"YOUR TEXT HERE" + name+ " "+lname+" YOUR TEXT HERE ",
+        buttons:[{
+        type:"postback",
+          title:"TANAKORN",
+          payload:"start"
+          
+        },]
+      }
+    }
+    }
+  };
+  
      sendTextMessage(sender, responseText);
 break;
 case "send-quick-reply":
@@ -325,13 +335,8 @@ case "send-quick-reply":
     sendQuickReply(sender, responseText, replies)
 break;
 case "send-carousel" :
-  const ทำ = [{
-      "attachment":{
-      "type":"template",
-      "payload": {
-      "template_type":"generic",
-      "elements":[
-         {
+  const elements = [{
+         
           "title":"<TITLE_TEXT>",
           "image_url":"https://www.stepforwardmichigan.org/wp-content/uploads/2017/03/step-foward-fb-1200x628-house.jpg",
           "subtitle":"We have the right hat for everyone.We have the right hat for everyone.We have the right hat for everyone.",
@@ -347,41 +352,9 @@ case "send-carousel" :
                     "webview_height_ratio": "full",
                     "messenger_extensions": true}
                     ]      
-        }
-        
-      ]
-    }
-    
-    }
-    
-  // }, {
-  //   "title": "Welcome!",
-  //   "imageUrl": "https://www.stepforwardmichigan.org/wp-content/uploads/2017/03/step-foward-fb-1200x628-house.jpg",
-  //   "subtitle": "We have the right hat for everyone.We have the right hat for everyone.We have the right hat for everyone.",
-  //   "buttons": [
-  //     {
-  //       "postback": "https://www.google.com/",
-  //       "text": "View Website"
-  //     }, {
-  //       "text": "Start Chatting",
-  //       "postback": "PAYLOAD EXAMPLE"
-  //     }
-  //   ]
-  // },{
-  //   "title": "Welcome!",
-  //   "imageUrl": "https://www.stepforwardmichigan.org/wp-content/uploads/2017/03/step-foward-fb-1200x628-house.jpg",
-  //   "subtitle": "We have the right hat for everyone.We have the right hat for everyone.We have the right hat for everyone.",
-  //   "buttons": [
-  //     {
-  //       "postback": "https://ddsd.ngrok.io",
-  //       "text": "View Website"
-  //     }, {
-  //       "text": "Start Chatting",
-  //       "postback": "PAYLOAD EXAMPLE"
-  //     }
-  //   ]
-  }];
-  handleCardMessages(elements, sender)
+        }];
+  
+  handleCardMessages(elements, sender) 
   
 break;
 
