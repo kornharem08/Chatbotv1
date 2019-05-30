@@ -38,7 +38,7 @@ function setupGetStartedButton(res){
   },
   function (error, response, body) {
       if (!error && response.statusCode == 200) {
-          // Print out the response body
+         // Print out the response body
           res.send(body);
 
       } else { 
@@ -321,8 +321,11 @@ case "send-carousel" :
     "imageUrl": "https://www.stepforwardmichigan.org/wp-content/uploads/2017/03/step-foward-fb-1200x628-house.jpg",
     "buttons": [
       {
-        "postback": "https://webviews-vue1.herokuapp.com",
-        "text": "View Website"
+        "type": "web_url",
+                "url": "https://webviews-vue1.herokuapp.com/",
+                "title": "Set preferences",
+                "webview_height_ratio": "compact",
+                "messenger_extensions": true
       }, {
         "text": "Start Chatting",
         "postback": "PAYLOAD EXAMPLE"
