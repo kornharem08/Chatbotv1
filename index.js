@@ -77,7 +77,7 @@ function receivedMessage(event) {
     sessionIds.set(senderID, uuid.v1());
   }
 
-  console.log("message"+message);
+  console.log("message"+message.text);
 
   var messageId = message.mid;
   var appId = message.app_id;
