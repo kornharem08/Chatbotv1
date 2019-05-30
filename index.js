@@ -38,17 +38,7 @@ function setupGetStartedButton(res){
   },
   function (error, response, body) {
       if (!error && response.statusCode == 200) {
-         // Print out the response body
-         var bodyObj = JSON.parse(body)
-        //  var name = bodyObj.first_name
-        //    var lname = bodyObj.last_name
-        //    var pc = bodyObj.profile_pic
-        //   var locale = bodyObj.locale
-        //  var timezone = bodyObj.timezone
-        //  var gender = bodyObj.gender
-           
-           console.log(JSON.parse(body))
-         
+         // Print out the response body        
           res.send(body);
 
       } else { 
@@ -326,44 +316,61 @@ case "send-quick-reply":
 break;
 case "send-carousel" :
   const elements = [{
-    "title": "Welcome!",
-    "subtitle": "We have the right hat for everyone.We have the right hat for everyone.We have the right hat for everyone.",
-    "imageUrl": "https://www.stepforwardmichigan.org/wp-content/uploads/2017/03/step-foward-fb-1200x628-house.jpg",
-    "buttons": [
-      {
-                "type": "web_url",
-                "url": "https://webviews-vue1.herokuapp.com/",
-                "title": "Set preferences",
-                "webview_height_ratio": "compact",
-                "messenger_extensions": true
-      }, 
-    ]
-  }, {
-    "title": "Welcome!",
-    "imageUrl": "https://www.stepforwardmichigan.org/wp-content/uploads/2017/03/step-foward-fb-1200x628-house.jpg",
-    "subtitle": "We have the right hat for everyone.We have the right hat for everyone.We have the right hat for everyone.",
-    "buttons": [
-      {
-        "postback": "https://www.google.com/",
-        "text": "View Website"
-      }, {
-        "text": "Start Chatting",
-        "postback": "PAYLOAD EXAMPLE"
-      }
-    ]
-  },{
-    "title": "Welcome!",
-    "imageUrl": "https://www.stepforwardmichigan.org/wp-content/uploads/2017/03/step-foward-fb-1200x628-house.jpg",
-    "subtitle": "We have the right hat for everyone.We have the right hat for everyone.We have the right hat for everyone.",
-    "buttons": [
-      {
-        "postback": "https://ddsd.ngrok.io",
-        "text": "View Website"
-      }, {
-        "text": "Start Chatting",
-        "postback": "PAYLOAD EXAMPLE"
-      }
-    ]
+    "message":{
+      "attachment":{
+      "type":"template",
+      "payload": {
+      "template_type":"generic",
+      "elements":[
+         {
+          "title":"<TITLE_TEXT>",
+          "image_url":"https://www.stepforwardmichigan.org/wp-content/uploads/2017/03/step-foward-fb-1200x628-house.jpg",
+          "subtitle":"We have the right hat for everyone.We have the right hat for everyone.We have the right hat for everyone.",
+          "default_action": {
+            "type": "web_url",
+            "url": "https://webviews-vue1.herokuapp.com/",
+            "messenger_extensions": true,
+            "webview_height_ratio": "compact"
+          },
+          "buttons":[{ "type": "web_url",
+                    "url": "https://webviews-vue1.herokuapp.com/",
+                    "title": "Set preferences",
+                    "webview_height_ratio": "full",
+                    "messenger_extensions": true}
+                    ]      
+        }
+        
+      ]
+    }
+    
+    }
+    }
+  // }, {
+  //   "title": "Welcome!",
+  //   "imageUrl": "https://www.stepforwardmichigan.org/wp-content/uploads/2017/03/step-foward-fb-1200x628-house.jpg",
+  //   "subtitle": "We have the right hat for everyone.We have the right hat for everyone.We have the right hat for everyone.",
+  //   "buttons": [
+  //     {
+  //       "postback": "https://www.google.com/",
+  //       "text": "View Website"
+  //     }, {
+  //       "text": "Start Chatting",
+  //       "postback": "PAYLOAD EXAMPLE"
+  //     }
+  //   ]
+  // },{
+  //   "title": "Welcome!",
+  //   "imageUrl": "https://www.stepforwardmichigan.org/wp-content/uploads/2017/03/step-foward-fb-1200x628-house.jpg",
+  //   "subtitle": "We have the right hat for everyone.We have the right hat for everyone.We have the right hat for everyone.",
+  //   "buttons": [
+  //     {
+  //       "postback": "https://ddsd.ngrok.io",
+  //       "text": "View Website"
+  //     }, {
+  //       "text": "Start Chatting",
+  //       "postback": "PAYLOAD EXAMPLE"
+  //     }
+  //   ]
   }];
   handleCardMessages(elements, sender)
   
