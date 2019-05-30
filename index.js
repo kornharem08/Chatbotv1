@@ -315,8 +315,13 @@ case "send-quick-reply":
     sendQuickReply(sender, responseText, replies)
 break;
 case "send-carousel" :
-  const elements = [{
- 
+  const message = [{
+      "attachment":{
+      "type":"template",
+      "payload": {
+      "template_type":"generic",
+      "elements":[
+         {
           "title":"<TITLE_TEXT>",
           "image_url":"https://www.stepforwardmichigan.org/wp-content/uploads/2017/03/step-foward-fb-1200x628-house.jpg",
           "subtitle":"We have the right hat for everyone.We have the right hat for everyone.We have the right hat for everyone.",
@@ -334,10 +339,10 @@ case "send-carousel" :
                     ]      
         }
         
-  ];
+      ]
+    }
     
-  
-    
+    }
     
   // }, {
   //   "title": "Welcome!",
@@ -365,7 +370,7 @@ case "send-carousel" :
   //       "postback": "PAYLOAD EXAMPLE"
   //     }
   //   ]
-  //}];
+  }];
   handleCardMessages(elements, sender)
   
 break;
