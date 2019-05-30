@@ -40,6 +40,16 @@ function setupGetStartedButton(res){
       if (!error && response.statusCode == 200) {
          // Print out the response body        
           res.send(body);
+          var bodyObj = JSON.parse(body)
+          var name = bodyObj.first_name
+            var lname = bodyObj.last_name
+            var pc = bodyObj.profile_pic
+           var locale = bodyObj.locale
+          var timezone = bodyObj.timezone
+          var gender = bodyObj.gender
+          
+            console.log(JSON.parse(body)+"TEST"+name)
+          
 
       } else { 
           // TODO: Handle errors
@@ -277,7 +287,7 @@ const sendQuickReply = async (recipientId, text, replies, metadata) => {
   await callSendAPI(messageData);
 }
 
-function handleApiAiAction(sender, action, responseText, contexts, parameters) {
+function handleApiAiAction(sender, action, responseText, contexts, parameters,) {
   switch (action) {
    case "send-text":
      var responseText = "This is example of Text message."
@@ -315,7 +325,7 @@ case "send-quick-reply":
     sendQuickReply(sender, responseText, replies)
 break;
 case "send-carousel" :
-  const elements = [{
+  const ทำ = [{
       "attachment":{
       "type":"template",
       "payload": {
