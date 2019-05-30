@@ -315,8 +315,7 @@ case "send-quick-reply":
     sendQuickReply(sender, responseText, replies)
 break;
 case "send-carousel" :
-  const message = [{
-      "payload": {
+  const payload = [{
       "template_type":"generic",
       "elements":[
          {
@@ -338,9 +337,9 @@ case "send-carousel" :
         }
         
       ]
-    }
     
-    }
+    
+    
     
   }];
   handleCardMessages(message, sender) 
