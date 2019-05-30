@@ -278,7 +278,7 @@ const sendQuickReply = async (recipientId, text, replies, metadata) => {
 }
 
 
-function exampleWebview(recipientId,messageForm){
+const exampleWebview = async (recipientId,messageForm) =>{
   var messageData = {
     recipient:{
     id: recipientId
