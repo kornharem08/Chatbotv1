@@ -49,7 +49,7 @@ function setupGetStartedButton(res){
 }        
 
 app.get("/", function (req, res) {
-  res.send("Hello world, I am a chat bot 5555555555+ JACKTANAKRON555+");
+  res.send("Hello world, I am a chat bot");
 });
 app.get("/ok", function (req, res) {
   res.send("ok");
@@ -57,7 +57,7 @@ app.get("/ok", function (req, res) {
 
 app.get('/webhook', function(req, res) {
   if (req.query['hub.mode'] === 'subscribe' &&
-      req.query['hub.verify_token'] === 'user-hook') {
+      req.query['hub.verify_token'] === 'hook_user') {
     console.log("Validating webhook");
     res.status(200).send(req.query['hub.challenge']);
   } else {
@@ -85,7 +85,7 @@ function receivedMessage(event) {
 
   // You may get a text or attachment but not both
   //var messageText = message.text;
-  var messsageText = "Hello";
+  var messsageText = message.text;
   var messageAttachments = message.attachments;
 
   if (messageText) {
