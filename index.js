@@ -39,6 +39,16 @@ function setupGetStartedButton(res){
   function (error, response, body) {
       if (!error && response.statusCode == 200) {
          // Print out the response body        
+         var bodyObj = JSON.parse(body)
+         var name = bodyObj.first_name
+        var lname = bodyObj.last_name
+        var pc = bodyObj.profile_pic
+        var locale = bodyObj.locale
+         var timezone = bodyObj.timezone
+         var gender = bodyObj.gender
+           
+           console.log("BODYOBJ:"+bodyObj)
+         
           res.send(body);
 
       } else { 
@@ -108,6 +118,11 @@ function sendToApiAi(sender, text) {
   apiaiRequest.end();
 }
 
+
+
+
+
+  
 app.post("/webhook/", function (req, res) {
   var data = req.body; 
   // Make sure this is a page subscription
@@ -117,7 +132,8 @@ app.post("/webhook/", function (req, res) {
     data.entry.forEach(function (pageEntry) {
       var pageID = pageEntry.id;
       var timeOfEvent = pageEntry.time;
-      console.log("=========Data========"+Object.values(pageEntry))
+      pageEntry.
+      console.log("=========Data========"+pageEntry.first_name)
       // Iterate over each messaging event
       pageEntry.messaging.forEach(function (messagingEvent) {
         if (messagingEvent.message) {
