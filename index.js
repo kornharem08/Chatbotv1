@@ -316,8 +316,6 @@ case "send-quick-reply":
 break;
 case "send-carousel" :
   const message = [{
-      "attachment":{
-      "type":"template",
       "payload": {
       "template_type":"generic",
       "elements":[
