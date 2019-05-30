@@ -344,34 +344,8 @@ case "send-carousel" :
     
     }
     
-  // }, {
-  //   "title": "Welcome!",
-  //   "imageUrl": "https://www.stepforwardmichigan.org/wp-content/uploads/2017/03/step-foward-fb-1200x628-house.jpg",
-  //   "subtitle": "We have the right hat for everyone.We have the right hat for everyone.We have the right hat for everyone.",
-  //   "buttons": [
-  //     {
-  //       "postback": "https://www.google.com/",
-  //       "text": "View Website"
-  //     }, {
-  //       "text": "Start Chatting",
-  //       "postback": "PAYLOAD EXAMPLE"
-  //     }
-  //   ]
-  // },{
-  //   "title": "Welcome!",
-  //   "imageUrl": "https://www.stepforwardmichigan.org/wp-content/uploads/2017/03/step-foward-fb-1200x628-house.jpg",
-  //   "subtitle": "We have the right hat for everyone.We have the right hat for everyone.We have the right hat for everyone.",
-  //   "buttons": [
-  //     {
-  //       "postback": "https://ddsd.ngrok.io",
-  //       "text": "View Website"
-  //     }, {
-  //       "text": "Start Chatting",
-  //       "postback": "PAYLOAD EXAMPLE"
-  //     }
-  //   ]
   }];
-  handleCardMessages(elements, sender)
+  handleCardMessages(message, sender) 
   
 break;
 
