@@ -292,7 +292,7 @@ var responseText = "The toys"
      sendTextMessage(sender, responseText);
 break;
 case "send-name":
-var responseText = "MY NAME IS Tanakorn Pitakchaichan"
+var responseText = "MY NAME IS Tanakorn Pitakchaichan 555+"
      sendTextMessage(sender, responseText);
 break;
 case "send-quick-reply":
@@ -347,7 +347,7 @@ case "send-carousel" :
     "subtitle": "We have the right hat for everyone.We have the right hat for everyone.We have the right hat for everyone.",
     "buttons": [
       {
-        "postback": "https://f1948e04.ngrok.io",
+        "postback": "https://ddsd.ngrok.io",
         "text": "View Website"
       }, {
         "text": "Start Chatting",
