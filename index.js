@@ -379,7 +379,7 @@ break;
               text: "OK, let's set your room preferences so I won't need to ask for them in the future.",
               buttons: [{
                   type: "web_url",
-                  url: SERVER_URL + "/options",
+                  url: "https://webviews-vue1.herokuapp.com/",
                   title: "Set preferences",
                   webview_height_ratio: "full",
                   messenger_extensions: true
