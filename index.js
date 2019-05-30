@@ -284,8 +284,15 @@ const exampleWebview = async (recipientId,messageForm) =>{
     id: recipientId
     },
       message: {
-        messageForm: messageForm
+        attachment: {
+          type: "template",
+          payload: {
+              template_type: "button",
+              text: "OK, let's set your room preferences so I won't need to ask for them in the future.",
+              buttons: messageForm
+          }
       }
+    }
 
 };
   console.log("messageForm:"+messageForm);
