@@ -389,10 +389,11 @@ async function handleCardMessages(messages, sender) {
       }
       buttons.push(button);
     }
-    let element = {
+    let element = { 
       title: message.title,
       image_url: message.imageUrl,
       subtitle: message.subtitle,
+      default_action: message.default_action,
       buttons: buttons
     };
     elements.push(element);
