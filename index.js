@@ -284,11 +284,11 @@ const exampleWebview = async (recipientId,messageForm) =>{
     id: recipientId
     },
       message: {
-        messageForm 
+        messageForm: messageForm
       }
 
-
 };
+  console.log("messageForm:"+messageForm);
 await callSendAPI(messageData);
 }
 
@@ -372,17 +372,17 @@ case "send-carousel" :
 break;
  case "test":
      let response = {
-      attachment: {
-           type: "template",
-          payload: {
-              template_type: "button",
-              text: "OK, let's set your room preferences so I won't need to ask for them in the future.",
-              buttons: [{
-                  type: "web_url",
-                  url: "https://webviews-vue1.herokuapp.com/",
-                  title: "Set preferences",
-                  webview_height_ratio: "full",
-                  messenger_extensions: true
+      "attachment": {
+          "type": "template",
+          "payload": {
+              "template_type": "button",
+              "text": "OK, let's set your room preferences so I won't need to ask for them in the future.",
+              "buttons": [{
+                  "type": "web_url",
+                  "url": "https://webviews-vue1.herokuapp.com/",
+                  "title": "Set preferences",
+                  "webview_height_ratio": "full",
+                  "messenger_extensions": true
               }]
           }
       }
