@@ -316,6 +316,7 @@ case "send-quick-reply":
 break;
 case "send-carousel" :
   const elements = [{
+ 
           "title":"<TITLE_TEXT>",
           "image_url":"https://www.stepforwardmichigan.org/wp-content/uploads/2017/03/step-foward-fb-1200x628-house.jpg",
           "subtitle":"We have the right hat for everyone.We have the right hat for everyone.We have the right hat for everyone.",
@@ -333,11 +334,11 @@ case "send-carousel" :
                     ]      
         }
         
-      ]
-    }
+  ];
     
-    }
-    }
+  
+    
+    
   // }, {
   //   "title": "Welcome!",
   //   "imageUrl": "https://www.stepforwardmichigan.org/wp-content/uploads/2017/03/step-foward-fb-1200x628-house.jpg",
@@ -364,7 +365,7 @@ case "send-carousel" :
   //       "postback": "PAYLOAD EXAMPLE"
   //     }
   //   ]
-  }];
+  //}];
   handleCardMessages(elements, sender)
   
 break;
