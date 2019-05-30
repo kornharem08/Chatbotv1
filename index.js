@@ -31,7 +31,7 @@ function setupGetStartedButton(res){
 
   // Start the request
   request({
-      url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+config.FB_PAGE_TOKEN,
+      url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token=EAAD4BB3LHCIBALN3oGRT2f190z6NVkzSglLZBt4nZBUgXrZBoifnZByEKs9zUkCzT1UYWdWYTGFlOaSrcL8nEfuWEArICIxQZAghZCjjiG1C0pTvkxj4yXhvF3E2lmQ7b4ZBGhbyEhGIRSVySTNr7Um4dhm1HNAreWX7o1ny3h5RKIrPy4XxM60',
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       form: messageData
