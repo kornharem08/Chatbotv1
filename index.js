@@ -129,7 +129,6 @@ app.post("/webhook/", function (req, res) {
    var name = data2.timezone
    console.log("TimeZone1"+data2)
    console.log("TimeZone2"+name)
-   information()//test information
   // Make sure this is a page subscription
   if (data.object == "page") {
     // Iterate over each entry
@@ -182,6 +181,7 @@ const callSendAPI = async (messageData) => {
         if (response.status == 200) {
           var recipientId = response.data.recipient_id;
           var messageId = response.data.message_id;
+          information(recipientId);
           if (messageId) {
             console.log(
               "Successfully sent message with id %s to recipient %s",
@@ -322,7 +322,7 @@ await callSendAPI(messageData);
 const information = async (recipientId) =>{
  
   const url = "https://graph.facebook.com/"+recipientId+"?fields=first_name,last_name,profile_pic&access_token="+ config.FB_PAGE_TOKEN;
-    await axios.get(url, messageData)
+    await axios.get(url)
       .then(function (response) {
         if (response.status == 200) {
           var fname = response.data.first_name;
