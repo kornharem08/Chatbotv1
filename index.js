@@ -78,7 +78,7 @@ function receivedMessage(event) {
   }
 
   console.log("message"+message.text);
-
+  console.log("messageAttachments"+message.attachments);
   var messageId = message.mid;
   var appId = message.app_id;
   var metadata = message.metadata;
