@@ -26,7 +26,9 @@ function setupGetStartedButton(res){
           ]
   };
 
-  
+
+
+
   // Start the request
   request({
       url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+config.FB_PAGE_TOKEN,
@@ -65,17 +67,6 @@ app.get('/webhook', function(req, res) {
 });
 
 
-// app.get("/webhook/", function (req, res) {
-//   setupGetStartedButton(res);
-//   console.log("request");
-//   console.log("verify_token:"+JSON.stringify(req.query["hub.verify_token"])); 
-//   if (req.query["hub.mode"] === "subscribe" && req.query["hub.verify_token"] === config.FB_VERIFY_TOKEN) {
-//     res.status(200).send(req.query["hub.challenge"]);
-//   } else {
-//     console.error("Failed validation. Make sure the validation tokens match.");
-//     res.sendStatus(403);
-//   }
-// });
 function receivedMessage(event) {
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
@@ -330,7 +321,7 @@ case "send-carousel" :
     "imageUrl": "https://www.stepforwardmichigan.org/wp-content/uploads/2017/03/step-foward-fb-1200x628-house.jpg",
     "buttons": [
       {
-        "postback": "https://webviews-vue1.herokuapp.com/",
+        "postback": "https://webviews-vue1.herokuapp.com",
         "text": "View Website"
       }, {
         "text": "Start Chatting",
