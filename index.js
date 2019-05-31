@@ -320,9 +320,9 @@ const information = async (recipientId) => { ///ค่อยปรับปร�
   await axios.get(url)
     .then(function (response) {
 
-        console.log("response:"+response.data.first_name)
+        
         infoBase = response.data
-        console.log("response2:"+infoBase.first_name)
+      
         //console.log("come to create infoObjBase :"+this.infoObjBase.fname)
         
       /*this.f_name = infoObjBase.fname;
@@ -350,7 +350,7 @@ const information = async (recipientId) => { ///ค่อยปรับปร�
 
 
 
-function handleApiAiAction(sender, action, responseText, contexts, parameters) {
+const handleApiAiAction = async(sender, action, responseText, contexts, parameters) => {
   
   switch (action) {
     case "send-text":
@@ -439,7 +439,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
       exampleWebview(sender, response)
       break;
       case "send-start":
-        var info = information(sender); // ตรงนี้เราลองเปลี่ยนเป็น let information = information(sender) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        var info = await information(sender) // ตรงนี้เราลองเปลี่ยนเป็น let information = information(sender) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         console.log("Information:FNAME"+info)
         var responseText = "The toys "+info.first_name+" "+info.last_name;
         sendTextMessage(sender, responseText);
