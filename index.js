@@ -422,6 +422,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
       exampleWebview(sender, response)
       break;
       case "send-start":
+        information(sender);
         var responseText = "The toys"+f_name+" "+l_name;
         sendTextMessage(sender, responseText);
         break;
