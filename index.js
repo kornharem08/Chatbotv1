@@ -176,7 +176,7 @@ const callSendAPI = async (messageData) => {
       if (response.status == 200) {
         var recipientId = response.data.recipient_id;
         var messageId = response.data.message_id;
-        information(recipientId);
+       // information(recipientId);
         if (messageId) {
           console.log(
             "Successfully sent message with id %s to recipient %s",
@@ -322,6 +322,9 @@ const information = async (recipientId) => {
 
       this.f_name = fname
       this.l_name = lname
+      console.log("F_NAME:"+this.f_name)
+      console.log("L_NAME:"+this.l_name)
+
     })
     .catch(function (error) {
       console.log(error.response.headers);
