@@ -314,8 +314,8 @@ const exampleWebview = async (recipientId, messageForm) => {
 }
 
 function information(recipientId){ ///ค่อยปรับปรุงเป็นฟังก์ชั่นรูปแบบที่เหมาะสม
-  let data_first_name 
-  let data_last_name
+  let data_first_name = ""
+  let data_last_name = ""
 
   let infoObjBase = {
     fname: data_first_name,
@@ -326,11 +326,11 @@ function information(recipientId){ ///ค่อยปรับปรุงเป
    axios.get(url)
     .then(function (response) {
       
-        data_first_name = response.data.first_name;
-        data_last_name = response.data.last_name;
+        this.data_first_name = response.data.first_name;
+        this.data_last_name = response.data.last_name;
       
-        console.log("come to create infoObjBase :"+infoObjBase.fname)
-        return infoObjBase;
+        console.log("come to create infoObjBase :"+this.infoObjBase.fname)
+        
       /*this.f_name = infoObjBase.fname;
       this.l_name = infoObjBase.lname;
       console.log("Name: "+f_name);
@@ -347,7 +347,7 @@ function information(recipientId){ ///ค่อยปรับปรุงเป
       console.log(error.response.headers);
     });
 
-   
+    return infoObjBase;
 
   //console.log("messageForm:"+JSON.stringify(messageForm));
   //await callSendAPI(messageData);
