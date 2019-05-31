@@ -323,7 +323,7 @@ function information(recipientId){ ///ค่อยปรับปรุงเป
           lname: response.data.last_name
       }
 
-      console.log("come to create infoObjBase")
+      console.log("come to create infoObjBase :"+infoObjBase)
       return infoObjBase;
       // f_name = response.data.first_name;
       // l_name = response.data.last_name;
