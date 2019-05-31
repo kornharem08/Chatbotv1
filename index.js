@@ -315,7 +315,7 @@ const exampleWebview = async (recipientId, messageForm) => {
 
 function information(recipientId){ ///ค่อยปรับปรุงเป็นฟังก์ชั่นรูปแบบที่เหมาะสม
   const url = "https://graph.facebook.com/" + recipientId + "?fields=first_name,last_name,profile_pic&access_token=" + config.FB_PAGE_TOKEN;
-  await axios.get(url)
+   axios.get(url)
     .then(function (response) {
      
       let infoObjBase = {
