@@ -349,6 +349,7 @@ const information = async (recipientId) => {
 
 
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
+  var datainfo = information();
   switch (action) {
     case "send-text":
       var responseText = "This is example of Text message."
@@ -437,7 +438,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
       break;
       case "send-start":
         information(sender);
-        var responseText = "The toys"+information().lname+" "+information().fname;
+        var responseText = "The toys "+datainfo.fname+" "+datainfo.lname;
         sendTextMessage(sender, responseText);
         break;
      
