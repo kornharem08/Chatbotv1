@@ -38,17 +38,7 @@ function setupGetStartedButton(res){
   },
   function (error, response, body) {
       if (!error && response.statusCode == 200) {
-         // Print out the response body        
-         var bodyObj = JSON.parse(body)
-         var name = bodyObj.first_name
-        var lname = bodyObj.last_name
-        var pc = bodyObj.profile_pic
-        var locale = bodyObj.locale
-         var timezone = bodyObj.timezone
-         var gender = bodyObj.gender
-           
-           console.log("BODYOBJ:"+bodyObj)
-         
+
           res.send(body);
 
       } else { 
@@ -93,11 +83,16 @@ function receivedMessage(event) {
 
   // You may get a text or attachment but not both
   var messageText = message.text;
+  var messageSticker = message.sticker_id;   ////// เพิ่ม messageSticker เข้าไป
   var messageAttachments = message.attachments;
 
   if (messageText) {
     //send message to api.ai
     sendToApiAi(senderID, messageText);
+  }else if(messageSticker){    /////เพิ่ม messageSticker เข้าไป
+
+    sendToApiAi(senderID, messageSticker);
+  
   } else if (messageAttachments) {
     handleMessageAttachments(messageAttachments, senderID);
   }
@@ -497,11 +492,6 @@ const sendGenericMessage = async (recipientId, elements) => {
   await callSendAPI(messageData);
 }
 
-
-
-/*app.listen(app.get("port"), function () {
-  console.log("Magic Started on port", app.get("port"));
-});*/
 
 var server = app.listen(process.env.PORT || 5000, function () {
   var port = server.address().port;
