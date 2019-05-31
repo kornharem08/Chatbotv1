@@ -317,13 +317,17 @@ const information = async (recipientId) => {
   const url = "https://graph.facebook.com/" + recipientId + "?fields=first_name,last_name,profile_pic&access_token=" + config.FB_PAGE_TOKEN;
   await axios.get(url)
     .then(function (response) {
-      let fname = response.data.first_name;
-      let lname = response.data.last_name;
+     
+      let infoObjBase = [{
+          fname: response.data.first_name,
+          lname: response.data.last_name
+      }]
+      
+      let infoObj = JSON.parse(infoObjBase)
+      
 
-      this.f_name = fname
-      this.l_name = lname
-      console.log("F_NAME:"+this.f_name)
-      console.log("L_NAME:"+this.l_name)
+      console.log("fNAME:"+infoObj.fname+"lName:"+infoObj.lname)
+    
 
     })
     .catch(function (error) {
