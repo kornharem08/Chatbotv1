@@ -439,7 +439,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
       break;
       case "send-start":
         var info = information(sender); // ตรงนี้เราลองเปลี่ยนเป็น let information = information(sender) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        console.log("Information:FNAME"+info)
+        console.log("Information:FNAME"+info.fname)
         var responseText = "The toys ";
         sendTextMessage(sender, responseText);
         break;
