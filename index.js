@@ -318,10 +318,10 @@ const information = async (recipientId) => {
   await axios.get(url)
     .then(function (response) {
      
-      let infoObjBase = [{
+      let infoObjBase = {
           fname: response.data.first_name,
           lname: response.data.last_name
-      }]
+      }
       
       let infoObj = JSON.parse(infoObjBase)
       
