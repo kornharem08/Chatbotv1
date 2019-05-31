@@ -313,11 +313,11 @@ const exampleWebview = async (recipientId, messageForm) => {
   await callSendAPI(messageData);
 }
 
-function information(recipientId){ ///ค่อยปรับปรุงเป็นฟังก์ชั่นรูปแบบที่เหมาะสม
+const information = async (recipientId) => { ///ค่อยปรับปรุงเป็นฟังก์ชั่นรูปแบบที่เหมาะสม
 
   var infoBase = {}
   const url = "https://graph.facebook.com/" + recipientId + "?fields=first_name,last_name,profile_pic&access_token=" + config.FB_PAGE_TOKEN;
-   axios.get(url)
+  await axios.get(url)
     .then(function (response) {
 
         console.log("response:"+response.data.first_name)
