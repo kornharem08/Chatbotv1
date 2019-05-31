@@ -325,7 +325,6 @@ const information = async (recipientId) => {
       
       let infoObj = JSON.parse(infoObjBase)
       
-
       console.log("fNAME:"+infoObj.fname+"lName:"+infoObj.lname)
     
 
