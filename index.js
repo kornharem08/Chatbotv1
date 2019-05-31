@@ -125,10 +125,6 @@ function sendToApiAi(sender, text) {
   
 app.post("/webhook/", function (req, res) {
   var data = req.body; 
-   var data2 = JSON.stringify(req.body);
-   var name = data2.timezone
-   console.log("TimeZone1"+data2)
-   console.log("TimeZone2"+name)
   // Make sure this is a page subscription
   if (data.object == "page") {
     // Iterate over each entry
@@ -136,7 +132,6 @@ app.post("/webhook/", function (req, res) {
     data.entry.forEach(function (pageEntry) {
       var pageID = pageEntry.id;
       var timeOfEvent = pageEntry.time;
-      console.log("=========Data========"+pageID)
       // Iterate over each messaging event
       pageEntry.messaging.forEach(function (messagingEvent) {
         if (messagingEvent.message) {
