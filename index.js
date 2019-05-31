@@ -329,6 +329,8 @@ function information(recipientId){ ///ค่อยปรับปรุงเป
         data_first_name = response.data.first_name;
         data_last_name = response.data.last_name;
       
+        console.log("come to create infoObjBase :"+infoObjBase.fname)
+        return infoObjBase;
       /*this.f_name = infoObjBase.fname;
       this.l_name = infoObjBase.lname;
       console.log("Name: "+f_name);
@@ -345,8 +347,7 @@ function information(recipientId){ ///ค่อยปรับปรุงเป
       console.log(error.response.headers);
     });
 
-    console.log("come to create infoObjBase :"+infoObjBase.fname)
-    return infoObjBase;
+   
 
   //console.log("messageForm:"+JSON.stringify(messageForm));
   //await callSendAPI(messageData);
