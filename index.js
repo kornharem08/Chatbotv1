@@ -329,18 +329,18 @@ const information = async (recipientId) =>{
           var fname = response.data.first_name;
           var lname = response.data.last_name;
           var gender = response.data.gender;
-          var messageData = {
-            recipient: {
-              id: recipientId
-            },
-            message: {
-              text: "Hello"+name+" "+lname+" "+gender
-            }
-          };
+          // var messageData = {
+          //   recipient: {
+          //     id: recipientId
+          //   },
+          //   message: {
+          //     text: "Hello"+name+" "+lname+" "+gender
+          //   }
+          // };
           console.log("FNAME:"+fname);
           console.log("FNAME:"+lname);
           console.log("FNAME:"+gender);
-          await callSendAPI(messageData);
+          // await callSendAPI(messageData);
           
         }
       })
@@ -440,9 +440,9 @@ break;
               }]
   exampleWebview(sender,response)
 break;
-case "send-start":
-information(recipientId);
-break;
+// case "send-start":
+// information(recipientId);
+// break;
    default:
      //unhandled action, just send back the text
    sendTextMessage(sender, responseText);
