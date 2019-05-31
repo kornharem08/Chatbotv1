@@ -320,7 +320,7 @@ function information(recipientId){ ///ค่อยปรับปรุงเป
    axios.get(url)
     .then(function (response) {
 
-        console.log("response:"+response)
+        console.log("response:"+response.data)
         infoBase = response.data
         //console.log("come to create infoObjBase :"+this.infoObjBase.fname)
         
