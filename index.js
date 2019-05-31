@@ -438,8 +438,9 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
       exampleWebview(sender, response)
       break;
       case "send-start":
-        let information =  information(sender); // ตรงนี้เราลองเปลี่ยนเป็น let information = information(sender) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        var responseText = "The toys "+information.fname+" "+information.lname; ///  information.fname , information.lname <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        let information = information(sender); // ตรงนี้เราลองเปลี่ยนเป็น let information = information(sender) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        console.log("Information:FNAME"+information.fname)
+        var responseText = "The toys ";
         sendTextMessage(sender, responseText);
         break;
      
