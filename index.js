@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 /////// information user
 var f_name = null
 var l_name = null
-
+var datainfo = information();
 
 //app.listen(3000);
 function setupGetStartedButton(res) {
@@ -348,8 +348,8 @@ const information = async (recipientId) => {
 
 
 
-function handleApiAiAction(sender, action, responseText, contexts, parameters) {
-  var datainfo = information();
+function handleApiAiAction(sender, action, responseText, contexts, parameters,datainfo) {
+  
   switch (action) {
     case "send-text":
       var responseText = "This is example of Text message."
