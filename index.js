@@ -314,18 +314,20 @@ const exampleWebview = async (recipientId, messageForm) => {
 }
 
 function information(recipientId){ ///ค่อยปรับปรุงเป็นฟังก์ชั่นรูปแบบที่เหมาะสม
+  let data_first_name 
+  let data_last_name
+
+  let infoObjBase = {
+    fname: data_first_name,
+    lname: data_last_name
+  }
+  
   const url = "https://graph.facebook.com/" + recipientId + "?fields=first_name,last_name,profile_pic&access_token=" + config.FB_PAGE_TOKEN;
    axios.get(url)
     .then(function (response) {
-     
-      let infoObjBase = {
-          fname: response.data.first_name,
-          lname: response.data.last_name
-      }
-
       
-      // f_name = response.data.first_name;
-      // l_name = response.data.last_name;
+        data_first_name = response.data.first_name;
+        data_last_name = response.data.last_name;
       
       /*this.f_name = infoObjBase.fname;
       this.l_name = infoObjBase.lname;
@@ -343,7 +345,7 @@ function information(recipientId){ ///ค่อยปรับปรุงเป
       console.log(error.response.headers);
     });
 
-    console.log("come to create infoObjBase :"+infoObjBase)
+    console.log("come to create infoObjBase :"+infoObjBase.fname)
     return infoObjBase;
 
   //console.log("messageForm:"+JSON.stringify(messageForm));
