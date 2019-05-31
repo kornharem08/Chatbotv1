@@ -16,9 +16,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 /////// information user
-var f_name = null
-var l_name = null
-var datainfo = information(recipientId); //ตรงนี้ไม่ได้เพราะว่าฟังก์ชั่นร้องขอ parameter
+var f_name ;
+var l_name ;
+ //ตรงนี้ไม่ได้เพราะว่าฟังก์ชั่นร้องขอ parameter //เราไม่มี recipientId
 
 //app.listen(3000);
 function setupGetStartedButton(res) {
@@ -322,8 +322,9 @@ const information = async (recipientId) => {
           fname: response.data.first_name,
           lname: response.data.last_name
       }
-      
       return infoObjBase;
+      // f_name = response.data.first_name;
+      // l_name = response.data.last_name;
       
       /*this.f_name = infoObjBase.fname;
       this.l_name = infoObjBase.lname;
@@ -348,7 +349,7 @@ const information = async (recipientId) => {
 
 
 
-function handleApiAiAction(sender, action, responseText, contexts, parameters,datainfo) {
+function handleApiAiAction(sender, action, responseText, contexts, parameters) {
   
   switch (action) {
     case "send-text":
@@ -437,8 +438,8 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters,da
       exampleWebview(sender, response)
       break;
       case "send-start":
-        information(sender);
-        var responseText = "The toys "+datainfo.fname+" "+datainfo.lname;
+        let information =  information(sender); // ตรงนี้เราลองเปลี่ยนเป็น let information = information(sender) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        var responseText = "The toys "+information.fname+" "+information.lname; ///  information.fname , information.lname <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         sendTextMessage(sender, responseText);
         break;
      
