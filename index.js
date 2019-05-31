@@ -319,32 +319,15 @@ const information = async (recipientId) => { ///ค่อยปรับปร�
   const url = "https://graph.facebook.com/" + recipientId + "?fields=first_name,last_name,profile_pic&access_token=" + config.FB_PAGE_TOKEN;
   await axios.get(url)
     .then(function (response) {
-
-        
+ 
         infoBase = response.data
-      
-        //console.log("come to create infoObjBase :"+this.infoObjBase.fname)
-        
-      /*this.f_name = infoObjBase.fname;
-      this.l_name = infoObjBase.lname;
-      console.log("Name: "+f_name);
-      console.log("Lastname : "+l_name);*/
-      // console.log("infoObject1:"+JSON.stringify(infoObjBase.fname))
-      // console.log("infoObject2:"+infoObjBase.fname)
-      //let infoObj = JSON.parse(infoObjBase)
-      
-     // console.log("fNAME:"+infoObj.fname+"lName:"+infoObj.lname)
-      
 
     })
     .catch(function (error) {
       console.log(error.response.headers);
     });
-    console.log("response3:"+infoBase.first_name)
     return infoBase;
 
-  //console.log("messageForm:"+JSON.stringify(messageForm));
-  //await callSendAPI(messageData);
 }
 
 
@@ -439,8 +422,7 @@ const handleApiAiAction = async(sender, action, responseText, contexts, paramete
       exampleWebview(sender, response)
       break;
       case "send-start":
-        var info = await information(sender) // ตรงนี้เราลองเปลี่ยนเป็น let information = information(sender) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        console.log("Information:FNAME"+info)
+        var info = await information(sender) 
         var responseText = "The toys "+info.first_name+" "+info.last_name;
         sendTextMessage(sender, responseText);
         break;
