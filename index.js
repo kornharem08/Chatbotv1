@@ -315,16 +315,13 @@ const exampleWebview = async (recipientId, messageForm) => {
 
 function information(recipientId){ ///ค่อยปรับปรุงเป็นฟังก์ชั่นรูปแบบที่เหมาะสม
 
-  var infoBase 
+  var infoBase = []
   const url = "https://graph.facebook.com/" + recipientId + "?fields=first_name,last_name,profile_pic&access_token=" + config.FB_PAGE_TOKEN;
    axios.get(url)
     .then(function (response) {
 
-        var infoObjBase = {
-          fname: response.data.first_name,
-          lname: response.data.last_name
-        }
-        infoBase = infoObjBase
+        infoBase.push(response.data.first_name)
+        infoBase.push(response.data.last_name)
         //console.log("come to create infoObjBase :"+this.infoObjBase.fname)
         
       /*this.f_name = infoObjBase.fname;
@@ -342,7 +339,6 @@ function information(recipientId){ ///ค่อยปรับปรุงเป
     .catch(function (error) {
       console.log(error.response.headers);
     });
-
     return infoBase;
 
   //console.log("messageForm:"+JSON.stringify(messageForm));
