@@ -15,6 +15,10 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+/////// information user
+var f_name = null
+var l_name = null
+
 
 //app.listen(3000);
 function setupGetStartedButton(res) {
@@ -313,8 +317,11 @@ const information = async (recipientId) => {
   const url = "https://graph.facebook.com/" + recipientId + "?fields=first_name,last_name,profile_pic&access_token=" + config.FB_PAGE_TOKEN;
   await axios.get(url)
     .then(function (response) {
-      var fname = response.data.first_name;
-      var lname = response.data.last_name;
+      let fname = response.data.first_name;
+      let lname = response.data.last_name;
+
+      this.f_name = fname
+      this.l_name = lname
     })
     .catch(function (error) {
       console.log(error.response.headers);
@@ -414,6 +421,10 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
       }]
       exampleWebview(sender, response)
       break;
+      case "send-start":
+        var responseText = "The toys"+f_name+" "+l_name;
+        sendTextMessage(sender, responseText);
+        break;
      
     default:
       //unhandled action, just send back the text
