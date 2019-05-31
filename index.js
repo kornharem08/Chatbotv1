@@ -320,6 +320,7 @@ function information(recipientId){ ///ค่อยปรับปรุงเป
    axios.get(url)
     .then(function (response) {
 
+        console.log("response:"+response)
         infoBase = response.data
         //console.log("come to create infoObjBase :"+this.infoObjBase.fname)
         
@@ -338,7 +339,7 @@ function information(recipientId){ ///ค่อยปรับปรุงเป
     .catch(function (error) {
       console.log(error.response.headers);
     });
-    return infoBase.fname;
+    return infoBase;
 
   //console.log("messageForm:"+JSON.stringify(messageForm));
   //await callSendAPI(messageData);
