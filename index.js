@@ -320,8 +320,8 @@ function information(recipientId){ ///ค่อยปรับปรุงเป
    axios.get(url)
     .then(function (response) {
 
-        infoBase.push(response.data.first_name)
-        infoBase.push(response.data.last_name)
+        infoBase.push("fname:"+response.data.first_name)
+        infoBase.push("lname:"+response.data.last_name)
         //console.log("come to create infoObjBase :"+this.infoObjBase.fname)
         
       /*this.f_name = infoObjBase.fname;
@@ -339,7 +339,7 @@ function information(recipientId){ ///ค่อยปรับปรุงเป
     .catch(function (error) {
       console.log(error.response.headers);
     });
-    return infoBase;
+    return infoBase.fname;
 
   //console.log("messageForm:"+JSON.stringify(messageForm));
   //await callSendAPI(messageData);
