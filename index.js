@@ -323,16 +323,18 @@ const information = async (recipientId) => {
           lname: response.data.last_name
       }
       
-      this.f_name = infoObjBase.fname;
+      return infoObjBase;
+      
+      /*this.f_name = infoObjBase.fname;
       this.l_name = infoObjBase.lname;
       console.log("Name: "+f_name);
-      console.log("Lastname : "+l_name);
+      console.log("Lastname : "+l_name);*/
       // console.log("infoObject1:"+JSON.stringify(infoObjBase.fname))
       // console.log("infoObject2:"+infoObjBase.fname)
       //let infoObj = JSON.parse(infoObjBase)
       
      // console.log("fNAME:"+infoObj.fname+"lName:"+infoObj.lname)
-    
+      
 
     })
     .catch(function (error) {
@@ -435,7 +437,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
       break;
       case "send-start":
         information(sender);
-        var responseText = "The toys"+f_name+" "+l_name;
+        var responseText = "The toys"+information().lname+" "+information().fname;
         sendTextMessage(sender, responseText);
         break;
      
