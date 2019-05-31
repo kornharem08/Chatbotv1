@@ -340,7 +340,20 @@ const information = async (recipientId) =>{
 
 
 
-function handleApiAiAction(sender, action, responseText, contexts, parameters) {
+function handleApiAiAction(sender, action, responseText, contexts, parameters,recipientId) {
+  const url = "https://graph.facebook.com/"+recipientId+"?fields=first_name,last_name,profile_pic&access_token="+ config.FB_PAGE_TOKEN;
+    await axios.get(url)
+      .then(function (response) {
+        if (response.status == 200) {
+          var fname = response.data.first_name;
+          var lname = response.data.last_name;
+          var gender = response.data.gender;
+          console.log("FNAME:"+fname);
+        }
+      })
+      .catch(function (error) {
+        console.log(error.response.headers);
+      });
   switch (action) {
    case "send-text":
      var responseText = "This is example of Text message."
@@ -424,6 +437,10 @@ break;
                   "messenger_extensions": true
               }]
   exampleWebview(sender,response)
+break;
+case "send-start":
+  var responseText = "Hello"+name+""+lname+"to chat bot"
+  sendTextMessage(sender, responseText);
 break;
    default:
      //unhandled action, just send back the text
