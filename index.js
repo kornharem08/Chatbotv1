@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 /////// information user
 var f_name = null
 var l_name = null
-var datainfo = information();
+var datainfo = information(recipientId); //ตรงนี้ไม่ได้เพราะว่าฟังก์ชั่นร้องขอ parameter
 
 //app.listen(3000);
 function setupGetStartedButton(res) {
