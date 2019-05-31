@@ -27,8 +27,6 @@ function setupGetStartedButton(res) {
   };
 
 
-
-
   // Start the request
   request({
     url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token=EAAD4BB3LHCIBALN3oGRT2f190z6NVkzSglLZBt4nZBUgXrZBoifnZByEKs9zUkCzT1UYWdWYTGFlOaSrcL8nEfuWEArICIxQZAghZCjjiG1C0pTvkxj4yXhvF3E2lmQ7b4ZBGhbyEhGIRSVySTNr7Um4dhm1HNAreWX7o1ny3h5RKIrPy4XxM60',
@@ -101,7 +99,6 @@ function sendToApiAi(sender, text) {
   let apiaiRequest = apiAiService.textRequest(text, {
     sessionId: sessionIds.get(sender)
   });
-
   apiaiRequest.on("response", response => {
     if (isDefined(response.result)) {
       handleApiAiResponse(sender, response);
@@ -119,6 +116,10 @@ function sendToApiAi(sender, text) {
 
 app.post("/webhook/", function (req, res) {
   var data = req.body; 
+  var data2 = JSON.stringify(req.body);
+  var name = data2.timezone;
+  console.log("TimeZone1" + data)
+  console.log("TimeZone2" + name)
   // Make sure this is a page subscription
   if (data.object == "page") {
     // Iterate over each entry
@@ -126,6 +127,7 @@ app.post("/webhook/", function (req, res) {
     data.entry.forEach(function (pageEntry) {
       var pageID = pageEntry.id;
       var timeOfEvent = pageEntry.time;
+      console.log("=========Data===========" + pageID)
       // Iterate over each messaging event
       pageEntry.messaging.forEach(function (messagingEvent) {
         if (messagingEvent.message) {
