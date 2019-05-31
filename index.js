@@ -322,6 +322,8 @@ function information(recipientId){ ///ค่อยปรับปรุงเป
           fname: response.data.first_name,
           lname: response.data.last_name
       }
+
+      console.log("come to create infoObjBase")
       return infoObjBase;
       // f_name = response.data.first_name;
       // l_name = response.data.last_name;
@@ -439,8 +441,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
       break;
       case "send-start":
         var info = information(sender); // ตรงนี้เราลองเปลี่ยนเป็น let information = information(sender) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        var infoObj = JSON.parse(info)
-        console.log("Information:FNAME"+infoObj)
+        console.log("Information:FNAME"+info)
         var responseText = "The toys ";
         sendTextMessage(sender, responseText);
         break;
