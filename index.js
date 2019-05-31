@@ -17,13 +17,13 @@ app.use(bodyParser.json());
 
 
 //app.listen(3000);
-function setupGetStartedButton(res){
+function setupGetStartedButton(res) {
   var messageData = {
-          "get_started":[
-          {
-              "payload":"USER_DEFINED_PAYLOAD"
-              }
-          ]
+    "get_started": [
+      {
+        "payload": "USER_DEFINED_PAYLOAD"
+      }
+    ]
   };
 
 
@@ -31,22 +31,21 @@ function setupGetStartedButton(res){
 
   // Start the request
   request({
-      url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token=EAAD4BB3LHCIBALN3oGRT2f190z6NVkzSglLZBt4nZBUgXrZBoifnZByEKs9zUkCzT1UYWdWYTGFlOaSrcL8nEfuWEArICIxQZAghZCjjiG1C0pTvkxj4yXhvF3E2lmQ7b4ZBGhbyEhGIRSVySTNr7Um4dhm1HNAreWX7o1ny3h5RKIrPy4XxM60',
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      form: messageData
+    url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token=EAAD4BB3LHCIBALN3oGRT2f190z6NVkzSglLZBt4nZBUgXrZBoifnZByEKs9zUkCzT1UYWdWYTGFlOaSrcL8nEfuWEArICIxQZAghZCjjiG1C0pTvkxj4yXhvF3E2lmQ7b4ZBGhbyEhGIRSVySTNr7Um4dhm1HNAreWX7o1ny3h5RKIrPy4XxM60',
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    form: messageData
   },
-  function (error, response, body) {
+    function (error, response, body) {
       if (!error && response.statusCode == 200) {
-
-          res.send(body);
-
-      } else { 
-          // TODO: Handle errors
-          res.send(body);
+        // Print out the response body        
+        res.send(body);
+      } else {
+        // TODO: Handle errors
+        res.send(body);
       }
-  });
-}        
+    });
+}
 
 app.get("/", function (req, res) {
   res.send("Hello world, I am a chat bot");
@@ -55,15 +54,15 @@ app.get("/ok", function (req, res) {
   res.send("ok");
 });
 
-app.get('/webhook', function(req, res) {
+app.get('/webhook', function (req, res) {
   if (req.query['hub.mode'] === 'subscribe' &&
-      req.query['hub.verify_token'] === 'hook_user') {
+    req.query['hub.verify_token'] === 'hook_user') {
     console.log("Validating webhook");
     res.status(200).send(req.query['hub.challenge']);
   } else {
     console.error("Failed validation. Make sure the validation tokens match.");
-    res.sendStatus(403);    
-  }  
+    res.sendStatus(403);
+  }
 });
 
 
@@ -117,7 +116,7 @@ function sendToApiAi(sender, text) {
 
 
 
-  
+
 app.post("/webhook/", function (req, res) {
   var data = req.body; 
   // Make sure this is a page subscription
@@ -132,7 +131,7 @@ app.post("/webhook/", function (req, res) {
         if (messagingEvent.message) {
           receivedMessage(messagingEvent);
         } else {
-          console.log("Webhook received unknown messagingEvent: ",messagingEvent);
+          console.log("Webhook received unknown messagingEvent: ", messagingEvent);
         }
       });
     });
@@ -166,75 +165,75 @@ const sessionIds = new Map();
 const callSendAPI = async (messageData) => {
 
   const url = "https://graph.facebook.com/v3.0/me/messages?access_token=" + config.FB_PAGE_TOKEN;
-    await axios.post(url, messageData)
-      .then(function (response) {
-        if (response.status == 200) {
-          var recipientId = response.data.recipient_id;
-          var messageId = response.data.message_id;
-          information(recipientId);
-          if (messageId) {
-            console.log(
-              "Successfully sent message with id %s to recipient %s",
-              messageId,
-              recipientId
-            );
-          } else {
-            console.log(
-              "Successfully called Send API for recipient %s",
-              recipientId
-            );
-          }
+  await axios.post(url, messageData)
+    .then(function (response) {
+      if (response.status == 200) {
+        var recipientId = response.data.recipient_id;
+        var messageId = response.data.message_id;
+        information(recipientId);
+        if (messageId) {
+          console.log(
+            "Successfully sent message with id %s to recipient %s",
+            messageId,
+            recipientId
+          );
+        } else {
+          console.log(
+            "Successfully called Send API for recipient %s",
+            recipientId
+          );
         }
-      })
-      .catch(function (error) {
-        console.log(error.response.headers);
-      });
-  }
-
-  const isDefined = (obj) => {
-    if (typeof obj == "undefined") {
-      return false;
-    }
-    if (!obj) {
-      return false;
-    }
-    return obj != null;
-  }
-  function handleApiAiResponse(sender, response) {
-    let responseText = response.result.fulfillment.speech;
-    let responseData = response.result.fulfillment.data;
-    let messages = response.result.fulfillment.messages;
-    let action = response.result.action;
-    let contexts = response.result.contexts;
-    let parameters = response.result.parameters;
-  
-    sendTypingOff(sender);
-  
-   if (responseText == "" && !isDefined(action)) {
-      //api ai could not evaluate input.
-      console.log("Unknown query" + response.result.resolvedQuery);
-      sendTextMessage(
-        sender,
-        "I'm not sure what you want. Can you be more specific?"
-      );
-    } else if (isDefined(action)) {
-      handleApiAiAction(sender, action, responseText, contexts, parameters);
-    } else if (isDefined(responseData) && isDefined(responseData.facebook)) {
-      try {
-        console.log("Response as formatted message" + responseData.facebook);
-        sendTextMessage(sender, responseData.facebook);
-      } catch (err) {
-        sendTextMessage(sender, err.message);
       }
-    } else if (isDefined(responseText)) {
-      sendTextMessage(sender, responseText);
-    }
-  }
+    })
+    .catch(function (error) {
+      console.log(error.response.headers);
+    });
+}
 
-  /*
- * Turn typing indicator off
- *
- */
+const isDefined = (obj) => {
+  if (typeof obj == "undefined") {
+    return false;
+  }
+  if (!obj) {
+    return false;
+  }
+  return obj != null;
+}
+function handleApiAiResponse(sender, response) {
+  let responseText = response.result.fulfillment.speech;
+  let responseData = response.result.fulfillment.data;
+  let messages = response.result.fulfillment.messages;
+  let action = response.result.action;
+  let contexts = response.result.contexts;
+  let parameters = response.result.parameters;
+
+  sendTypingOff(sender);
+
+  if (responseText == "" && !isDefined(action)) {
+    //api ai could not evaluate input.
+    console.log("Unknown query" + response.result.resolvedQuery);
+    sendTextMessage(
+      sender,
+      "I'm not sure what you want. Can you be more specific?"
+    );
+  } else if (isDefined(action)) {
+    handleApiAiAction(sender, action, responseText, contexts, parameters);
+  } else if (isDefined(responseData) && isDefined(responseData.facebook)) {
+    try {
+      console.log("Response as formatted message" + responseData.facebook);
+      sendTextMessage(sender, responseData.facebook);
+    } catch (err) {
+      sendTextMessage(sender, err.message);
+    }
+  } else if (isDefined(responseText)) {
+    sendTextMessage(sender, responseText);
+  }
+}
+
+/*
+* Turn typing indicator off
+*
+*/
 const sendTypingOff = (recipientId) => {
   var messageData = {
     recipient: {
@@ -271,7 +270,7 @@ const sendImageMessage = async (recipientId, imageUrl) => {
       }
     }
   };
-    await callSendAPI(messageData);
+  await callSendAPI(messageData);
 }
 const sendQuickReply = async (recipientId, text, replies, metadata) => {
   var messageData = {
@@ -288,155 +287,137 @@ const sendQuickReply = async (recipientId, text, replies, metadata) => {
 }
 
 
-const exampleWebview = async (recipientId,messageForm) =>{
+const exampleWebview = async (recipientId, messageForm) => {
   var messageData = {
-    recipient:{
-    id: recipientId
+    recipient: {
+      id: recipientId
     },
-      message: {
-        attachment: {
-          type: "template",
-          payload: {
-              template_type: "button",
-              text: "OK, let's set your room preferences so I won't need to ask for them in the future.",
-              buttons: messageForm
-          }
+    message: {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "button",
+          text: "OK, let's set your room preferences so I won't need to ask for them in the future.",
+          buttons: messageForm
+        }
       }
     }
 
-};
-  //console.log("messageForm:"+JSON.stringify(messageForm));
-await callSendAPI(messageData);
+  };
+  await callSendAPI(messageData);
 }
 
-const information = async (recipientId) =>{
- 
-  const url = "https://graph.facebook.com/"+recipientId+"?fields=first_name,last_name,profile_pic&access_token="+ config.FB_PAGE_TOKEN;
-    await axios.get(url)
-      .then(function (response) {
-        if (response.status == 200) {
-          var fname = response.data.first_name;
-          console.log("FNAME:"+fname);
-        }
-      })
-      .catch(function (error) {
-        console.log(error.response.headers);
-      });
+const information = async (recipientId) => {
+  const url = "https://graph.facebook.com/" + recipientId + "?fields=first_name,last_name,profile_pic&access_token=" + config.FB_PAGE_TOKEN;
+  await axios.get(url)
+    .then(function (response) {
+      var fname = response.data.first_name;
+      var lname = response.data.last_name;
+    })
+    .catch(function (error) {
+      console.log(error.response.headers);
+    });
 
   //console.log("messageForm:"+JSON.stringify(messageForm));
-//await callSendAPI(messageData);
+  //await callSendAPI(messageData);
 }
 
 
 
 
-function handleApiAiAction(sender, action, responseText, contexts, parameters,recipientId) {
-  const url = "https://graph.facebook.com/"+recipientId+"?fields=first_name,last_name,profile_pic&access_token="+ config.FB_PAGE_TOKEN;
-    await axios.get(url)
-      .then(function (response) {
-        if (response.status == 200) {
-          var fname = response.data.first_name;
-          var lname = response.data.last_name;
-          var gender = response.data.gender;
-          console.log("FNAME:"+fname);
-        }
-      })
-      .catch(function (error) {
-        console.log(error.response.headers);
-      });
+function handleApiAiAction(sender, action, responseText, contexts, parameters) {
   switch (action) {
-   case "send-text":
-     var responseText = "This is example of Text message."
-     sendTextMessage(sender, responseText);
-     break;
+    case "send-text":
+      var responseText = "This is example of Text message."
+      sendTextMessage(sender, responseText);
+      break;
     case "fb-send-image":
-var imgUrl = "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/881e6651881085.58fd911b65d88.png";
- sendImageMessage(sender, imgUrl);
-break;
-case "send-music":
-var responseText = "The toys"
-     sendTextMessage(sender, responseText);
-break;
-// case "send-name":
-// var responseText = {
-//   recipient:{
-//   id: recipientId
-//   },
-//     message:{
-//     attachment:{
-//     type:"template",
-//       payload:{
-//       template_type:"button",
-//         Text:"YOUR TEXT HERE" + name+ " "+lname+" YOUR TEXT HERE ",
-//         buttons:[{
-//         type:"postback",
-//           title:"TANAKORN",
-//           payload:"start"
-          
-//         },]
-//       }
-//     }
-//     }
-//   };
-  
-//      sendTextMessage(sender, responseText);
-// break;
-case "send-quick-reply":
-    var responseText = "Choose the options"
-    var replies = [{
+      var imgUrl = "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/881e6651881085.58fd911b65d88.png";
+      sendImageMessage(sender, imgUrl);
+      break;
+    case "send-music":
+      var responseText = "The toys";
+      sendTextMessage(sender, responseText);
+      break;
+    // case "send-name":
+    // var responseText = {
+    //   recipient:{
+    //   id: recipientId
+    //   },
+    //     message:{
+    //     attachment:{
+    //     type:"template",
+    //       payload:{
+    //       template_type:"button",
+    //         Text:"YOUR TEXT HERE" + name+ " "+lname+" YOUR TEXT HERE ",
+    //         buttons:[{
+    //         type:"postback",
+    //           title:"TANAKORN",
+    //           payload:"start"
+
+    //         },]
+    //       }
+    //     }
+    //     }
+    //   };
+
+    //      sendTextMessage(sender, responseText);
+    // break;
+    case "send-quick-reply":
+      var responseText = "Choose the options"
+      var replies = [{
         "content_type": "text",
         "title": "Example 1",
         "payload": "Example 1",
-    },
-    {
+      },
+      {
         "content_type": "text",
         "title": "Example 2",
         "payload": "Example 2",
-    },
-    {
+      },
+      {
         "content_type": "text",
         "title": "Example 3",
         "payload": "Example 3",
-    }];
-    sendQuickReply(sender, responseText, replies)
-break;
-case "send-carousel" :
-  const elements = [{
-         
-          "title":"<TITLE_TEXT>",
-          "image_url":"https://www.stepforwardmichigan.org/wp-content/uploads/2017/03/step-foward-fb-1200x628-house.jpg",
-          "subtitle":"We have the right hat for everyone.We have the right hat for everyone.We have the right hat for everyone.",
+      }];
+      sendQuickReply(sender, responseText, replies)
+      break;
+    case "send-carousel":
+      const elements = [{
 
-          "buttons":[{ "type": "web_url",
-                    "url": "https://webviews-vue1.herokuapp.com/",
-                    "title": "Set preferences",
-                    "webview_height_ratio": "compact",
-                    "messenger_extensions": true}
-                    ]      
-        }];
-  
-  handleCardMessages(elements, sender) 
-  
-break;
- case "test":
-     let response = [{
-                  "type": "web_url",
-                  "url": "https://webviews-vue1.herokuapp.com/",
-                  "title": "Set preferences",
-                  "webview_height_ratio": "full",
-                  "messenger_extensions": true
-              }]
-  exampleWebview(sender,response)
-break;
-case "send-start":
-  var responseText = "Hello"+name+""+lname+"to chat bot"
-  sendTextMessage(sender, responseText);
-break;
-   default:
-     //unhandled action, just send back the text
-   sendTextMessage(sender, responseText);
- }
- 
+        "title": "<TITLE_TEXT>",
+        "image_url": "https://www.stepforwardmichigan.org/wp-content/uploads/2017/03/step-foward-fb-1200x628-house.jpg",
+        "subtitle": "We have the right hat for everyone.We have the right hat for everyone.We have the right hat for everyone.",
+
+        "buttons": [{
+          "type": "web_url",
+          "url": "https://webviews-vue1.herokuapp.com/",
+          "title": "Set preferences",
+          "webview_height_ratio": "compact",
+          "messenger_extensions": true
+        }
+        ]
+      }];
+
+      handleCardMessages(elements, sender)
+
+      break;
+    case "test":
+      let response = [{
+        "type": "web_url",
+        "url": "https://webviews-vue1.herokuapp.com/",
+        "title": "Set preferences",
+        "webview_height_ratio": "full",
+        "messenger_extensions": true
+      }]
+      exampleWebview(sender, response)
+      break;
+     
+    default:
+      //unhandled action, just send back the text
+      sendTextMessage(sender, responseText);
+  }
+
 }
 
 
@@ -463,7 +444,7 @@ async function handleCardMessages(messages, sender) {
       }
       buttons.push(button);
     }
-    let element = { 
+    let element = {
       title: message.title,
       image_url: message.imageUrl,
       subtitle: message.subtitle,
