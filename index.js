@@ -323,9 +323,10 @@ const information = async (recipientId) => {
           lname: response.data.last_name
       }
       
-      let infoObj = JSON.parse(infoObjBase)
+      console.log("infoObject:"+infoObjBase)
+      //let infoObj = JSON.parse(infoObjBase)
       
-      console.log("fNAME:"+infoObj.fname+"lName:"+infoObj.lname)
+     // console.log("fNAME:"+infoObj.fname+"lName:"+infoObj.lname)
     
 
     })
