@@ -340,6 +340,7 @@ function information(recipientId){ ///ค่อยปรับปรุงเป
     .catch(function (error) {
       console.log(error.response.headers);
     });
+    console.log("response3:"+infoBase.first_name)
     return infoBase;
 
   //console.log("messageForm:"+JSON.stringify(messageForm));
