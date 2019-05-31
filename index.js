@@ -319,32 +319,11 @@ const exampleWebview = async (recipientId, messageForm) => {
 }
 
 const information = async (recipientId) => {
-
   const url = "https://graph.facebook.com/" + recipientId + "?fields=first_name,last_name,profile_pic&access_token=" + config.FB_PAGE_TOKEN;
   await axios.get(url)
     .then(function (response) {
       var fname = response.data.first_name;
       var lname = response.data.last_name;
-      var gender = response.data.gender;
-      if (response.status == 200) {
-        var messageData = {
-          recipient: {
-            id: recipientId
-          },
-          message: {
-            attachment: {
-              type: "template",
-              payload: {
-                template_type: "button",
-                text: "Wellcom "+ name + " "+lname+"to Chatbot"+recipientId,
-              }
-            }
-          }
-        };
-        await callSendAPI(messageData);
-        // await callSendAPI(messageData);
-
-      }
     })
     .catch(function (error) {
       console.log(error.response.headers);
@@ -445,9 +424,6 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
       exampleWebview(sender, response)
       break;
      
-    case "send-start":
-    information(sender);
-    break;
     default:
       //unhandled action, just send back the text
       sendTextMessage(sender, responseText);
