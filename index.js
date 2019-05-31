@@ -322,6 +322,7 @@ function information(recipientId){ ///ค่อยปรับปรุงเป
 
         console.log("response:"+response.data.first_name)
         infoBase = response.data
+        console.log("response2:"+infoBase.first_name)
         //console.log("come to create infoObjBase :"+this.infoObjBase.fname)
         
       /*this.f_name = infoObjBase.fname;
@@ -438,7 +439,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
       break;
       case "send-start":
         var info = information(sender); // ตรงนี้เราลองเปลี่ยนเป็น let information = information(sender) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        console.log("Information:FNAME"+info.data.first_name)
+        console.log("Information:FNAME"+info)
         var responseText = "The toys "+info.first_name+" "+info.last_name;
         sendTextMessage(sender, responseText);
         break;
