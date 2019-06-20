@@ -408,7 +408,9 @@ const handleApiAiAction = async(sender, action, responseText, contexts, paramete
         "payload": "Example 3",
       }];
 
-      handleCardMessages(elements, sender)
+      sendQuickReply(sender, responseText, replies)
+
+      // handleCardMessages(elements, sender)
 
       break;
     case "test":
