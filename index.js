@@ -392,26 +392,32 @@ const handleApiAiAction = async(sender, action, responseText, contexts, paramete
       sendQuickReply(sender, responseText, replies)
       break;
     case "send-carousel":
-        var responseText = "Choose the options"
+     
       const elements = [{
-        "content_type": "text",
-        "title": "Example 1",
-        "payload": "Example 1",
-      },
-      {
-        "content_type": "text",
-        "title": "Example 2",
-        "payload": "Example 2",
-      },
-      {
-        "content_type": "text",
-        "title": "Example 3",
-        "payload": "Example 3",
-      }];
+        "title":"Welcome!",
+        "image_url":"https://petersfancybrownhats.com/company_image.png",
+        "subtitle":"We have the right hat for everyone.",
+        "default_action": {
+          "type": "web_url",
+          "url": "https://webviews-vue1.herokuapp.com/",
+          "messenger_extensions": true,
+          "webview_height_ratio": "tall",
+          "fallback_url": "https://petersfancybrownhats.com/"
+        },
+        "buttons":[
+          {
+            "type":"web_url",
+            "url":"https://webviews-vue1.herokuapp.com/",
+            "title":"View Website",
+            "webview_height_ratio": "full",
+            "messenger_extensions": true
+          }        
+        ]      
+        }];
 
-      sendQuickReply(sender, responseText, elements)
+      
 
-      // handleCardMessages(elements, sender)
+       handleCardMessages(elements, sender)
 
       break;
     case "test":
