@@ -393,19 +393,19 @@ const handleApiAiAction = async(sender, action, responseText, contexts, paramete
       break;
     case "send-carousel":
       const elements = [{
-
-        "title": "<TITLE_TEXT>",
-        "image_url": "https://www.stepforwardmichigan.org/wp-content/uploads/2017/03/step-foward-fb-1200x628-house.jpg",
-        "subtitle": "We have the right hat for everyone.We have the right hat for everyone.We have the right hat for everyone.",
-
-        "buttons": [{
-          "type": "web_url",
-          "url": "https://webviews-vue1.herokuapp.com/",
-          "title": "Set preferences",
-          "webview_height_ratio": "compact",
-          "messenger_extensions": true
-        }
-        ]
+        "content_type": "text",
+        "title": "Example 1",
+        "payload": "Example 1",
+      },
+      {
+        "content_type": "text",
+        "title": "Example 2",
+        "payload": "Example 2",
+      },
+      {
+        "content_type": "text",
+        "title": "Example 3",
+        "payload": "Example 3",
       }];
 
       handleCardMessages(elements, sender)
