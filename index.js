@@ -392,7 +392,6 @@ const handleApiAiAction = async(sender, action, responseText, contexts, paramete
       sendQuickReply(sender, responseText, replies)
       break;
     case "send-carousel":
-     
       const elements = [{
         "title":"Welcome!",
         "image_url":"https://petersfancybrownhats.com/company_image.png",
@@ -414,11 +413,8 @@ const handleApiAiAction = async(sender, action, responseText, contexts, paramete
           }        
         ]      
         }];
-
-      
-
-       handleCardMessages(elements, sender)
-
+        sendGenericMessage(sender,elements)
+      // handleCardMessages(elements, sender)
       break;
     case "test":
       let response = [{
@@ -444,7 +440,8 @@ const handleApiAiAction = async(sender, action, responseText, contexts, paramete
 }
 
 
-async function handleCardMessages(messages, sender) {
+
+async function handleCardMessages(messages, sender) { /// < เป็นตัวอย่างสำหรับทำฟังก์ชั่นใช้ซํ้าที่น่าเลียนแบบอยู่เหมือนกัน เพราะก่อนหน้านี้สมองเบลอๆยังไม่รู้ว่ามันใช้ทำอะไร
   let elements = [];
   for (var m = 0; m < messages.length; m++) {
     let message = messages[m];
@@ -456,7 +453,9 @@ async function handleCardMessages(messages, sender) {
         button = {
           type: "web_url",
           title: message.buttons[b].text,
-          url: message.buttons[b].postback
+          url: message.buttons[b].postback,
+          webview_height_ratio: full,
+          messenger_extensions: true
         };
       } else {
         button = {
