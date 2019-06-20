@@ -392,6 +392,7 @@ const handleApiAiAction = async(sender, action, responseText, contexts, paramete
       sendQuickReply(sender, responseText, replies)
       break;
     case "send-carousel":
+        var responseText = "Choose the options"
       const elements = [{
         "content_type": "text",
         "title": "Example 1",
@@ -408,7 +409,7 @@ const handleApiAiAction = async(sender, action, responseText, contexts, paramete
         "payload": "Example 3",
       }];
 
-      sendQuickReply(sender, responseText, replies)
+      sendQuickReply(sender, responseText, elements)
 
       // handleCardMessages(elements, sender)
 
