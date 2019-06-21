@@ -7,7 +7,7 @@ const request = require('request')
 const app = express();
 //Import Config file
 const config = require("./config");
-//const api = require("./helper/api.js");
+const api = require("./helper/api.js");
 
 
 
@@ -159,7 +159,7 @@ const sendTypingOn = (recipientId) => {
     },
     sender_action: "typing_on"
   };
-  callSendAPI(messageData);
+  api.callSendAPI(messageData);
 }
 const sessionIds = new Map();
 
@@ -168,33 +168,33 @@ const sessionIds = new Map();
  * get the message id in a response 
  *
  */
-const callSendAPI = async (messageData) => {
+// const callSendAPI = async (messageData) => {
 
-  const url = "https://graph.facebook.com/v3.0/me/messages?access_token=" + config.FB_PAGE_TOKEN;
-  await axios.post(url, messageData)
-    .then(function (response) {
-      if (response.status == 200) {
-        var recipientId = response.data.recipient_id;
-        var messageId = response.data.message_id;
-       // information(recipientId);
-        if (messageId) {
-          console.log(
-            "Successfully sent message with id %s to recipient %s",
-            messageId,
-            recipientId
-          );
-        } else {
-          console.log(
-            "Successfully called Send API for recipient %s",
-            recipientId
-          );
-        }
-      }
-    })
-    .catch(function (error) {
-      console.log(error.response.headers);
-    });
-}
+//   const url = "https://graph.facebook.com/v3.0/me/messages?access_token=" + config.FB_PAGE_TOKEN;
+//   await axios.post(url, messageData)
+//     .then(function (response) {
+//       if (response.status == 200) {
+//         var recipientId = response.data.recipient_id;
+//         var messageId = response.data.message_id;
+//        // information(recipientId);
+//         if (messageId) {
+//           console.log(
+//             "Successfully sent message with id %s to recipient %s",
+//             messageId,
+//             recipientId
+//           );
+//         } else {
+//           console.log(
+//             "Successfully called Send API for recipient %s",
+//             recipientId
+//           );
+//         }
+//       }
+//     })
+//     .catch(function (error) {
+//       console.log(error.response.headers);
+//     });
+// }
 
 const isDefined = (obj) => {
   if (typeof obj == "undefined") {
@@ -248,7 +248,7 @@ const sendTypingOff = (recipientId) => {
     sender_action: "typing_off"
   };
 
-  callSendAPI(messageData);
+  api.callSendAPI(messageData);
 }
 
 const sendTextMessage = async (recipientId, text) => {
@@ -260,7 +260,7 @@ const sendTextMessage = async (recipientId, text) => {
       text: text
     }
   };
-  await callSendAPI(messageData);
+  await api.callSendAPI(messageData);
 }
 const sendImageMessage = async (recipientId, imageUrl) => {
   var messageData = {
@@ -289,7 +289,7 @@ const sendQuickReply = async (recipientId, text, replies, metadata) => {
       quick_replies: replies
     }
   };
-  await callSendAPI(messageData);
+  await api.callSendAPI(messageData);
 }
 
 
@@ -310,7 +310,7 @@ const exampleWebview = async (recipientId, messageForm) => {
     }
 
   };
-  await callSendAPI(messageData);
+  await api.callSendAPI(messageData);
 }
 
 const information = async (recipientId) => { ///ค่อยปรับปรุงเป็นฟังก์ชั่นรูปแบบที่เหมาะสม
@@ -492,7 +492,7 @@ const sendGenericMessage = async (recipientId, elements) => {
       }
     }
   };
-  await callSendAPI(messageData);
+  await api.callSendAPI(messageData);
 }
 
 
