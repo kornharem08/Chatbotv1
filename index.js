@@ -335,9 +335,9 @@ const handleApiAiAction = async(sender, action, responseText, contexts, paramete
       sendQuickReply(sender, responseText, replies)
       break;
     case "send-carousel":
-      const elements = [{////hello
+      const elements = [{
         "title":"Welcome!",
-        "image_url":"./src/assets/Logo-PSU-EH-01.png",
+        "image_url":"",
         "subtitle":"We have the right hat for everyone.",
         "default_action": {
           "type": "web_url",
