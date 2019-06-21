@@ -7,7 +7,8 @@ const request = require('request')
 const app = express();
 //Import Config file
 const config = require("./config");
-const api = require("./helper/api.js");
+const api = require("./src/helper/api.js");
+const urlweb = require("./src/helper/webview.js");
 
 
 
@@ -52,9 +53,7 @@ function setupGetStartedButton(res) {
 app.get("/", function (req, res) {
   res.send("Hello world, I am a chat bot");
 });
-app.get("/ok", function (req, res) {
-  res.send("ok");
-});
+
 
 app.get('/webhook', function (req, res) {
   if (req.query['hub.mode'] === 'subscribe' &&
@@ -163,39 +162,6 @@ const sendTypingOn = (recipientId) => {
 }
 const sessionIds = new Map();
 
-/*
- * Call the Send API. The message data goes in the body. If successful, we'll 
- * get the message id in a response 
- *
- */
-// const callSendAPI = async (messageData) => {
-
-//   const url = "https://graph.facebook.com/v3.0/me/messages?access_token=" + config.FB_PAGE_TOKEN;
-//   await axios.post(url, messageData)
-//     .then(function (response) {
-//       if (response.status == 200) {
-//         var recipientId = response.data.recipient_id;
-//         var messageId = response.data.message_id;
-//        // information(recipientId);
-//         if (messageId) {
-//           console.log(
-//             "Successfully sent message with id %s to recipient %s",
-//             messageId,
-//             recipientId
-//           );
-//         } else {
-//           console.log(
-//             "Successfully called Send API for recipient %s",
-//             recipientId
-//           );
-//         }
-//       }
-//     })
-//     .catch(function (error) {
-//       console.log(error.response.headers);
-//     });
-// }
-
 const isDefined = (obj) => {
   if (typeof obj == "undefined") {
     return false;
@@ -276,7 +242,7 @@ const sendImageMessage = async (recipientId, imageUrl) => {
       }
     }
   };
-  await callSendAPI(messageData);
+  await api.callSendAPI(messageData);
 }
 const sendQuickReply = async (recipientId, text, replies, metadata) => {
   var messageData = {
@@ -348,30 +314,6 @@ const handleApiAiAction = async(sender, action, responseText, contexts, paramete
       var responseText = "The toys";
       sendTextMessage(sender, responseText);
       break;
-    // case "send-name":
-    // var responseText = {
-    //   recipient:{
-    //   id: recipientId
-    //   },
-    //     message:{
-    //     attachment:{
-    //     type:"template",
-    //       payload:{
-    //       template_type:"button",
-    //         Text:"YOUR TEXT HERE" + name+ " "+lname+" YOUR TEXT HERE ",
-    //         buttons:[{
-    //         type:"postback",
-    //           title:"TANAKORN",
-    //           payload:"start"
-
-    //         },]
-    //       }
-    //     }
-    //     }
-    //   };
-
-    //      sendTextMessage(sender, responseText);
-    // break;
     case "send-quick-reply":
       var responseText = "Choose the options"
       var replies = [{
@@ -398,15 +340,15 @@ const handleApiAiAction = async(sender, action, responseText, contexts, paramete
         "subtitle":"We have the right hat for everyone.",
         "default_action": {
           "type": "web_url",
-          "url": "https://webviews-vue1.herokuapp.com/",
+          "url": urlweb.sisurl,
           "messenger_extensions": true,
           "webview_height_ratio": "tall",
-          "fallback_url": "https://petersfancybrownhats.com/"
+          "fallback_url": urlweb.sisurl
         },
         "buttons":[
           {
             "type":"web_url",
-            "url":"https://webviews-vue1.herokuapp.com/",
+            "url":urlweb.sisurl,
             "title":"View Website",
             "webview_height_ratio": "full",
             "messenger_extensions": true
