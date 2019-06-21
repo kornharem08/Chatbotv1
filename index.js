@@ -9,7 +9,7 @@ const app = express();
 const config = require("./config");
 const api = require("./src/helper/api.js");
 const urlweb = require("./src/helper/webview.js");
-const assets = require("./src/assets");
+//const assets = require("./src/assets");
 
 
 app.use(express.static("public"));
