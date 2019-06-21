@@ -337,7 +337,7 @@ const handleApiAiAction = async(sender, action, responseText, contexts, paramete
     case "send-carousel":
       const elements = [{
         "title":"Welcome!",
-        "image_url":"https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png",
+        "image_url":"https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png", // รูปต้องใส่เป็นลิงค์ ออนไลน์เท่านั้นอะนะ
         "subtitle":"We have the right hat for everyone.",
         "default_action": {
           "type": "web_url",
@@ -355,7 +355,29 @@ const handleApiAiAction = async(sender, action, responseText, contexts, paramete
             "messenger_extensions": true
           }        
         ]      
-        }];
+        },
+        {
+          "title":"Welcome!",
+          "image_url":"https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png", // รูปต้องใส่เป็นลิงค์ ออนไลน์เท่านั้นอะนะ
+          "subtitle":"We have the right hat for everyone.",
+          "default_action": {
+            "type": "web_url",
+            "url": urlweb.sisurl,
+            "messenger_extensions": true,
+            "webview_height_ratio": "tall",
+            "fallback_url": urlweb.sisurl
+          },
+          "buttons":[
+            {
+              "type":"web_url",
+              "url":urlweb.sisurl,
+              "title":"View Website",
+              "webview_height_ratio": "full",
+              "messenger_extensions": true
+            }        
+          ]      
+          }
+      ];
         sendGenericMessage(sender,elements)
       // handleCardMessages(elements, sender)
       break;
