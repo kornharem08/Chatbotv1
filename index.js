@@ -334,7 +334,7 @@ const handleApiAiAction = async(sender, action, responseText, contexts, paramete
       sendQuickReply(sender, responseText, replies)
       break;
     case "send-carousel":
-      const elements = [{
+      const elements = [{////hello
         "title":"Welcome!",
         "image_url":"https://petersfancybrownhats.com/company_image.png",
         "subtitle":"We have the right hat for everyone.",
