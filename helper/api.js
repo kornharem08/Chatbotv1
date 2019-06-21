@@ -29,3 +29,7 @@ const callSendAPI = async (messageData) => {
         console.log(error.response.headers);
       });
   }
+
+  module.exports = {
+    callSendAPI
+}
