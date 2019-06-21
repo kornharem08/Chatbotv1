@@ -337,7 +337,7 @@ const handleApiAiAction = async(sender, action, responseText, contexts, paramete
     case "send-carousel":
       const elements = [{////hello
         "title":"Welcome!",
-        "image_url": `${assets}/sisimage.jpg`,
+        "image_url": ``,
         "subtitle":"We have the right hat for everyone.",
         "default_action": {
           "type": "web_url",
