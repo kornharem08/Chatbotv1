@@ -2,14 +2,6 @@ const axios = require('axios');
 const config = require("../config");
 
 
-
-
-module.exports = {
-    callSendAPI
-}
-
-
-
 const callSendAPI = async (messageData) => {
 
     const url = "https://graph.facebook.com/v3.0/me/messages?access_token=" + config.FB_PAGE_TOKEN;
