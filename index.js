@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 /////// information user
 var f_name ;
 var l_name ;
+var test_name;
  //ตรงนี้ไม่ได้เพราะว่าฟังก์ชั่นร้องขอ parameter //เราไม่มี recipientId
 
 //app.listen(3000);
