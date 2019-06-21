@@ -341,15 +341,15 @@ const handleApiAiAction = async(sender, action, responseText, contexts, paramete
         "subtitle":"We have the right hat for everyone.",
         "default_action": {
           "type": "web_url",
-          "url": "https://webviews-vue1.herokuapp.com/",//urlweb.sisurl,
+          "url": urlweb.sisurl,
           "messenger_extensions": true,
           "webview_height_ratio": "tall",
-          "fallback_url": "https://webviews-vue1.herokuapp.com/"//urlweb.sisurl
+          "fallback_url": urlweb.sisurl
         },
         "buttons":[
           {
             "type":"web_url",
-            "url":"https://webviews-vue1.herokuapp.com/",//urlweb.sisurl,
+            "url":urlweb.sisurl,
             "title":"View Website",
             "webview_height_ratio": "full",
             "messenger_extensions": true
