@@ -337,7 +337,7 @@ const handleApiAiAction = async(sender, action, responseText, contexts, paramete
     case "send-carousel":
       const elements = [{
         "title":"Welcome!",
-        "image_url":"",
+        "image_url":"https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png",
         "subtitle":"We have the right hat for everyone.",
         "default_action": {
           "type": "web_url",
