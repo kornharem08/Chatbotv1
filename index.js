@@ -9,7 +9,7 @@ const app = express();
 const config = require("./config");
 const api = require("./src/helper/api.js");
 const urlweb = require("./src/helper/webview.js");
-
+const assets = require("./src/assets");
 
 
 app.use(express.static("public"));
@@ -336,7 +336,7 @@ const handleApiAiAction = async(sender, action, responseText, contexts, paramete
     case "send-carousel":
       const elements = [{////hello
         "title":"Welcome!",
-        "image_url":"https://petersfancybrownhats.com/company_image.png",
+        "image_url": `${assets}/sisimage.jpg`,
         "subtitle":"We have the right hat for everyone.",
         "default_action": {
           "type": "web_url",
