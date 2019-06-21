@@ -2,8 +2,7 @@ const apiai = require("apiai");
 const express = require("express");
 const bodyParser = require("body-parser");
 const uuid = require("uuid");
-const axios = require('axios');
-const request = require('request')
+// const request = require('request')
 const app = express();
 //Import Config file
 const config = require("./config");
@@ -16,40 +15,36 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-/////// information user
-var f_name ;
-var l_name ;
-var test_name;
- //ตรงนี้ไม่ได้เพราะว่าฟังก์ชั่นร้องขอ parameter //เราไม่มี recipientId
+
 
 //app.listen(3000);
-function setupGetStartedButton(res) {
-  var messageData = {
-    "get_started": [
-      {
-        "payload": "USER_DEFINED_PAYLOAD"
-      }
-    ]
-  };
+// function setupGetStartedButton(res) {
+//   var messageData = {
+//     "get_started": [
+//       {
+//         "payload": "USER_DEFINED_PAYLOAD"
+//       }
+//     ]
+//   };
 
 
-  // Start the request
-  request({
-    url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token=EAAD4BB3LHCIBALN3oGRT2f190z6NVkzSglLZBt4nZBUgXrZBoifnZByEKs9zUkCzT1UYWdWYTGFlOaSrcL8nEfuWEArICIxQZAghZCjjiG1C0pTvkxj4yXhvF3E2lmQ7b4ZBGhbyEhGIRSVySTNr7Um4dhm1HNAreWX7o1ny3h5RKIrPy4XxM60',
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    form: messageData
-  },
-    function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        // Print out the response body        
-        res.send(body);
-      } else {
-        // TODO: Handle errors
-        res.send(body);
-      }
-    });
-}
+//   // Start the request
+//   request({
+//     url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token=EAAD4BB3LHCIBALN3oGRT2f190z6NVkzSglLZBt4nZBUgXrZBoifnZByEKs9zUkCzT1UYWdWYTGFlOaSrcL8nEfuWEArICIxQZAghZCjjiG1C0pTvkxj4yXhvF3E2lmQ7b4ZBGhbyEhGIRSVySTNr7Um4dhm1HNAreWX7o1ny3h5RKIrPy4XxM60',
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     form: messageData
+//   },
+//     function (error, response, body) {
+//       if (!error && response.statusCode == 200) {
+//         // Print out the response body        
+//         res.send(body);
+//       } else {
+//         // TODO: Handle errors
+//         res.send(body);
+//       }
+//     });
+// }
 
 app.get("/", function (req, res) {
   res.send("Hello world, I am a chat bot");
@@ -122,8 +117,7 @@ app.post("/webhook/", function (req, res) {
   var data = req.body; 
   var data2 = JSON.stringify(req.body);
   var name = data2.timezone;
-  console.log("TimeZone1" + data)
-  console.log("TimeZone2" + name)
+  console.log("Data" + data2)
   // Make sure this is a page subscription
   if (data.object == "page") {
     // Iterate over each entry
@@ -218,48 +212,6 @@ const sendTypingOff = (recipientId) => {
   api.callSendAPI(messageData);
 }
 
-// const sendTextMessage = async (recipientId, text) => {
-//   var messageData = {
-//     recipient: {
-//       id: recipientId
-//     },
-//     message: {
-//       text: text
-//     }
-//   };
-//   await api.callSendAPI(messageData);
-// }
-// const sendImageMessage = async (recipientId, imageUrl) => {
-//   var messageData = {
-//     recipient: {
-//       id: recipientId
-//     },
-//     message: {
-//       attachment: {
-//         type: "image",
-//         payload: {
-//           url: imageUrl
-//         }
-//       }
-//     }
-//   };
-//   await api.callSendAPI(messageData);
-// }
-// const sendQuickReply = async (recipientId, text, replies, metadata) => {
-//   var messageData = {
-//     recipient: {
-//       id: recipientId
-//     },
-//     message: {
-//       text: text,
-//       metadata: isDefined(metadata) ? metadata : "",
-//       quick_replies: replies
-//     }
-//   };
-//   await api.callSendAPI(messageData);
-// }
-
-
 const exampleWebview = async (recipientId, messageForm) => {
   var messageData = {
     recipient: {
@@ -296,169 +248,6 @@ const information = async (recipientId) => { ///ค่อยปรับปร�
     return infoBase;
 
 }
-
-
-
-
-// const handleApiAiAction = async(sender, action, responseText, contexts, parameters) => {
-  
-//   switch (action) {
-//     case "send-text":
-//       var responseText = "This is example of Text message."
-//       sendTextMessage(sender, responseText);
-//       break;
-//     case "fb-send-image":
-//       var imgUrl = "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/881e6651881085.58fd911b65d88.png";
-//       sendImageMessage(sender, imgUrl);
-//       break;
-//     case "send-music":
-//       var responseText = "The toys";
-//       sendTextMessage(sender, responseText);
-//       break;
-//     case "send-quick-reply":
-//       var responseText = "Choose the options"
-//       var replies = [{
-//         "content_type": "text",
-//         "title": "Example 1",
-//         "payload": "Example 1",
-//       },
-//       {
-//         "content_type": "text",
-//         "title": "Example 2",
-//         "payload": "Example 2",
-//       },
-//       {
-//         "content_type": "text",
-//         "title": "Example 3",
-//         "payload": "Example 3",
-//       }];
-//       sendQuickReply(sender, responseText, replies)
-//       break;
-//     case "send-carousel":
-//       const elements = [{
-//         "title":"Welcome!",
-//         "image_url":"https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png", // รูปต้องใส่เป็นลิงค์ ออนไลน์เท่านั้นอะนะ
-//         "subtitle":"We have the right hat for everyone.",
-//         "default_action": {
-//           "type": "web_url",
-//           "url": urlweb.sisurl,
-//           "messenger_extensions": true,
-//           "webview_height_ratio": "tall",
-//           "fallback_url": urlweb.sisurl
-//         },
-//         "buttons":[
-//           {
-//             "type":"web_url",
-//             "url":urlweb.sisurl,
-//             "title":"View Website",
-//             "webview_height_ratio": "full",
-//             "messenger_extensions": true
-//           }        
-//         ]      
-//         },
-//         {
-//           "title":"Welcome!",
-//           "image_url":"https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png", // รูปต้องใส่เป็นลิงค์ ออนไลน์เท่านั้นอะนะ
-//           "subtitle":"We have the right hat for everyone.",
-//           "default_action": {
-//             "type": "web_url",
-//             "url": urlweb.sisurl,
-//             "messenger_extensions": true,
-//             "webview_height_ratio": "tall",
-//             "fallback_url": urlweb.sisurl
-//           },
-//           "buttons":[
-//             {
-//               "type":"web_url",
-//               "url":urlweb.sisurl,
-//               "title":"View Website",
-//               "webview_height_ratio": "full",
-//               "messenger_extensions": true
-//             }        
-//           ]      
-//           }
-//       ];
-//         sendGenericMessage(sender,elements)
-//       // handleCardMessages(elements, sender)
-//       break;
-//     case "test":
-//       let response = [{
-//         "type": "web_url",
-//         "url": "https://webviews-vue1.herokuapp.com/",
-//         "title": "Set preferences",
-//         "webview_height_ratio": "full",
-//         "messenger_extensions": true
-//       }]
-//       exampleWebview(sender, response)
-//       break;
-//       case "send-start":
-//         var info = await information(sender) 
-//         var responseText = "The toys "+info.first_name+" "+info.last_name;
-//         sendTextMessage(sender, responseText);
-//         break;
-     
-//     default:
-//       //unhandled action, just send back the text
-//       sendTextMessage(sender, responseText);
-//   }
-
-// }
-
-
-
-async function handleCardMessages(messages, sender) { /// < เป็นตัวอย่างสำหรับทำฟังก์ชั่นใช้ซํ้าที่น่าเลียนแบบอยู่เหมือนกัน เพราะก่อนหน้านี้สมองเบลอๆยังไม่รู้ว่ามันใช้ทำอะไร
-  let elements = [];
-  for (var m = 0; m < messages.length; m++) {
-    let message = messages[m];
-    let buttons = [];
-    for (var b = 0; b < message.buttons.length; b++) {
-      let isLink = message.buttons[b].postback.substring(0, 4) === "http";
-      let button;
-      if (isLink) {
-        button = {
-          type: "web_url",
-          title: message.buttons[b].text,
-          url: message.buttons[b].postback,
-          webview_height_ratio: full,
-          messenger_extensions: true
-        };
-      } else {
-        button = {
-          type: "postback",
-          title: message.buttons[b].text,
-          payload: message.buttons[b].postback
-        };
-      }
-      buttons.push(button);
-    }
-    let element = {
-      title: message.title,
-      image_url: message.imageUrl,
-      subtitle: message.subtitle,
-      buttons: buttons
-    };
-    elements.push(element);
-  }
-  await handle.sendGenericMessage(sender, elements);
-}
-
-// const sendGenericMessage = async (recipientId, elements) => {
-//   var messageData = {
-//     recipient: {
-//       id: recipientId
-//     },
-//     message: {
-//       attachment: {
-//         type: "template",
-//         payload: {
-//           template_type: "generic",
-//           elements: elements
-//         }
-//       }
-//     }
-//   };
-//   await api.callSendAPI(messageData);
-// }
 
 
 var server = app.listen(process.env.PORT || 5000, function () {
