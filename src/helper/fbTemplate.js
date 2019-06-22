@@ -1,5 +1,5 @@
 
-const carouselTemplate = (title,image_url,subtitle,button1) =>{
+const carouselTemplate = (title,image_url,subtitle,button1,button2) =>{
   
 console.log("Button:"+JSON.stringify(button1))
     const elements = 
@@ -16,13 +16,7 @@ console.log("Button:"+JSON.stringify(button1))
         //   },
           buttons: [
             button1,
-            {
-                type: "web_url",
-                url: "https://webviews-vue1.herokuapp.com/",
-                title: "title",
-                webview_height_ratio: "full",
-                messenger_extensions: true
-            }
+            button2
             
           ]
         }
