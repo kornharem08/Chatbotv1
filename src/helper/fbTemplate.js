@@ -16,7 +16,13 @@ console.log("Button:"+JSON.stringify(button1))
         //   },
           buttons: [
             button1,
-            // button2,
+            {
+                type: "web_url",
+                url: "url",
+                title: "title",
+                webview_height_ratio: "full",
+                messenger_extensions: true
+            }
             
           ]
         }
