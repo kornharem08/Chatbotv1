@@ -6,7 +6,7 @@ var user
 const initUser = async (sender) => {
 
   this.user = await api.requestUserinfo(sender)
-  console.log("testsee:"+this.user);
+  console.log("testsee:"+this.user.locale);
 }
 
 const handleApiAiAction = async (
