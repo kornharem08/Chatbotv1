@@ -79,7 +79,7 @@ const handleApiAiAction = async (
         //   ]
         // }
       ];
-      console.log("elements:"+elements)
+      console.log("elements:"+JSON.stringify(elements))
      // sendGenericMessage(sender, elements);
       // handleCardMessages(elements, sender)
       break;
