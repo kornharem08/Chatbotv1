@@ -2,7 +2,7 @@
 const carouselTemplate = (title,image_url,subtitle,button1) =>{
   
 
-    let buttons = [{
+    var buttons = [{
         button1
     }]
 
