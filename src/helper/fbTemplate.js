@@ -2,9 +2,9 @@
 const carouselTemplate = (title,image_url,subtitle,button1) =>{
   
 
-    var buttons = [{
+    var buttons = [
         button1
-    }]
+    ]
 
 console.log("Button:"+JSON.stringify(button1))
     const elements = 
