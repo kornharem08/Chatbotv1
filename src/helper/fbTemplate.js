@@ -1,24 +1,13 @@
 
-const carouselTemplate = (title,image_url,subtitle,button1,button2,button3) =>{
+const carouselTemplate = (title,image_url,subtitle,buttons) =>{
   
-    
-    var buttons = [button1]
 
-    if(button2 != null){
-        buttons.push(button2)
-    }
-
-    if(button3 != null){
-        buttons.push(button3)
-    }
-
-console.log("Button:"+JSON.stringify(button1))
     const elements = 
         {
           title: title,
           image_url:image_url, // รูปต้องใส่เป็นลิงค์ ออนไลน์เท่านั้นอะนะ
           subtitle: subtitle,
-          buttons
+          buttons:buttons
         }
     
 
@@ -27,22 +16,13 @@ console.log("Button:"+JSON.stringify(button1))
 }
 
 // template ข้อความปุ่ม
-const buttonsTemplate = (text,button1,button2,button3) => {
+const buttonsTemplate = (text,buttons) => {
 
-    var buttons = [button1]
-
-    if(button2 != null){
-        buttons.push(button2)
-    }
-
-    if(button3 != null){
-        buttons.push(button3)
-    }
 
    const payload = {
         template_type:"button",
         text:text,
-        buttons
+        buttons:buttons
       }
 
       return payload
