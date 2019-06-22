@@ -1,10 +1,16 @@
 
-const carouselTemplate = (title,image_url,subtitle,button1) =>{
+const carouselTemplate = (title,image_url,subtitle,button1,button2,button3) =>{
   
+    
+    var buttons = [button1]
 
-    var buttons = [
-        button1
-    ]
+    if(button2 != null){
+        buttons.push(button2)
+    }
+
+    if(button3 != null){
+        buttons.push(button3)
+    }
 
 console.log("Button:"+JSON.stringify(button1))
     const elements = 
