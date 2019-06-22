@@ -1,7 +1,7 @@
 
 const carouselTemplate = (title,image_url,subtitle,button1,button2) =>{
   
-
+console.log("Button:"+button1)
     const elements = 
         {
           title: title,
