@@ -1,5 +1,5 @@
 
-const carouselTemplate = (title,image_url,subtitle,button) =>{
+const carouselTemplate = (title,image_url,subtitle,button1,button2,button3) =>{
 
     const elements = 
         {
@@ -14,7 +14,9 @@ const carouselTemplate = (title,image_url,subtitle,button) =>{
         //     fallback_url: url
         //   },
           buttons: [
-            button
+            button1,
+            button2,
+            button3
           ]
         }
     
