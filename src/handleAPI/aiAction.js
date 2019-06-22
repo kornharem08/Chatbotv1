@@ -1,7 +1,7 @@
 const api = require('../helper/api.js')
 const urlweb = require("../helper/webview.js");
 const Dict = require("../helper/dictionary");
-const user
+let user
 
 const initUser = async (sender) => {
 
