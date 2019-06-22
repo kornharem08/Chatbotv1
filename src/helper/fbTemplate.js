@@ -18,7 +18,7 @@ console.log("Button:"+JSON.stringify(button1))
             button1,
             {
                 type: "web_url",
-                url: "url",
+                url: "https://webviews-vue1.herokuapp.com/",
                 title: "title",
                 webview_height_ratio: "full",
                 messenger_extensions: true
