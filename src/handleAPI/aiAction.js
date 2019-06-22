@@ -1,7 +1,7 @@
 const api = require('../helper/api.js')
 const urlweb = require("../helper/webview.js");
 const Dict = require("../helper/dictionary");
-var user
+const user
 
 const initUser = async (sender) => {
 
@@ -55,7 +55,7 @@ const handleApiAiAction = async (
     case "send-carousel":
       const elements = [
         {
-          title: Dict.Welcome_TXT[this.user.locale],
+          title: Dict.Welcome_TXT[user.locale],
           image_url:
             "https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png", // รูปต้องใส่เป็นลิงค์ ออนไลน์เท่านั้นอะนะ
           subtitle: "We have the right hat for everyone.",
