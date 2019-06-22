@@ -55,6 +55,7 @@ const handleApiAiAction = async (
       break;
     case "send-carousel":
       const elements = [
+        fbTemplate.carouselTemplate("Welcome!","https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png","We have the right hat for everyone.",urlweb.sisurl),
         fbTemplate.carouselTemplate("Welcome!","https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png","We have the right hat for everyone.",urlweb.sisurl)
         // {
         //   title: "Welcome!",
