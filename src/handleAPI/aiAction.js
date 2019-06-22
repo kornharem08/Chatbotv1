@@ -1,13 +1,14 @@
 const api = require('../helper/api.js')
 const urlweb = require("../helper/webview.js");
 const Dict = require("../helper/dictionary");
-let user
+const fbTemplate = require("../helper/fbTemplate")
+// let user
 
-const initUser = async (sender) => {
+// const initUser = async (sender) => {
 
-  this.user = await api.requestUserinfo(sender)
-  console.log("testsee:"+this.user.locale);
-}
+//   this.user = await api.requestUserinfo(sender)
+//   console.log("testsee:"+this.user.locale);
+// }
 
 const handleApiAiAction = async (
   sender,
@@ -16,7 +17,7 @@ const handleApiAiAction = async (
   contexts,
   parameters
 ) => {
-  await initUser(sender)
+  // await initUser(sender)
   switch (action) {
     case "send-text":
       var responseText = "This is example of Text message.";
@@ -54,52 +55,32 @@ const handleApiAiAction = async (
       break;
     case "send-carousel":
       const elements = [
-        {
-          title: Dict.Welcome_TXT[user.locale],
-          image_url:
-            "https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png", // รูปต้องใส่เป็นลิงค์ ออนไลน์เท่านั้นอะนะ
-          subtitle: "We have the right hat for everyone.",
-          default_action: {
-            type: "web_url",
-            url: urlweb.sisurl,
-            messenger_extensions: true,
-            webview_height_ratio: "tall",
-            fallback_url: urlweb.sisurl
-          },
-          buttons: [
-            {
-              type: "web_url",
-              url: urlweb.sisurl,
-              title: "View Website",
-              webview_height_ratio: "full",
-              messenger_extensions: true
-            }
-          ]
-        },
-        {
-          title: "Welcome!",
-          image_url:
-            "https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png", // รูปต้องใส่เป็นลิงค์ ออนไลน์เท่านั้นอะนะ
-          subtitle: "We have the right hat for everyone.",
-          default_action: {
-            type: "web_url",
-            url: urlweb.sisurl,
-            messenger_extensions: true,
-            webview_height_ratio: "tall",
-            fallback_url: urlweb.sisurl
-          },
-          buttons: [
-            {
-              type: "web_url",
-              url: urlweb.sisurl,
-              title: "View Website",
-              webview_height_ratio: "full",
-              messenger_extensions: true
-            }
-          ]
-        }
+        fbTemplate.carouselTemplate("Welcome!","https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png","We have the right hat for everyone.",urlweb.sisurl)
+        // {
+        //   title: "Welcome!",
+        //   image_url:
+        //     "https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png", // รูปต้องใส่เป็นลิงค์ ออนไลน์เท่านั้นอะนะ
+        //   subtitle: "We have the right hat for everyone.",
+        //   default_action: {
+        //     type: "web_url",
+        //     url: urlweb.sisurl,
+        //     messenger_extensions: true,
+        //     webview_height_ratio: "tall",
+        //     fallback_url: urlweb.sisurl
+        //   },
+        //   buttons: [
+        //     {
+        //       type: "web_url",
+        //       url: urlweb.sisurl,
+        //       title: "View Website",
+        //       webview_height_ratio: "full",
+        //       messenger_extensions: true
+        //     }
+        //   ]
+        // }
       ];
-      sendGenericMessage(sender, elements);
+      console.log("elements:"+elements)
+     // sendGenericMessage(sender, elements);
       // handleCardMessages(elements, sender)
       break;
     case "test":
