@@ -3,10 +3,10 @@ const urlweb = require("../helper/webview.js");
 const Dict = require("../helper/dictionary");
 var user
 
-const initUser = (sender) => {
+const initUser = async (sender) => {
 
-  this.user = api.requestUserinfo(sender)
-  console.log("testsee:"+user);
+  this.user = await api.requestUserinfo(sender)
+  console.log("testsee:"+this.user);
 }
 
 const handleApiAiAction = async (
