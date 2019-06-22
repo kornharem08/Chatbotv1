@@ -33,24 +33,7 @@ const handleApiAiAction = async (
       sendTextMessage(sender, responseText);
       break;
     case "send-quick-reply":
-      var responseText = "Choose the options";
-      var replies = [
-        {
-          content_type: "text",
-          title: "Example 1",
-          payload: "Example 1"
-        },
-        {
-          content_type: "text",
-          title: "Example 2",
-          payload: "Example 2"
-        },
-        {
-          content_type: "text",
-          title: "Example 3",
-          payload: "Example 3"
-        }
-      ];
+      var replies = fb.quickreplyTemplate("test",[fb.quickreply("test","test",null)])
       sendQuickReply(sender, responseText, replies);
       break;
     case "send-carousel":
@@ -152,16 +135,12 @@ const sendImageMessage = async (recipientId, imageUrl) => {
   };
   await api.callSendAPI(messageData);
 };
-const sendQuickReply = async (recipientId, text, replies, metadata) => {
+const sendQuickReply = async (recipientId, message) => { // อันนี้ quickReply
   var messageData = {
     recipient: {
       id: recipientId
     },
-    message: {
-      text: text,
-      metadata: isDefined(metadata) ? metadata : "",
-      quick_replies: replies
-    }
+    message: message
   };
   await api.callSendAPI(messageData);
 };

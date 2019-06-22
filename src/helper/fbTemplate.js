@@ -26,6 +26,7 @@ console.log("Button:"+JSON.stringify(button1))
 
 }
 
+// template ข้อความปุ่ม
 const buttonsTemplate = (text,button1,button2,button3) => {
 
     var buttons = [button1]
@@ -48,7 +49,38 @@ const buttonsTemplate = (text,button1,button2,button3) => {
 
 }
 
+const quickreplyTemplate = (text,quickreply) => {
 
+    const message = {
+        text:text,
+        quick_replies: quickreply
+    }
+
+    return message
+}
+
+
+const quickreply = (title,payload,image) => {
+
+    var image_url = ""
+
+    if(image_url == null){
+
+        this.image_url = image
+
+    }
+
+ const quickreply = {
+        content_type:"text",
+        title:title,
+        payload:payload,
+        image_url //เราใส่รูปให้ quickreply ได้ด้วยย
+    }
+
+    return quickreply
+}
+
+//ปุ่มเปิด Webview
 const buttonsURL = (url,title) => {
 
  const button =  {
@@ -62,10 +94,11 @@ const buttonsURL = (url,title) => {
     return button
 }
 
-const buttons = (title,postback) => { // postback คือข้อความที่กดแล้วจะให้มันส่งไปอะไรไป ยัง dialogflow
+//ปุมธรรมดา
+const buttons = (title,postback) => { // postback คือข้อความที่กดแล้วจะให้มันส่งไปอะไรไป ยัง dialogflow 
 
     const button =  {
-           type: "web_url",
+           type: "postback",
            title: title,
            payload: postback
        }
@@ -76,6 +109,8 @@ const buttons = (title,postback) => { // postback คือข้อความ
 module.exports = {
     carouselTemplate,
     buttonsTemplate,
+    quickreplyTemplate,
+    quickreply,
     buttonsURL,
     buttons
 }
