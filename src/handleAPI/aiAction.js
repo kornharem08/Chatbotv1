@@ -1,5 +1,13 @@
 const api = require('../helper/api.js')
 const urlweb = require("../helper/webview.js");
+const Dict = require("../helper/dictionary");
+var user
+
+const initUser = (sender) => {
+
+  this.user = api.requestUserinfo(sender)
+  console.log("testsee:"+user);
+}
 
 const handleApiAiAction = async (
   sender,
@@ -8,6 +16,7 @@ const handleApiAiAction = async (
   contexts,
   parameters
 ) => {
+  await initUser(sender)
   switch (action) {
     case "send-text":
       var responseText = "This is example of Text message.";

@@ -30,6 +30,25 @@ const callSendAPI = async (messageData) => {
       });
   }
 
+
+  const requestUserinfo = async (recipientId) => { ///ค่อยปรับปรุงเป็นฟังก์ชั่นรูปแบบที่เหมาะสม
+
+    var infoBase = {}
+    const url = "https://graph.facebook.com/" + recipientId + "?fields=id,name,first_name,last_name,profile_pic,locale,timezone,gender&access_token=" + config.FB_PAGE_TOKEN;
+    await axios.get(url)
+      .then(function (response) {
+   
+          infoBase = response.data
+  
+      })
+      .catch(function (error) {
+        console.log(error.response.headers);
+      });
+      return infoBase;
+  
+  }
+
   module.exports = {
-    callSendAPI
+    callSendAPI,
+    requestUserinfo
 }
