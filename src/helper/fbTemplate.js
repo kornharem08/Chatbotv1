@@ -11,12 +11,12 @@ const carouselTemplate = (title,image_url,subtitle,url) =>{
             url: url,
             messenger_extensions: true,
             webview_height_ratio: "tall",
-            fallback_url: urlweb.sisurl
+            fallback_url: url
           },
           buttons: [
             {
               type: "web_url",
-              url: urlweb.sisurl,
+              url: url,
               title: "View Website",
               webview_height_ratio: "full",
               messenger_extensions: true
