@@ -1,5 +1,5 @@
 
-const carouselTemplate = (title,image_url,subtitle,url,button) =>{
+const carouselTemplate = (title,image_url,subtitle,button) =>{
 
     const elements = 
         {
