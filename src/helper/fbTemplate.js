@@ -20,7 +20,14 @@ const carouselTemplate = (title,image_url,subtitle,url) =>{
               title: "View Website",
               webview_height_ratio: "full",
               messenger_extensions: true
-            }
+            },
+            {
+                type: "web_url",
+                url: url,
+                title: "View Website",
+                webview_height_ratio: "full",
+                messenger_extensions: true
+              }
           ]
         }
     
