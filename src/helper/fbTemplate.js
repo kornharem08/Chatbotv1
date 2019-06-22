@@ -1,7 +1,7 @@
 
 const carouselTemplate = (title,image_url,subtitle,url) =>{
 
-    const elements = [
+    const elements = 
         {
           title: title,
           image_url:image_url, // รูปต้องใส่เป็นลิงค์ ออนไลน์เท่านั้นอะนะ
@@ -23,7 +23,7 @@ const carouselTemplate = (title,image_url,subtitle,url) =>{
             }
           ]
         }
-    ]
+    
 
     return elements
 
