@@ -57,51 +57,10 @@ const handleApiAiAction = async (
       const elements = [
         fbTemplate.carouselTemplate("Welcome!","https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png","We have the right hat for everyone.",urlweb.sisurl),
         fbTemplate.carouselTemplate("Welcome!","https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png","We have the right hat for everyone.",urlweb.sisurl)
-        // {
-        //   title: "Welcome!",
-        //   image_url:
-        //     "https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png", // รูปต้องใส่เป็นลิงค์ ออนไลน์เท่านั้นอะนะ
-        //   subtitle: "We have the right hat for everyone.",
-        //   default_action: {
-        //     type: "web_url",
-        //     url: urlweb.sisurl,
-        //     messenger_extensions: true,
-        //     webview_height_ratio: "tall",
-        //     fallback_url: urlweb.sisurl
-        //   },
-        //   buttons: [
-        //     {
-        //       type: "web_url",
-        //       url: urlweb.sisurl,
-        //       title: "View Website",
-        //       webview_height_ratio: "full",
-        //       messenger_extensions: true
-        //     }
-        //   ]
-        // }
       ];
-     // console.log("elements:"+JSON.stringify(elements))
       sendGenericMessage(sender, elements);
       // handleCardMessages(elements, sender)
       break;
-    case "test":
-      let response = [
-        {
-          type: "web_url",
-          url: "https://webviews-vue1.herokuapp.com/",
-          title: "Set preferences",
-          webview_height_ratio: "full",
-          messenger_extensions: true
-        }
-      ];
-      exampleWebview(sender, response);
-      break;
-    case "send-start":
-      var info = await information(sender);
-      var responseText = "The toys " + info.first_name + " " + info.last_name;
-      sendTextMessage(sender, responseText);
-      break;
-
     default:
       //unhandled action, just send back the text
       sendTextMessage(sender, responseText);
