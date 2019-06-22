@@ -34,7 +34,7 @@ const handleApiAiAction = async (
       break;
     case "send-quick-reply":
       var replies = fb.quickreplyTemplate("test",[fb.quickreply("test","test",null)])
-      sendQuickReply(sender, responseText, replies);
+      sendQuickReply(sender, replies);
       break;
     case "send-carousel":
       const elements = [
