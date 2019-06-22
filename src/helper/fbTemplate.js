@@ -1,6 +1,11 @@
 
 const carouselTemplate = (title,image_url,subtitle,button1) =>{
   
+
+    let buttons = [{
+        button1
+    }]
+
 console.log("Button:"+JSON.stringify(button1))
     const elements = 
         {
@@ -14,12 +19,7 @@ console.log("Button:"+JSON.stringify(button1))
         //     webview_height_ratio: "tall",
         //     fallback_url: url
         //   },
-          buttons: [
-            button1,
-            {}
-            //button2
-            
-          ]
+          buttons
         }
     
 
