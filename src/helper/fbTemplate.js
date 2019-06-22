@@ -18,13 +18,6 @@ console.log("Button:"+JSON.stringify(button1))
           title: title,
           image_url:image_url, // รูปต้องใส่เป็นลิงค์ ออนไลน์เท่านั้นอะนะ
           subtitle: subtitle,
-        //   default_action: {
-        //     type: "web_url",
-        //     url: url,
-        //     messenger_extensions: true,
-        //     webview_height_ratio: "tall",
-        //     fallback_url: url
-        //   },
           buttons
         }
     
@@ -33,8 +26,30 @@ console.log("Button:"+JSON.stringify(button1))
 
 }
 
+const buttonsTemplate = (text,button1,button2,button3) => {
 
-const buttonsTemplate = (url,title) => {
+    var buttons = [button1]
+
+    if(button2 != null){
+        buttons.push(button2)
+    }
+
+    if(button3 != null){
+        buttons.push(button3)
+    }
+
+   const payload = {
+        template_type:"button",
+        text:text,
+        buttons
+      }
+
+      return payload
+
+}
+
+
+const buttonsURL = (url,title) => {
 
  const button =  {
         type: "web_url",
@@ -47,7 +62,20 @@ const buttonsTemplate = (url,title) => {
     return button
 }
 
+const buttons = (title,postback) => { // postback คือข้อความที่กดแล้วจะให้มันส่งไปอะไรไป ยัง dialogflow
+
+    const button =  {
+           type: "web_url",
+           title: title,
+           payload: postback
+       }
+   
+       return button
+   }
+
 module.exports = {
     carouselTemplate,
-    buttonsTemplate
+    buttonsTemplate,
+    buttonsURL,
+    buttons
 }
