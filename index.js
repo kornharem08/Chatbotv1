@@ -173,7 +173,7 @@ function handleApiAiResponse(sender, response) {
   let action = response.result.action;
   let contexts = response.result.contexts;
   let parameters = response.result.parameters;
-
+ console.log("Contexts:"+contexts)
   sendTypingOff(sender);
 
   if (responseText == "" && !isDefined(action)) {
