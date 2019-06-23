@@ -130,7 +130,7 @@ app.post("/webhook/", function (req, res) {
       pageEntry.messaging.forEach(function (messagingEvent) {
 
         if(messagingEvent.message.quick_reply){
-          console.log("Quick-Reply"messagingEvent.message.quick_reply)
+          console.log("Quick-Reply"+messagingEvent.message.quick_reply)
         }
 
         if (messagingEvent.message) {
