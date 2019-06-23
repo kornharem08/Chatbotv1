@@ -131,9 +131,8 @@ app.post("/webhook/", function (req, res) {
 
         if(messagingEvent.message.quick_reply){
           console.log("Quick-Reply"+messagingEvent.message.quick_reply)
-        }
-
-        if (messagingEvent.message) {
+        }else if (messagingEvent.message) {
+          
           receivedMessage(messagingEvent);
         } else {
           console.log("Webhook received unknown messagingEvent: ", messagingEvent);
