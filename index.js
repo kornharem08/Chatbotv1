@@ -123,7 +123,7 @@ function sendToPostbackAi(senderID,postback){
 }
 
 
-function handlePostback(senderID,postback){
+function handleAiPostback(senderID,postback){
 
   sendTypingOff(senderID)
   handlePostback(senderID,postback)
