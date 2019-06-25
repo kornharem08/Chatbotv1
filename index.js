@@ -128,12 +128,10 @@ app.post("/webhook/", function (req, res) {
       console.log("=========Data===========" + pageID)
       // Iterate over each messaging event
       pageEntry.messaging.forEach(function (messagingEvent) {
-        // if(messagingEvent.message.quick_reply){
+        if(messagingEvent.message.quick_reply){
 
-        //   console.log("Quick-Reply"+messagingEvent.message.quick_reply) /// ต้องทำ session อีกทีนึง
-        // }else
-      if (messagingEvent.message) {
-          
+          console.log("Quick-Reply"+messagingEvent.message.quick_reply) /// ต้องทำ session อีกทีนึง
+        }else if (messagingEvent.message) {
           receivedMessage(messagingEvent);
         } else {
           console.log("Webhook received unknown messagingEvent: ", messagingEvent);
