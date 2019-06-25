@@ -1,7 +1,7 @@
 const api = require('../helper/api.js')
 const fb = require("../helper/fbTemplate")
 
-const handlePostback = async(
+const handleAiPostback = async(
 
     sender,
     payload
@@ -48,6 +48,6 @@ const sendGenericMessage = async (recipientId, elements) => {
 
 
   module.exports = {
-    handlePostback,
+    handleAiPostback,
     sendGenericMessage
   }

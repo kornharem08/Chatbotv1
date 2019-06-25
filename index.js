@@ -123,10 +123,10 @@ function sendToPostbackAi(senderID,postback){
 }
 
 
-function handleAiPostback(senderID,postback){
+function handlePostback(senderID,postback){
 
   sendTypingOff(senderID)
-  handlePostback(senderID,postback)
+  handleAiPostback(senderID,postback)
 }
 
 
