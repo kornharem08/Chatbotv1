@@ -20,7 +20,7 @@ const handleApiAiAction = async (
   // await initUser(sender)
   switch (action) {
     case "MainMenu":
-        const elements = [
+        var elements = [
           fb.carouselTemplate("Welcome!","https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png","We have the right hat for everyone.",[fb.buttonsURL(urlweb.sisurl,"View Website"), fb.buttonsURL(urlweb.sisurl,"Schedule"),fb.buttonsURL(urlweb.sisurl,"Test")]),
           fb.carouselTemplate("Welcome!","https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png","We have the right hat for everyone.",[fb.buttonsURL(urlweb.sisurl,"View Website"), fb.buttonsURL(urlweb.sisurl,"Test")])
           // fbTemplate.carouselTemplate("Welcome!","https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png","We have the right hat for everyone.",fbTemplate.buttonsTemplate(urlweb.sisurl,"Schedule"))
@@ -45,7 +45,7 @@ const handleApiAiAction = async (
       sendQuickReply(sender, replies);
       break;
     case "send-carousel":
-      const elements = [
+      var elements = [
         fb.carouselTemplate("Welcome!","https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png","We have the right hat for everyone.",[fb.buttonsURL(urlweb.sisurl,"View Website"), fb.buttonsURL(urlweb.sisurl,"Schedule"),fb.buttonsURL(urlweb.sisurl,"Test")]),
         fb.carouselTemplate("Welcome!","https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png","We have the right hat for everyone.",[fb.buttonsURL(urlweb.sisurl,"View Website"), fb.buttonsURL(urlweb.sisurl,"Test")])
         // fbTemplate.carouselTemplate("Welcome!","https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png","We have the right hat for everyone.",fbTemplate.buttonsTemplate(urlweb.sisurl,"Schedule"))
