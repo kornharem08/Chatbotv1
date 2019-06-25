@@ -93,6 +93,46 @@ function receivedMessage(event) {
     handleMessageAttachments(messageAttachments, senderID);
   }
 }
+
+function receivedPostback(event) {
+  var senderID = event.sender.id;
+  var postback = event.postback;
+
+
+  var title = postback.title
+  var payload = postback.payload
+
+
+  if (!sessionIds.has(senderID)) {
+    sessionIds.set(senderID, uuid.v1());
+  }
+
+  if(payload){
+
+    sendToPostbackAi(senderID,payload)
+
+  }
+
+
+}
+
+function sendToPostbackAi(senderID,postback){
+
+  sendTypingOn(senderID)
+  handlePostback(senderID,postback)
+}
+
+
+function handlePostback(senderID,postback){
+
+  sendTypingOff(senderID)
+  console.log("handlePostBack:"+postback)
+
+}
+
+
+
+
 function sendToApiAi(sender, text) {
   sendTypingOn(sender);
   let apiaiRequest = apiAiService.textRequest(text, {
@@ -128,7 +168,10 @@ app.post("/webhook/", function (req, res) {
       console.log("=========Data===========" + pageID)
       // Iterate over each messaging event
       pageEntry.messaging.forEach(function (messagingEvent) {
-        if(messagingEvent.message.quick_reply){
+
+        if(messagingEvent.postback){
+          receivedPostback(messagingEvent)
+        }else if(messagingEvent.message.quick_reply){
 
           console.log("Quick-Reply"+messagingEvent.message.quick_reply) /// ต้องทำ session อีกทีนึง
         }else if (messagingEvent.message) {
