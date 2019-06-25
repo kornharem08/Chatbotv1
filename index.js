@@ -126,8 +126,7 @@ function sendToPostbackAi(senderID,postback){
 function handlePostback(senderID,postback){
 
   sendTypingOff(senderID)
-  console.log("handlePostBack:"+postback)
-
+  handlePostback(senderID,postback)
 }
 
 
