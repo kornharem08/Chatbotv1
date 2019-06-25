@@ -8,7 +8,7 @@ const app = express();
 const config = require("./config");
 const api = require("./src/helper/api")
 const handle = require("./src/handleAPI/aiAction");
-const handlePostback = require("./src/handleAPI/aiPostback");
+const handlePb = require("./src/handleAPI/aiPostback");
 //const assets = require("./src/assets");
 
 
@@ -127,7 +127,7 @@ function sendToPostbackAi(senderID,postback){
 function handlePostback(senderID,postback){
 
   sendTypingOff(senderID)
-  handlePostback.handleAiPostback(senderID,postback)
+  handlePb.handleAiPostback(senderID,postback)
 }
 
 
