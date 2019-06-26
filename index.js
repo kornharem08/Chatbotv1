@@ -9,6 +9,7 @@ const config = require("./config");
 const api = require("./src/helper/api")
 const handle = require("./src/handleAPI/aiAction");
 const handlePb = require("./src/handleAPI/aiPostback");
+const func = require("./src/views/function.js");
 //const assets = require("./src/assets");
 
 
@@ -225,7 +226,7 @@ function handleApiAiResponse(sender, response) {
   if (responseText == "" && !isDefined(action)) {
     //api ai could not evaluate input.
     console.log("Unknown query" + response.result.resolvedQuery);
-    sendTextMessage(
+    func.sendTextMessage(
       sender,
       "I'm not sure what you want. Can you be more specific?"
     );
@@ -234,12 +235,12 @@ function handleApiAiResponse(sender, response) {
   } else if (isDefined(responseData) && isDefined(responseData.facebook)) {
     try {
       console.log("Response as formatted message" + responseData.facebook);
-      handle.sendTextMessage(sender, responseData.facebook);
+      func.sendTextMessage(sender, responseData.facebook);
     } catch (err) {
-      handle.sendTextMessage(sender, err.message);
+      func.sendTextMessage(sender, err.message);
     }
   } else if (isDefined(responseText)) {
-    handle.sendTextMessage(sender, responseText);
+    func.sendTextMessage(sender, responseText);
   }
 }
 
