@@ -162,34 +162,34 @@ module.exports = {
 }
 
 
-{
-  "recipient": {
-     "id": recipientId
-   },
-   "message": {
-     "attachment": {
-       "type": "template",
-       "payload": {
-         "template_type": "generic",
-          "elements" : [{
+// {
+//   "recipient": {
+//      "id": recipientId
+//    },
+//    "message": {
+//      "attachment": {
+//        "type": "template",
+//        "payload": {
+//          "template_type": "generic",
+//           "elements" : [{
 
-          "title": "<TITLE_TEXT>",
-          "image_url": "https://www.stepforwardmichigan.org/wp-content/uploads/2017/03/step-foward-fb-1200x628-house.jpg",
-          "subtitle": "We have the right hat for everyone.We have the right hat for everyone.We have the right hat for everyone.",
+//           "title": "<TITLE_TEXT>",
+//           "image_url": "https://www.stepforwardmichigan.org/wp-content/uploads/2017/03/step-foward-fb-1200x628-house.jpg",
+//           "subtitle": "We have the right hat for everyone.We have the right hat for everyone.We have the right hat for everyone.",
   
-          "buttons": [{
-            "type": "web_url",
-            "url": "https://webviews-vue1.herokuapp.com/",
-            "title": "Set preferences",
-            "webview_height_ratio": "compact",
-            "messenger_extensions": true
-          }
-          ]
-        }]
-       }
-     }
-   }
-}
+//           "buttons": [{
+//             "type": "web_url",
+//             "url": "https://webviews-vue1.herokuapp.com/",
+//             "title": "Set preferences",
+//             "webview_height_ratio": "compact",
+//             "messenger_extensions": true
+//           }
+//           ]
+//         }]
+//        }
+//      }
+//    }
+// }
 
 // case "send-carousel":
 //       const elements = [{
