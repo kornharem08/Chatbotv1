@@ -21,8 +21,8 @@ const handleApiAiAction = async (
         func.mainmenu(sender)
         break;
     case "send-text":
-      // var responseText = "This is example of Text message.";
-      // sendTextMessage(sender, responseText);
+        var responseText = "This is example of Text message.";
+        func.sendTextMessage(sender, responseText);
       break;
     case "fb-send-image":
       // var imgUrl =
