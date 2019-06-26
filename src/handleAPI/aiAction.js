@@ -24,19 +24,19 @@ const handleApiAiAction = async (
         var responseText = "This is example of Text message.";
         func.sendTextMessage(sender, responseText);
       break;
-    case "fb-send-image":
-      // var imgUrl =
-      // //   "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/881e6651881085.58fd911b65d88.png";
-      // // sendImageMessage(sender, imgUrl);
-      break;
-    case "send-music":
-      // var responseText = "The toys";
-      // sendTextMessage(sender, responseText);
-      break;
-    case "send-quick-reply":
-      // var replies = fb.quickreplyTemplate("test",[fb.quickreply("test","test",null),fb.quickreply("test","test",null),fb.quickreply("test","test",null)])
-      // sendQuickReply(sender, replies);
-      break;
+    // case "fb-send-image":
+    //   // var imgUrl =
+    //   // //   "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/881e6651881085.58fd911b65d88.png";
+    //   // // sendImageMessage(sender, imgUrl);
+    //   break;
+    // case "send-music":
+    //   // var responseText = "The toys";
+    //   // sendTextMessage(sender, responseText);
+    //   break;
+    // case "send-quick-reply":
+    //   // var replies = fb.quickreplyTemplate("test",[fb.quickreply("test","test",null),fb.quickreply("test","test",null),fb.quickreply("test","test",null)])
+    //   // sendQuickReply(sender, replies);
+    //   break;
     case "send-carousel":
       func.mainmenu(sender);
       // handleCardMessages(elements, sender)
