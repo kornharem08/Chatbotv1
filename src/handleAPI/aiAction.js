@@ -6,7 +6,7 @@ const func = require("../views/function.js");
 //   this.user = await api.requestUserinfo(sender)
 //   console.log("testsee:"+this.user.locale);
 // }
-
+//// haloatesttest
 const handleApiAiAction = async (
   sender,
   action,
@@ -42,7 +42,7 @@ const handleApiAiAction = async (
       // handleCardMessages(elements, sender)
       break;
     default:
-      //unhandled action, just send back the text
+      // unhandled action, just send back the text
        func.sendTextMessage(sender, responseText);
   }
 };
