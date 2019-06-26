@@ -17,7 +17,7 @@ const handleApiAiAction = async (
 
   // await initUser(sender)
   switch (action) {
-    case "MainMenu":
+    case "mainmenu":
         func.mainmenu(sender)
         break;
     case "send-text":
