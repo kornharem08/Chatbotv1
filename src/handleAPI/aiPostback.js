@@ -42,6 +42,6 @@ const handleAiPostback = async(
 
 
   module.exports = {
-    handleAiPostback,
-    sendGenericMessage
+    handleAiPostback
+    
   }
