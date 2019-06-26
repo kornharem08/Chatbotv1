@@ -43,7 +43,7 @@ const handleApiAiAction = async (
       break;
     default:
       //unhandled action, just send back the text
-      // sendTextMessage(sender, responseText);
+       func.sendTextMessage(sender, responseText);
   }
 };
 
