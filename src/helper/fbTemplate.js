@@ -1,4 +1,6 @@
 
+
+
 const carouselTemplate = (title,image_url,subtitle,buttons) =>{
   
 
@@ -68,7 +70,7 @@ const buttonsURL = (url,title) => {
         url: url,
         title: title,
         webview_height_ratio: "full",
-        messenger_extensions: true
+        messenger_extensions: true 
     }
 
     return button
@@ -94,3 +96,5 @@ module.exports = {
     buttonsURL,
     buttons
 }
+
+

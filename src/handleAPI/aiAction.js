@@ -1,7 +1,4 @@
-const api = require('../helper/api.js')
-const urlweb = require("../helper/webview.js");
-const Dict = require("../helper/dictionary");
-const fb = require("../helper/fbTemplate")
+const func = require("../views/function.js");
 // let user
 
 // const initUser = async (sender) => {
@@ -17,45 +14,36 @@ const handleApiAiAction = async (
   contexts,
   parameters
 ) => {
+
   // await initUser(sender)
   switch (action) {
     case "MainMenu":
-        var elementsMenu = [
-          fb.carouselTemplate("Welcome!","https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png","We have the right hat for everyone.",[fb.buttonsURL(urlweb.sisurl,"View Website"), fb.buttonsURL(urlweb.sisurl,"Schedule"),fb.buttonsURL(urlweb.sisurl,"Test")]),
-          fb.carouselTemplate("Welcome!","https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png","We have the right hat for everyone.",[fb.buttonsURL(urlweb.sisurl,"View Website"), fb.buttonsURL(urlweb.sisurl,"Test")])
-          // fbTemplate.carouselTemplate("Welcome!","https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png","We have the right hat for everyone.",fbTemplate.buttonsTemplate(urlweb.sisurl,"Schedule"))
-        ];
-        sendGenericMessage(sender, elementsMenu);
+        func.mainmenu(sender)
         break;
     case "send-text":
-      var responseText = "This is example of Text message.";
-      sendTextMessage(sender, responseText);
+      // var responseText = "This is example of Text message.";
+      // sendTextMessage(sender, responseText);
       break;
     case "fb-send-image":
-      var imgUrl =
-        "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/881e6651881085.58fd911b65d88.png";
-      sendImageMessage(sender, imgUrl);
+      // var imgUrl =
+      // //   "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/881e6651881085.58fd911b65d88.png";
+      // // sendImageMessage(sender, imgUrl);
       break;
     case "send-music":
-      var responseText = "The toys";
-      sendTextMessage(sender, responseText);
+      // var responseText = "The toys";
+      // sendTextMessage(sender, responseText);
       break;
     case "send-quick-reply":
-      var replies = fb.quickreplyTemplate("test",[fb.quickreply("test","test",null),fb.quickreply("test","test",null),fb.quickreply("test","test",null)])
-      sendQuickReply(sender, replies);
+      // var replies = fb.quickreplyTemplate("test",[fb.quickreply("test","test",null),fb.quickreply("test","test",null),fb.quickreply("test","test",null)])
+      // sendQuickReply(sender, replies);
       break;
     case "send-carousel":
-      var elements = [
-        fb.carouselTemplate("Welcome!","https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png","We have the right hat for everyone.",[fb.buttonsURL(urlweb.sisurl,"View Website"), fb.buttonsURL(urlweb.sisurl,"Schedule"),fb.buttonsURL(urlweb.sisurl,"Test")]),
-        fb.carouselTemplate("Welcome!","https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png","We have the right hat for everyone.",[fb.buttonsURL(urlweb.sisurl,"View Website"), fb.buttonsURL(urlweb.sisurl,"Test")])
-        // fbTemplate.carouselTemplate("Welcome!","https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png","We have the right hat for everyone.",fbTemplate.buttonsTemplate(urlweb.sisurl,"Schedule"))
-      ];
-      sendGenericMessage(sender, elements);
+      func.mainmenu(sender);
       // handleCardMessages(elements, sender)
       break;
     default:
       //unhandled action, just send back the text
-      sendTextMessage(sender, responseText);
+      // sendTextMessage(sender, responseText);
   }
 };
 
@@ -96,85 +84,126 @@ async function handleCardMessages(messages, sender) { /// < เป็นตั�
   await sendGenericMessage(sender, elements);
 }
 
-const sendGenericMessage = async (recipientId, elements) => {
-  var messageData = {
-    recipient: {
-      id: recipientId
-    },
-    message: {
-      attachment: {
-        type: "template",
-        payload: {
-          template_type: "generic",
-          elements: elements
-        }
-      }
-    }
-  };
-  await api.callSendAPI(messageData);
-};
+// const sendGenericMessage = async (recipientId, elements) => {
+//   var messageData = {
+//     recipient: {
+//       id: recipientId
+//     },
+//     message: {
+//       attachment: {
+//         type: "template",
+//         payload: {
+//           template_type: "generic",
+//           elements: elements
+//         }
+//       }
+//     }
+//   };
+//   await api.callSendAPI(messageData);
+// };
 
-const sendTextMessage = async (recipientId, text) => {
-  var messageData = {
-    recipient: {
-      id: recipientId
-    },
-    message: {
-      text: text
-    }
-  };
-  await api.callSendAPI(messageData);
-};
-const sendImageMessage = async (recipientId, imageUrl) => {
-  var messageData = {
-    recipient: {
-      id: recipientId
-    },
-    message: {
-      attachment: {
-        type: "image",
-        payload: {
-          url: imageUrl
-        }
-      }
-    }
-  };
-  await api.callSendAPI(messageData);
-};
-const sendQuickReply = async (recipientId, message) => { // อันนี้ quickReply
-  var messageData = {
-    recipient: {
-      id: recipientId
-    },
-    message: message
-  };
-  await api.callSendAPI(messageData);
-};
+// const sendTextMessage = async (recipientId, text) => {
+//   var messageData = {
+//     recipient: {
+//       id: recipientId
+//     },
+//     message: {
+//       text: text
+//     }
+//   };
+//   await api.callSendAPI(messageData);
+// };
+// const sendImageMessage = async (recipientId, imageUrl) => {
+//   var messageData = {
+//     recipient: {
+//       id: recipientId
+//     },
+//     message: {
+//       attachment: {
+//         type: "image",
+//         payload: {
+//           url: imageUrl
+//         }
+//       }
+//     }
+//   };
+//   await api.callSendAPI(messageData);
+// };
+// const sendQuickReply = async (recipientId, message) => { // อันนี้ quickReply
+//   var messageData = {
+//     recipient: {
+//       id: recipientId
+//     },
+//     message: message
+//   };
+//   await api.callSendAPI(messageData);
+// };
 
-const sendBtnMessage = async (recipientId, payload) =>{  /// https://developers.facebook.com/docs/messenger-platform/send-messages/template/button
+// const sendBtnMessage = async (recipientId, payload) =>{  /// https://developers.facebook.com/docs/messenger-platform/send-messages/template/button
 
-  var messageData = {
-    recipient:{
-      id: recipientId
-    },
-    message:{
-      attachment:{
-        type:"template",
-        payload:payload
-      }
-    }
-  };
-  await api.callSendAPI(messageData);
-}
+//   var messageData = {
+//     recipient:{
+//       id: recipientId
+//     },
+//     message:{
+//       attachment:{
+//         type:"template",
+//         payload:payload
+//       }
+//     }
+//   };
+//   await api.callSendAPI(messageData);
+// }
 
 
 module.exports = {
 
-    handleApiAiAction,
-    sendGenericMessage,
-    sendTextMessage,
-    sendImageMessage,
-    sendQuickReply,
-    sendBtnMessage
-
+    handleApiAiAction
 }
+
+
+{
+  "recipient": {
+     "id": recipientId
+   },
+   "message": {
+     "attachment": {
+       "type": "template",
+       "payload": {
+         "template_type": "generic",
+          "elements" : [{
+
+          "title": "<TITLE_TEXT>",
+          "image_url": "https://www.stepforwardmichigan.org/wp-content/uploads/2017/03/step-foward-fb-1200x628-house.jpg",
+          "subtitle": "We have the right hat for everyone.We have the right hat for everyone.We have the right hat for everyone.",
+  
+          "buttons": [{
+            "type": "web_url",
+            "url": "https://webviews-vue1.herokuapp.com/",
+            "title": "Set preferences",
+            "webview_height_ratio": "compact",
+            "messenger_extensions": true
+          }
+          ]
+        }]
+       }
+     }
+   }
+}
+
+// case "send-carousel":
+//       const elements = [{
+
+//         "title": "<TITLE_TEXT>",
+//         "image_url": "https://www.stepforwardmichigan.org/wp-content/uploads/2017/03/step-foward-fb-1200x628-house.jpg",
+//         "subtitle": "We have the right hat for everyone.We have the right hat for everyone.We have the right hat for everyone.",
+
+//         "buttons": [{
+//           "type": "web_url",
+//           "url": "https://webviews-vue1.herokuapp.com/",
+//           "title": "Set preferences",
+//           "webview_height_ratio": "compact",
+//           "messenger_extensions": true
+//         }
+//         ]
+//       }];
