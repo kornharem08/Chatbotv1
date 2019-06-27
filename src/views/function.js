@@ -19,9 +19,9 @@ const mainmenu = async (sender) => {
 }
 const btnMessage = async (sender) => {
    
-  let btnMessage = 
+  let btnMessage = [
        fb.buttonsTemplate("Welcome!",[fb.buttons("Personal information","Personal-information"),fb.buttons("Edit Personal information","Edit-Student-information"),fb.buttons("Back","back")]),
-       
+  ]
      
 
   
