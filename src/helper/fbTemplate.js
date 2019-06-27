@@ -46,7 +46,7 @@ const quickreply = (title,payload,image) => {
 
     var image_url = ""
 
-    if(image_url != null){
+    if(image != null){
 
         this.image_url = image
 
