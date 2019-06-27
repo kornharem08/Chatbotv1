@@ -54,6 +54,22 @@ const btnMessageclassEx = async (sender) => {
  
 
 }
+const messageExSc = async (sender) => {
+   
+  // let btnMessage = fb.buttonsTemplate("Plese select Semester/Year criteria",[fb.buttons("Personal information","Personal-information")])
+  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria",[fb.quickreply("<< Back","test",null),fb.quickreply("1/2559","test",null),fb.quickreply("2/2559","test",null),fb.quickreply("1/2560","test",null),fb.quickreply("2/2560","test",null),fb.quickreply("1/2561","test",null),fb.quickreply("2/2561","test",null)])
+    await sendQuickReply(sender, replies);
+ 
+
+}
+const messageClassSc = async (sender) => {
+   
+  // let btnMessage = fb.buttonsTemplate("Plese select Semester/Year criteria",[fb.buttons("Personal information","Personal-information")])
+  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria",[fb.quickreply("<< Back","test",null),fb.quickreply("1/2559","test",null),fb.quickreply("2/2559","test",null),fb.quickreply("1/2560","test",null),fb.quickreply("2/2560","test",null),fb.quickreply("1/2561","test",null),fb.quickreply("2/2561","test",null)])
+    await sendQuickReply(sender, replies);
+ 
+
+}
 
 
 const sendGenericMessage = async (recipientId, elements) => {
@@ -138,6 +154,9 @@ module.exports = {
     btnMessage,
     Messageinfo,
     messageGradeGPA,
-    btnMessageclassEx
+    btnMessageclassEx,
+    messageExSc,
+    messageClassSc
+
 }
 

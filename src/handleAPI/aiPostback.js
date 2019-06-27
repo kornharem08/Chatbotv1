@@ -15,14 +15,20 @@ const handleAiPostback = async(
         case "Student-information":
             func.btnMessage(sender);
             break;
-            case "Personal-information":
+        case "Personal-information":
             func.Messageinfo(sender);
             break;
-            case "Grade&GPA":
+        case "Grade&GPA":
             func.messageGradeGPA(sender);
             break;
-            case "Class&Examination-Schedule":
+        case "Class&Examination-Schedule":
             func.btnMessageclassEx(sender);
+            break;
+            case "Examination-Schedule":
+            func.messageExSc(sender);
+            break;
+            case "Class-schedule":
+            func.messageClassSc(sender);
             break;
            
         default:
