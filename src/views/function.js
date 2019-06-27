@@ -111,6 +111,7 @@ module.exports = {
     sendImageMessage,
     sendQuickReply,
     sendBtnMessage,
-    mainmenu
+    mainmenu,
+    btnMessage
 }
 
