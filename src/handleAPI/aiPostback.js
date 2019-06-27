@@ -1,13 +1,13 @@
 const func = require("../views/function.js");
 
-const handleAiPostback = async(
+const handleAiPostback = async (
 
     sender,
     payload
 
 ) => {
 
-    switch(payload) {
+    switch (payload) {
 
         case "MainMenu_Payload":
             func.mainmenu(sender);
@@ -24,18 +24,24 @@ const handleAiPostback = async(
         case "Class&Examination-Schedule":
             func.btnMessageclassEx(sender);
             break;
-            case "Examination-Schedule":
+        case "Examination-Schedule":
             func.messageExSc(sender);
             break;
-            case "Class-schedule":
+        case "Class-schedule":
             func.messageClassSc(sender);
             break;
-            case "Edit-Student-information":
-                func.messageEditinfo(sender);
-                break;
+        case "Edit-Student-information":
+            func.messageEditinfo(sender);
+            break;
+            case "Exam-notification-day":
+            func.MessageExamnotif(sender);
+            break;
+            case "Cancle-Exam-notification-day":
+            func.MessageCancleExamnotif(sender);
+            break;
 
-            
-           
+
+
         default:
 
 
@@ -64,7 +70,7 @@ const handleAiPostback = async(
 // //   };
 
 
-  module.exports = {
+module.exports = {
     handleAiPostback
-    
-  }
+
+}
