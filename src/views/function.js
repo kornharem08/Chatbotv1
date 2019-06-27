@@ -30,7 +30,7 @@ const btnMessage = async (sender) => {
 }
 const Messageinfo = async (sender) => {
    
-  let Message = "------Name------\nTanakorn Pitakchaichan\n======================\n------Email-----\nTana_korn01@hotmail.com\n======================\n---Phone number---\n090-9858754\n======================\n--Advisor Name--\nKorawit Prutsachainimmit\n======================"
+  let Message = "         Name         \nTanakorn Pitakchaichan\n======================\n         Email        \nTana_korn01@hotmail.com\n======================\n     Phone number     \n090-9858754\n======================\n     Advisor Name     \nKorawit Prutsachainimmit\n======================"
   
     
   
