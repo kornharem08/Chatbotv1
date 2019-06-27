@@ -97,7 +97,7 @@ const sendGenericMessage = async (recipientId, elements) => {
       message:{
         attachment:{
           type:"template",
-          payload:payload
+          payload
         }
       }
     };
