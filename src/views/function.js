@@ -6,7 +6,7 @@ const urlweb = require("../helper/webview.js");
 const mainmenu = async (sender) => {
    
    let elementsMenu = [
-        fb.carouselTemplate("Welcome!","https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png","We have the right hat for everyone.",[fb.buttons("Student information","Student-information"), fb.buttons("Grade & GPA","Grade&GPA"),fb.buttonsURL(urlweb.sisurl,"Class&Examination Schedule")]),
+        fb.carouselTemplate("Welcome!","https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png","We have the right hat for everyone.",[fb.buttons("Student information","Student-information"), fb.buttons("Grade & GPA","Grade&GPA"),fb.buttons("Class&Examination Schedule","Class&Examination-Schedule")]),
         fb.carouselTemplate("Welcome!","https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png","We have the right hat for everyone.",[fb.buttonsURL(urlweb.sisurl,"Exam notification day"), fb.buttonsURL(urlweb.sisurl,"Academic calendar for undergraduate"),fb.buttonsURL(urlweb.sisurl,"Cancle Exam notification day")]),
         
       ];
@@ -39,12 +39,21 @@ const Messageinfo = async (sender) => {
 const messageGradeGPA = async (sender) => {
    
   // let btnMessage = fb.buttonsTemplate("Plese select Semester/Year criteria",[fb.buttons("Personal information","Personal-information")])
-  let replies = fb.quickreplyTemplate("Plese select Semester/Year criteria",[fb.quickreply("<< Back","test",null),fb.quickreply("1/2559","test",null),fb.quickreply("2/2559","test",null),fb.quickreply("1/2560","test",null),fb.quickreply("2/2560","test",null),fb.quickreply("1/2561","test",null),fb.quickreply("2/2561","test",null)])
+  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria",[fb.quickreply("<< Back","test",null),fb.quickreply("1/2559","test",null),fb.quickreply("2/2559","test",null),fb.quickreply("1/2560","test",null),fb.quickreply("2/2560","test",null),fb.quickreply("1/2561","test",null),fb.quickreply("2/2561","test",null)])
     await sendQuickReply(sender, replies);
  
 
 }
 
+const btnMessageclassEx = async (sender) => {
+   
+  let btnMessage = fb.buttonsTemplate("What do you want to do next?",[fb.buttons("Class Schedule","Class-schedule"),fb.buttons("Examination Schedule","Examination-Schedule"),fb.buttons("Back","back")])
+  
+    
+     await sendBtnMessage(sender,btnMessage)
+ 
+
+}
 
 
 const sendGenericMessage = async (recipientId, elements) => {
@@ -128,6 +137,7 @@ module.exports = {
     mainmenu,
     btnMessage,
     Messageinfo,
-    messageGradeGPA
+    messageGradeGPA,
+    btnMessageclassEx
 }
 
