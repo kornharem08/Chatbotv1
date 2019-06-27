@@ -10,7 +10,7 @@ const handleAiPostback = async(
     switch(payload) {
 
         case "MainMenu_Payload":
-            func.mainmenu();
+            func.mainmenu(sender);
             break;
 
         default:
@@ -22,23 +22,23 @@ const handleAiPostback = async(
 }
 
 
-// const sendGenericMessage = async (recipientId, elements) => {
-//     var messageData = {
-//       recipient: {
-//         id: recipientId
-//       },
-//       message: {
-//         attachment: {
-//           type: "template",
-//           payload: {
-//             template_type: "generic",
-//             elements: elements
-//           }
-//         }
-//       }
-//     };
-//     await api.callSendAPI(messageData);
-//   };
+// // const sendGenericMessage = async (recipientId, elements) => {
+// //     var messageData = {
+// //       recipient: {
+// //         id: recipientId
+// //       },
+// //       message: {
+// //         attachment: {
+// //           type: "template",
+// //           payload: {
+// //             template_type: "generic",
+// //             elements: elements
+// //           }
+// //         }
+// //       }
+// //     };
+// //     await api.callSendAPI(messageData);
+// //   };
 
 
   module.exports = {
