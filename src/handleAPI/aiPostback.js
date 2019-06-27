@@ -12,6 +12,9 @@ const handleAiPostback = async(
         case "MainMenu_Payload":
             func.mainmenu(sender);
             break;
+        case "Student-information":
+            func.mainmenu(sender);
+            break;
 
         default:
 
