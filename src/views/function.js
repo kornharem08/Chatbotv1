@@ -17,6 +17,19 @@ const mainmenu = async (sender) => {
       await sendQuickReply(sender, replies);
 
 }
+const btnMessage = async (sender) => {
+   
+  let btnMessage = [
+       fb.buttonsTemplate("Welcome!",[fb.buttons("Personal information","Personal-information"),fb.buttons("Edit Personal information","Edit-Student-information"),fb.buttons("Back","back")]),
+       
+     ];
+
+  
+    
+     await sendBtnMessage(sender,btnMessage)
+ 
+
+}
 
 
 
