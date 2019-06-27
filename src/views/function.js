@@ -28,6 +28,17 @@ const btnMessage = async (sender) => {
  
 
 }
+const Messageinfo = async (sender) => {
+   
+  let Message = "Name\nTanakorn Pitakchaichan\n=================="
+  
+    
+  
+    
+     await sendTextMessage(sender,Message)
+ 
+
+}
 
 
 
@@ -110,6 +121,7 @@ module.exports = {
     sendQuickReply,
     sendBtnMessage,
     mainmenu,
-    btnMessage
+    btnMessage,
+    Messageinfo
 }
 

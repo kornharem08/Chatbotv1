@@ -15,7 +15,10 @@ const handleAiPostback = async(
         case "Student-information":
             func.btnMessage(sender);
             break;
-
+            case "Personal-information":
+            func.Messageinfo(sender);
+            break;
+           
         default:
 
 
