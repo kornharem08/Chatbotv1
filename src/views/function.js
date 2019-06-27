@@ -6,7 +6,7 @@ const urlweb = require("../helper/webview.js");
 const mainmenu = async (sender) => {
    
    let elementsMenu = [
-        fb.carouselTemplate("Welcome!","https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png","We have the right hat for everyone.",[fb.buttons("Student information","Student-information"), fb.buttonsURL(urlweb.sisurl,"Grade&GPA"),fb.buttonsURL(urlweb.sisurl,"Class&Examination Schedule")]),
+        fb.carouselTemplate("Welcome!","https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png","We have the right hat for everyone.",[fb.buttons("Student information","Student-information"), fb.buttons("Grade & GPA","Grade&GPA"),fb.buttonsURL(urlweb.sisurl,"Class&Examination Schedule")]),
         fb.carouselTemplate("Welcome!","https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png","We have the right hat for everyone.",[fb.buttonsURL(urlweb.sisurl,"Exam notification day"), fb.buttonsURL(urlweb.sisurl,"Academic calendar for undergraduate"),fb.buttonsURL(urlweb.sisurl,"Cancle Exam notification day")]),
         
       ];
