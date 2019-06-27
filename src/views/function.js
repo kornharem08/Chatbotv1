@@ -79,7 +79,7 @@ const messageEditinfo = async (sender) => {
 
 const MessageExamnotif = async (sender) => {
 
-  let Message = "Exam notification dat Successfully"
+  let Message = "Exam notification day Successfully"
 
   await sendTextMessage(sender, Message)
 
@@ -87,7 +87,7 @@ const MessageExamnotif = async (sender) => {
 
 const MessageCancleExamnotif = async (sender) => {
 
-  let Message = "Cancle Exam notification dat Successfully"
+  let Message = "Cancle Exam notification day Successfully"
 
   await sendTextMessage(sender, Message)
 
