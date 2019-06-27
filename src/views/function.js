@@ -3,20 +3,18 @@ const fb = require("../helper/fbTemplate");
 const Dict = require("../helper/dictionary");
 const urlweb = require("../helper/webview.js");
 
-const mainmenu =(sender) => {
+const mainmenu = async (sender) => {
    
    let elementsMenu = [
         fb.carouselTemplate("Welcome!","https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png","We have the right hat for everyone.",[fb.buttonsURL(urlweb.sisurl,"Student information"), fb.buttonsURL(urlweb.sisurl,"Grade&GPA"),fb.buttonsURL(urlweb.sisurl,"Class&Examination Schedule")]),
-        fb.carouselTemplate("Welcome!","https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/PSU_CoC_ENG.png","We have the right hat for everyone.",[fb.buttonsURL(urlweb.sisurl,"Exam notification day"), fb.buttonsURL(urlweb.sisurl,"Academic calendar for undergraduate"),fb.buttonsURL(urlweb.sisurl,"Cancle Exam notification day")]),
+        fb.carouselTemplate("Welcome!","https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png","We have the right hat for everyone.",[fb.buttonsURL(urlweb.sisurl,"Exam notification day"), fb.buttonsURL(urlweb.sisurl,"Academic calendar for undergraduate"),fb.buttonsURL(urlweb.sisurl,"Cancle Exam notification day")]),
         
       ];
 
-      let replies = [
-        fb.quickreplyTemplate("test",[fb.quickreply("test","test",null),fb.quickreply("test","test",null)])
-      ];
+      let replies = fb.quickreplyTemplate("test",[fb.quickreply("test","test",null),fb.quickreply("test","test",null),fb.quickreply("test","test",null)])
 
-      sendGenericMessage(sender,elementsMenu)
-      sendQuickReply(sender, replies);
+      await sendGenericMessage(sender,elementsMenu)
+      await sendQuickReply(sender, replies);
 
 }
 
