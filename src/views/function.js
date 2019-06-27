@@ -32,10 +32,15 @@ const Messageinfo = async (sender) => {
    
   let Message = "Name\nTanakorn Pitakchaichan\n======================\nEmail\nTana_korn01@hotmail.com\n======================\nPhone number\n090-9858754\n======================\nAdvisor Name\nKorawit Prutsachainimmit\n======================"
   
-    
-  
-    
      await sendTextMessage(sender,Message)
+ 
+
+}
+const messageGradeGPA = async (sender) => {
+   
+  // let btnMessage = fb.buttonsTemplate("Plese select Semester/Year criteria",[fb.buttons("Personal information","Personal-information")])
+  let replies = fb.quickreplyTemplate("Plese select Semester/Year criteria",[fb.quickreply("<< Back","test",null),fb.quickreply("1/2559","test",null),fb.quickreply("2/2559","test",null),fb.quickreply("1/2560","test",null),fb.quickreply("2/2560","test",null),fb.quickreply("1/2561","test",null),fb.quickreply("2/2561","test",null)])
+    await sendQuickReply(sender, replies);
  
 
 }
@@ -122,6 +127,7 @@ module.exports = {
     sendBtnMessage,
     mainmenu,
     btnMessage,
-    Messageinfo
+    Messageinfo,
+    messageGradeGPA
 }
 

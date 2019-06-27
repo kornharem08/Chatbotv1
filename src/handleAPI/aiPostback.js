@@ -18,6 +18,9 @@ const handleAiPostback = async(
             case "Personal-information":
             func.Messageinfo(sender);
             break;
+            case "Grade&GPA":
+            func.messageGradeGPA(sender);
+            break;
            
         default:
 
