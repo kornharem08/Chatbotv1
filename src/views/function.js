@@ -11,7 +11,7 @@ const mainmenu = async (sender) => {
         
       ];
 
-      let replies = fb.quickreplyTemplate("",[fb.quickreply("TH","test",null),fb.quickreply("ENG","test",null)])
+      let replies = fb.quickreplyTemplate("language",[fb.quickreply("TH","test",null),fb.quickreply("ENG","test",null)])
 
       await sendGenericMessage(sender,elementsMenu)
       await sendQuickReply(sender, replies);
