@@ -54,7 +54,7 @@ const quickreply = (title,payload,image) => {
 
  const quickreply = {
         content_type:"text",
-        title:"",
+        title:title,
         payload:payload,
         image_url //เราใส่รูปให้ quickreply ได้ด้วยย
     }
