@@ -71,6 +71,15 @@ const messageClassSc = async (sender) => {
 
 }
 
+const messageEditinfo = async (sender) => {
+  let Message = "Name\nTanakorn Pitakchaichan\n======================\nPhone number\n090-252812\n======================"
+
+  let replies = fb.quickreplyTemplate("Please select Menu Edit",[fb.quickreply("<< Back","test",null),fb.quickreply("Email","test",null),fb.quickreply("Phone number","test",null)])
+    await sendQuickReply(sender, replies);
+    await sendTextMessage(sender,Message)
+
+}
+
 
 const sendGenericMessage = async (recipientId, elements) => {
     var messageData = {
@@ -156,7 +165,8 @@ module.exports = {
     messageGradeGPA,
     btnMessageclassEx,
     messageExSc,
-    messageClassSc
+    messageClassSc,
+    messageEditinfo
 
 }
 

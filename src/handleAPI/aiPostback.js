@@ -30,6 +30,11 @@ const handleAiPostback = async(
             case "Class-schedule":
             func.messageClassSc(sender);
             break;
+            case "Edit-Student-information":
+                func.messageEditinfo(sender);
+                break;
+
+            
            
         default:
 
