@@ -260,44 +260,6 @@ const sendTypingOff = (recipientId) => {
   api.callSendAPI(messageData);
 }
 
-const exampleWebview = async (recipientId, messageForm) => {
-  var messageData = {
-    recipient: {
-      id: recipientId
-    },
-    message: {
-      attachment: {
-        type: "template",
-        payload: {
-          template_type: "button",
-          text: "OK, let's set your room preferences so I won't need to ask for them in the future.",
-          buttons: messageForm
-        }
-      }
-    }
-
-  };
-  await api.callSendAPI(messageData);
-}
-
-const information = async (recipientId) => { ///ค่อยปรับปรุงเป็นฟังก์ชั่นรูปแบบที่เหมาะสม
-
-  var infoBase = {}
-  const url = "https://graph.facebook.com/" + recipientId + "?fields=first_name,last_name,profile_pic&access_token=" + config.FB_PAGE_TOKEN;
-  await axios.get(url)
-    .then(function (response) {
- 
-        infoBase = response.data
-
-    })
-    .catch(function (error) {
-      console.log(error.response.headers);
-    });
-    return infoBase;
-
-}
-
-
 
 
 var server = app.listen(process.env.PORT || 5000, function () {
