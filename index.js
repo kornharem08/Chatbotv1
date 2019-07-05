@@ -296,9 +296,6 @@ const information = async (recipientId) => { ///ค่อยปรับปร�
 
 }
 
-setInterval(function() {
-  func.sendTextMessage("2797221146971020","this is notification")
-}, 3000);
 
 
 var server = app.listen(process.env.PORT || 5000, function () {
