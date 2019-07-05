@@ -74,6 +74,9 @@ const handleAiPostback = async (
 
 
 module.exports = {
+<<<<<<< HEAD
+>>>>>>> 415d09fb316bce182d1020c998594e15453a971a
+=======
 >>>>>>> 415d09fb316bce182d1020c998594e15453a971a
     handleAiPostback
 
