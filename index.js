@@ -10,6 +10,7 @@ const api = require("./src/helper/api")
 const handle = require("./src/handleAPI/aiAction");
 const handlePb = require("./src/handleAPI/aiPostback");
 const func = require("./src/views/function.js");
+const notification = require("./src/helper/notification");
 //const assets = require("./src/assets");
 
 
@@ -297,6 +298,7 @@ const information = async (recipientId) => { ///ค่อยปรับปร�
 }
 
 
+notification.checkNotification() // notification
 
 var server = app.listen(process.env.PORT || 5000, function () {
   var port = server.address().port;
