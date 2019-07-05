@@ -189,6 +189,21 @@ app.post("/webhook/", function (req, res) {
   }
 });
 
+
+
+app.post("/uploadImg/", function (req, res) {
+  var data = req.body; 
+  console.log("data:"+data)
+
+  // Make sure this is a page subscription
+  // if (data.object == "page") {
+   
+    // Assume all went well.
+    // You must send back a 200, within 20 seconds
+    res.sendStatus(200);
+  //}
+});
+
 const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
   language: "th",
   requestSource: "fb"
