@@ -298,7 +298,7 @@ const information = async (recipientId) => { ///ค่อยปรับปร�
 }
 
 
-notification.checkNotification() // notification
+
 
 var server = app.listen(process.env.PORT || 5000, function () {
   var port = server.address().port;
