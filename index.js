@@ -209,9 +209,9 @@ app.post("/webhook/", function (req, res) {
 
 
 
-app.post("/uploadImg/",upload.none(), function (req, res) {
-  var data = req.files;
-  console.log("data:"+JSON.stringify(data))
+app.post("/uploadImg/",upload.any(), function (req, res) {
+  var data = req.body;
+  console.log("data:"+data)
  
   //test
   // Make sure this is a page subscription
