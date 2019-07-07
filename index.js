@@ -214,7 +214,7 @@ app.post("/webhook/", function (req, res) {
 //   res.sendStatus(200);
 // });
 
-app.post("/uploadImg/",upload.any('schedule'), function (req, res) {
+app.post("/uploadImg/",upload.any('data'), function (req, res) {
   
   console.log(req.body);
   console.log(req.files);
