@@ -219,14 +219,13 @@ app.post("/uploadImg/",upload.any(), function (req, res) {
   console.log(req.body);
   console.log(req.files);
   var imagePath = req.files
-  res.redirect(imagePath);
   //test
   // Make sure this is a page subscription
   // if (data.object == "page") {
    
     // Assume all went well.
     // You must send back a 200, within 20 seconds
-    
+    res.sendStatus(200);
   //}
 });
 
