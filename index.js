@@ -14,7 +14,18 @@ const notification = require("./src/helper/notification");
 const cors = require('cors');
 //const assets = require("./src/assets");
 const multer = require('multer');
-const upload =  multer({ dest: '.src/helper/uploads' });
+const upload =  multer({  storage:multer.diskStorage({
+        destination: function (req, file, cb) {
+            // ใช้งาน path module กำหนดโฟลเดอร์ที่จะบันทึกไฟล์
+            cb(null, '.src/helper/uploads')
+        },
+        filename: function (req, file, cb) {
+            // เปลี่ยนชื่อไฟล์ ในที่นี้ใช้เวลา timestamp ต่อด้วยชือ่ไฟล์เดิม
+            // เช่นไฟล์เดิมเป็น bird.png ก็จะได้เป็น  1558631524415-bird.png
+            cb(null, Date.now() + '-' + file.originalname)
+        }
+    })
+});
 
 
 
