@@ -17,7 +17,7 @@ const multer = require('multer');
 const upload =  multer({  storage:multer.diskStorage({
         destination: function (req, file, cb) {
             // ใช้งาน path module กำหนดโฟลเดอร์ที่จะบันทึกไฟล์
-            cb(null, '.src/helper/uploads')
+            cb(null, './src/helper/uploads')
         },
         filename: function (req, file, cb) {
             // เปลี่ยนชื่อไฟล์ ในที่นี้ใช้เวลา timestamp ต่อด้วยชือ่ไฟล์เดิม
