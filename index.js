@@ -15,7 +15,7 @@ const cors = require('cors');
 //const assets = require("./src/assets");
 const multer = require('multer');
 const upload =  multer({ dest: './src/helper/uploads' });
-app.use(multer());
+
 
 
 app.use(express.static("public"));
