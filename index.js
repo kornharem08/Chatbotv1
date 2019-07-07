@@ -216,8 +216,8 @@ app.post("/webhook/", function (req, res) {
 
 app.post("/uploadImg/",upload.any(), function (req, res) {
   
-  console.log(req.body)
- 
+  console.log(req.body);
+  console.log(req.file);
   //test
   // Make sure this is a page subscription
   // if (data.object == "page") {
