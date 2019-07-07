@@ -14,7 +14,7 @@ const notification = require("./src/helper/notification");
 const cors = require('cors');
 //const assets = require("./src/assets");
 const multer = require('multer');
-const upload =  multer({ dest: './src/helper/uploads' });
+const upload =  multer({ dest: '.src/helper/uploads' });
 
 
 
