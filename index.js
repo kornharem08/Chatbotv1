@@ -13,6 +13,8 @@ const func = require("./src/views/function.js");
 const notification = require("./src/helper/notification");
 const cors = require('cors');
 //const assets = require("./src/assets");
+const multer = require('multer');
+const upload = multer();
 
 
 app.use(express.static("public"));
@@ -207,9 +209,9 @@ app.post("/webhook/", function (req, res) {
 
 
 
-app.post("/uploadImg/", function (req, res) {
-  var data = req.body.file; 
-  console.log("data:"+JSON.stringify(data))
+app.post("/uploadImg/",upload.none(), function (req, res) {
+  var data = req.body; 
+  console.log("data:"+data)
   //test
   // Make sure this is a page subscription
   // if (data.object == "page") {
