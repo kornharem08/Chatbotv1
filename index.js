@@ -210,11 +210,9 @@ app.post("/webhook/", function (req, res) {
 
 
 app.post("/uploadImg/",upload.none(), function (req, res) {
-  // var data = req.body; 
-  // console.log("data:"+JSON.stringify(data))
-  req.on('data', (data) => {
-    console.log(data.toString());
-  });
+  var data = req.files;
+  console.log("data:"+JSON.stringify(data))
+ 
   //test
   // Make sure this is a page subscription
   // if (data.object == "page") {
