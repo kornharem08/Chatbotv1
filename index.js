@@ -15,6 +15,7 @@ const cors = require('cors');
 //const assets = require("./src/assets");
 const multer = require('multer');
 const upload = multer();
+app.use(multer());
 
 
 app.use(express.static("public"));
@@ -207,25 +208,25 @@ app.post("/webhook/", function (req, res) {
   }
 });
 
-app.post("/uploadImg/", upload.any(), (req, res) => {
-  const formData = req.body;
-  console.log('form data', formData);
-  res.sendStatus(200);
-});
-
-// app.post("/uploadImg/",upload.any(), function (req, res) {
-//   var data = req.body;
-//   console.log("data:"+data)
- 
-//   //test
-//   // Make sure this is a page subscription
-//   // if (data.object == "page") {
-   
-//     // Assume all went well.
-//     // You must send back a 200, within 20 seconds
-//     res.sendStatus(200);
-//   //}
+// app.post("/uploadImg/", upload.any(), (req, res) => {
+//   const formData = req.body;
+//   console.log('form data', formData);
+//   res.sendStatus(200);
 // });
+
+app.post("/uploadImg/",upload.any(), function (req, res) {
+  var data = req.body;
+  console.log("data:"+data)
+ 
+  //test
+  // Make sure this is a page subscription
+  // if (data.object == "page") {
+   
+    // Assume all went well.
+    // You must send back a 200, within 20 seconds
+    res.sendStatus(200);
+  //}
+});
 
 const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
   language: "th",
