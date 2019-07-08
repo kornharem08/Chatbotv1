@@ -13,20 +13,16 @@ const func = require("./src/views/function.js");
 const notification = require("./src/helper/notification");
 const cors = require('cors');
 //const assets = require("./src/assets");
-const multer = require('multer');
-const upload =  multer({  storage:multer.diskStorage({
-        destination: function (req, file, cb) {
-            // ใช้งาน path module กำหนดโฟลเดอร์ที่จะบันทึกไฟล์
-            cb(null, './src/helper/uploads')
-        },
-        filename: function (req, file, cb) {
-            // เปลี่ยนชื่อไฟล์ ในที่นี้ใช้เวลา timestamp ต่อด้วยชือ่ไฟล์เดิม
-            // เช่นไฟล์เดิมเป็น bird.png ก็จะได้เป็น  1558631524415-bird.png
-            cb(null, Date.now() + '-' + file.originalname)
-        }
-    })
-});
-
+const multer  = require('multer')
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+      cb(null, './src/tmp/uploads')
+  },
+  filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now())
+  }
+})
+const upload = multer({storage: storage})
 
 
 app.use(express.static("public"));
@@ -228,8 +224,8 @@ app.post("/webhook/", function (req, res) {
 app.post("/uploadImg/",upload.any(), function (req, res) {
   
   console.log(req.body);
-  console.log(req.files);
-  var imagePath = req.files
+  console.log(req.files)
+  
   //test
   // Make sure this is a page subscription
   // if (data.object == "page") {
