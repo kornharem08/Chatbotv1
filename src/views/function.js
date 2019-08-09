@@ -53,7 +53,7 @@ const btnMessageclassEx = async (sender) => {
 
 const messageExSc = async (sender) => {
 
-  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "test", null), fb.quickreply("1/2559", "Ex_1/2559", null), fb.quickreply("2/2559", "test", null), fb.quickreply("1/2560", "test", null), fb.quickreply("2/2560", "test", null), fb.quickreply("1/2561", "test", null), fb.quickreply("2/2561", "test", null)])
+  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "test", null), fb.quickreply("1/2559", "Ex_1/2559", null), fb.quickreply("2/2559", "Ex_2/2559", null), fb.quickreply("3/2559", "Ex_3/2559", null)])
   await sendQuickReply(sender, replies);
 
 }
@@ -100,13 +100,6 @@ const messageExamSchedule = async (sender) => {
 
 }
 
-const messageExamterm = async (sender) => {
-
-  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "test", null), fb.quickreply("1/2562", "test", null), fb.quickreply("2/2562", "test", null)])
-  await sendQuickReply(sender, replies);
-
-
-}
 
 
 
@@ -198,7 +191,6 @@ module.exports = {
   messageEditinfo,
   MessageExamnotif,
   MessageCancleExamnotif,
-  messageExamSchedule,
-  messageExamterm
+  messageExamSchedule
 }
 

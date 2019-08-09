@@ -114,8 +114,7 @@ function receivedMessage(event) {
 function receivedQuickRp(event) {
   var senderID = event.sender.id;
   var postback = event.quick_reply.payload;
-  
-
+  var res2 = postback.substring(0, 2);
   // var title = postback.title
   // var payload = postback.payload
 
@@ -126,7 +125,7 @@ function receivedQuickRp(event) {
 
   if(postback){
 
-    sendToPostbackAi(senderID,postback)
+    sendToPostbackAi(senderID,res2)
 
   }
 
@@ -214,9 +213,7 @@ app.post("/webhook/", function (req, res) {
         }else if(messagingEvent.message.quick_reply){
           console.log("Quick-Reply"+messagingEvent.message.quick_reply.payload)
            /// ต้องทำ session อีกทีนึง
-
-           let payloadst = messagingEvent.message.quick_reply.payload
-           var res2 = payloadst.substring(0, 2);
+           receivedQuickRp(messagingEvent)
          
           console.log(res2)
 
