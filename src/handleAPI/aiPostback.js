@@ -3,7 +3,8 @@ const func = require("../views/function.js");
 const handleAiPostback = async (
 
     sender,
-    payload
+    payload,
+    value
 
 ) => {
 
@@ -40,6 +41,9 @@ const handleAiPostback = async (
             func.MessageCancleExamnotif(sender);
             break;
             case "Ex":
+                if(value){
+                    console.log("value:"+value)
+                }
             func.messageExamSchedule(sender);
             break;
 

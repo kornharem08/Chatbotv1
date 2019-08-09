@@ -114,7 +114,8 @@ function receivedMessage(event) {
 function receivedQuickRp(event) {
   var senderID = event.sender.id;
   var postback = event.message.quick_reply.payload;
-  var res2 = postback.substring(0, 2);
+  var value = postback.substring(3)
+  var campagin = postback.substring(0, 2);
   // var title = postback.title
   // var payload = postback.payload
 
@@ -125,7 +126,7 @@ function receivedQuickRp(event) {
 
   if(postback){
 
-    sendToPostbackAi(senderID,res2)
+    sendToPostbackAi(senderID,campagin,value)
 
   }
 
@@ -148,24 +149,24 @@ function receivedPostback(event) {
 
   if(payload){
 
-    sendToPostbackAi(senderID,payload)
+    sendToPostbackAi(senderID,payload,null)
 
   }
 
 
 }
 
-function sendToPostbackAi(senderID,postback){
+function sendToPostbackAi(senderID,postback,value){
 
   sendTypingOn(senderID)
-  handlePostback(senderID,postback)
+  handlePostback(senderID,postback,value)
 }
 
 
-function handlePostback(senderID,postback){
+function handlePostback(senderID,postback,value){
 
   sendTypingOff(senderID)
-  handlePb.handleAiPostback(senderID,postback)
+  handlePb.handleAiPostback(senderID,postback,value)
 }
 
 
