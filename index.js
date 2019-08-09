@@ -13,6 +13,7 @@ const func = require("./src/views/function.js");
 const notification = require("./src/helper/notification");
 const cors = require('cors');
 //const assets = require("./src/assets");
+<<<<<<< HEAD
 const multer = require('multer');
 <<<<<<< HEAD
 const upload = multer();
@@ -20,6 +21,18 @@ const upload = multer();
 const upload =  multer({ dest: '.src/helper/uploads' });
 >>>>>>> ca1ae2a3a8e3e4f5948904ec59a76b1b70153d55
 
+=======
+const multer  = require('multer')
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+      cb(null, './src/tmp/uploads')
+  },
+  filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now()+'.jpg')
+  }
+})
+const upload = multer({storage: storage})
+>>>>>>> cc56a066bb7d5e37c2b1849df3faf9b1a28a7202
 
 
 app.use(express.static("public"));
@@ -221,8 +234,8 @@ app.post("/webhook/", function (req, res) {
 app.post("/uploadImg/",upload.any(), function (req, res) {
   
   console.log(req.body);
-  console.log(req.files);
-  var imagePath = req.files
+  console.log(req.files)
+  
   //test
   // Make sure this is a page subscription
   // if (data.object == "page") {
