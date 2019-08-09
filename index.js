@@ -192,8 +192,9 @@ app.post("/webhook/", function (req, res) {
            /// ต้องทำ session อีกทีนึง
 
            let payloadst = messagingEvent.message.quick_reply.payload
-           let res = payloadst.substring(3);
-          console.log(res)
+           var res2 = payloadst.substring(0, 2);
+         
+          console.log(res2)
 
 
         }else if (messagingEvent.message) {
