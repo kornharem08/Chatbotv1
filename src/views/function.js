@@ -53,7 +53,7 @@ const btnMessageclassEx = async (sender) => {
 
 const messageExSc = async (sender) => {
 
-  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "test", null), fb.quickreply("1/2559", "Ex_1/2559", null), fb.quickreply("2/2559", "Ex_2/2559", null), fb.quickreply("3/2559", "Ex_3/2559", null)])
+  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "test", null), fb.quickreply("1/2559", '{ "campagin":"Ex_First", "data":"1/2559"}', null), fb.quickreply("2/2559", "Ex_2/2559", null), fb.quickreply("3/2559", "Ex_3/2559", null)])
   await sendQuickReply(sender, replies);
 
 }
