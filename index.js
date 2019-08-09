@@ -213,7 +213,7 @@ app.post("/webhook/", function (req, res) {
         }else if(messagingEvent.message.quick_reply){
           console.log("Quick-Reply"+messagingEvent.message.quick_reply.payload)
            /// ต้องทำ session อีกทีนึง
-           receivedQuickRp(messagingEvent)
+           receivedQuickRp(messagingEvent.message)
          
           console.log(res2)
 
