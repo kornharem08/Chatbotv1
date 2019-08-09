@@ -188,7 +188,14 @@ app.post("/webhook/", function (req, res) {
         if(messagingEvent.postback){
           receivedPostback(messagingEvent)
         }else if(messagingEvent.message.quick_reply){
-          console.log("Quick-Reply"+messagingEvent.message.quick_reply.payload) /// ต้องทำ session อีกทีนึง
+          console.log("Quick-Reply"+messagingEvent.message.quick_reply.payload)
+           /// ต้องทำ session อีกทีนึง
+
+           let payloadst = messagingEvent.message.quick_reply.payload
+           let res = payloadst.substring(3);
+          console.log(res)
+
+
         }else if (messagingEvent.message) {
           receivedMessage(messagingEvent);
         } else {
