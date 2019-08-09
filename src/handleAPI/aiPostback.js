@@ -42,7 +42,9 @@ const handleAiPostback = async (
             break;
             case "Ex":
                 if(value){
-                    console.log("value:"+value)
+                    
+                    localStorage.setItem('Ex_value',value)
+                    console.log("value:"+localStorage.getItem('Ex_value'))
                 }
             func.messageExamSchedule(sender);
             break;
