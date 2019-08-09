@@ -129,7 +129,6 @@ function receivedQuickRp(event) {
 
   }
 
-
 }
 
 

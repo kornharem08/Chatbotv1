@@ -94,7 +94,7 @@ const MessageCancleExamnotif = async (sender) => {
 
 const messageExamSchedule = async (sender) => {
 
-  let replies = fb.quickreplyTemplate("Please select Examination Schedule", [fb.quickreply("<< Back", "test", null), fb.quickreply("Midterm", "test", null), fb.quickreply("Final", "test", null)])
+  let replies = fb.quickreplyTemplate("Please select Examination Schedule", [ fb.quickreply("Midterm", "Ex_M", null), fb.quickreply("Final", "Ex_F", null)])
   await sendQuickReply(sender, replies);
 
 
