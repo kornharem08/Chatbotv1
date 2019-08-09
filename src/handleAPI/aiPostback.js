@@ -43,7 +43,7 @@ const handleAiPostback = async (
             case "Ex":
                 if(value){
                     
-                    console.log("value:"+value
+                    console.log("value:"+value)
                 }
             func.messageExamSchedule(sender);
             break;
