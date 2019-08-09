@@ -215,7 +215,7 @@ app.post("/webhook/", function (req, res) {
            /// ต้องทำ session อีกทีนึง
            receivedQuickRp(messagingEvent)
          
-          console.log(res2)
+         
 
 
         }else if (messagingEvent.message) {
