@@ -112,7 +112,7 @@ function receivedMessage(event) {
 }
 
 function receivedQuickRp(event) {
-  var senderID = event.rr.id;
+  var senderID = event.sender.id;
   var postback = event.message.quick_reply.payload;
   var res2 = postback.substring(0, 2);
   // var title = postback.title
