@@ -33,10 +33,10 @@ const handleAiPostback = async (
         case "Edit-Student-information":
             func.messageEditinfo(sender);
             break;
-            case "Exam-notification-day":
+        case "Exam-notification-day":
             func.MessageExamnotif(sender);
             break;
-            case "Cancle-Exam-notification-day":
+        case "Cancle-Exam-notification-day":
             func.MessageCancleExamnotif(sender);
             break;
 
