@@ -53,7 +53,7 @@ const btnMessageclassEx = async (sender) => {
 
 const messageExSc = async (sender) => {
 
-  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "test", null), fb.quickreply("1/2559", "test", null), fb.quickreply("2/2559", "test", null), fb.quickreply("1/2560", "test", null), fb.quickreply("2/2560", "test", null), fb.quickreply("1/2561", "test", null), fb.quickreply("2/2561", "test", null)])
+  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "test", null), fb.quickreply("1/2559", "Ex_1/2559", null), fb.quickreply("2/2559", "test", null), fb.quickreply("1/2560", "test", null), fb.quickreply("2/2560", "test", null), fb.quickreply("1/2561", "test", null), fb.quickreply("2/2561", "test", null)])
   await sendQuickReply(sender, replies);
 
 
@@ -62,7 +62,6 @@ const messageClassSc = async (sender) => {
 
   let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "test", null), fb.quickreply("1/2559", "test", null), fb.quickreply("2/2559", "test", null), fb.quickreply("1/2560", "test", null), fb.quickreply("2/2560", "test", null), fb.quickreply("1/2561", "test", null), fb.quickreply("2/2561", "test", null)])
   await sendQuickReply(sender, replies);
-
 
 }
 
@@ -90,6 +89,14 @@ const MessageCancleExamnotif = async (sender) => {
   let Message = "Cancle Exam notification day Successfully"
 
   await sendTextMessage(sender, Message)
+
+
+}
+
+const messageExamSchedule = async (sender) => {
+
+  let replies = fb.quickreplyTemplate("Please select Examination Schedule", [fb.quickreply("<< Back", "test", null), fb.quickreply("Midterm", "test", null), fb.quickreply("Final", "test", null)])
+  await sendQuickReply(sender, replies);
 
 
 }
@@ -183,7 +190,7 @@ module.exports = {
   messageClassSc,
   messageEditinfo,
   MessageExamnotif,
-  MessageCancleExamnotif
-
+  MessageCancleExamnotif,
+  messageExamSchedule
 }
 

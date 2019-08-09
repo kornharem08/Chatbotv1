@@ -15,7 +15,7 @@ const cors = require('cors');
 //const assets = require("./src/assets");
 const multer = require('multer');
 const upload = multer();
-app.use(multer());
+
 
 
 app.use(express.static("public"));
@@ -194,7 +194,7 @@ app.post("/webhook/", function (req, res) {
           receivedPostback(messagingEvent)
         }else if(messagingEvent.message.quick_reply){
 
-          console.log("Quick-Reply"+messagingEvent.message.quick_reply) /// ต้องทำ session อีกทีนึง
+          console.log("Quick-Reply"+messagingEvent.message.quick_reply.payload) /// ต้องทำ session อีกทีนึง
         }else if (messagingEvent.message) {
           receivedMessage(messagingEvent);
         } else {
