@@ -40,7 +40,7 @@ const handleAiPostback = async (
             func.MessageCancleExamnotif(sender);
             break;
             case "Ex":
-            func.messageExamterm(sender);
+            func.messageExamSchedule(sender);
             break;
 
 
