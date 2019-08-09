@@ -100,6 +100,14 @@ const messageExamSchedule = async (sender) => {
 
 }
 
+const messageExamterm = async (sender) => {
+
+  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "test", null), fb.quickreply("1/2562", "test", null), fb.quickreply("2/2562", "test", null)])
+  await sendQuickReply(sender, replies);
+
+
+}
+
 
 
 const sendGenericMessage = async (recipientId, elements) => {
@@ -190,6 +198,7 @@ module.exports = {
   messageEditinfo,
   MessageExamnotif,
   MessageCancleExamnotif,
-  messageExamSchedule
+  messageExamSchedule,
+  messageExamterm
 }
 

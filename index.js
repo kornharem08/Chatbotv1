@@ -111,10 +111,34 @@ function receivedMessage(event) {
   }
 }
 
+function receivedQuickRp(event) {
+  var senderID = event.sender.id;
+  var postback = event.quick_reply.payload;
+  
+
+  // var title = postback.title
+  // var payload = postback.payload
+
+
+  if (!sessionIds.has(senderID)) {
+    sessionIds.set(senderID, uuid.v1());
+  }
+
+  if(postback){
+
+    sendToPostbackAi(senderID,postback)
+
+  }
+
+
+}
+
+
+
 function receivedPostback(event) {
   var senderID = event.sender.id;
   var postback = event.postback;
-
+  
 
   var title = postback.title
   var payload = postback.payload
