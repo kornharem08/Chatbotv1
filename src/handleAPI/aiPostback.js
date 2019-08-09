@@ -40,7 +40,7 @@ const handleAiPostback = async (
         case "Cancle-Exam-notification-day":
             func.MessageCancleExamnotif(sender);
             break;
-            case "Ex":
+            case "Ex_First":
                 if(value){
                     
                     console.log("value:"+value)
