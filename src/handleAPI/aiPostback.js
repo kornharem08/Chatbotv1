@@ -39,6 +39,9 @@ const handleAiPostback = async (
         case "Cancle-Exam-notification-day":
             func.MessageCancleExamnotif(sender);
             break;
+            case "Ex":
+            func.messageExamSchedule(sender);
+            break;
 
 
 

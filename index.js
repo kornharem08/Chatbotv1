@@ -10,14 +10,29 @@ const api = require("./src/helper/api")
 const handle = require("./src/handleAPI/aiAction");
 const handlePb = require("./src/handleAPI/aiPostback");
 const func = require("./src/views/function.js");
+const notification = require("./src/helper/notification");
+const cors = require('cors');
 //const assets = require("./src/assets");
-
-
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 
-
+var allowedOrigins = ['http://localhost:8080',
+                      'http://yourapp.com'];
+app.use(cors({
+  origin: function(origin, callback){
+    // allow requests with no origin 
+    // (like mobile apps or curl requests)
+    if(!origin) return callback(null, true);
+    if(allowedOrigins.indexOf(origin) === -1){
+      var msg = 'The CORS policy for this site does not ' +
+                'allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
+}));
 
 //app.listen(3000);
 // function setupGetStartedButton(res) {
@@ -96,10 +111,32 @@ function receivedMessage(event) {
   }
 }
 
+function receivedQuickRp(event) {
+  var senderID = event.sender.id;
+  var postback = event.message.quick_reply.payload;
+  var res2 = postback.substring(0, 2);
+  // var title = postback.title
+  // var payload = postback.payload
+
+
+  if (!sessionIds.has(senderID)) {
+    sessionIds.set(senderID, uuid.v1());
+  }
+
+  if(postback){
+
+    sendToPostbackAi(senderID,res2)
+
+  }
+
+}
+
+
+
 function receivedPostback(event) {
   var senderID = event.sender.id;
   var postback = event.postback;
-
+  
 
   var title = postback.title
   var payload = postback.payload
@@ -173,8 +210,13 @@ app.post("/webhook/", function (req, res) {
         if(messagingEvent.postback){
           receivedPostback(messagingEvent)
         }else if(messagingEvent.message.quick_reply){
+          console.log("Quick-Reply"+messagingEvent.message.quick_reply.payload)
+           /// ต้องทำ session อีกทีนึง
+           receivedQuickRp(messagingEvent)
+         
+         
 
-          console.log("Quick-Reply"+messagingEvent.message.quick_reply) /// ต้องทำ session อีกทีนึง
+
         }else if (messagingEvent.message) {
           receivedMessage(messagingEvent);
         } else {
@@ -187,6 +229,26 @@ app.post("/webhook/", function (req, res) {
     res.sendStatus(200);
   }
 });
+
+// app.post("/uploadImg/", upload.any(), (req, res) => {
+//   const formData = req.body;
+//   console.log('form data', formData);
+//   res.sendStatus(200);
+// });
+
+// app.post("/uploadImg/",upload.any(), function (req, res) {
+//   var data = req.body;
+//   console.log("data:"+data)
+ 
+//   //test
+//   // Make sure this is a page subscription
+//   // if (data.object == "page") {
+   
+//     // Assume all went well.
+//     // You must send back a 200, within 20 seconds
+//     res.sendStatus(200);
+//   //}
+// });
 
 const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
   language: "th",
@@ -259,42 +321,6 @@ const sendTypingOff = (recipientId) => {
   api.callSendAPI(messageData);
 }
 
-const exampleWebview = async (recipientId, messageForm) => {
-  var messageData = {
-    recipient: {
-      id: recipientId
-    },
-    message: {
-      attachment: {
-        type: "template",
-        payload: {
-          template_type: "button",
-          text: "OK, let's set your room preferences so I won't need to ask for them in the future.",
-          buttons: messageForm
-        }
-      }
-    }
-
-  };
-  await api.callSendAPI(messageData);
-}
-
-const information = async (recipientId) => { ///ค่อยปรับปรุงเป็นฟังก์ชั่นรูปแบบที่เหมาะสม
-
-  var infoBase = {}
-  const url = "https://graph.facebook.com/" + recipientId + "?fields=first_name,last_name,profile_pic&access_token=" + config.FB_PAGE_TOKEN;
-  await axios.get(url)
-    .then(function (response) {
- 
-        infoBase = response.data
-
-    })
-    .catch(function (error) {
-      console.log(error.response.headers);
-    });
-    return infoBase;
-
-}
 
 
 var server = app.listen(process.env.PORT || 5000, function () {
