@@ -1,5 +1,5 @@
 const func = require("../views/function.js");
-
+var testval1 
 const handleAiPostback = async (
 
     sender,
@@ -40,16 +40,18 @@ const handleAiPostback = async (
         case "Cancle-Exam-notification-day":
             func.MessageCancleExamnotif(sender);
             break;
-            case "Ex_First":
+        case "Ex_First":
                 if(value){
-                    
+                    testval1 = value
                     console.log("value:"+value)
                 }
             func.messageExamSchedule(sender);
             break;
-
-
-
+        case "Ex_Second":
+            if(value){
+                console.log("testvalue1:"+testval1)
+                console.log("value:"+value)
+            }
         default:
 
 
