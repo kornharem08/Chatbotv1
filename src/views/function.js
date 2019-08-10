@@ -61,6 +61,11 @@ const quickreplyGradeGPATerm = async (sender) => {
   await sendQuickReply(sender, replies);
 }
 
+const btnGradeGPAWebview = async (sender) => {
+  let btnMessage = fb.buttonsTemplate("Click to view Grade/GPA", [ fb.buttonsURL(urlweb.sisurl, "View Grade/GPA"), fb.buttons("Back", "MainMenu_Payload")])
+  await sendBtnMessage(sender, btnMessage)
+}
+
 const messageExSc = async (sender) => {
 
   let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "test", null), fb.quickreply("1/2559", '{ "campagin":"Ex_First", "data":"1/2559"}', null), fb.quickreply("2/2559", '{ "campagin":"Ex_First", "data":"2/2559"}', null), fb.quickreply("3/2559", "Ex_3/2559", null)])
@@ -210,6 +215,7 @@ module.exports = {
   messageExamSchedule,
   messageExamScheduleWeb,
   quickreplyGradeGPAsemester,
-  quickreplyGradeGPATerm
+  quickreplyGradeGPATerm,
+  btnGradeGPAWebview
 }
 

@@ -58,6 +58,9 @@ const handleAiPostback = async (
         case "Grade_Semester_quickreply":
             func.quickreplyGradeGPATerm(sender);
             break;
+        case "GradeGPA_Term":
+            func.btnGradeGPAWebview(sender);
+            break;
         default:
 
 
