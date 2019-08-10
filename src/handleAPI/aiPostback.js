@@ -50,6 +50,7 @@ const handleAiPostback = async (
             if(value){
                 console.log("value:"+value)
             }
+            func.messageExamScheduleWeb(sender);
         default:
 
 

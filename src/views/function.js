@@ -100,6 +100,12 @@ const messageExamSchedule = async (sender) => {
 
 }
 
+const messageExamScheduleWeb = async (sender) => {
+  let btnMessage = fb.buttonsTemplate("Click to see Examination Schedule", [ fb.buttonsURL(urlweb.sisurl, "View Examination Schedule"), fb.buttons("Back", "back")])
+
+  await sendBtnMessage(sender, btnMessage)
+}
+
 
 
 
@@ -191,6 +197,7 @@ module.exports = {
   messageEditinfo,
   MessageExamnotif,
   MessageCancleExamnotif,
-  messageExamSchedule
+  messageExamSchedule,
+  messageExamScheduleWeb
 }
 
