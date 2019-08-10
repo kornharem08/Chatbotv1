@@ -38,8 +38,8 @@ const Messageinfo = async (sender) => {
 }
 const messageGradeGPA = async (sender) => {
 
-  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "test", null), fb.quickreply("1/2559", "test", null), fb.quickreply("2/2559", "test", null), fb.quickreply("1/2560", "test", null), fb.quickreply("2/2560", "test", null), fb.quickreply("1/2561", "test", null), fb.quickreply("2/2561", "test", null)])
-  await sendQuickReply(sender, replies);
+  let btnMessage = fb.quickreplyTemplate("Select view Semester/Year or view all", [fb.quickreply("<< Back", "MainMenu_Payload", null), fb.buttons("Select Semester/Year", "GradeGPA_Semester") , fb.buttons("View All", "GradeGPA_ViewAll")])
+  await sendBtnMessage(sender, btnMessage);
 
 }
 
@@ -49,6 +49,16 @@ const btnMessageclassEx = async (sender) => {
 
   await sendBtnMessage(sender, btnMessage)
 
+}
+
+const quickreplyGradeGPAsemester = async (sender) =>{
+  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "test", null), fb.quickreply("1/2559", '{ "campagin":"Grade_Semester", "data":"1/2559"}', null), fb.quickreply("2/2559", '{ "campagin":"Grade_Semester", "data":"2/2559"}', null), fb.quickreply("3/2559", '{ "campagin":"Grade_Semester", "data":"2/2559"}', null)])
+  await sendQuickReply(sender, replies);
+}
+
+const quickreplyGradeGPATerm = async (sender) => {
+  let replies = fb.quickreplyTemplate("Please select Term", [ fb.quickreply("Midterm", '{ "campagin":"Grade_Term", "data":"M"}', null), fb.quickreply("Final", '{ "campagin":"Grade_Term", "data":"F"}', null)])
+  await sendQuickReply(sender, replies);
 }
 
 const messageExSc = async (sender) => {
@@ -198,6 +208,8 @@ module.exports = {
   MessageExamnotif,
   MessageCancleExamnotif,
   messageExamSchedule,
-  messageExamScheduleWeb
+  messageExamScheduleWeb,
+  quickreplyGradeGPAsemester,
+  quickreplyGradeGPATerm
 }
 
