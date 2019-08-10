@@ -52,10 +52,10 @@ const handleAiPostback = async (
             }
             func.messageExamScheduleWeb(sender);
             break;
-        case "Grade_Semester":
+        case "GradeGPA_Semester":
             func.quickreplyGradeGPAsemester(sender);
             break;
-        case "Grade_Term":
+        case "GradeGPA_ViewAll":
             func.quickreplyGradeGPATerm(sender);
             break;
         default:

@@ -57,7 +57,7 @@ const quickreplyGradeGPAsemester = async (sender) =>{
 }
 
 const quickreplyGradeGPATerm = async (sender) => {
-  let replies = fb.quickreplyTemplate("Please select Term", [ fb.quickreply("Midterm", '{ "campagin":"Grade_Term", "data":"M"}', null), fb.quickreply("Final", '{ "campagin":"Grade_Term", "data":"F"}', null)])
+  let replies = fb.quickreplyTemplate("Please select Term", [ fb.quickreply("Midterm", '{ "campagin":"GradeGPA_Term", "data":"M"}', null), fb.quickreply("Final", '{ "campagin":"GradeGPA_Term", "data":"F"}', null)])
   await sendQuickReply(sender, replies);
 }
 
