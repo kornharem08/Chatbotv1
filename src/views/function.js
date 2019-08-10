@@ -38,8 +38,8 @@ const Messageinfo = async (sender) => {
 }
 const messageGradeGPA = async (sender) => {
 
-  let btnMessage = fb.quickreplyTemplate("Select view Semester/Year or view all", [fb.quickreply("<< Back", "MainMenu_Payload", null), fb.buttons("Select Semester/Year", "GradeGPA_Semester") , fb.buttons("View All", "GradeGPA_ViewAll")])
-  await sendBtnMessage(sender, btnMessage);
+  let replies = fb.quickreplyTemplate("Select view Semester/Year or view all", [fb.quickreply("<< Back", "MainMenu_Payload", null), fb.buttons("Select Semester/Year", "GradeGPA_Semester") , fb.buttons("View All", "GradeGPA_ViewAll")])
+  await sendQuickReply(sender, replies);
 
 }
 
