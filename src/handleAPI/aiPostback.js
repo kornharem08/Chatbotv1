@@ -51,6 +51,9 @@ const handleAiPostback = async (
                 console.log("value:"+value)
             }
             func.messageExamScheduleWeb(sender);
+
+        case "Backto_MainMenu":
+            func.mainmenu(sender);
         default:
 
 
