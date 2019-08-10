@@ -1,5 +1,4 @@
 const func = require("../views/function.js");
-var testval1 
 const handleAiPostback = async (
 
     sender,
@@ -49,7 +48,6 @@ const handleAiPostback = async (
             break;
         case "Ex_Second":
             if(value){
-                console.log("testvalue1:"+testval1)
                 console.log("value:"+value)
             }
         default:
