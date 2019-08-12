@@ -13,6 +13,10 @@ const func = require("./src/views/function.js");
 const notification = require("./src/helper/notification");
 const cors = require('cors');
 //const assets = require("./src/assets");
+const {google} = require('googleapis');
+const keys = require('./src/helper/keyapi/SISCONNECT-0779c8454af1.json')
+
+
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -33,6 +37,26 @@ app.use(cors({
     return callback(null, true);
   }
 }));
+
+const client = new google.auth.JWT(
+
+  keys.client_email,
+  null,
+  keys.private_key,
+  ['https://www.googleapis.com/auth/spreadsheets']
+
+);
+
+client.authorize(function(err,tokens){
+
+  if(err){
+    console.log(err);
+    return;
+  } else{
+    console.log('Connected!');
+  }
+
+});
 
 //app.listen(3000);
 // function setupGetStartedButton(res) {
