@@ -38,11 +38,11 @@ let redisObj2 = [
   }
 ]
 
-redis.mset("set", {name:"jack"});
+redis.mset({name:"jack"});
 // redis.sadd("set", redisObj2);
-redis.get("set", function(err,result) {
+redis.get("name", function(err,result) {
   
-    console.log("result:"+result.name)
+    console.log("result:"+result)
     
  
   
