@@ -16,6 +16,15 @@ const cors = require('cors');
 const {google} = require('googleapis');
 const keys = require('./src/helper/keyapi/SISCONNECT-0779c8454af1.json')
 
+////////////////////////////////// Redis
+var Redis = require('ioredis');
+var redis = new Redis(process.env.REDIS_URL);
+
+redis.set("foo", "bar");
+redis.get("foo", function(err, result) {
+  console.log("testRedis:"+result);
+});
+redis.del("foo");
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -46,7 +55,7 @@ const client = new google.auth.JWT(
   ['https://www.googleapis.com/auth/spreadsheets']
 
 );
-
+////////////////////////////////////// ส่วนของ Google Sheet
 client.authorize(function(err,tokens){
 
   if(err){
@@ -68,6 +77,8 @@ async function gsrun(cl){
   let data = await gsapi.spreadsheets.values.get(opt);
   console.log("datafromGoogleSheet:"+data.data.values)
 }
+
+///////////////////////////////////// ^^^ Google Sheet
 
 //app.listen(3000);
 // function setupGetStartedButton(res) {
