@@ -20,8 +20,16 @@ const keys = require('./src/helper/keyapi/SISCONNECT-0779c8454af1.json')
 var Redis = require('ioredis');
 var redis = new Redis(process.env.REDIS_URL);
 
+let redisObj = [
+  {
+    name:"Jack"
+  },
+  {
+    name:"Bell"
+  }
+]
 
-redis.sadd("set", [1, 3, 5, 7]);
+redis.sadd("set", redisObj);
 redis.smembers("set", function(err, result) {
   console.log("testRedis:"+result);
 });
