@@ -38,7 +38,14 @@ let redisObj2 = [
   }
 ]
 
-redis.sadd("set", redisObj);
+redis.sadd("set", [
+  {
+    name:"Jack"
+  },
+  {
+    name:"Bell"
+  }
+]);
 // redis.sadd("set", redisObj2);
 redis.smembers("set", function(err, result) {
   
