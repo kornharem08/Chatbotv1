@@ -43,7 +43,7 @@ redis.sadd("set", [{name:"jack"}]);
 redis.smembers("set", function(err, result) {
   
   result.forEach(element => {
-    console.log("result:"+element[0].name)
+    console.log("result:"+JSON.stringify(element[0].name))
     
   });
   
