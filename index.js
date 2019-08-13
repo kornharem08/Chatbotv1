@@ -42,7 +42,7 @@ redis.mset("set", {name:"jack"});
 // redis.sadd("set", redisObj2);
 redis.get("set", function(err,result) {
   
-    console.log("result:"+result)
+    console.log("result:"+result.name)
     
  
   
