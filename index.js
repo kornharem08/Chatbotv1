@@ -42,10 +42,9 @@ redis.sadd("set", [{name:"jack"}]);
 // redis.sadd("set", redisObj2);
 redis.smembers("set", function(err, result) {
   
-  result.forEach(element => {
     console.log("result:"+Object.keys(element))
     
-  });
+ 
   
 });
 redis.del("set");
