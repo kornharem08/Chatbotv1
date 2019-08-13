@@ -41,9 +41,7 @@ let redisObj2 = [
 redis.sadd("set", redisObj);
 // redis.sadd("set", redisObj2);
 redis.smembers("set", function(err, result) {
-  result.forEach(element => {
-    console.log("testRedis:"+element[0].name);
-  });
+  result[0].name
   
 });
 redis.del("set");
