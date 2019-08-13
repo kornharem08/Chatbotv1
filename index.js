@@ -28,7 +28,7 @@ let redisObj = [
     name:"Bell"
   }
 ]
-console.log("redisobj:"+Object.keys(redisObj))
+console.log("redisobj:"+Object.keys(redisObj[0]))
 let redisObj2 = [
   {
     name:"Korn"
@@ -42,7 +42,7 @@ redis.sadd("set", [{name:"jack"}]);
 // redis.sadd("set", redisObj2);
 redis.smembers("set", function(err, result) {
   
-    console.log("result:"+Object.keys(result))
+    console.log("result:"+Object.keys(result[0]))
     
  
   
