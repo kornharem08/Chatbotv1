@@ -42,7 +42,7 @@ redis.sadd("set", [{name:"jack"}]);
 // redis.sadd("set", redisObj2);
 redis.smembers("set", function(err, result) {
   
-    console.log("result:"+Object.keys(result[0]))
+    console.log("result:"+Object.keys(result[0][0]))
     
  
   
