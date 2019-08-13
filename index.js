@@ -38,12 +38,12 @@ let redisObj2 = [
   }
 ]
 
-redis.multi().set("foo",redisObj);
+redis.sadd("set", [{name:"jack"}]);
 // redis.sadd("set", redisObj2);
-redis.exec("foo", function(err, result) {
+redis.smembers("set", function(err, result) {
   
   result.forEach(element => {
-    console.log("result:"+JSON.stringify(element[0].name))
+    console.log("result:"+Object.keys(element))
     
   });
   
