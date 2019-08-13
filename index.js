@@ -38,18 +38,11 @@ let redisObj2 = [
   }
 ]
 
-redis.sadd("set", [
-  {
-    name:"Jack"
-  },
-  {
-    name:"Bell"
-  }
-]);
+redis.sadd("set", ["jack"]);
 // redis.sadd("set", redisObj2);
 redis.smembers("set", function(err, result) {
   
-  console.log("result:"+JSON.stringify(result[0].name))
+  console.log("result:"+result[0])
   
 });
 redis.del("set");
