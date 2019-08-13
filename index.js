@@ -42,7 +42,7 @@ redis.sadd("set", redisObj);
 // redis.sadd("set", redisObj2);
 redis.smembers("set", function(err, result) {
   
-  console.log("resule:"+result)
+  console.log("result:"+JSON.stringify(result))
   
 });
 redis.del("set");
