@@ -28,7 +28,7 @@ let redisObj = [
     name:"Bell"
   }
 ]
-console.log("redisobj:"+redisObj[0].name)
+console.log("redisobj:"+Object.keys(redisObj))
 let redisObj2 = [
   {
     name:"Korn"
