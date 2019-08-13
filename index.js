@@ -29,7 +29,17 @@ let redisObj = [
   }
 ]
 
+let redisObj2 = [
+  {
+    name:"Korn"
+  },
+  {
+    name:"Jab"
+  }
+]
+
 redis.sadd("set", redisObj);
+redis.sadd("set", redisObj2);
 redis.smembers("set", function(err, result) {
   console.log("testRedis:"+result);
 });
