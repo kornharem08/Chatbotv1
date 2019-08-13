@@ -40,9 +40,9 @@ let redisObj2 = [
 
 redis.hmset("set", {name:"jack"});
 // redis.sadd("set", redisObj2);
-redis.hmget("set", function(err, result) {
+redis.hmget("set", function(result) {
   
-    console.log("result:"+result.name)
+    console.log("result:"+result)
     
  
   
