@@ -20,23 +20,7 @@ const keys = require('./src/helper/keyapi/SISCONNECT-0779c8454af1.json')
 var Redis = require('ioredis');
 var redis = new Redis(process.env.REDIS_URL);
 
-let redisObj = [
-  {
-    name: "chair",
-    inventory: 5,
-    unit_price: 45.99
-  },
-  {
-    name: "table",
-    inventory: 10,
-    unit_price: 123.75
-  },
-  {
-    name: "sofa",
-    inventory: 2,
-    unit_price: 399.50
-  }
-];
+let redisObj = ["Jack","Bell"];
 
 redis.set("foo", redisObj );
 redis.get("foo", function(err, result) {
