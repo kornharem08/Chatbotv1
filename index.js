@@ -22,7 +22,7 @@ var redis = new Redis(process.env.REDIS_URL);
 
 let redisObj = ["Jack", "Bell", "Korn"]
 
-redis.sadd("foo", redisObj );
+redis.set("foo", ["Jack", "Bell", "Korn"]);
 redis.get("foo", function(err, result) {
   console.log("testRedis:"+result);
 });
