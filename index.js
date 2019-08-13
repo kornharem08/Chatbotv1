@@ -22,7 +22,7 @@ var redis = new Redis(process.env.REDIS_URL);
 
 
 redis.sadd("set", [1, 3, 5, 7]);
-redis.exec("set", function(err, result) {
+redis.smembers("set", function(err, result) {
   console.log("testRedis:"+result);
 });
 redis.del("set");
