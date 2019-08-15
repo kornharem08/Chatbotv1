@@ -62,7 +62,7 @@ const quickreplyGradeGPATerm = async (sender) => {
 }
 
 const btnGradeGPAWebview = async (sender) => {
-  let btnMessage = fb.buttonsTemplate("Click to view Grade/GPA", [ fb.buttonsURL(urlweb.sisurl, "View Grade/GPA"), fb.buttons("Back", "MainMenu_Payload")])
+  let btnMessage = fb.buttonsTemplate("Click to view Grade/GPA", [ fb.buttonsURL(urlweb.sisurl_grade, "View Grade/GPA"), fb.buttons("Back", "MainMenu_Payload")])
   await sendBtnMessage(sender, btnMessage)
 }
 
@@ -116,7 +116,7 @@ const messageExamSchedule = async (sender) => {
 }
 
 const messageExamScheduleWeb = async (sender) => {
-  let btnMessage = fb.buttonsTemplate("Click to view Examination Schedule", [ fb.buttonsURL(urlweb.sisurl, "View Exam Schedule"), fb.buttons("Back", "MainMenu_Payload")])
+  let btnMessage = fb.buttonsTemplate("Click to view Examination Schedule", [ fb.buttonsURL(urlweb.sisurl_exam, "View Exam Schedule"), fb.buttons("Back", "MainMenu_Payload")])
 
   await sendBtnMessage(sender, btnMessage)
 }
