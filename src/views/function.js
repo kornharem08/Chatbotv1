@@ -19,7 +19,7 @@ const mainmenu = async (sender) => {
 }
 const btnMessage = async (sender) => {
 
-  let btnMessage = fb.buttonsTemplate("What do you want to do next?", [fb.buttons("Personal information", "Personal-information"), fb.buttons("Edit Personal information", "Edit-Student-information"), fb.buttons("Back", "back")])
+  let btnMessage = fb.buttonsTemplate("What do you want to do next?", [fb.buttons("Personal information", "Personal-information"), fb.buttons("Edit Personal information", "Edit-Student-information"), fb.buttons("Back", "MainMenu_Payload")])
 
 
 
@@ -45,14 +45,14 @@ const messageGradeGPA = async (sender) => {
 
 const btnMessageclassEx = async (sender) => {
 
-  let btnMessage = fb.buttonsTemplate("What do you want to do next?", [fb.buttons("Class Schedule", "Class-schedule"), fb.buttons("Examination Schedule", "Examination-Schedule"), fb.buttons("Back", "back")])
+  let btnMessage = fb.buttonsTemplate("What do you want to do next?", [fb.buttons("Class Schedule", "Class-schedule"), fb.buttons("Examination Schedule", "Examination-Schedule"), fb.buttons("Back", "MainMenu_Payload")])
 
   await sendBtnMessage(sender, btnMessage)
 
 }
 
 const quickreplyGradeGPAsemester = async (sender) =>{
-  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "test", null), fb.quickreply("1/2559", '{ "campagin":"Grade_Semester_quickreply", "data":"1/2559"}', null), fb.quickreply("2/2559", '{ "campagin":"Grade_Semester_quickreply", "data":"2/2559"}', null), fb.quickreply("3/2559", '{ "campagin":"Grade_Semester_quickreply", "data":"2/2559"}', null)])
+  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "MainMenu_Payload", null), fb.quickreply("1/2559", '{ "campagin":"Grade_Semester_quickreply", "data":"1/2559"}', null), fb.quickreply("2/2559", '{ "campagin":"Grade_Semester_quickreply", "data":"2/2559"}', null), fb.quickreply("3/2559", '{ "campagin":"Grade_Semester_quickreply", "data":"2/2559"}', null)])
   await sendQuickReply(sender, replies);
 }
 
@@ -68,13 +68,13 @@ const btnGradeGPAWebview = async (sender) => {
 
 const messageExSc = async (sender) => {
 
-  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "test", null), fb.quickreply("1/2559", '{ "campagin":"Ex_First", "data":"1/2559"}', null), fb.quickreply("2/2559", '{ "campagin":"Ex_First", "data":"2/2559"}', null), fb.quickreply("3/2559", "Ex_3/2559", null)])
+  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "MainMenu_Payload", null), fb.quickreply("1/2559", '{ "campagin":"Ex_First", "data":"1/2559"}', null), fb.quickreply("2/2559", '{ "campagin":"Ex_First", "data":"2/2559"}', null), fb.quickreply("3/2559", "Ex_3/2559", null)])
   await sendQuickReply(sender, replies);
 
 }
 const messageClassSc = async (sender) => {
 
-  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "test", null), fb.quickreply("1/2559", "test", null), fb.quickreply("2/2559", "test", null), fb.quickreply("1/2560", "test", null), fb.quickreply("2/2560", "test", null), fb.quickreply("1/2561", "test", null), fb.quickreply("2/2561", "test", null)])
+  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "MainMenu_Payload", null), fb.quickreply("1/2559", "test", null), fb.quickreply("2/2559", "test", null), fb.quickreply("1/2560", "test", null), fb.quickreply("2/2560", "test", null), fb.quickreply("1/2561", "test", null), fb.quickreply("2/2561", "test", null)])
   await sendQuickReply(sender, replies);
 
 }
@@ -82,7 +82,7 @@ const messageClassSc = async (sender) => {
 const messageEditinfo = async (sender) => {
   let Message = "Name\nTanakorn Pitakchaichan\n======================\nPhone number\n090-252812\n======================"
 
-  let replies = fb.quickreplyTemplate("Please select Menu Edit", [fb.quickreply("<< Back", "test", null), fb.quickreply("Email", "test", null), fb.quickreply("Phone number", "test", null)])
+  let replies = fb.quickreplyTemplate("Please select Menu Edit", [fb.quickreply("<< Back", "MainMenu_Payload", null), fb.quickreply("Email", "test", null), fb.quickreply("Phone number", "test", null)])
 
   await sendTextMessage(sender, Message)
   await sendQuickReply(sender, replies);
