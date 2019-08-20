@@ -38,12 +38,12 @@ let redisObj2 = [
   }
 ]
 
-redis.mset(new Map([["5930213055", "{name:test}"],["5930213034","v4"]]));
+redis.mset(new Map([["5930213055", `{name:"test"}`],["5930213034","v4"]]));
 // redis.sadd("set", redisObj2);
 redis.get("5930213055", function(err,result) {
   
   
-    console.log("result:"+result)
+    console.log("result:"+JSON.parse(result))
 
     
     
