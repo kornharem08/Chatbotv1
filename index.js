@@ -38,7 +38,7 @@ let redisObj2 = [
   }
 ]
 
-redis.mset([{5930213055:"jack",last:"last"},{name:"soap",last:"laststand"}]);
+redis.mset(new Map([["5930213055", "v3"]]));
 // redis.sadd("set", redisObj2);
 redis.get("5930213055", function(err,result) {
   
