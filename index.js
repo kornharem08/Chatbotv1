@@ -54,8 +54,8 @@ redis.del("set");
 
 function testObject(result){
 
-  let resultset = result
-  console.log("resultTest:"+result)
+  let resultset = JSON.parse(result)
+  console.log("resultTest:"+resultset)
 }
 
 app.use(express.static("public"));
