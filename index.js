@@ -54,7 +54,7 @@ redis.del("set");
 
 function testObject(result){
 
-  let resultset = JSON.parse(result)
+  let resultset = result
   console.log("resultTest:"+result)
 }
 
