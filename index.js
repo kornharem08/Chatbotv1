@@ -43,7 +43,7 @@ redis.mset(new Map([["5930213055", {name:"test"}],["5930213034","v4"]]));
 redis.get("5930213055", function(err,result) {
   
   
-    console.log("result:"+Object.keys(result))
+    console.log("result:"+Object.keys(result[0]))
 
     
     
