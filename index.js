@@ -38,7 +38,7 @@ let redisObj2 = [
   }
 ]
 
-redis.mset([{name:"jack",last:"last"}]);
+redis.mset([{name:"jack",last:"last"},{name:"soap",last:"laststand"}]);
 // redis.sadd("set", redisObj2);
 redis.get("name", function(err,result) {
   
