@@ -65,10 +65,18 @@ const handleAiPostback = async (
             break;
         case "GradeGPA_Term":
                 if(value){
+                    let data
                 redis.get(`${sender}`, function(err,result) {  
-                    let data = JSON.parse(result)
+                    data = JSON.parse(result)
                     data.term = `${value}`
                     console.log("result:"+JSON.stringify(data))
+                    
+                });
+                redis.mset(new Map([[`${sender}`, JSON.stringify(data)]]));
+
+                redis.get(`${sender}`, function(err,result) {  
+                    
+                    console.log("result2:"+result)
                     
                 });
             }
