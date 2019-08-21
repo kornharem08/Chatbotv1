@@ -61,7 +61,7 @@ const handleAiPostback = async (
             if(value){
                 redis.mset(new Map([[`${sender}`, `{"semester":"${value}"}`]]));
                 redis.get(`${sender}`, function(err,result) {  
-                     console.log("result:"+result)
+                     console.log("result:"+JSON.parse(result))
                     
                  });
                 func.quickreplyGradeGPATerm(sender);
