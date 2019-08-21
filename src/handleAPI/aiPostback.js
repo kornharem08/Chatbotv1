@@ -66,7 +66,7 @@ const handleAiPostback = async (
         case "GradeGPA_Term":
                 if(value){
                     let data
-                redis.get(`${sender}`, function(err,result) {  
+               await redis.get(`${sender}`, function(err,result) {  
                     data = JSON.parse(result)
                     data.term = `${value}`
                     let dataset = JSON.stringify(data)
@@ -75,7 +75,7 @@ const handleAiPostback = async (
                 });
              //   redis.mset(new Map([[`${sender}`, data]]));
 
-                redis.get(`${sender}`, function(err,result) {  
+              await redis.get(`${sender}`, function(err,result) {  
                     
                     console.log("result2:"+result)
                     
