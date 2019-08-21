@@ -2,6 +2,7 @@ const api = require('../helper/api.js');
 const fb = require("../helper/fbTemplate");
 const Dict = require("../helper/dictionary");
 const urlweb = require("../helper/webview.js");
+const Redis = require('ioredis');
 const redis = new Redis(process.env.REDIS_URL);
 
 const mainmenu = async (sender) => {
