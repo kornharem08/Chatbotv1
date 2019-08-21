@@ -2,7 +2,7 @@ const sisurl = 'https://webviews-vue1.herokuapp.com/'
 
 exports.sisurl = sisurl
 
-const sisurl_grade = 'https://webviews-vue1.herokuapp.com/Grade'
+const sisurl_grade = 'https://webviews-vue1.herokuapp.com/getgrade'
 
 exports.sisurl_grade = sisurl_grade
 

@@ -62,7 +62,14 @@ const quickreplyGradeGPATerm = async (sender) => {
 }
 
 const btnGradeGPAWebview = async (sender) => {
-  let btnMessage = fb.buttonsTemplate("Click to view Grade/GPA", [ fb.buttonsURL(urlweb.sisurl_grade, "View Grade/GPA"), fb.buttons("Back", "MainMenu_Payload")])
+  let term = redis.get(`${sender}`, function(err,result) {  
+    
+    let data = JSON.parse(result)
+    
+    return data.term
+    
+});
+  let btnMessage = fb.buttonsTemplate("Click to view Grade/GPA", [ fb.buttonsURL(`${urlweb.sisurl_grade}/5930213034/2561/2/${term}`, "View Grade/GPA"), fb.buttons("Back", "MainMenu_Payload")])
   await sendBtnMessage(sender, btnMessage)
 }
 

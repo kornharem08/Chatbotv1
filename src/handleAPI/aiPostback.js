@@ -77,7 +77,7 @@ const handleAiPostback = async (
 
               await redis.get(`${sender}`, function(err,result) {  
                     
-                    console.log("result2:"+result.semester)
+                    console.log("result2:"+result)
                     
                 });
             }
