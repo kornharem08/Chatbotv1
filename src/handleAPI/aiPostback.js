@@ -72,7 +72,7 @@ const handleAiPostback = async (
                     console.log("result:"+JSON.stringify(data))
                     
                 });
-                redis.mset(new Map([[`${sender}`, JSON.stringify(data)]]));
+                redis.mset(new Map([[`${sender}`, data]]));
 
                 redis.get(`${sender}`, function(err,result) {  
                     
