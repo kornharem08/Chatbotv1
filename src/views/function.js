@@ -67,12 +67,13 @@ const btnGradeGPAWebview = async (sender) => {
   let term  
  await redis.get(`${sender}`, function(err,result) {  
     
-    let data =result
-    console.log("data:"+data)
+    let data = JSON.parse(result)
+    console.log("data:"+data.term)
+    term = data.term
     
 });
- // let btnMessage = await fb.buttonsTemplate("Click to view Grade/GPA", [ fb.buttonsURL(`${urlweb.sisurl_grade}/5930213034/2561/2/${term}`, "View Grade/GPA"), fb.buttons("Back", "MainMenu_Payload")])
- // await sendBtnMessage(sender, btnMessage)
+  let btnMessage = await fb.buttonsTemplate("Click to view Grade/GPA", [ fb.buttonsURL(`${urlweb.sisurl_grade}/5930213034/2561/2/${term}`, "View Grade/GPA"), fb.buttons("Back", "MainMenu_Payload")])
+  await sendBtnMessage(sender, btnMessage)
 }
 
 const messageExSc = async (sender) => {
