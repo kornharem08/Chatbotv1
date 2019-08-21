@@ -60,14 +60,17 @@ const handleAiPostback = async (
         case "Grade_Semester_quickreply":
             if(value){
                 redis.mset(new Map([[`${sender}`, `{"semester":"${value}"}`]]));
-                redis.get(`${sender}`, function(err,result) {  
-                     console.log("result:"+JSON.parse(result))
-                    
-                 });
                 func.quickreplyGradeGPATerm(sender);
             }
             break;
         case "GradeGPA_Term":
+                if(value){
+                redis.get(`${sender}`, function(err,result) {  
+                    let data = JSON.parse(result)
+                    console.log("result:"+JSON.stringify(data))
+                    
+                });
+            }
             func.btnGradeGPAWebview(sender);
             break;
         default:
