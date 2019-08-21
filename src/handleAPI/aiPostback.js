@@ -67,6 +67,7 @@ const handleAiPostback = async (
                 if(value){
                 redis.get(`${sender}`, function(err,result) {  
                     let data = JSON.parse(result)
+                    data.term = `${value}`
                     console.log("result:"+JSON.stringify(data))
                     
                 });
