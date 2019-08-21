@@ -70,7 +70,7 @@ const handleAiPostback = async (
                     data = JSON.parse(result)
                     data.term = `${value}`
                     console.log("result:"+JSON.stringify(data))
-                    
+                    redis.mset(new Map([[`${sender}`, data]]));  
                 });
              //   redis.mset(new Map([[`${sender}`, data]]));
 
