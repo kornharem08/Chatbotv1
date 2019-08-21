@@ -55,10 +55,17 @@ const handleAiPostback = async (
             func.messageExamScheduleWeb(sender);
             break;
         case "GradeGPA_Semester":
-            func.quickreplyGradeGPAsemester(sender);
+                func.quickreplyGradeGPAsemester(sender);
             break;
         case "Grade_Semester_quickreply":
-            func.quickreplyGradeGPATerm(sender);
+            if(value){
+                redis.mset(new Map([[`${sender}`, `{"semester":"${value}"}`]]));
+                redis.get(`${sender}`, function(err,result) {  
+                     console.log("result:"+result)
+                    
+                 });
+                func.quickreplyGradeGPATerm(sender);
+            }
             break;
         case "GradeGPA_Term":
             func.btnGradeGPAWebview(sender);

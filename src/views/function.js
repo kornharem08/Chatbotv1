@@ -52,7 +52,7 @@ const btnMessageclassEx = async (sender) => {
 }
 
 const quickreplyGradeGPAsemester = async (sender) =>{
-  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "test", null), fb.quickreply("1/2559", '{ "campagin":"Grade_Semester_quickreply", "data":"1/2559"}', null), fb.quickreply("2/2559", '{ "campagin":"Grade_Semester_quickreply", "data":"2/2559"}', null), fb.quickreply("3/2559", '{ "campagin":"Grade_Semester_quickreply", "data":"2/2559"}', null)])
+  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "test", null), fb.quickreply("1/2559", '{ "campagin":"Grade_Semester_quickreply", "data":"1/2561"}', null), fb.quickreply("2/2559", '{ "campagin":"Grade_Semester_quickreply", "data":"2/2559"}', null), fb.quickreply("3/2559", '{ "campagin":"Grade_Semester_quickreply", "data":"2/2559"}', null)])
   await sendQuickReply(sender, replies);
 }
 
