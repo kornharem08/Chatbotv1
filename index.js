@@ -88,7 +88,7 @@ async function gsrun(cl){
   };
   let data = await gsapi.spreadsheets.values.get(opt);
   
-    console.log("datafromGoogleSheet:"+element)  
+    console.log("datafromGoogleSheet:"+data)  
   
   
 }
