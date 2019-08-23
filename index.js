@@ -87,8 +87,8 @@ async function gsrun(cl){
     range: 'A2:B'
   };
   let data = await gsapi.spreadsheets.values.get(opt);
-  data.quotesArray.forEach(element => {
-    console.log("datafromGoogleSheet:"+element.data.values)  
+  data.forEach(element => {
+    console.log("datafromGoogleSheet:"+element)  
   });
   
 }
