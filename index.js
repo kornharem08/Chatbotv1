@@ -84,7 +84,7 @@ async function gsrun(cl){
   const gsapi = google.sheets({version:'v4', auth: cl});
   const opt = {
     spreadsheetId: '1IfhrtQJX7wY3jpyMqm8Ze7AxIBdJkQPGjptRvxT4h00',
-    range: 'A1:B5'
+    range: 'A1:B'
   };
   let data = await gsapi.spreadsheets.values.get(opt);
   console.log("datafromGoogleSheet:"+data.data.values)
