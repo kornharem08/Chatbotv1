@@ -92,7 +92,7 @@ async function gsrun(cl){
     //console.log("datafromGoogleSheet:"+r[0])
     return r
   })
-  console.log("datafromGoogleSheetNew:"+newDataArray)
+  console.log("datafromGoogleSheetNew:"+newDataArray[0])
   // await checknotiDate(newDataArray)
   
 }
