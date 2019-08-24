@@ -89,10 +89,21 @@ async function gsrun(cl){
   let data = await gsapi.spreadsheets.values.get(opt);
   let dataArray = data.data.values
   let newDataArray = dataArray.map(function(r){
-    console.log("datafromGoogleSheet:"+r[0])
+    //console.log("datafromGoogleSheet:"+r[0])
+    return r
   })
+  console.log("datafromGoogleSheetNew:"+newDataArray)
+  // await checknotiDate(newDataArray)
   
-  
+}
+
+async function checknotiDate(newDataArray){
+
+  let testSender = ["2564108223659354","2797221146971020"]
+  testSender.forEach(element => {
+    func.sendTextMessage(element,)
+  });
+
 }
 
 ///////////////////////////////////// ^^^ Google Sheet
