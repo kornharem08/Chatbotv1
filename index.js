@@ -93,7 +93,7 @@ async function gsrun(cl){
     return r
   })
   console.log("datafromGoogleSheetNew:"+newDataArray[0][0])
-  // await checknotiDate(newDataArray)
+  await checknotiDate(newDataArray[0][0])
   
 }
 
@@ -101,7 +101,7 @@ async function checknotiDate(newDataArray){
 
   let testSender = ["2564108223659354","2797221146971020"]
   testSender.forEach(element => {
-    func.sendTextMessage(element,)
+    func.sendTextMessage(element,newDataArray)
   });
 
 }
