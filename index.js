@@ -101,6 +101,9 @@ async function checknotiDate(dataArray){
   let d = new Date()
   let date = d.getDate()
   let month = d.getMonth()+1
+  if(month < 10){
+    month = `0${month}`
+  }
   let year = d.getFullYear()
   let today = `${date}/${month}/${year}`
   console.log("today:"+today)
