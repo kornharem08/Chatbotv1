@@ -92,16 +92,28 @@ async function gsrun(cl){
     //console.log("datafromGoogleSheet:"+r[0])
     return r
   })
-  console.log("datafromGoogleSheetNew:"+dataArray[0][0])
- // await checknotiDate(newDataArray[0][0])
+ // console.log("datafromGoogleSheetNew:"+dataArray[0][0])
+  await checknotiDate(dataArray)
   
 }
 
-async function checknotiDate(newDataArray){
+async function checknotiDate(dataArray){
+
+  for(let i =0;i<dataArray.length;i++){
+
+    for(let j =0;j<2;j++){
+      console.log("row:"+i+"Value:"+dataArray[i][j])
+    }
+
+  }
+
+}
+
+async function sendnotiMessage(message){
 
   let testSender = ["2564108223659354","2797221146971020"]
   testSender.forEach(element => {
-    func.sendTextMessage(element,newDataArray)
+    func.sendTextMessage(element,message)
   });
 
 }
