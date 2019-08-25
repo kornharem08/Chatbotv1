@@ -98,9 +98,10 @@ async function gsrun(cl){
 }
 
 async function checknotiDate(dataArray){
-  let date = getDate()
-  let month = getMonth() +1
-  let year = getFullYear()
+  let d = new Date()
+  let date = d.getDate()
+  let month = d.getMonth() +1
+  let year = d.getFullYear()
   let today = `${date}/${month}/${year}`
   for(let i =0;i<dataArray.length;i++){
 
