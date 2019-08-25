@@ -98,7 +98,7 @@ async function gsrun(cl){
 }
 
 async function checknotiDate(dataArray){
-  let today = "25/08/62"
+  let today = "25/08/2562"
   for(let i =0;i<dataArray.length;i++){
 
     if(dataArray[i][1]==today){
