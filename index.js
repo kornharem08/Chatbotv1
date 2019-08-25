@@ -100,13 +100,15 @@ async function gsrun(cl){
 async function checknotiDate(dataArray){
   let d = new Date()
   let date = d.getDate()
-  let month = d.getMonth() +1
+  let month = d.getMonth()+1
   let year = d.getFullYear()
   let today = `${date}/${month}/${year}`
+  console.log("today:"+today)
   for(let i =0;i<dataArray.length;i++){
 
     if(dataArray[i][1]==today){
-      sendnotiMessage(dataArray[i][0])
+      //sendnotiMessage(dataArray[i][0])
+      console.log("sendnotMessage:"+dataArray[i][0])
     }
     
     
