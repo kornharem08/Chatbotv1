@@ -98,12 +98,14 @@ async function gsrun(cl){
 }
 
 async function checknotiDate(dataArray){
-
+  let today = 25/08/62
   for(let i =0;i<dataArray.length;i++){
 
-    for(let j =0;j<2;j++){
-      console.log("row:"+i+"Value:"+dataArray[i][j])
+    if(dataArray[i][1]==today){
+      sendnotiMessage(dataArray[i][0])
     }
+    
+    
 
   }
 
