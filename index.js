@@ -88,17 +88,20 @@ async function gsrun(cl){
   };
   let data = await gsapi.spreadsheets.values.get(opt);
   let dataArray = data.data.values
-  let newDataArray = dataArray.map(function(r){
-    //console.log("datafromGoogleSheet:"+r[0])
-    return r
-  })
+  // let newDataArray = dataArray.map(function(r){
+  //   //console.log("datafromGoogleSheet:"+r[0])
+  //   return r
+  // })
  // console.log("datafromGoogleSheetNew:"+dataArray[0][0])
   await checknotiDate(dataArray)
   
 }
 
 async function checknotiDate(dataArray){
-  let today = "25/08/2562"
+  let date = getDate()
+  let month = getMonth()
+  let year = getFullYear()
+  let today = `${date}/${month}/${year}`
   for(let i =0;i<dataArray.length;i++){
 
     if(dataArray[i][1]==today){
