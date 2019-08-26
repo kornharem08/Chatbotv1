@@ -110,7 +110,7 @@ async function checknotiDate(dataArray){
   for(let i =0;i<dataArray.length;i++){
 
     if(dataArray[i][1]==today){
-      //sendnotiMessage(dataArray[i][0])
+      sendnotiMessage(dataArray[i][0])
       console.log("sendnotMessage:"+dataArray[i][0])
     }
     
