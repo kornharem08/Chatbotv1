@@ -19,7 +19,7 @@ async function captureInit() {
     });
     const page = await browser.newPage();
     await page.goto('https://webviews-vue1.herokuapp.com/Schedule');
-    await page.screenshot({ path: 'schedule.png' });
+    await page.screenshot({ path: './scheduleTemp/schedule.png' });
     // let fileReaderStream = await fs.createReadStream('./scheduleTemp/schedule.png')
     // let formData = await {
     //     "recipient": JSON.stringify({
