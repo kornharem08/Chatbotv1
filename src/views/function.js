@@ -93,7 +93,7 @@ const messageExSc = async (sender) => {
 const messageClassSc = async (sender) => {
 
   //let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "MainMenu_Payload", null), fb.quickreply("1/2559", "test", null), fb.quickreply("2/2559", "test", null), fb.quickreply("1/2560", "test", null), fb.quickreply("2/2560", "test", null), fb.quickreply("1/2561", "test", null), fb.quickreply("2/2561", "test", null)])
-  let capture = captureSchedule.captureSchedule();
+  let capture = captureSchedule.captureInit();
   await sendTextMessage(sender,"Test_Schedule")
 
 }
