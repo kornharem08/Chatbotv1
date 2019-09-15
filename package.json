@@ -19,6 +19,8 @@
     "ioredis": "^4.14.0",
     "multer": "^1.4.1",
     "request": "^2.88.0",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.2",
+    "puppeteer": "^1.19.0",
+    "fs": "0.0.1-security"
   }
 }
