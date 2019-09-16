@@ -48,7 +48,7 @@ async function captureInit() {
             //***
             console.log("res_attachment_id_test:" + res.body.attachment_id)
             if(res.body.attachment_id){
-                this.attachment = res.body.attachment_id
+                attachment = res.body.attachment_id
             }
         });
 
