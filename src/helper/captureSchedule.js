@@ -37,6 +37,7 @@ async function captureInit() {
 
     }
 
+    var attachment
     await request({
         "method": 'POST',
         "json": true,
@@ -46,9 +47,14 @@ async function captureInit() {
         function (err, res, body) {
             //***
             console.log("res_attachment_id_test:" + res.body.attachment_id)
+            if(res.body.attachment_id){
+                this.attachment = res.body.attachment_id
+            }
         });
 
     await browser.close();
+
+    return attachment
 }
 
 
