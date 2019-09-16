@@ -47,9 +47,9 @@ async function captureInit() {
         function (err, res, body) {
             //***
             console.log("res_attachment_id_test:" + res.body.attachment_id)
-            if(res.body.attachment_id){
+            
                 attachment = res.body.attachment_id
-            }
+            
         });
 
     await browser.close();
