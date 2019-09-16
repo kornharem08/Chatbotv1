@@ -37,8 +37,17 @@ async function captureInit() {
 
     }
 
-    var attachment
-    await request({
+    let attachment = await getAttachmentID()
+    
+
+    await browser.close();
+
+    return attachment
+}
+
+function getAttachmentID(){
+
+     request({
         "method": 'POST',
         "json": true,
         "formData": formData,
@@ -48,13 +57,9 @@ async function captureInit() {
             //***
             console.log("res_attachment_id_test:" + res.body.attachment_id)
             
-                attachment = await res.body.attachment_id
+                return res.body.attachment_id
             
         });
-
-    await browser.close();
-
-    return attachment
 }
 
 
