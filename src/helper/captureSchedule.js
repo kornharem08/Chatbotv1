@@ -3,6 +3,7 @@ const request = require('request');
 const fs = require('fs');
 
 async function captureInit() {
+
     const browser = await puppeteer.launch({
         headless: true,
         args: [
@@ -37,32 +38,34 @@ async function captureInit() {
 
     }
 
-    let attachment = await getAttachmentID()
-    
 
+    let capture = await httpGet(formData)
     await browser.close();
 
-    return attachment
+    return capture
 }
 
-function getAttachmentID(){
-
-     request({
-        "method": 'POST',
-        "json": true,
-        "formData": formData,
-        "uri": 'https://graph.facebook.com/v4.0/me/message_attachments?access_token=EAAD4BB3LHCIBALN3oGRT2f190z6NVkzSglLZBt4nZBUgXrZBoifnZByEKs9zUkCzT1UYWdWYTGFlOaSrcL8nEfuWEArICIxQZAghZCjjiG1C0pTvkxj4yXhvF3E2lmQ7b4ZBGhbyEhGIRSVySTNr7Um4dhm1HNAreWX7o1ny3h5RKIrPy4XxM60'
+function httpGet(formData){
+    return new Promise((resolve, reject) => {
+   request({
+      "method": 'POST',
+      "json": true,
+      "formData": formData,
+      "uri": 'https://graph.facebook.com/v4.0/me/message_attachments?access_token=EAAD4BB3LHCIBALN3oGRT2f190z6NVkzSglLZBt4nZBUgXrZBoifnZByEKs9zUkCzT1UYWdWYTGFlOaSrcL8nEfuWEArICIxQZAghZCjjiG1C0pTvkxj4yXhvF3E2lmQ7b4ZBGhbyEhGIRSVySTNr7Um4dhm1HNAreWX7o1ny3h5RKIrPy4XxM60'
     },
-        function (err, res, body) {
-            //***
-            console.log("res_attachment_id_test:" + res.body.attachment_id)
-            
-                return res.body.attachment_id
-            
-        });
-}
-
-
+      function (err, res, body) {
+        //***
+        if(!err){
+          
+        console.log("res:" + res.body.attachment_id)
+        return resolve(res)
+        }else{
+          console.log("Error!!");
+     
+        }
+      });
+    })
+  }
 
 module.exports = {
     captureInit
