@@ -94,7 +94,7 @@ const messageClassSc = async (sender) => {
 
   //let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "MainMenu_Payload", null), fb.quickreply("1/2559", "test", null), fb.quickreply("2/2559", "test", null), fb.quickreply("1/2560", "test", null), fb.quickreply("2/2560", "test", null), fb.quickreply("1/2561", "test", null), fb.quickreply("2/2561", "test", null)])
   let capture = await captureSchedule.captureInit();
-  await sendTextMessage(sender,"Test_Schedule:"+capture)
+  await sendImageMessage(sender,capture)
 
 }
 
@@ -171,7 +171,7 @@ const sendTextMessage = async (recipientId, text) => {
   };
   await api.callSendAPI(messageData);
 };
-const sendImageMessage = async (recipientId, imageUrl) => {
+const sendImageMessage = async (recipientId, attachment_id) => {
   var messageData = {
     recipient: {
       id: recipientId
@@ -180,7 +180,7 @@ const sendImageMessage = async (recipientId, imageUrl) => {
       attachment: {
         type: "image",
         payload: {
-          url: imageUrl
+          attachment_id: attachment_id
         }
       }
     }
@@ -212,6 +212,8 @@ const sendBtnMessage = async (recipientId, payload) => {  /// https://developers
   };
   await api.callSendAPI(messageData);
 }
+
+
 
 
 
