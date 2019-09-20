@@ -61,11 +61,10 @@ function testObject(result){
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cors());
 
 var allowedOrigins = ['http://localhost:8080',
                       'https://webviews-vue1.herokuapp.com'];
-app.use(cors({
+var corsOptions = {
   origin: function(origin, callback){
     // allow requests with no origin 
     // (like mobile apps or curl requests)
@@ -77,7 +76,7 @@ app.use(cors({
     }
     return callback(null, true);
   }
-}));
+}
 
 
 async function gsrun(cl){
@@ -315,7 +314,7 @@ function sendToApiAi(sender, text) {
 
 
 
-app.post("/webhook/", function (req, res) {
+app.post("/webhook/",cors(corsOptions), function (req, res) {
   var data = req.body; 
   var data2 = JSON.stringify(req.body);
   var name = data2.timezone;
