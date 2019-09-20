@@ -352,7 +352,7 @@ app.post("/webhook/", function (req, res) {
     // You must send back a 200, within 20 seconds
     res.sendStatus(200);
   } else if (data.type == "authenticate") {
-    await redis.get(`${data.senderid}`, function (err, result) {
+     redis.get(`${data.senderid}`, function (err, result) {
 
       console.log("auth:" + result)
 
