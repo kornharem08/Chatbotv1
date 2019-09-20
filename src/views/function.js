@@ -140,6 +140,11 @@ const messageExamScheduleWeb = async (sender) => {
   await sendBtnMessage(sender, btnMessage)
 }
 
+const authenticated = async (sender) => {
+  let btnMessage = fb.buttonsTemplate("Please sigin before", [ fb.buttonsURL(`${urlweb.sisurl_signin}/${sender}`, "Sign in")])
+  await sendBtnMessage(sender, btnMessage)
+}
+
 
 
 
@@ -237,6 +242,7 @@ module.exports = {
   messageExamScheduleWeb,
   quickreplyGradeGPAsemester,
   quickreplyGradeGPATerm,
-  btnGradeGPAWebview
+  btnGradeGPAWebview,
+  authenticated
 }
 

@@ -64,7 +64,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 var allowedOrigins = ['http://localhost:8080',
-                      'http://yourapp.com'];
+                      'https://webviews-vue1.herokuapp.com/'];
 app.use(cors({
   origin: function(origin, callback){
     // allow requests with no origin 

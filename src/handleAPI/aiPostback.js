@@ -10,7 +10,9 @@ const handleAiPostback = async (
 ) => {
 
     switch (payload) {
-
+        case "<GET_STARTED_PAYLOAD>":
+            func.authenticated(sender);
+            break;
         case "MainMenu_Payload":
             func.mainmenu(sender);
             break;
