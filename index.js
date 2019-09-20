@@ -64,7 +64,7 @@ app.use(bodyParser.json());
 
 var allowedOrigins = ['http://localhost:8080',
                       'https://webviews-vue1.herokuapp.com'];
-var corsOptions = {
+app.use(cors({
   origin: function(origin, callback){
     // allow requests with no origin 
     // (like mobile apps or curl requests)
@@ -76,7 +76,7 @@ var corsOptions = {
     }
     return callback(null, true);
   }
-}
+}));
 
 
 async function gsrun(cl){
@@ -314,7 +314,7 @@ function sendToApiAi(sender, text) {
 
 
 
-app.post("/webhook/",cors(corsOptions), function (req, res) {
+app.post("/webhook/", function (req, res) {
   var data = req.body; 
   var data2 = JSON.stringify(req.body);
   var name = data2.timezone;
