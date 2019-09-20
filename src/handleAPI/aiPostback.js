@@ -12,6 +12,7 @@ const handleAiPostback = async (
     switch (payload) {
         case "<GET_STARTED_PAYLOAD>":
             func.authenticated(sender);
+            redis.mset(new Map([[`${sender}`, `{"status":"authenticate"}`]]));
             break;
         case "MainMenu_Payload":
             func.mainmenu(sender);

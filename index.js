@@ -13,7 +13,7 @@ const func = require("./src/views/function.js");
 const notification = require("./src/helper/notification");
 const cors = require('cors');
 //const assets = require("./src/assets");
-const {google} = require('googleapis');
+const { google } = require('googleapis');
 const keys = require('./src/helper/keyapi/SISCONNECT-0779c8454af1.json')
 
 ////////////////////////////////// Redis
@@ -22,40 +22,40 @@ var redis = new Redis(process.env.REDIS_URL);
 
 let redisObj = [
   {
-    name:"Jack"
+    name: "Jack"
   },
   {
-    name:"Bell"
+    name: "Bell"
   }
 ]
-console.log("redisobj:"+Object.keys(redisObj[0]))
+console.log("redisobj:" + Object.keys(redisObj[0]))
 let redisObj2 = [
   {
-    name:"Korn"
+    name: "Korn"
   },
   {
-    name:"Jab"
+    name: "Jab"
   }
 ]
 
 //redis.mset(new Map([["5930213055", '{"name":"jack"}']]));
 // redis.sadd("set", redisObj2);
-redis.get("5930213055", function(err,result) {
-  
-  
-   // console.log("result:"+result)
-    testObject(result)
-    
-    
- 
-  
+redis.get("5930213055", function (err, result) {
+
+
+  // console.log("result:"+result)
+  testObject(result)
+
+
+
+
 });
 redis.del("set");
 
-function testObject(result){
+function testObject(result) {
 
   let resultset = JSON.parse(result)
-  console.log("resultTest:"+resultset.name)
+  console.log("resultTest:" + resultset.name)
 }
 
 app.use(express.static("public"));
@@ -63,15 +63,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 var allowedOrigins = ['http://localhost:8080',
-                      'https://webviews-vue1.herokuapp.com'];
+  'https://webviews-vue1.herokuapp.com'];
 app.use(cors({
-  origin: function(origin, callback){
+  origin: function (origin, callback) {
     // allow requests with no origin 
     // (like mobile apps or curl requests)
-    if(!origin) return callback(null, true);
-    if(allowedOrigins.indexOf(origin) === -1){
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
       var msg = 'The CORS policy for this site does not ' +
-                'allow access from the specified Origin.';
+        'allow access from the specified Origin.';
       return callback(new Error(msg), false);
     }
     return callback(null, true);
@@ -79,8 +79,8 @@ app.use(cors({
 }));
 
 
-async function gsrun(cl){
-  const gsapi = google.sheets({version:'v4', auth: cl});
+async function gsrun(cl) {
+  const gsapi = google.sheets({ version: 'v4', auth: cl });
   const opt = {
     spreadsheetId: '1IfhrtQJX7wY3jpyMqm8Ze7AxIBdJkQPGjptRvxT4h00',
     range: 'A2:B'
@@ -91,39 +91,39 @@ async function gsrun(cl){
   //   //console.log("datafromGoogleSheet:"+r[0])
   //   return r
   // })
- // console.log("datafromGoogleSheetNew:"+dataArray[0][0])
+  // console.log("datafromGoogleSheetNew:"+dataArray[0][0])
   await checknotiDate(dataArray)
-  
+
 }
 
-async function checknotiDate(dataArray){
+async function checknotiDate(dataArray) {
   let d = new Date()
   let date = d.getDate()
-  let month = d.getMonth()+1
-  if(month < 10){
+  let month = d.getMonth() + 1
+  if (month < 10) {
     month = `0${month}`
   }
   let year = d.getFullYear()
   let today = `${date}/${month}/${year}`
-  console.log("today:"+today)
-  for(let i =0;i<dataArray.length;i++){
+  console.log("today:" + today)
+  for (let i = 0; i < dataArray.length; i++) {
 
-    if(dataArray[i][1]==today){
+    if (dataArray[i][1] == today) {
       sendnotiMessage(dataArray[i][0])
-      console.log("sendnotMessage:"+dataArray[i][0])
+      console.log("sendnotMessage:" + dataArray[i][0])
     }
-    
-    
+
+
 
   }
 
 }
 
-async function sendnotiMessage(message){
+async function sendnotiMessage(message) {
 
-  let testSender = ["2564108223659354","2797221146971020"]
+  let testSender = ["2564108223659354", "2797221146971020"]
   testSender.forEach(element => {
-    func.sendTextMessage(element,message)
+    func.sendTextMessage(element, message)
   });
 
 }
@@ -177,26 +177,26 @@ app.get('/webhook', function (req, res) {
 
 app.get("/notihook", function (req, res) {
 
-const client = new google.auth.JWT(
+  const client = new google.auth.JWT(
 
-  keys.client_email,
-  null,
-  keys.private_key,
-  ['https://www.googleapis.com/auth/spreadsheets']
+    keys.client_email,
+    null,
+    keys.private_key,
+    ['https://www.googleapis.com/auth/spreadsheets']
 
-);
-////////////////////////////////////// ส่วนของ Google Sheet
-client.authorize(function(err,tokens){
+  );
+  ////////////////////////////////////// ส่วนของ Google Sheet
+  client.authorize(function (err, tokens) {
 
-  if(err){
-    console.log(err);
-    return;
-  } else{
-    console.log('Connected!');
-    gsrun(client)
-  }
+    if (err) {
+      console.log(err);
+      return;
+    } else {
+      console.log('Connected!');
+      gsrun(client)
+    }
 
-});
+  });
 
 });
 
@@ -223,10 +223,10 @@ function receivedMessage(event) {
   if (messageText) {
     //send message to api.ai
     sendToApiAi(senderID, messageText);
-  }else if(messageSticker){    /////เพิ่ม messageSticker เข้าไป
+  } else if (messageSticker) {    /////เพิ่ม messageSticker เข้าไป
 
     sendToApiAi(senderID, messageSticker);
-  
+
   } else if (messageAttachments) {
     handleMessageAttachments(messageAttachments, senderID);
   }
@@ -235,7 +235,7 @@ function receivedMessage(event) {
 function receivedQuickRp(event) {
   var senderID = event.sender.id;
   var postback = JSON.parse(event.message.quick_reply.payload)
-  
+
   var value = postback.data
   var campagin = postback.campagin
   // var title = postback.title
@@ -246,9 +246,9 @@ function receivedQuickRp(event) {
     sessionIds.set(senderID, uuid.v1());
   }
 
-  if(postback){
+  if (postback) {
 
-    sendToPostbackAi(senderID,campagin,value)
+    sendToPostbackAi(senderID, campagin, value)
 
   }
 
@@ -259,7 +259,7 @@ function receivedQuickRp(event) {
 function receivedPostback(event) {
   var senderID = event.sender.id;
   var postback = event.postback;
-  
+
 
   var title = postback.title
   var payload = postback.payload
@@ -269,26 +269,26 @@ function receivedPostback(event) {
     sessionIds.set(senderID, uuid.v1());
   }
 
-  if(payload){
+  if (payload) {
 
-    sendToPostbackAi(senderID,payload,null)
+    sendToPostbackAi(senderID, payload, null)
 
   }
 
 
 }
 
-function sendToPostbackAi(senderID,postback,value){
+function sendToPostbackAi(senderID, postback, value) {
 
   sendTypingOn(senderID)
-  handlePostback(senderID,postback,value)
+  handlePostback(senderID, postback, value)
 }
 
 
-function handlePostback(senderID,postback,value){
+function handlePostback(senderID, postback, value) {
 
   sendTypingOff(senderID)
-  handlePb.handleAiPostback(senderID,postback,value)
+  handlePb.handleAiPostback(senderID, postback, value)
 }
 
 
@@ -315,7 +315,7 @@ function sendToApiAi(sender, text) {
 
 
 app.post("/webhook/", function (req, res) {
-  var data = req.body; 
+  var data = req.body;
   var data2 = JSON.stringify(req.body);
   var name = data2.timezone;
   console.log("Data" + data2)
@@ -330,18 +330,18 @@ app.post("/webhook/", function (req, res) {
       // Iterate over each messaging event
       pageEntry.messaging.forEach(function (messagingEvent) {
 
-        if(messagingEvent.postback){
+        if (messagingEvent.postback) {
           receivedPostback(messagingEvent)
-        }else if(messagingEvent.message.quick_reply){
+        } else if (messagingEvent.message.quick_reply) {
           let qr = JSON.parse(messagingEvent.message.quick_reply.payload)
-          console.log("Quick-Reply"+qr.campagin)
-           /// ต้องทำ session อีกทีนึง
+          console.log("Quick-Reply" + qr.campagin)
+          /// ต้องทำ session อีกทีนึง
           receivedQuickRp(messagingEvent)
-          
-         
 
 
-        }else if (messagingEvent.message) {
+
+
+        } else if (messagingEvent.message) {
           receivedMessage(messagingEvent);
         } else {
           console.log("Webhook received unknown messagingEvent: ", messagingEvent);
@@ -350,6 +350,13 @@ app.post("/webhook/", function (req, res) {
     });
     // Assume all went well.
     // You must send back a 200, within 20 seconds
+    res.sendStatus(200);
+  } else if (data.type == "authenticate") {
+    await redis.get(`${data.senderid}`, function (err, result) {
+
+      console.log("auth:" + result)
+
+    });
     res.sendStatus(200);
   }
 });
@@ -363,11 +370,11 @@ app.post("/webhook/", function (req, res) {
 // app.post("/uploadImg/",upload.any(), function (req, res) {
 //   var data = req.body;
 //   console.log("data:"+data)
- 
+
 //   //test
 //   // Make sure this is a page subscription
 //   // if (data.object == "page") {
-   
+
 //     // Assume all went well.
 //     // You must send back a 200, within 20 seconds
 //     res.sendStatus(200);
@@ -406,7 +413,7 @@ function handleApiAiResponse(sender, response) {
   let action = response.result.action;
   let contexts = response.result.contexts;
   let parameters = response.result.parameters;
- console.log("Contexts:"+contexts)
+  console.log("Contexts:" + contexts)
   sendTypingOff(sender);
 
   if (responseText == "" && !isDefined(action)) {
