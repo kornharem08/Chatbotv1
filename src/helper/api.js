@@ -48,17 +48,20 @@ const callSendAPI = async (messageData) => {
   
   }
 
-  const validateAuthenticate = async (senderid) =>{
+  const validateAuthenticate = async (senderId) =>{
     let count
     const url = "https://sisconnect-db.herokuapp.com/findsenderId_count"
     await axios({
       method: 'get',
       url:url,
-      data:senderid
+      data:{
+        senderId:senderId
+      }
     })
     .then(function (response) {
       if (response.data) {
         count = response.data.count
+       
       }
     })
     .catch(function (error) {

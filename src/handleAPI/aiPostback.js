@@ -97,6 +97,7 @@ const handleAiPostback = async (
 const validateAuthen = async (senderid) => {
 
     const valid = await api.validateAuthenticate(senderid)
+    
     if(valid == 0){
     func.authenticated(senderid);
     redis.mset(new Map([[`${senderid}`, `{"status":"authenticate"}`]]));
