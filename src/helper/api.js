@@ -49,13 +49,8 @@ const callSendAPI = async (messageData) => {
   }
 
   const insertProfile = async (studentInfo) => {
-    console.log("studentInfo:"+Object.keys(studentInfo))
-    let axiosConfig = {
-      headers: {
-          'Content-Type': 'application/json'
-          
-      }
-    };
+    console.log("studentInfo:"+studentInfo.senderId+","+studentInfo.studentID)
+   
     const url = "https://sisconnect-db.herokuapp.com/insertProfile"
     await axios({
       method: 'post',

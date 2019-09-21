@@ -353,11 +353,11 @@ app.post("/webhook/", function (req, res) {
     res.sendStatus(200);
   } else if (data.type == "authenticate") {
      redis.get(`${data.senderid}`, function (err, result) {
-      let data = JSON.parse(result) 
-      console.log("auth:" + data.status)
-      if(data.status == "authenticate"){
+      let auth = JSON.parse(result) 
+      console.log("auth:" + auth.status)
+      if(auth.status == "authenticate"){
         let item = {
-          senderID: data.senderid,
+          senderId: data.senderid,
           studentID: data.username,
         }
         api.insertProfile(item)
