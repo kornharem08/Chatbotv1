@@ -1,4 +1,5 @@
 const func = require("../views/function.js");
+const api = require("../helper/api")
 const Redis = require('ioredis');
 const redis = new Redis(process.env.REDIS_URL);
 const handleAiPostback = async (
@@ -11,8 +12,7 @@ const handleAiPostback = async (
 
     switch (payload) {
         case "<GET_STARTED_PAYLOAD>":
-            func.authenticated(sender);
-            redis.mset(new Map([[`${sender}`, `{"status":"authenticate"}`]]));
+            await validateAuthen(sender)
             break;
         case "MainMenu_Payload":
             func.mainmenu(sender);
@@ -94,6 +94,16 @@ const handleAiPostback = async (
 
 }
 
+const validateAuthen = async (senderid) => {
+
+    const valid = await api.validateAuthenticate(senderid)
+    if(valid == 0){
+    func.authenticated(senderid);
+    redis.mset(new Map([[`${senderid}`, `{"status":"authenticate"}`]]));
+    }else{
+        func.mainmenu(senderid)
+    }
+}
 
 
 // // const sendGenericMessage = async (recipientId, elements) => {

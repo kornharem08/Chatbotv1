@@ -48,6 +48,25 @@ const callSendAPI = async (messageData) => {
   
   }
 
+  const validateAuthenticate = async (senderid) =>{
+    const url = "https://sisconnect-db.herokuapp.com/findsenderId_count"
+    await axios({
+      method: 'get',
+      url:url,
+      data:senderid
+    })
+    .then(function (response) {
+      if (response.data) {
+        count = response.data.count
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+
+  }
+
   const insertProfile = async (studentInfo) => {
     console.log("studentInfo:"+studentInfo.senderId+","+studentInfo.studentID)
     let status
@@ -65,12 +84,13 @@ const callSendAPI = async (messageData) => {
     .catch(function (error) {
       console.log(error);
     });
-    
+
     return status
   }
 
   module.exports = {
     callSendAPI,
     requestUserinfo,
-    insertProfile
+    insertProfile,
+    validateAuthenticate
 }
