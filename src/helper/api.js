@@ -55,7 +55,7 @@ const callSendAPI = async (messageData) => {
     await axios.post({
       method: 'post',
       url: url,
-      headers:{},
+      headers:{'Content-Type' : 'application/json' },
       data:{
         studentInfo
       }
