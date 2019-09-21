@@ -52,7 +52,14 @@ const callSendAPI = async (messageData) => {
     console.log("studentInfo:"+Object.keys(studentInfo))
     
     const url = "https://sisconnect-db.herokuapp.com/insertProfile"
-    await axios.post(url,studentInfo)
+    await axios.post({
+      method: 'post',
+      url: url,
+      headers:{},
+      data:{
+        studentInfo
+      }
+    })
     .then(function (response) {
       if (response.status == 200) {
         console.log("insertProfileOK")
