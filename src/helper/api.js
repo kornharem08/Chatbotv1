@@ -49,17 +49,18 @@ const callSendAPI = async (messageData) => {
   }
 
   const insertProfile = async (studentInfo) => {
-    console.log("studentInfo:"+studentInfo)
-    // const url = "https://sisconnect-db.herokuapp.com/insertProfile"
-    // await axios.post(url,studentInfo)
-    // .then(function (response) {
-    //   if (response.status == 200) {
-    //     console.log("insertProfileOK")
-    //   }
-    // })
-    // .catch(function (error) {
-    //   console.log(error.response.headers);
-    // });
+    console.log("studentInfo:"+Object.keys(studentInfo))
+    
+    const url = "https://sisconnect-db.herokuapp.com/insertProfile"
+    await axios.post(url,studentInfo)
+    .then(function (response) {
+      if (response.status == 200) {
+        console.log("insertProfileOK")
+      }
+    })
+    .catch(function (error) {
+      console.log(error.response.headers);
+    });
   }
 
   module.exports = {
