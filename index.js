@@ -356,17 +356,23 @@ app.post("/webhook/", function (req, res) {
       let auth = JSON.parse(result) 
       console.log("auth:" + auth.status)
       if(auth.status == "authenticate"){
-        let item = {
-          senderId: data.senderid,
-          studentID: data.username,
-        }
-        api.insertProfile(item)
+        authenticate(data)
       }
 
     });
     res.sendStatus(200);
   }
 });
+
+async function authenticate(data){
+
+  let item = {
+    senderId: data.senderid,
+    studentID: data.username,
+  }
+  let response = await api.insertProfile(item)
+  console.log("response:"+response)
+}
 
 // app.post("/uploadImg/", upload.any(), (req, res) => {
 //   const formData = req.body;

@@ -59,12 +59,13 @@ const callSendAPI = async (messageData) => {
     })
     .then(function (response) {
       if (response.status == 200) {
-        console.log("insertProfileOK")
+        return response.status
       }
     })
     .catch(function (error) {
       console.log(error);
     });
+
   }
 
   module.exports = {
