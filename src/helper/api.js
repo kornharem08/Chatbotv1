@@ -50,7 +50,7 @@ const callSendAPI = async (messageData) => {
 
   const insertProfile = async (studentInfo) => {
     console.log("studentInfo:"+studentInfo.senderId+","+studentInfo.studentID)
-   
+    let status
     const url = "https://sisconnect-db.herokuapp.com/insertProfile"
     await axios({
       method: 'post',
@@ -59,13 +59,14 @@ const callSendAPI = async (messageData) => {
     })
     .then(function (response) {
       if (response.status == 200) {
-        return response.status
+        status = response.status
       }
     })
     .catch(function (error) {
       console.log(error);
     });
-
+    
+    return status
   }
 
   module.exports = {

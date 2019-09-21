@@ -356,6 +356,7 @@ app.post("/webhook/", function (req, res) {
       let auth = JSON.parse(result) 
       console.log("auth:" + auth.status)
       if(auth.status == "authenticate"){
+        
         authenticate(data)
       }
 
@@ -370,7 +371,12 @@ async function authenticate(data){
     senderId: data.senderid,
     studentID: data.username,
   }
-  let response = await api.insertProfile(item)
+
+  let responsestatus = await api.insertProfile(item)
+  if(responsestatus == 200){
+    redis.mset(new Map([[`${data.senderid}`, `{"status":"member"}`]]));
+    func.mainmenu(data.senderid)
+  }
   console.log("response:"+response)
 }
 
