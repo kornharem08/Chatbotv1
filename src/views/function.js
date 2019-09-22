@@ -55,7 +55,7 @@ const btnMessageclassEx = async (sender) => {
 }
 
 const quickreplyGradeGPAsemester = async (sender) => {
-  let quickreply = await setQuickreplyforgrade()
+  let quickreply = await setQuickreplyforgrade(sender)
   console.log("setQuickreplyforgrade:"+quickreply)
   let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "test", null), fb.quickreply("1/2561", '{ "campagin":"Grade_Semester_quickreply", "data":"1/2561"}', null), fb.quickreply("2/2561", '{ "campagin":"Grade_Semester_quickreply", "data":"2/2561"}', null), fb.quickreply("3/2559", '{ "campagin":"Grade_Semester_quickreply", "data":"2/2559"}', null)])
   await sendQuickReply(sender, replies);
@@ -219,8 +219,9 @@ const sendBtnMessage = async (recipientId, payload) => {  /// https://developers
   await api.callSendAPI(messageData);
 }
 
-async function setQuickreplyforgrade() {
-  let oldgrade = await api.requestinfoAllgrade()
+async function setQuickreplyforgrade(senderid) {
+  let studentID = await api.requestStudentID(senderid)
+  let oldgrade = await api.requestinfoAllgrade(studentID)
   let eduyear = groupBy(oldgrade, 'EduYearTH')
   let text = []
 
