@@ -59,7 +59,7 @@ const quickreplyGradeGPAsemester = async (sender) => {
   console.log("setQuickreplyforgrade:" + JSON.stringify(quickreply))
   let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "test", null),
   quickreply.forEach(element => {
-    fb.quickreply(`${element}`, `{ "campagin":"Grade_Semester_quickreply", "data":${element}}`, null)
+    fb.quickreply(`${element}`, `{ "campagin":"Grade_Semester_quickreply", "data":${element}}`, null)+','
   })
   ])
   console.log("quickreplyGradeGPAsemester:"+JSON.stringify(replies))
