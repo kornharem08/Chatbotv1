@@ -59,15 +59,15 @@ const quickreplyGradeGPAsemester = async (sender) =>{
   await sendQuickReply(sender, replies);
 }
 
-const quickreplyGradeGPATerm = async (sender) => {
-  let replies = fb.quickreplyTemplate("Please select Term", [ fb.quickreply("Midterm", '{ "campagin":"GradeGPA_Term", "data":"M"}', null), fb.quickreply("Final", '{ "campagin":"GradeGPA_Term", "data":"F"}', null)])
-  await sendQuickReply(sender, replies);
-}
+// const quickreplyGradeGPATerm = async (sender) => {
+//   let replies = fb.quickreplyTemplate("Please select Term", [ fb.quickreply("Midterm", '{ "campagin":"GradeGPA_Term", "data":"M"}', null), fb.quickreply("Final", '{ "campagin":"GradeGPA_Term", "data":"F"}', null)])
+//   await sendQuickReply(sender, replies);
+// }
 
 const btnGradeGPAWebview = async (sender) => {
   let studentID = await api.requestStudentID(sender)
   
-  let term,subsemesterm,subsemesteryear = null
+  let subsemesterm,subsemesteryear = null
  await redis.get(`${sender}`, function(err,result) {  
     
     let data = JSON.parse(result)
@@ -75,19 +75,18 @@ const btnGradeGPAWebview = async (sender) => {
     let datasubsemesterterm = datasemester.substring(0,1)
     let datasubsemesteryear = datasemester.substring(2)
     
-    term = data.term
     subsemesterm = datasubsemesterterm
     subsemesteryear = datasubsemesteryear
     
 });
-  let btnMessage = await fb.buttonsTemplate("Click to view Grade/GPA", [ fb.buttonsURL(`${urlweb.sisurl_grade}/${studentID}/${subsemesteryear}/${subsemesterm}/${term}`, "View Grade/GPA"), fb.buttons("Back", "MainMenu_Payload")])
+  let btnMessage = await fb.buttonsTemplate("Click to view Grade/GPA", [ fb.buttonsURL(`${urlweb.sisurl_grade}/${studentID}/${subsemesteryear}/${subsemesterm}`, "View Grade/GPA"), fb.buttons("Back", "MainMenu_Payload")])
   await sendBtnMessage(sender, btnMessage)
 }
 
-const messageExSc = async (sender) => {
+const btnExScheduleView = async (sender) => {
 
-  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "MainMenu_Payload", null), fb.quickreply("1/2559", '{ "campagin":"Ex_First", "data":"1/2559"}', null), fb.quickreply("2/2559", '{ "campagin":"Ex_First", "data":"2/2559"}', null), fb.quickreply("3/2559", "Ex_3/2559", null)])
-  await sendQuickReply(sender, replies);
+  let btnMessage = await fb.buttonsTemplate("Click to view Exam Schedule this term", [ fb.buttonsURL(`${urlweb.sisurl_grade}/${studentID}/${subsemesteryear}/${subsemesterm}/${term}`, "View Grade/GPA"), fb.buttons("Back", "MainMenu_Payload")])
+  await sendBtnMessage(sender, btnMessage)
 
 }
 const messageClassSc = async (sender) => {
@@ -233,7 +232,7 @@ module.exports = {
   Messageinfo,
   messageGradeGPA,
   btnMessageclassEx,
-  messageExSc,
+  btnExScheduleView,
   messageClassSc,
   messageEditinfo,
   MessageExamnotif,
@@ -241,7 +240,6 @@ module.exports = {
   messageExamSchedule,
   messageExamScheduleWeb,
   quickreplyGradeGPAsemester,
-  quickreplyGradeGPATerm,
   btnGradeGPAWebview,
   authenticated
 }

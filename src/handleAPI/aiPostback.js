@@ -30,7 +30,7 @@ const handleAiPostback = async (
             func.btnMessageclassEx(sender);
             break;
         case "Examination-Schedule":
-            func.messageExSc(sender);
+            func.btnExScheduleView(sender);
             break;
         case "Class-schedule":
             func.messageClassSc(sender);
@@ -63,29 +63,29 @@ const handleAiPostback = async (
         case "Grade_Semester_quickreply":
             if (value) {
                 redis.mset(new Map([[`${sender}`, `{"semester":"${value}"}`]]));
-                func.quickreplyGradeGPATerm(sender);
+                func.btnGradeGPAWebview(sender);
             }
             break;
-        case "GradeGPA_Term":
-            if (value) {
-                let data
-                await redis.get(`${sender}`, function (err, result) {
-                    data = JSON.parse(result)
-                    data.term = `${value}`
-                    let dataset = JSON.stringify(data)
-                    console.log("result:" + dataset)
-                    redis.mset(new Map([[`${sender}`, dataset]]));
-                });
-                //   redis.mset(new Map([[`${sender}`, data]]));
+        // case "GradeGPA_Term":
+        //     if (value) {
+        //         let data
+        //         await redis.get(`${sender}`, function (err, result) {
+        //             data = JSON.parse(result)
+        //             data.term = `${value}`
+        //             let dataset = JSON.stringify(data)
+        //             console.log("result:" + dataset)
+        //             redis.mset(new Map([[`${sender}`, dataset]]));
+        //         });
+        //         //   redis.mset(new Map([[`${sender}`, data]]));
 
-                await redis.get(`${sender}`, function (err, result) {
+        //         await redis.get(`${sender}`, function (err, result) {
 
-                    console.log("result2:" + result)
+        //             console.log("result2:" + result)
 
-                });
-            }
-            func.btnGradeGPAWebview(sender);
-            break;
+        //         });
+        //     }
+        //     func.btnGradeGPAWebview(sender);
+        //     break;
         default:
 
 
