@@ -62,7 +62,7 @@ const quickreplyGradeGPAsemester = async (sender) => {
     fb.quickreply(`${element}`, `{ "campagin":"Grade_Semester_quickreply", "data":${element}}`, null)
   })
   ])
-  console.log("quickreplyGradeGPAsemester:"+replies)
+  console.log("quickreplyGradeGPAsemester:"+JSON.stringify(replies))
   // await sendQuickReply(sender, replies);
 }
 
@@ -235,15 +235,15 @@ async function setQuickreplyforgrade(senderid) {
     // console.log(`${Object.keys(eduyear)[i]}/`+Object.keys(eduterm))
     if (Object.keys(eduterm)[0] == 1) {
 
-      text.push(`${Object.keys(eduterm)[i]}/${Object.keys(eduyear)[0]}`)
+      text.push(`${Object.keys(eduterm)[0]}/${Object.keys(eduyear)[i]}`)
     }
     if (Object.keys(eduterm)[1] == 2) {
 
-      text.push(`${Object.keys(eduterm)[i]}/${Object.keys(eduyear)[1]}`)
+      text.push(`${Object.keys(eduterm)[1]}/${Object.keys(eduyear)[i]}`)
     }
     if (Object.keys(eduterm)[2] == 3) {
 
-      text.push(`${Object.keys(eduterm)[i]}/${Object.keys(eduyear)[2]}`)
+      text.push(`${Object.keys(eduterm)[2]}/${Object.keys(eduyear)[i]}`)
     }
   }
   return text
