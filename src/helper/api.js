@@ -113,7 +113,7 @@ const requestStudentID = async (senderId) => {
     .catch(function (error) {
       console.log(error);
     });
-    console.log("studentID:"+Object.keys(studentID))
+    console.log("studentID:"+JSON.stringify(studentID))
     return studentID
 
 }
