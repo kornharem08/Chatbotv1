@@ -56,9 +56,14 @@ const btnMessageclassEx = async (sender) => {
 
 const quickreplyGradeGPAsemester = async (sender) => {
   let quickreply = await setQuickreplyforgrade(sender)
-  console.log("setQuickreplyforgrade:"+JSON.stringify(quickreply))
-  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "test", null), fb.quickreply("1/2561", '{ "campagin":"Grade_Semester_quickreply", "data":"1/2561"}', null), fb.quickreply("2/2561", '{ "campagin":"Grade_Semester_quickreply", "data":"2/2561"}', null), fb.quickreply("3/2559", '{ "campagin":"Grade_Semester_quickreply", "data":"2/2559"}', null)])
-  await sendQuickReply(sender, replies);
+  console.log("setQuickreplyforgrade:" + JSON.stringify(quickreply))
+  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "test", null),
+  quickreply.forEach(element => {
+    fb.quickreply(`${element}`, `{ "campagin":"Grade_Semester_quickreply", "data":${element}}`, null)
+  })
+  ])
+  console.log("quickreplyGradeGPAsemester:"+replies)
+  // await sendQuickReply(sender, replies);
 }
 
 // const quickreplyGradeGPATerm = async (sender) => {
@@ -230,15 +235,15 @@ async function setQuickreplyforgrade(senderid) {
     // console.log(`${Object.keys(eduyear)[i]}/`+Object.keys(eduterm))
     if (Object.keys(eduterm)[0] == 1) {
 
-      text.push(fb.quickreply(`${Object.keys(eduterm)[i]}/${Object.keys(eduyear)[0]}`, `{ "campagin":"Grade_Semester_quickreply", "data":${Object.keys(eduterm)[i]}/${Object.keys(eduyear)[0]}}`, null))
+      text.push(`${Object.keys(eduterm)[i]}/${Object.keys(eduyear)[0]}`)
     }
     if (Object.keys(eduterm)[1] == 2) {
 
-      text.push(fb.quickreply(`${Object.keys(eduterm)[i]}/${Object.keys(eduyear)[1]}`, `{ "campagin":"Grade_Semester_quickreply", "data":${Object.keys(eduterm)[i]}/${Object.keys(eduyear)[1]}}`, null))
+      text.push(`${Object.keys(eduterm)[i]}/${Object.keys(eduyear)[1]}`)
     }
     if (Object.keys(eduterm)[2] == 3) {
 
-      text.push(fb.quickreply(`${Object.keys(eduterm)[i]}/${Object.keys(eduyear)[2]}`, `{ "campagin":"Grade_Semester_quickreply", "data":${Object.keys(eduterm)[i]}/${Object.keys(eduyear)[2]}}`, null))
+      text.push(`${Object.keys(eduterm)[i]}/${Object.keys(eduyear)[2]}`)
     }
   }
   return text
