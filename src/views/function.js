@@ -65,22 +65,21 @@ const quickreplyGradeGPATerm = async (sender) => {
 }
 
 const btnGradeGPAWebview = async (sender) => {
-  let term
-  let subsemesterm 
-  let subsemesteryear 
+  let studentID = await api.requestStudentID(sender)
+  let term,subsemesterm,subsemesteryear = null
  await redis.get(`${sender}`, function(err,result) {  
     
     let data = JSON.parse(result)
     let datasemester = data.semester
     let datasubsemesterterm = datasemester.substring(0,1)
     let datasubsemesteryear = datasemester.substring(2)
-    console.log("data:"+data.term)
+    
     term = data.term
     subsemesterm = datasubsemesterterm
     subsemesteryear = datasubsemesteryear
     
 });
-  let btnMessage = await fb.buttonsTemplate("Click to view Grade/GPA", [ fb.buttonsURL(`${urlweb.sisurl_grade}/5930213034/${subsemesteryear}/${subsemesterm}/${term}`, "View Grade/GPA"), fb.buttons("Back", "MainMenu_Payload")])
+  let btnMessage = await fb.buttonsTemplate("Click to view Grade/GPA", [ fb.buttonsURL(`${urlweb.sisurl_grade}/${studentID}/${subsemesteryear}/${subsemesterm}/${term}`, "View Grade/GPA"), fb.buttons("Back", "MainMenu_Payload")])
   await sendBtnMessage(sender, btnMessage)
 }
 

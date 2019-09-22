@@ -45,43 +45,43 @@ const handleAiPostback = async (
             func.MessageCancleExamnotif(sender);
             break;
         case "Ex_First":
-                if(value){
-                    testval1 = value
-                    console.log("value:"+value)
-                }
+            if (value) {
+                testval1 = value
+                console.log("value:" + value)
+            }
             func.messageExamSchedule(sender);
             break;
         case "Ex_Second":
-            if(value){
-                console.log("value:"+value)
+            if (value) {
+                console.log("value:" + value)
             }
             func.messageExamScheduleWeb(sender);
             break;
         case "GradeGPA_Semester":
-                func.quickreplyGradeGPAsemester(sender);
+            func.quickreplyGradeGPAsemester(sender);
             break;
         case "Grade_Semester_quickreply":
-            if(value){
+            if (value) {
                 redis.mset(new Map([[`${sender}`, `{"semester":"${value}"}`]]));
                 func.quickreplyGradeGPATerm(sender);
             }
             break;
         case "GradeGPA_Term":
-                if(value){
-                    let data
-               await redis.get(`${sender}`, function(err,result) {  
+            if (value) {
+                let data
+                await redis.get(`${sender}`, function (err, result) {
                     data = JSON.parse(result)
                     data.term = `${value}`
                     let dataset = JSON.stringify(data)
-                    console.log("result:"+dataset)
-                    redis.mset(new Map([[`${sender}`, dataset]]));  
+                    console.log("result:" + dataset)
+                    redis.mset(new Map([[`${sender}`, dataset]]));
                 });
-             //   redis.mset(new Map([[`${sender}`, data]]));
+                //   redis.mset(new Map([[`${sender}`, data]]));
 
-              await redis.get(`${sender}`, function(err,result) {  
-                    
-                    console.log("result2:"+result)
-                    
+                await redis.get(`${sender}`, function (err, result) {
+
+                    console.log("result2:" + result)
+
                 });
             }
             func.btnGradeGPAWebview(sender);
@@ -97,11 +97,11 @@ const handleAiPostback = async (
 const validateAuthen = async (senderid) => {
 
     const valid = await api.validateAuthenticate(senderid)
-    
-    if(valid == 0){
-    func.authenticated(senderid);
-    redis.mset(new Map([[`${senderid}`, `{"status":"authenticate"}`]]));
-    }else{
+
+    if (valid == 0) {
+        func.authenticated(senderid);
+        redis.mset(new Map([[`${senderid}`, `{"status":"authenticate"}`]]));
+    } else {
         func.mainmenu(senderid)
     }
 }
