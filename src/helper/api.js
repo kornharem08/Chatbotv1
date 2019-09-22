@@ -118,10 +118,26 @@ const requestStudentID = async (senderId) => {
 
 }
 
+const requestinfoAllgrade = async (studentID) =>{
+  let oldgrade = []
+  await axios.get(`https://sispsu.herokuapp.com/api/grade/${studentID}`)
+    .then(function (response) {
+      // handle success
+      oldgrade = response.data.data
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+   
+    return oldgrade
+}
+
 module.exports = {
   callSendAPI,
   requestUserinfo,
   insertProfile,
   validateAuthenticate,
-  requestStudentID
+  requestStudentID,
+  requestinfoAllgrade
 }
