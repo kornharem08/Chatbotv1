@@ -66,7 +66,7 @@ const quickreplyGradeGPATerm = async (sender) => {
 
 const btnGradeGPAWebview = async (sender) => {
   let studentID = await api.requestStudentID(sender)
-  console.log("studentID:"+studentID)
+  
   let term,subsemesterm,subsemesteryear = null
  await redis.get(`${sender}`, function(err,result) {  
     
