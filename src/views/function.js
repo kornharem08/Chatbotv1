@@ -57,7 +57,7 @@ const btnMessageclassEx = async (sender) => {
 const quickreplyGradeGPAsemester = async (sender) => {
   let quickreply = await setQuickreplyforgrade(sender)
   console.log("setQuickreplyforgrade:" + quickreply[0])
-  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "test", null),fb.quickreply(`${quickreply[0]}`, `{"campagin":"Grade_Semester_quickreply","data":"${quickreply[0]}"}`, null)])
+  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "test", null),fb.quickreply("1/2559", `{"campagin":"Grade_Semester_quickreply","data":"1/2559"}`, null)])
   console.log("quickreplyGradeGPAsemester:"+JSON.stringify(replies))
   await sendQuickReply(sender, replies);
 }
