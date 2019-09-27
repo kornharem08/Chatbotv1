@@ -404,7 +404,7 @@ const examNotification = async () =>{
     
       examtime = await api.requestTimeExam(studentid[index]) 
       for(let indexE = 0; indexE < examtime.length; indexE++){
-        if(examtime[indexE].ExamDate == today)
+        if(examtime[indexE].ExamDate == 6/10/2562)
           console.log("examtime:"+examtime[indexE].ExamDate)    
      
        }
