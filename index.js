@@ -397,13 +397,13 @@ const examNotification = async () =>{
    for(let index = 0; index < studentid.length; index++){
     
      let item = await api.requestTimeExam(studentid[index]) 
-     console.log("item:"+item)
-    // examtime.push(item)
+     
+     examtime.push(item)
    }
 
-  //  examtime.forEach(element => {
-  //    console.log("examtime:"+element)
-  //  });
+   examtime.forEach(element => {
+     console.log("examtime:"+element.ExamDate)
+   });
    
   //  let examtime = await api.requestTimeExam(listwho)
   //  console.log("listwho:"+JSON.stringify(examtime))
