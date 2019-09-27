@@ -175,7 +175,7 @@ app.get('/webhook', function (req, res) {
   }
 });
 
-app.get("/notihook", function (req, res) {
+app.get("/notihook", async (req, res) => {
 
   const client = new google.auth.JWT(
 
@@ -186,7 +186,7 @@ app.get("/notihook", function (req, res) {
 
   );
   ////////////////////////////////////// ส่วนของ Google Sheet
-  client.authorize(function (err, tokens) {
+  await client.authorize(function (err, tokens) {
 
     if (err) {
       console.log(err);
@@ -197,6 +197,8 @@ app.get("/notihook", function (req, res) {
     }
 
   });
+  //////////////////////////////////////// ส่วนของ Exam Notification
+  await examNotification()
 
 });
 
@@ -380,6 +382,10 @@ async function authenticate(data){
     func.mainmenu(data.senderid)
   }
   console.log("response:"+response)
+}
+
+const examNotification = async () =>{
+   let listwho = await api.requestNotification()
 }
 
 // app.post("/uploadImg/", upload.any(), (req, res) => {

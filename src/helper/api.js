@@ -155,6 +155,26 @@ const requestNotification = async (notiForm) =>{
   return status
 }
 
+const findWhohaveExamNoti = async () => {
+  let ListWho
+  const url = `https://sisconnect-db.herokuapp.com/findWhoExamNoti`
+    await axios({
+      method: 'get',
+      url: url
+    })
+      .then(function (response) {
+          console.log("findWhohaveExamNoti:"+response.data)
+        if (response.status == 200) {
+          ListWho = response.data
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+  return ListWho
+}
+
 module.exports = {
   callSendAPI,
   requestUserinfo,
@@ -162,5 +182,6 @@ module.exports = {
   validateAuthenticate,
   requestStudentID,
   requestinfoAllgrade,
-  requestNotification
+  requestNotification,
+  findWhohaveExamNoti
 }
