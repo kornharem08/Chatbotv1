@@ -409,14 +409,19 @@ const examNotification = async () =>{
     
       examtime = await api.requestTimeExam(studentid[index].studentID) 
       for(let indexE = 0; indexE < examtime.length; indexE++){
-        if(examtime[indexE].ExamDate == '6/10/2562'){
+        if(examtime[indexE].ExamDate == '3/10/2562'){
           let From = examtime[indexE].From
           let To = examtime[indexE].To
           let SubjectNameEN = examtime[indexE].SubjectNameEN
-          let ExamRoom = examtime[indexE].ExamRooms[0]
+          let ExamRoom = ""
+          if(examtime[indexE].ExamRooms[0]){
+          ExamRoom = examtime[indexE].ExamRooms[0]
+          }else{
+          ExamRoom = "ยังไม่ระบุ"
+          }
           console.log("ExamRoom:"+examtime[0].ExamRooms[0])
            message = `ทดสอบการแจ้งเตือน: วันนี้มีสอบนะครับ เริ่มสอบ ${From} ถึง ${To} วิชา ${SubjectNameEN} ห้อง ${ExamRoom}`   
-          // func.sendTextMessage(studentid[index].senderId, message)
+           func.sendTextMessage(studentid[index].senderId, message)
         }
        }
     
