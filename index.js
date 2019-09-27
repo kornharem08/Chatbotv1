@@ -396,9 +396,8 @@ const examNotification = async () =>{
 
    for(let index = 0; index < studentid.length; index++){
     
-     let item = await api.requestTimeExam(studentid[index]) 
-     
-     examtime.push(item)
+      examtime = await api.requestTimeExam(studentid[index]) 
+    
    }
 
    for(let indexE = 0; indexE < examtime.length; indexE++){
