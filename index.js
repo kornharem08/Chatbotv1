@@ -397,16 +397,20 @@ const examNotification = async () =>{
    let today = `${date}/${month}/${year}`
 
    await listwho.forEach(element => {
-    studentid.push(element.studentID)
+     let studentinfo = {
+      senderId: element.senderId,
+      studentID: element.studentID
+     }
+    studentid.push(studentinfo)
    });
 
    for(let index = 0; index < studentid.length; index++){
     
-      examtime = await api.requestTimeExam(studentid[index]) 
+      examtime = await api.requestTimeExam(studentid[index].senderId) 
       for(let indexE = 0; indexE < examtime.length; indexE++){
         if(examtime[indexE].ExamDate == '6/10/2562')
-          console.log("examtime:"+examtime[indexE].ExamDate)    
-     
+          message = `ทดสอบการแจ้งเตือน: วันนี้มีสอบนะครับ เริ่มสอบ ${examtime[indexE].From} ถึง ${examtime[indexE].To} วิชา ${examtime[indexE].SubjectNameEN} ห้อง ${examtime[indexE].ExamRooms}`   
+          func.sendTextMessage(studentid[index].studentID, message)
        }
     
    }
