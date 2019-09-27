@@ -370,6 +370,8 @@ async function authenticate(data){
   let item = {
     senderId: data.senderid,
     studentID: data.username,
+    lang: "ENG",
+    notification: false
   }
 
   let responsestatus = await api.insertProfile(item)
