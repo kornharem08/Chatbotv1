@@ -387,7 +387,7 @@ async function authenticate(data){
 }
 
 const examNotification = async () =>{
-   let listwho = await api.requestNotification()
+   let listwho = await api.findWhohaveExamNoti()
 }
 
 // app.post("/uploadImg/", upload.any(), (req, res) => {
