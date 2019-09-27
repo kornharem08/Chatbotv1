@@ -196,6 +196,25 @@ const requestTimeExam = async (studentID) => {
   return examtime
 }
 
+const requestAllSenderID = async () => {
+  let listSender
+  const url = `https://sisconnect-db.herokuapp.com/senderId_all`
+    await axios({
+      method: 'get',
+      url: url
+    })
+      .then(function (response) {
+        if (response.status = 200) {
+          listSender = response.data
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+  return listSender
+}
+
 module.exports = {
   callSendAPI,
   requestUserinfo,
@@ -205,5 +224,6 @@ module.exports = {
   requestinfoAllgrade,
   requestNotification,
   findWhohaveExamNoti,
-  requestTimeExam
+  requestTimeExam,
+  requestAllSenderID
 }
