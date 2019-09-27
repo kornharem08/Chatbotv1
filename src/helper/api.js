@@ -183,9 +183,9 @@ const requestTimeExam = async (studentID) => {
       url: url
     })
       .then(function (response) {
-          console.log("requestTimeExam:"+Object.keys(response.data))
+          console.log("requestTimeExam:"+Object.keys(response.data.data))
         if (response.status == "success") {
-          examtime = response.data
+          examtime = response.data.data
         }
       })
       .catch(function (error) {
