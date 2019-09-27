@@ -143,6 +143,7 @@ const requestNotification = async (notiForm) =>{
       data: notiForm
     })
       .then(function (response) {
+          console.log("requestNoti:"+response.status)
         if (response.status == 200) {
           status = response.status
         }
