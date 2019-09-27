@@ -20,44 +20,6 @@ const keys = require('./src/helper/keyapi/SISCONNECT-0779c8454af1.json')
 var Redis = require('ioredis');
 var redis = new Redis(process.env.REDIS_URL);
 
-let redisObj = [
-  {
-    name: "Jack"
-  },
-  {
-    name: "Bell"
-  }
-]
-console.log("redisobj:" + Object.keys(redisObj[0]))
-let redisObj2 = [
-  {
-    name: "Korn"
-  },
-  {
-    name: "Jab"
-  }
-]
-
-//redis.mset(new Map([["5930213055", '{"name":"jack"}']]));
-// redis.sadd("set", redisObj2);
-redis.get("5930213055", function (err, result) {
-
-
-  // console.log("result:"+result)
-  testObject(result)
-
-
-
-
-});
-redis.del("set");
-
-function testObject(result) {
-
-  let resultset = JSON.parse(result)
-  console.log("resultTest:" + resultset.name)
-}
-
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -128,36 +90,6 @@ async function sendnotiMessage(message) {
 
 }
 
-///////////////////////////////////// ^^^ Google Sheet
-
-//app.listen(3000);
-// function setupGetStartedButton(res) {
-//   var messageData = {
-//     "get_started": [
-//       {
-//         "payload": "USER_DEFINED_PAYLOAD"
-//       }
-//     ]
-//   };
-
-
-//   // Start the request
-//   request({
-//     url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token=EAAD4BB3LHCIBALN3oGRT2f190z6NVkzSglLZBt4nZBUgXrZBoifnZByEKs9zUkCzT1UYWdWYTGFlOaSrcL8nEfuWEArICIxQZAghZCjjiG1C0pTvkxj4yXhvF3E2lmQ7b4ZBGhbyEhGIRSVySTNr7Um4dhm1HNAreWX7o1ny3h5RKIrPy4XxM60',
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/json' },
-//     form: messageData
-//   },
-//     function (error, response, body) {
-//       if (!error && response.statusCode == 200) {
-//         // Print out the response body        
-//         res.send(body);
-//       } else {
-//         // TODO: Handle errors
-//         res.send(body);
-//       }
-//     });
-// }
 
 app.get("/", function (req, res) {
   res.send("Hello world, I am a chat bot");
@@ -356,11 +288,11 @@ app.post("/webhook/", function (req, res) {
     // You must send back a 200, within 20 seconds
     res.sendStatus(200);
   } else if (data.type == "authenticate") {
-     redis.get(`${data.senderid}`, function (err, result) {
-      let auth = JSON.parse(result) 
+    redis.get(`${data.senderid}`, function (err, result) {
+      let auth = JSON.parse(result)
       console.log("auth:" + auth.status)
-      if(auth.status == "authenticate"){
-        
+      if (auth.status == "authenticate") {
+
         authenticate(data)
       }
 
@@ -369,7 +301,7 @@ app.post("/webhook/", function (req, res) {
   }
 });
 
-async function authenticate(data){
+async function authenticate(data) {
 
   let item = {
     senderId: data.senderid,
@@ -379,82 +311,55 @@ async function authenticate(data){
   }
 
   let responsestatus = await api.insertProfile(item)
-  if(responsestatus == 200){
+  if (responsestatus == 200) {
     redis.mset(new Map([[`${data.senderid}`, `{"status":"member"}`]]));
     func.mainmenu(data.senderid)
   }
-  console.log("response:"+response)
+  console.log("response:" + response)
 }
 
-const examNotification = async () =>{
-   let listwho = await api.findWhohaveExamNoti()
-   let studentid = []
-   let examtime = []
-   let d = new Date()
-   let date = d.getDate()
-   let month = d.getMonth() + 1
-   let year = d.getFullYear() +543
-   let today = `${date}/${month}/${year}`
-   let message = ""
+const examNotification = async () => {
+  let listwho = await api.findWhohaveExamNoti()
+  let studentid = []
+  let examtime = []
+  let d = new Date()
+  let date = d.getDate()
+  let month = d.getMonth() + 1
+  let year = d.getFullYear() + 543
+  let today = `${date}/${month}/${year}`
+  let message = ""
 
-   await listwho.forEach(element => {
-     let studentinfo = {
+  await listwho.forEach(element => {
+    let studentinfo = {
       senderId: element.senderId,
       studentID: element.studentID
-     }
+    }
     studentid.push(studentinfo)
-   });
+  });
 
-   for(let index = 0; index < studentid.length; index++){
-    
-      examtime = await api.requestTimeExam(studentid[index].studentID) 
-      for(let indexE = 0; indexE < examtime.length; indexE++){
-        if(examtime[indexE].ExamDate == '30/9/2562'){
-          let From = examtime[indexE].From
-          let To = examtime[indexE].To
-          let SubjectNameEN = examtime[indexE].SubjectNameEN
-          let ExamRoom = ""
-          if(examtime[indexE].ExamRooms[0]){
+  for (let index = 0; index < studentid.length; index++) {
+
+    examtime = await api.requestTimeExam(studentid[index].studentID)
+    for (let indexE = 0; indexE < examtime.length; indexE++) {
+      if (examtime[indexE].ExamDate == today) {
+        let From = examtime[indexE].From
+        let To = examtime[indexE].To
+        let SubjectNameEN = examtime[indexE].SubjectNameEN
+        let ExamRoom = ""
+        if (examtime[indexE].ExamRooms[0]) {
           ExamRoom = examtime[indexE].ExamRooms[0]
-          }else{
+        } else {
           ExamRoom = "ยังไม่ระบุ"
-          }
-          console.log("ExamRoom:"+examtime[0].ExamRooms[0])
-           message = `ทดสอบการแจ้งเตือน: วันนี้มีสอบนะจ๊ะ เริ่มสอบ ${From} ถึง ${To} วิชา ${SubjectNameEN} ห้อง ${ExamRoom}`   
-           func.sendTextMessage(studentid[index].senderId, message)
         }
-       }
-    
-   }
+        console.log("ExamRoom:" + examtime[0].ExamRooms[0])
+        message = `ทดสอบการแจ้งเตือน: วันนี้มีสอบนะจ๊ะ เริ่มสอบ ${From} ถึง ${To} วิชา ${SubjectNameEN} ห้อง ${ExamRoom}`
+        func.sendTextMessage(studentid[index].senderId, message)
+      }
+    }
 
-   
-  //  examtime.forEach(element => {
-  //    console.log("examtime:"+JSON.stringify(element[0]))
-  //  });
-   
-  //  let examtime = await api.requestTimeExam(listwho)
-  //  console.log("listwho:"+JSON.stringify(examtime))
+  }
 }
 
-// app.post("/uploadImg/", upload.any(), (req, res) => {
-//   const formData = req.body;
-//   console.log('form data', formData);
-//   res.sendStatus(200);
-// });
-
-// app.post("/uploadImg/",upload.any(), function (req, res) {
-//   var data = req.body;
-//   console.log("data:"+data)
-
-//   //test
-//   // Make sure this is a page subscription
-//   // if (data.object == "page") {
-
-//     // Assume all went well.
-//     // You must send back a 200, within 20 seconds
-//     res.sendStatus(200);
-//   //}
-// });
 
 const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
   language: "th",
