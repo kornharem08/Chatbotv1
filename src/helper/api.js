@@ -183,7 +183,7 @@ const requestTimeExam = async (studentID) => {
       url: url
     })
       .then(function (response) {
-          console.log("findWhohaveExamNoti:"+Object.keys(response.data[0]))
+          console.log("requestTimeExam:"+Object.keys(response.data))
         if (response.status == "success") {
           examtime = response.data
         }
