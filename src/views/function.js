@@ -116,7 +116,7 @@ const MessageExamnotif = async (sender) => {
     senderId: sender,
     notification: true
   }
-  let responeNoti = api.requestNotification(notiform)
+  let responeNoti = await api.requestNotification(notiform)
   let Message = ""
   if(responeNoti == 200){
     Message = "Exam notification day Successfully"
