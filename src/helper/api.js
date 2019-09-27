@@ -163,7 +163,7 @@ const findWhohaveExamNoti = async () => {
       url: url
     })
       .then(function (response) {
-          console.log("findWhohaveExamNoti:"+response.data)
+          console.log("findWhohaveExamNoti:"+Object.keys(response.data))
         if (response.status == 200) {
           ListWho = response.data
         }
