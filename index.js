@@ -403,7 +403,7 @@ const examNotification = async () =>{
 
    for(let indexE = 0; indexE < examtime.length; indexE++){
     
-      console.log("examtime:"+JSON.stringify(examtime[indexE]))    
+      console.log("examtime:"+examtime[indexE].ExamDate)    
  
    }
 
