@@ -409,7 +409,7 @@ const examNotification = async () =>{
       examtime = await api.requestTimeExam(studentid[index].studentID) 
       for(let indexE = 0; indexE < examtime.length; indexE++){
         if(examtime[indexE].ExamDate == '6/10/2562')
-          message = `ทดสอบการแจ้งเตือน: วันนี้มีสอบนะครับ เริ่มสอบ ${examtime[indexE].From} ถึง ${examtime[indexE].To} วิชา ${examtime[indexE].SubjectNameEN} ห้อง ${examtime[indexE].ExamRooms}`   
+          let message = `ทดสอบการแจ้งเตือน: วันนี้มีสอบนะครับ เริ่มสอบ ${examtime[indexE].From} ถึง ${examtime[indexE].To} วิชา ${examtime[indexE].SubjectNameEN} ห้อง ${examtime[indexE].ExamRooms}`   
           func.sendTextMessage(studentid[index].senderId, message)
        }
     
