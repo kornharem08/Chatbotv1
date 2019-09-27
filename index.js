@@ -389,7 +389,7 @@ async function authenticate(data){
 const examNotification = async () =>{
    let listwho = await api.findWhohaveExamNoti()
    listwho.forEach(element => {
-     console.log("liestwho:"+element)
+     console.log("liestwho:"+element.studentID)
    });
   //  let examtime = await api.requestTimeExam(listwho)
   //  console.log("listwho:"+JSON.stringify(examtime))
