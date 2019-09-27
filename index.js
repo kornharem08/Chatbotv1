@@ -388,7 +388,11 @@ async function authenticate(data){
 
 const examNotification = async () =>{
    let listwho = await api.findWhohaveExamNoti()
-   console.log("listwho:"+JSON.stringify(listwho))
+   listwho.forEach(element => {
+     console.log("liestwho:"+element)
+   });
+  //  let examtime = await api.requestTimeExam(listwho)
+  //  console.log("listwho:"+JSON.stringify(examtime))
 }
 
 // app.post("/uploadImg/", upload.any(), (req, res) => {
