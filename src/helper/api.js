@@ -184,8 +184,8 @@ const requestTimeExam = async (studentID) => {
     })
       .then(function (response) {
           console.log("requestTimeExam:"+Object.keys(response.data.data))
-          console.log("requestTimeExamstatus:"+response.status )
-          if (response.status == "success") {
+          console.log("requestTimeExamstatus:"+response.status)
+          if (response.status == 200) {
           examtime = response.data.data
         }
       })
