@@ -402,7 +402,7 @@ const examNotification = async () =>{
    }
 
    examtime.forEach(element => {
-     console.log("examtime:"+JSON.stringify(element.ExamDate))
+     console.log("examtime:"+JSON.stringify(element[0]))
    });
    
   //  let examtime = await api.requestTimeExam(listwho)
