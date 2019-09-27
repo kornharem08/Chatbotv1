@@ -133,11 +133,33 @@ const requestinfoAllgrade = async (studentID) =>{
     return oldgrade
 }
 
+const requestNotification = async (notiForm) =>{
+
+  let status
+  const url = `https://sisconnect-db.herokuapp.com/updateExamNoti`
+    await axios({
+      method: 'post',
+      url: url,
+      data: notiForm
+    })
+      .then(function (response) {
+        if (response.status == 200) {
+          status = response.status
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+  return status
+}
+
 module.exports = {
   callSendAPI,
   requestUserinfo,
   insertProfile,
   validateAuthenticate,
   requestStudentID,
-  requestinfoAllgrade
+  requestinfoAllgrade,
+  requestNotification
 }

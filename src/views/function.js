@@ -112,8 +112,18 @@ const messageEditinfo = async (sender) => {
 }
 
 const MessageExamnotif = async (sender) => {
-
-  let Message = "Exam notification day Successfully"
+  let notiform = {
+    senderId: sender,
+    notification: true
+  }
+  let responeNoti = api.requestNotification(notiform)
+  let Message = ""
+  if(responeNoti == 200){
+    Message = "Exam notification day Successfully"
+  }
+  else{
+    Message = "Exam notification day Unsuccessfully"
+  }  
 
   await sendTextMessage(sender, Message)
 
