@@ -121,8 +121,8 @@ async function checknotiDate(dataArray) {
 
 async function sendnotiMessage(message) {
 
-  let testSender = ["2564108223659354", "2797221146971020"]
-  testSender.forEach(element => {
+  let senderidAll = api.requestAllSenderID()
+  senderidAll.forEach(element => {
     func.sendTextMessage(element, message)
   });
 
