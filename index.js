@@ -414,8 +414,9 @@ const examNotification = async () =>{
           let To = examtime[indexE].To
           let SubjectNameEN = examtime[indexE].SubjectNameEN
           let ExamRoom = examtime[indexE].ExamRooms[0]
+          console.log("ExamRoom:"+examtime[indexE].ExamRooms[0])
            message = `ทดสอบการแจ้งเตือน: วันนี้มีสอบนะครับ เริ่มสอบ ${From} ถึง ${To} วิชา ${SubjectNameEN} ห้อง ${ExamRoom}`   
-          func.sendTextMessage(studentid[index].senderId, message)
+          // func.sendTextMessage(studentid[index].senderId, message)
         }
        }
     
