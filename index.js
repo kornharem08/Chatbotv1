@@ -390,6 +390,12 @@ const examNotification = async () =>{
    let listwho = await api.findWhohaveExamNoti()
    let studentid = []
    let examtime = []
+   let d = new Date()
+   let date = d.getDate()
+   let month = d.getMonth() + 1
+   let year = d.getFullYear() +543
+   let today = `${date}/${month}/${year}`
+
    await listwho.forEach(element => {
     studentid.push(element.studentID)
    });
@@ -397,15 +403,15 @@ const examNotification = async () =>{
    for(let index = 0; index < studentid.length; index++){
     
       examtime = await api.requestTimeExam(studentid[index]) 
+      for(let indexE = 0; indexE < examtime.length; indexE++){
+        if(examtime[indexE].ExamDate == today)
+          console.log("examtime:"+examtime[indexE].ExamDate)    
+     
+       }
     
    }
 
-   for(let indexE = 0; indexE < examtime.length; indexE++){
-    
-      console.log("examtime:"+examtime[indexE].ExamDate)    
- 
-   }
-
+   
   //  examtime.forEach(element => {
   //    console.log("examtime:"+JSON.stringify(element[0]))
   //  });
