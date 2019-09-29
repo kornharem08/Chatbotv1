@@ -23,8 +23,8 @@ Grade_TXT["TH"] = "ผลการเรียน"
 exports.Grade_TXT = Grade_TXT
 
 var Class_Examiantion_Schedule_TXT=[]
-Class_Examiantion_Schedule["ENG"] = "Class&Examination Schedule"
-Class_Examiantion_Schedule["TH"] = "เรียน/สอบ ตาราง"
+Class_Examiantion_Schedule_TXT["ENG"] = "Class&Examination Schedule"
+Class_Examiantion_Schedule_TXT["TH"] = "เรียน/สอบ ตาราง"
 
 exports.Class_Examiantion_Schedule_TXT = Class_Examiantion_Schedule_TXT
 
