@@ -7,9 +7,9 @@ const captureSchedule = require("../helper/captureSchedule");
 const redis = new Redis(process.env.REDIS_URL);
 
 const mainmenu = async (sender) => {
-
+  let txt_lang = api.requestLang(sender)
   let elementsMenu = [
-    fb.carouselTemplate("Welcome!", "https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png", "We have the right hat for everyone.", [fb.buttons("Student information", "Student-information"), fb.buttons("Grade & GPA", "Grade&GPA"), fb.buttons("Class&Examination Schedule", "Class&Examination-Schedule")]),
+    fb.carouselTemplate("Welcome!", "https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png", "We have the right hat for everyone.", [fb.buttons(Dict.StudentInfo_TXT[txt_lang], "Student-information"), fb.buttons("Grade & GPA", "Grade&GPA"), fb.buttons("Class&Examination Schedule", "Class&Examination-Schedule")]),
     fb.carouselTemplate("Welcome!", "https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png", "We have the right hat for everyone.", [fb.buttons("Exam notification day", "Exam-notification-day"), fb.buttonsURL(urlweb.sisurl, "Academic calendar for undergraduate"), fb.buttons("Cancle Exam notification day", "Cancle-Exam-notification-day")]),
 
   ];

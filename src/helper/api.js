@@ -73,9 +73,7 @@ const validateAuthenticate = async (senderId) => {
 
 const insertProfile = async (studentInfo) => {
 
-  let status
-    console.log("studentInfo:" + studentInfo.senderId + "," + studentInfo.studentID)
-    
+  let status    
     const url = "https://sisconnect-db.herokuapp.com/insertProfile"
     await axios({
       method: 'post',
@@ -113,8 +111,30 @@ const requestStudentID = async (senderId) => {
     .catch(function (error) {
       console.log(error);
     });
-    console.log("studentID:"+studentID)
     return studentID
+
+}
+
+const requestLang = async (senderId) => {
+  let lang = null
+  const url = "https://sisconnect-db.herokuapp.com/requestLang"
+  await axios({
+    method: 'get',
+    url: url,
+    data: {
+      senderId: senderId
+    }
+  })
+    .then(function (response) {
+      if (response.data) {
+        lang = response.data.lang
+
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    return lang
 
 }
 
@@ -143,7 +163,6 @@ const requestNotification = async (notiForm) =>{
       data: notiForm
     })
       .then(function (response) {
-          console.log("requestNoti:"+response.status)
         if (response.status == 200) {
           status = response.status
         }
@@ -163,7 +182,6 @@ const findWhohaveExamNoti = async () => {
       url: url
     })
       .then(function (response) {
-          console.log("findWhohaveExamNoti:"+Object.keys(response.data[0]))
         if (response.status == 200) {
           ListWho = response.data
         }
@@ -183,8 +201,6 @@ const requestTimeExam = async (studentID) => {
       url: url
     })
       .then(function (response) {
-          console.log("requestTimeExam:"+Object.keys(response.data.data))
-          console.log("requestTimeExamstatus:"+response.status)
           if (response.status == 200) {
           examtime = response.data.data
         }
@@ -215,6 +231,8 @@ const requestAllSenderID = async () => {
   return listSender
 }
 
+
+
 module.exports = {
   callSendAPI,
   requestUserinfo,
@@ -225,5 +243,6 @@ module.exports = {
   requestNotification,
   findWhohaveExamNoti,
   requestTimeExam,
-  requestAllSenderID
+  requestAllSenderID,
+  requestLang
 }
