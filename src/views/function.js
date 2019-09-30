@@ -9,8 +9,8 @@ const redis = new Redis(process.env.REDIS_URL);
 const mainmenu = async (sender) => {
   let txt_lang = await api.requestLang(sender)
   let elementsMenu = [
-    fb.carouselTemplate("Welcome!", "https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png", "We have the right hat for everyone.", [fb.buttons(Dict.StudentInfo_TXT[txt_lang], "Student-information"), fb.buttons("Grade & GPA", "Grade&GPA"), fb.buttons("Class&Examination Schedule", "Class&Examination-Schedule")]),
-    fb.carouselTemplate("Welcome!", "https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png", "We have the right hat for everyone.", [fb.buttons("Exam notification day", "Exam-notification-day"), fb.buttonsURL(urlweb.sisurl, "Academic calendar for undergraduate"), fb.buttons("Cancle Exam notification day", "Cancle-Exam-notification-day")]),
+    fb.carouselTemplate("Welcome!", "https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png", "We have the right hat for everyone.", [fb.buttons(Dict.StudentInfo_TXT[txt_lang], "Student-information"), fb.buttons(Dict.Grade_TXT[txt_lang], "Grade&GPA"), fb.buttons(Dict.Class_Examiantion_Schedule_TXT[txt_lang], "Class&Examination-Schedule")]),
+    fb.carouselTemplate("Welcome!", "https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png", "We have the right hat for everyone.", [fb.buttons(Dict.Exam_notification_TXT[txt_lang], "Exam-notification-day"), fb.buttonsURL(urlweb.sisurl, Dict.Academic_Calendar_TXT[txt_lang]), fb.buttons(Dict.Cancle_Exam_notification_TXT[txt_lang], "Cancle-Exam-notification-day")]),
 
   ];
 
@@ -22,11 +22,7 @@ const mainmenu = async (sender) => {
 }
 const btnMessage = async (sender) => {
 
-  let btnMessage = fb.buttonsTemplate("What do you want to do next?", [fb.buttons("Personal information", "Personal-information"), fb.buttons("Edit Personal information", "Edit-Student-information"), fb.buttons("Back", "MainMenu_Payload")])
-
-
-
-
+  let btnMessage = fb.buttonsTemplate(Dict.whatdoyouwant_TXT[txt_lang], [fb.buttons("Personal information", "Personal-information"), fb.buttons("Edit Personal information", "Edit-Student-information"), fb.buttons("Back", "MainMenu_Payload")])
   await sendBtnMessage(sender, btnMessage)
 
 
@@ -88,7 +84,7 @@ const btnGradeGPAWebview = async (sender) => {
 
 const btnExScheduleView = async (sender) => {
   let studentID = await api.requestStudentID(sender)
-  let btnMessage = await fb.buttonsTemplate("Click to view Exam Schedule this term", [fb.buttonsURL(`${urlweb.sisurl_grade}/${studentID}/`, "View Grade/GPA"), fb.buttons("Back", "MainMenu_Payload")])
+  let btnMessage = await fb.buttonsTemplate("Click to view Exam Schedule this term", [fb.buttonsURL(`${urlweb.sisurl_grade}/${studentID}/`, "View Exam schedule"), fb.buttons("Back", "MainMenu_Payload")])
   await sendBtnMessage(sender, btnMessage)
 
 }

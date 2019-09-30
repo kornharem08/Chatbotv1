@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 var allowedOrigins = ['http://localhost:8080',
-  'https://webviews-vue1.herokuapp.com'];
+  'https://webviews-vue1.herokuapp.com','https://nuxtsiscon.herokuapp.com'];
 app.use(cors({
   origin: function (origin, callback) {
     // allow requests with no origin 
