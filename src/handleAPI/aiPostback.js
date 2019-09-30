@@ -9,7 +9,7 @@ const handleAiPostback = async (
     value
 
 ) => {
-
+    let lang
     switch (payload) {
         case "<GET_STARTED_PAYLOAD>":
             await validateAuthen(sender)
@@ -70,14 +70,14 @@ const handleAiPostback = async (
             func.messageLanguage(sender)
             break;
         case "Language_TH_Payload":
-            let lang = "TH"
+            lang = "TH"
             let response = await api.updateLang(sender,lang)
             if(response == 200){
                 func.mainmenu(sender)
             }
             break;
         case "Language_ENG_Payload":
-            let lang = "ENG"
+            lang = "ENG"
             let response = await api.updateLang(sender,lang)
             if(response == 200){
                 func.mainmenu(sender)
