@@ -176,8 +176,6 @@ function receivedQuickRp(event) {
 
   if(postback.data){
   value = postback.data
-  }else{
-  value = null
   }
 
   if(postback.campagin){
@@ -282,7 +280,7 @@ app.post("/webhook/", function (req, res) {
           //let qr = JSON.parse(messagingEvent.message.quick_reply.payload)
           //console.log("Quick-Reply" + qr.campagin)
           /// ต้องทำ session อีกทีนึง
-          //receivedQuickRp(messagingEvent)
+          receivedQuickRp(messagingEvent)
 
 
 

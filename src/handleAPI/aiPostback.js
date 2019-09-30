@@ -69,6 +69,9 @@ const handleAiPostback = async (
         case "Language_Payload":
             func.messageLanguage(sender)
             break;
+        case "Language_TH_Payload":
+            console.log("Language_TH_Payload")
+            break;
         // case "GradeGPA_Term":
         //     if (value) {
         //         let data
