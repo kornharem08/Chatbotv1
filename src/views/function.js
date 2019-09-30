@@ -53,7 +53,7 @@ const btnMessageclassEx = async (sender) => {
 const quickreplyGradeGPAsemester = async (sender) => {
   // let quickreply = await setQuickreplyforgrade(sender)
   // console.log("setQuickreplyforgrade:" + quickreply[0])
-  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", "test", null),fb.quickreply("1/2559", '{"campagin":"Grade_Semester_quickreply","data":"1/2559"}', null)])
+  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", '{"campagin":"MainMenu_Payload","data":"null"}', null),fb.quickreply("1/2559", '{"campagin":"Grade_Semester_quickreply","data":"1/2559"}', null)])
   // console.log("quickreplyGradeGPAsemester:"+JSON.stringify(replies))
   await sendQuickReply(sender, replies);
 }
@@ -154,7 +154,7 @@ const authenticated = async (sender) => {
 }
 
 const messageLanguage = async (sender) => {
-  let replies = fb.quickreplyTemplate("change language", [fb.quickreply("TH", '{"campagin":"Language_TH_Payload"}' , "https://upload.wikimedia.org/wikipedia/commons/e/e4/%E0%B8%98%E0%B8%87%E0%B8%8A%E0%B8%B2%E0%B8%95%E0%B8%B4%E0%B9%84%E0%B8%97%E0%B8%A2.png"), fb.quickreply("ENG", '{"campagin":"Language_ENG_Payload"}', "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/285px-Flag_of_the_United_States.svg.png")])
+  let replies = fb.quickreplyTemplate("change language", [fb.quickreply("TH",'{ "campagin":"Language_TH_Payload", "data":"null"}', "https://upload.wikimedia.org/wikipedia/commons/e/e4/%E0%B8%98%E0%B8%87%E0%B8%8A%E0%B8%B2%E0%B8%95%E0%B8%B4%E0%B9%84%E0%B8%97%E0%B8%A2.png"), fb.quickreply("ENG", '{"campagin":"Language_ENG_Payload"}', "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/285px-Flag_of_the_United_States.svg.png")])
   await sendQuickReply(sender, replies);
 }
 
