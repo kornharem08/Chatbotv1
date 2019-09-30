@@ -66,6 +66,9 @@ const handleAiPostback = async (
                 func.btnGradeGPAWebview(sender);
             }
             break;
+        case "Language_Payload":
+            func.messageLanguage(sender)
+            break;
         // case "GradeGPA_Term":
         //     if (value) {
         //         let data

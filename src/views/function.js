@@ -14,10 +14,10 @@ const mainmenu = async (sender) => {
 
   ];
 
-  let replies = fb.quickreplyTemplate("", [fb.quickreply("TH", "test", null), fb.quickreply("ENG", "test", null)])
+ //let replies = fb.quickreplyTemplate("", [fb.quickreply("TH", "test", null), fb.quickreply("ENG", "test", null)])
 
   await sendGenericMessage(sender, elementsMenu)
-  await sendQuickReply(sender, replies);
+  //await sendQuickReply(sender, replies);
 
 }
 const btnMessage = async (sender) => {
@@ -153,6 +153,11 @@ const authenticated = async (sender) => {
   await sendBtnMessage(sender, btnMessage)
 }
 
+const messageLanguage = async (sender) => {
+  let replies = fb.quickreplyTemplate("change language", [fb.quickreply("TH", "test", null), fb.quickreply("ENG", "test", null)])
+  await sendQuickReply(sender, replies);
+}
+
 
 
 
@@ -286,6 +291,7 @@ module.exports = {
   messageExamScheduleWeb,
   quickreplyGradeGPAsemester,
   btnGradeGPAWebview,
-  authenticated
+  authenticated,
+  messageLanguage
 }
 
