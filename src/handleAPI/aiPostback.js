@@ -70,8 +70,19 @@ const handleAiPostback = async (
             func.messageLanguage(sender)
             break;
         case "Language_TH_Payload":
-            console.log("Language_TH_Payload")
+            let lang = "TH"
+            let response = await api.updateLang(sender,lang)
+            if(response == 200){
+                func.mainmenu(sender)
+            }
             break;
+        case "Language_ENG_Payload":
+            let lang = "ENG"
+            let response = await api.updateLang(sender,lang)
+            if(response == 200){
+                func.mainmenu(sender)
+            }
+            break; 
         // case "GradeGPA_Term":
         //     if (value) {
         //         let data

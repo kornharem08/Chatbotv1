@@ -138,6 +138,31 @@ const requestLang = async (senderId) => {
 
 }
 
+const updateLang = async (senderId,lang) => {
+  let status = null
+  const url = "https://sisconnect-db.herokuapp.com/updateLang"
+  await axios({
+    method: 'post',
+    url: url,
+    data: {
+      senderId: senderId,
+      lang: lang
+    }
+  })
+    .then(function (response) {
+      if (response.status == 200) {
+        status = response.status
+
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    return status
+
+}
+
+
 const requestinfoAllgrade = async (studentID) =>{
   let oldgrade = []
   await axios.get(`https://sispsu.herokuapp.com/api/grade/${studentID}`)
@@ -244,5 +269,6 @@ module.exports = {
   findWhohaveExamNoti,
   requestTimeExam,
   requestAllSenderID,
-  requestLang
+  requestLang,
+  updateLang
 }
