@@ -135,3 +135,9 @@ selectLang_TXT["ENG"] = "Select Your Language."
 selectLang_TXT["TH"] = "เลือกภาษาของคุณ"
 
 exports.selectLang_TXT = selectLang_TXT
+
+var back_TXT = []
+back_TXT["ENG"] = "<< Back"
+back_TXT["TH"] = "<< กลับ"
+
+exports.back_TXT = back_TXT

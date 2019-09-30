@@ -22,7 +22,7 @@ const mainmenu = async (sender) => {
 }
 const btnMessage = async (sender) => {
   let txt_lang = await api.requestLang(sender)
-  let btnMessage = fb.buttonsTemplate(Dict.whatdoyouwant_TXT[txt_lang], [fb.buttons(Dict.Edit_Personal_info_TXT[txt_lang], "Personal-information"), fb.buttons(Dict.Edit_Personal_info_TXT[txt_lang], "Edit-Student-information"), fb.buttons("Back", "MainMenu_Payload")])
+  let btnMessage = fb.buttonsTemplate(Dict.whatdoyouwant_TXT[txt_lang], [fb.buttons(Dict.Personal_info_TXT[txt_lang], "Personal-information"), fb.buttons(Dict.Edit_Personal_info_TXT[txt_lang], "Edit-Student-information"), fb.buttons(Dict.back_TXT[txt_lang], "MainMenu_Payload")])
   await sendBtnMessage(sender, btnMessage)
 
 
@@ -37,14 +37,14 @@ const Messageinfo = async (sender) => {
 }
 const messageGradeGPA = async (sender) => {
   let txt_lang = await api.requestLang(sender)
-  let btnMessage = fb.buttonsTemplate(Dict.select_view_TXT[txt_lang], [fb.buttons("<< Back", "MainMenu_Payload", null), fb.buttons(Dict.select_semester_TXT[txt_lang], "GradeGPA_Semester"), fb.buttons(Dict.grade_all_TXT[txt_lang], "GradeGPA_ViewAll")])
+  let btnMessage = fb.buttonsTemplate(Dict.select_view_TXT[txt_lang], [fb.buttons(Dict.back_TXT[txt_lang], "MainMenu_Payload", null), fb.buttons(Dict.select_semester_TXT[txt_lang], "GradeGPA_Semester"), fb.buttons(Dict.grade_all_TXT[txt_lang], "GradeGPA_ViewAll")])
   await sendBtnMessage(sender, btnMessage);
 
 }
 
 const btnMessageclassEx = async (sender) => {
   let txt_lang = await api.requestLang(sender)
-  let btnMessage = fb.buttonsTemplate(Dict.whatdoyouwant_TXT[txt_lang], [fb.buttons(Dict.class_schedule_TXT[txt_lang], "Class-schedule"), fb.buttons(Dict.examination_schedule_TXT[txt_lang], "Examination-Schedule"), fb.buttons("Back", "MainMenu_Payload")])
+  let btnMessage = fb.buttonsTemplate(Dict.whatdoyouwant_TXT[txt_lang], [fb.buttons(Dict.class_schedule_TXT[txt_lang], "Class-schedule"), fb.buttons(Dict.examination_schedule_TXT[txt_lang], "Examination-Schedule"), fb.buttons(Dict.back_TXT[txt_lang], "MainMenu_Payload")])
 
   await sendBtnMessage(sender, btnMessage)
 
@@ -54,7 +54,7 @@ const quickreplyGradeGPAsemester = async (sender) => {
   // let quickreply = await setQuickreplyforgrade(sender)
   // console.log("setQuickreplyforgrade:" + quickreply[0])
   let txt_lang = await api.requestLang(sender)
-  let replies = fb.quickreplyTemplate(Dict.semester_TXT[txt_lang], [fb.quickreply("<< Back", '{"campagin":"MainMenu_Payload","data":"null"}', null),fb.quickreply("1/2559", '{"campagin":"Grade_Semester_quickreply","data":"1/2559"}', null)])
+  let replies = fb.quickreplyTemplate(Dict.semester_TXT[txt_lang], [fb.quickreply(Dict.back_TXT[txt_lang], '{"campagin":"MainMenu_Payload","data":"null"}', null),fb.quickreply("1/2559", '{"campagin":"Grade_Semester_quickreply","data":"1/2559"}', null)])
   // console.log("quickreplyGradeGPAsemester:"+JSON.stringify(replies))
   await sendQuickReply(sender, replies);
 }
@@ -80,14 +80,14 @@ const btnGradeGPAWebview = async (sender) => {
     subsemesteryear = datasubsemesteryear
 
   });
-  let btnMessage = await fb.buttonsTemplate(click_toview_TXT[txt_lang], [fb.buttonsURL(`${urlweb.sisurl_grade}/${studentID}/${subsemesteryear}/${subsemesterm}`, Dict.click_toview_TXT[txt_lang]), fb.buttons("Back", "MainMenu_Payload")])
+  let btnMessage = await fb.buttonsTemplate(click_toview_TXT[txt_lang], [fb.buttonsURL(`${urlweb.sisurl_grade}/${studentID}/${subsemesteryear}/${subsemesterm}`, Dict.click_toview_TXT[txt_lang]), fb.buttons(Dict.back_TXT[txt_lang], "MainMenu_Payload")])
   await sendBtnMessage(sender, btnMessage)
 }
 
 const btnExScheduleView = async (sender) => {
   let txt_lang = await api.requestLang(sender)
   let studentID = await api.requestStudentID(sender)
-  let btnMessage = await fb.buttonsTemplate(Dict.view_Exam_Schedule_TXT[txt_lang], [fb.buttonsURL(`${urlweb.sisurl_grade}/${studentID}/`, Dict.click_toview_TXT[txt_lang]), fb.buttons("Back", "MainMenu_Payload")])
+  let btnMessage = await fb.buttonsTemplate(Dict.view_Exam_Schedule_TXT[txt_lang], [fb.buttonsURL(`${urlweb.sisurl_grade}/${studentID}/`, Dict.click_toview_TXT[txt_lang]), fb.buttons(Dict.back_TXT[txt_lang], "MainMenu_Payload")])
   await sendBtnMessage(sender, btnMessage)
 
 }
@@ -103,7 +103,7 @@ const messageEditinfo = async (sender) => {
   
   let Message = "Name\nTanakorn Pitakchaichan\n======================\nPhone number\n090-252812\n======================"
 
-  let replies = fb.quickreplyTemplate("Please select Menu Edit", [fb.quickreply("<< Back", "MainMenu_Payload", null), fb.quickreply("Email", "test", null), fb.quickreply("Phone number", "test", null)])
+  let replies = fb.quickreplyTemplate("Please select Menu Edit", [fb.quickreply(Dict.back_TXT[txt_lang], "MainMenu_Payload", null), fb.quickreply("Email", "test", null), fb.quickreply("Phone number", "test", null)])
 
   await sendTextMessage(sender, Message)
   await sendQuickReply(sender, replies);
