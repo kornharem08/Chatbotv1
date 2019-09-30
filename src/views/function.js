@@ -154,7 +154,7 @@ const authenticated = async (sender) => {
 }
 
 const messageLanguage = async (sender) => {
-  let replies = fb.quickreplyTemplate("change language", [fb.quickreply("TH", "test" , "http://example.com/img/red.png"), fb.quickreply("ENG", "test", "http://example.com/img/red.png")])
+  let replies = fb.quickreplyTemplate("change language", [fb.quickreply("TH", "test" , "https://i.redd.it/l85hty1ej5f01.png"), fb.quickreply("ENG", "test", "https://i.redd.it/l85hty1ej5f01.png")])
   await sendQuickReply(sender, replies);
 }
 
