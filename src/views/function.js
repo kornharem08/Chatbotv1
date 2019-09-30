@@ -22,7 +22,7 @@ const mainmenu = async (sender) => {
 }
 const btnMessage = async (sender) => {
   let txt_lang = await api.requestLang(sender)
-  let btnMessage = fb.buttonsTemplate(Dict.whatdoyouwant_TXT[txt_lang], [fb.buttons("Personal information", "Personal-information"), fb.buttons("Edit Personal information", "Edit-Student-information"), fb.buttons("Back", "MainMenu_Payload")])
+  let btnMessage = fb.buttonsTemplate(Dict.whatdoyouwant_TXT[txt_lang], [fb.buttons(Dict.Edit_Personal_info_TXT[txt_lang], "Personal-information"), fb.buttons(Dict.Edit_Personal_info_TXT[txt_lang], "Edit-Student-information"), fb.buttons("Back", "MainMenu_Payload")])
   await sendBtnMessage(sender, btnMessage)
 
 
@@ -36,15 +36,15 @@ const Messageinfo = async (sender) => {
 
 }
 const messageGradeGPA = async (sender) => {
-
-  let btnMessage = fb.buttonsTemplate("Select view Semester/Year or view all", [fb.buttons("<< Back", "MainMenu_Payload", null), fb.buttons("Select Semester/Year", "GradeGPA_Semester"), fb.buttons("View All", "GradeGPA_ViewAll")])
+  let txt_lang = await api.requestLang(sender)
+  let btnMessage = fb.buttonsTemplate(Dict.select_view_TXT[txt_lang], [fb.buttons("<< Back", "MainMenu_Payload", null), fb.buttons(Dict.select_semester_TXT[txt_lang], "GradeGPA_Semester"), fb.buttons(Dict.grade_all_TXT[txt_lang], "GradeGPA_ViewAll")])
   await sendBtnMessage(sender, btnMessage);
 
 }
 
 const btnMessageclassEx = async (sender) => {
-
-  let btnMessage = fb.buttonsTemplate("What do you want to do next?", [fb.buttons("Class Schedule", "Class-schedule"), fb.buttons("Examination Schedule", "Examination-Schedule"), fb.buttons("Back", "MainMenu_Payload")])
+  let txt_lang = await api.requestLang(sender)
+  let btnMessage = fb.buttonsTemplate(Dict.whatdoyouwant_TXT[txt_lang], [fb.buttons(Dict.class_schedule_TXT[txt_lang], "Class-schedule"), fb.buttons(Dict.examination_schedule_TXT[txt_lang], "Examination-Schedule"), fb.buttons("Back", "MainMenu_Payload")])
 
   await sendBtnMessage(sender, btnMessage)
 
@@ -53,7 +53,8 @@ const btnMessageclassEx = async (sender) => {
 const quickreplyGradeGPAsemester = async (sender) => {
   // let quickreply = await setQuickreplyforgrade(sender)
   // console.log("setQuickreplyforgrade:" + quickreply[0])
-  let replies = fb.quickreplyTemplate("Please select Semester/Year criteria", [fb.quickreply("<< Back", '{"campagin":"MainMenu_Payload","data":"null"}', null),fb.quickreply("1/2559", '{"campagin":"Grade_Semester_quickreply","data":"1/2559"}', null)])
+  let txt_lang = await api.requestLang(sender)
+  let replies = fb.quickreplyTemplate(Dict.semester_TXT[txt_lang], [fb.quickreply("<< Back", '{"campagin":"MainMenu_Payload","data":"null"}', null),fb.quickreply("1/2559", '{"campagin":"Grade_Semester_quickreply","data":"1/2559"}', null)])
   // console.log("quickreplyGradeGPAsemester:"+JSON.stringify(replies))
   await sendQuickReply(sender, replies);
 }
@@ -64,6 +65,7 @@ const quickreplyGradeGPAsemester = async (sender) => {
 // }
 
 const btnGradeGPAWebview = async (sender) => {
+  let txt_lang = await api.requestLang(sender)
   let studentID = await api.requestStudentID(sender)
 
   let subsemesterm, subsemesteryear = null
@@ -78,13 +80,14 @@ const btnGradeGPAWebview = async (sender) => {
     subsemesteryear = datasubsemesteryear
 
   });
-  let btnMessage = await fb.buttonsTemplate("Click to view Grade/GPA", [fb.buttonsURL(`${urlweb.sisurl_grade}/${studentID}/${subsemesteryear}/${subsemesterm}`, "View Grade/GPA"), fb.buttons("Back", "MainMenu_Payload")])
+  let btnMessage = await fb.buttonsTemplate(click_toview_TXT[txt_lang], [fb.buttonsURL(`${urlweb.sisurl_grade}/${studentID}/${subsemesteryear}/${subsemesterm}`, Dict.click_toview_TXT[txt_lang]), fb.buttons("Back", "MainMenu_Payload")])
   await sendBtnMessage(sender, btnMessage)
 }
 
 const btnExScheduleView = async (sender) => {
+  let txt_lang = await api.requestLang(sender)
   let studentID = await api.requestStudentID(sender)
-  let btnMessage = await fb.buttonsTemplate("Click to view Exam Schedule this term", [fb.buttonsURL(`${urlweb.sisurl_grade}/${studentID}/`, "View Exam schedule"), fb.buttons("Back", "MainMenu_Payload")])
+  let btnMessage = await fb.buttonsTemplate(Dict.view_Exam_Schedule_TXT[txt_lang], [fb.buttonsURL(`${urlweb.sisurl_grade}/${studentID}/`, Dict.click_toview_TXT[txt_lang]), fb.buttons("Back", "MainMenu_Payload")])
   await sendBtnMessage(sender, btnMessage)
 
 }
@@ -97,6 +100,7 @@ const messageClassSc = async (sender) => {
 }
 
 const messageEditinfo = async (sender) => {
+  
   let Message = "Name\nTanakorn Pitakchaichan\n======================\nPhone number\n090-252812\n======================"
 
   let replies = fb.quickreplyTemplate("Please select Menu Edit", [fb.quickreply("<< Back", "MainMenu_Payload", null), fb.quickreply("Email", "test", null), fb.quickreply("Phone number", "test", null)])
@@ -149,12 +153,14 @@ const messageExamScheduleWeb = async (sender) => {
 }
 
 const authenticated = async (sender) => {
-  let btnMessage = fb.buttonsTemplate("Please sigin before", [fb.buttonsURL(`${urlweb.sisurl_signin}/${sender}`, "Sign in")])
+  let txt_lang = await api.requestLang(sender)
+  let btnMessage = fb.buttonsTemplate(Dict.signin_before_TXT[txt_lang], [fb.buttonsURL(`${urlweb.sisurl_signin}/${sender}`, Dict.signin_TXT[txt_lang])])
   await sendBtnMessage(sender, btnMessage)
 }
 
 const messageLanguage = async (sender) => {
-  let replies = fb.quickreplyTemplate("change language", [fb.quickreply("TH",'{ "campagin":"Language_TH_Payload", "data":"null"}', "https://upload.wikimedia.org/wikipedia/commons/e/e4/%E0%B8%98%E0%B8%87%E0%B8%8A%E0%B8%B2%E0%B8%95%E0%B8%B4%E0%B9%84%E0%B8%97%E0%B8%A2.png"), fb.quickreply("ENG", '{ "campagin":"Language_ENG_Payload", "data":"null"}', "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/285px-Flag_of_the_United_States.svg.png")])
+  let txt_lang = await api.requestLang(sender)
+  let replies = fb.quickreplyTemplate(Dict.selectLang_TXT[txt_lang], [fb.quickreply("TH",'{ "campagin":"Language_TH_Payload", "data":"null"}', "https://upload.wikimedia.org/wikipedia/commons/e/e4/%E0%B8%98%E0%B8%87%E0%B8%8A%E0%B8%B2%E0%B8%95%E0%B8%B4%E0%B9%84%E0%B8%97%E0%B8%A2.png"), fb.quickreply("ENG", '{ "campagin":"Language_ENG_Payload", "data":"null"}', "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/285px-Flag_of_the_United_States.svg.png")])
   await sendQuickReply(sender, replies);
 }
 

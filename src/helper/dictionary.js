@@ -129,3 +129,9 @@ signin_TXT["ENG"] = "Sign in"
 signin_TXT["TH"] = "ลงชื่อเข้าใช้"
 
 exports.signin_TXT = signin_TXT
+
+var selectLang_TXT = []
+selectLang_TXT["ENG"] = "Select Your Language."
+selectLang_TXT["TH"] = "เลือกภาษาของคุณ"
+
+exports.selectLang_TXT = selectLang_TXT
