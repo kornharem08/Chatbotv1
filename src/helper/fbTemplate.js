@@ -44,11 +44,11 @@ const quickreplyTemplate = (text,quickreply) => {
 
 const quickreply = (title,payload,image) => {
 
-    var image_url = ""
+    let image_url = ""
 
     if(image != null){
 
-        this.image_url = image
+        image_url = image
 
     }
 
