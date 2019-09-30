@@ -21,7 +21,7 @@ const mainmenu = async (sender) => {
 
 }
 const btnMessage = async (sender) => {
-
+  let txt_lang = await api.requestLang(sender)
   let btnMessage = fb.buttonsTemplate(Dict.whatdoyouwant_TXT[txt_lang], [fb.buttons("Personal information", "Personal-information"), fb.buttons("Edit Personal information", "Edit-Student-information"), fb.buttons("Back", "MainMenu_Payload")])
   await sendBtnMessage(sender, btnMessage)
 
