@@ -68,19 +68,19 @@ const handleAiPostback = async (
         case "Language_Payload":
             func.messageLanguage(sender)
             break;
-        // case "Language_TH_Payload":
-        //     let response_lang_TH = await api.updateLang(sender,"TH")
-        //     if(response_lang_TH == 200){
-        //         func.mainmenu(sender)
-        //     }
-        //     break;
-        // case "Language_ENG_Payload":
-        //     lang = "ENG"
-        //     let response_lang_ENG = await api.updateLang(sender,"ENG")
-        //     if(response_lang_ENG == 200){
-        //         func.mainmenu(sender)
-        //     }
-        //     break; 
+        case "Language_TH_Payload":
+            let response_lang_TH = await api.updateLang(sender,"TH")
+            if(response_lang_TH == 200){
+                func.mainmenu(sender)
+            }
+            break;
+        case "Language_ENG_Payload":
+            lang = "ENG"
+            let response_lang_ENG = await api.updateLang(sender,"ENG")
+            if(response_lang_ENG == 200){
+                func.mainmenu(sender)
+            }
+            break; 
         // case "GradeGPA_Term":
         //     if (value) {
         //         let data
