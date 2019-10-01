@@ -153,8 +153,7 @@ const messageExamScheduleWeb = async (sender) => {
 }
 
 const authenticated = async (sender) => {
-  let txt_lang = await api.requestLang(sender)
-  let btnMessage = fb.buttonsTemplate(Dict.signin_before_TXT[txt_lang], [fb.buttonsURL(`${urlweb.sisurl_signin}/${sender}`, Dict.signin_TXT[txt_lang])])
+  let btnMessage = fb.buttonsTemplate("Sign In before use sisconnect", [fb.buttonsURL(`${urlweb.sisurl_signin}/${sender}`, "SignIn")])
   await sendBtnMessage(sender, btnMessage)
 }
 
