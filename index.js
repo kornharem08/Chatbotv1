@@ -170,7 +170,7 @@ function receivedMessage(event) {
 
 function receivedQuickRp(event) {
   var senderID = event.sender.id;
-  var postback = JSON.parse(event.message.quick_reply.payload)
+  var postback = event.message.quick_reply.payload
   var value
   var campagin
 
