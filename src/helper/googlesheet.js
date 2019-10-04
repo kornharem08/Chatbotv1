@@ -16,17 +16,14 @@ const getDataSheet = async () => {
  ////////////////////////////////////// ส่วนของ Google Sheet
  let status = "connect"
   await client.authorize(function (err, tokens) {
-   let response
    if (err) {
      console.log(err);
      return;
    } else {
      console.log('Connected!');
      //data = gsrun(client)
-     response = "Connect"
+     status = "Connect"
    }
-   console.log("response:"+response)
-   return response
  });
 //  console.log("dataCalendar:"+status)
 //  return status
