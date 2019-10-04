@@ -22,8 +22,9 @@ const client = new google.auth.JWT(
    } else {
      console.log('Connected!');
      data = gsrun(client)
-
+     console.log("data:"+data)
    }
+   console.log("data2:"+data)
    return data
  });
  console.log("dataCalendar:"+dataArray)
