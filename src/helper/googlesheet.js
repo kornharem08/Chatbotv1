@@ -63,7 +63,7 @@ const gsrun = async (cl) => {
 
  async function getCalendar() {
    let dataArray = await getDataSheet()
-   console.log("dataCalendar:"+dataArray)
+   await console.log("dataCalendar:"+dataArray)
 
  }
 
