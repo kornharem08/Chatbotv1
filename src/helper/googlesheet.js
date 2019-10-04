@@ -12,9 +12,9 @@ const client = new google.auth.JWT(
  );
 
 const getDataSheet = async () => {
-let status = null
+// let status = null
  ////////////////////////////////////// ส่วนของ Google Sheet
-  status = await client.authorize(function (err, tokens) {
+  await client.authorize(function (err, tokens) {
    let response
    if (err) {
      console.log(err);
@@ -27,8 +27,8 @@ let status = null
    console.log("response:"+response)
    return response
  });
- console.log("dataCalendar:"+status)
- return status
+//  console.log("dataCalendar:"+status)
+//  return status
 
 }
 
@@ -64,6 +64,8 @@ const gsrun = async (cl) => {
 
  async function getCalendar() {
    let dataArray = await getDataSheet()
+   console.log("response:"+dataArray)
+
  }
 
  module.exports = {
