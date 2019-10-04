@@ -22,8 +22,9 @@ const getDataSheet = async () => {
    } else {
      console.log('Connected!');
      //data = gsrun(client)
-     status = "Connect"
+     this.status = "Connect"
    }
+   console.log("status:"+this.status)
  });
 //  console.log("dataCalendar:"+status)
 //  return status
