@@ -22,7 +22,7 @@ const client = new google.auth.JWT(
      return;
    } else {
      console.log('Connected!');
-     dataArray = gsrun(client)
+     dataArray = await gsrun(client)
    }
 
  });
