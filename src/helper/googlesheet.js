@@ -27,7 +27,7 @@ const client = new google.auth.JWT(
 
  });
 
- res.sendStatus(200)
+ return dataArray
 
 }
 
