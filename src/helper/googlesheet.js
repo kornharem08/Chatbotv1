@@ -26,6 +26,7 @@ const client = new google.auth.JWT(
    }
    return data
  });
+ console.log("dataCalendar:"+dataArray)
  return dataArray
 
 }
@@ -62,7 +63,6 @@ const gsrun = async (cl) => {
 
  async function getCalendar() {
    let dataArray = await getDataSheet()
-   console.log("dataCalendar:"+dataArray)
  }
 
  module.exports = {
