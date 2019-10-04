@@ -10,7 +10,7 @@ const api = require("./src/helper/api")
 const handle = require("./src/handleAPI/aiAction");
 const handlePb = require("./src/handleAPI/aiPostback");
 const func = require("./src/views/function.js");
-const notification = require("./src/helper/notification");
+const notification = require("./src/helper/googlesheet");
 const cors = require('cors');
 //const assets = require("./src/assets");
 const { google } = require('googleapis');
@@ -75,8 +75,7 @@ async function checknotiDate(dataArray) {
       sendnotiMessage(dataArray[i][0])
     
     }
-
-
+    
 
   }
 
@@ -301,8 +300,10 @@ app.post("/webhook/", function (req, res) {
       let auth = JSON.parse(result)
       console.log("auth:" + auth.status)
       if (auth.status == "authenticate") {
-
         authenticate(data)
+        res.sendStatus(200);
+      }else{
+        res.status(404).send('Sorry, we cannot find that senderid! maybe senderid is wrong!');
       }
 
     });

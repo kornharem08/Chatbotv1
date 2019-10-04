@@ -2,6 +2,7 @@ const func = require("../views/function.js");
 const api = require("../helper/api")
 const Redis = require('ioredis');
 const redis = new Redis(process.env.REDIS_URL);
+const googlesheet = require("../helper/googlesheet")
 const handleAiPostback = async (
 
     sender,
@@ -30,6 +31,9 @@ const handleAiPostback = async (
             break;
         case "Examination-Schedule":
             func.btnExScheduleView(sender);
+            break;
+        case "Academic_Calendar_Payload":
+            googlesheet.getCalendar()
             break;
         case "Class-schedule":
             func.messageClassSc(sender);
