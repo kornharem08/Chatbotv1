@@ -11,11 +11,10 @@ const client = new google.auth.JWT(
 
  );
 
-const getDataSheet = async () => {
+const getDataSheet = () => {
 // let status = null
  ////////////////////////////////////// ส่วนของ Google Sheet
- 
- var status = await client.authorize(function (err, tokens) {
+ let status = client.authorize(function (err, tokens) {
    if (err) {
      console.log(err);
      return;
