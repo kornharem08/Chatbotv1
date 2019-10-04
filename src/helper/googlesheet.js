@@ -4,10 +4,9 @@ const keys = require('./keyapi/SISCONNECT-0779c8454af1.json')
 
 
 const getDataSheet = () => {
-
-let dataArray = null
+let dataArray
 const client = new google.auth.JWT(
-
+   
    keys.client_email,
    null,
    keys.private_key,
@@ -15,17 +14,17 @@ const client = new google.auth.JWT(
 
  );
  ////////////////////////////////////// ส่วนของ Google Sheet
-  client.authorize(async function (err, tokens) {
+  dataArray = client.authorize(async function (err, tokens) {
 
    if (err) {
      console.log(err);
      return;
    } else {
      console.log('Connected!');
-     dataArray = await gsrun(client)
+     let data = await gsrun(client)
 
    }
-
+   return data
  });
  return dataArray
 
@@ -63,7 +62,6 @@ const gsrun = async (cl) => {
 
  async function getCalendar() {
    let dataArray = await getDataSheet()
-   await console.log("dataCalendar:"+dataArray)
 
  }
 
