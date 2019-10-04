@@ -12,7 +12,7 @@ const sisurl_enroll = 'https://webviews-vue1.herokuapp.com/Enroll'
 exports.sisurl_enroll = sisurl_enroll
 
 
-const sisurl_exam = 'https://webviews-vue1.herokuapp.com/Table'
+const sisurl_exam = 'https://nuxtsiscon.herokuapp.com/exam'
 
 exports.sisurl_exam = sisurl_exam
 
