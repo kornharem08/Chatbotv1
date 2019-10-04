@@ -80,7 +80,7 @@ const btnGradeGPAWebview = async (sender) => {
     subsemesteryear = datasubsemesteryear
 
   });
-  let btnMessage = await fb.buttonsTemplate(click_toview_TXT[txt_lang], [fb.buttonsURL(`${urlweb.sisurl_grade}/${studentID}/${subsemesteryear}/${subsemesterm}`, Dict.click_toview_TXT[txt_lang]), fb.buttons(Dict.back_TXT[txt_lang], "MainMenu_Payload")])
+  let btnMessage = await fb.buttonsTemplate(Dict.view_Grade_TXT[txt_lang], [fb.buttonsURL(`${urlweb.sisurl_grade}/${studentID}/${subsemesteryear}/${subsemesterm}`, Dict.click_toview_TXT[txt_lang]), fb.buttons(Dict.back_TXT[txt_lang], "MainMenu_Payload")])
   await sendBtnMessage(sender, btnMessage)
 }
 
