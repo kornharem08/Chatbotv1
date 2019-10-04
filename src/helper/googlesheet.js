@@ -22,16 +22,16 @@ const client = new google.auth.JWT(
      return;
    } else {
      console.log('Connected!');
-     dataArray = await gsrun(client)
+     dataArray = gsrun(client)
    }
 
  });
-
+ console.log("dataCalendar:"+dataArray)
  return dataArray
 
 }
 
-async function gsrun(cl) {
+const gsrun = async (cl) => {
    const gsapi = google.sheets({ version: 'v4', auth: cl });
    const opt = {
      spreadsheetId: '1IfhrtQJX7wY3jpyMqm8Ze7AxIBdJkQPGjptRvxT4h00',
@@ -49,22 +49,19 @@ async function gsrun(cl) {
  }
 
 
- async function checkCalendar(dataArray) {
+  const checkCalendar = async (dataArray) => {
 
    for (let i = 0; i < dataArray.length; i++) {
- 
      if (dataArray[i][2]) {
        sendnotiMessage(dataArray[i][2])
      }
-     
- 
    }
  
  }
 
  async function getCalendar() {
    let dataArray = await getDataSheet()
-   console.log("dataCalendar:"+dataArray)
+  
  }
 
  module.exports = {
