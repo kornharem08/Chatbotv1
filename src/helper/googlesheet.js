@@ -14,15 +14,15 @@ const client = new google.auth.JWT(
 const getDataSheet = async () => {
 // let status = null
  ////////////////////////////////////// ส่วนของ Google Sheet
- var status = "connect"
-  await client.authorize(function (err, tokens) {
+ 
+ var status = await client.authorize(function (err, tokens) {
    if (err) {
      console.log(err);
      return;
    } else {
      console.log('Connected!');
      //data = gsrun(client)
-     this.status = "Connect"
+     return "Connect"
    }
    console.log("status:"+this.status)
  });
