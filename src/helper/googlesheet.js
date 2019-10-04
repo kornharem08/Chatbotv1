@@ -24,6 +24,7 @@ let status = null
      //data = gsrun(client)
      response = "Connect"
    }
+   console.log("response:"+response)
    return response
  });
  console.log("dataCalendar:"+status)
