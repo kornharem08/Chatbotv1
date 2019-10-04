@@ -16,6 +16,6 @@ const sisurl_exam = 'https://webviews-vue1.herokuapp.com/Table'
 
 exports.sisurl_exam = sisurl_exam
 
-const sisurl_signin = 'https://webviews-vue1.herokuapp.com/login'
+const sisurl_signin = 'https://nuxtsiscon.herokuapp.com/login'
 
 exports.sisurl_signin = sisurl_signin
