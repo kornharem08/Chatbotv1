@@ -59,6 +59,9 @@ const handleAiPostback = async (
         case "GradeGPA_Semester":
             func.quickreplyGradeGPAsemester(sender);
             break;
+        case "GradeGPA_ViewAll":
+            func.btnGradeGPAViewall(sender)
+            break;    
         case "Grade_Semester_quickreply":
             if (value) {
                 await redis.mset(new Map([[`${sender}`, `{"semester":"${value}"}`]]));
