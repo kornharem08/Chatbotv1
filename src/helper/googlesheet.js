@@ -23,10 +23,11 @@ const client = new google.auth.JWT(
    } else {
      console.log('Connected!');
      dataArray = await gsrun(client)
+     console.log("dataCalendar:"+dataArray)
+
    }
 
  });
- console.log("dataCalendar:"+dataArray)
  return dataArray
 
 }
