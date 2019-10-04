@@ -6,10 +6,6 @@ const sisurl_grade = 'https://nuxtsiscon.herokuapp.com/grade'
 
 exports.sisurl_grade = sisurl_grade
 
-const sisurl_grade_all = 'https://nuxtsiscon.herokuapp.com/grade/0/0'
-
-exports.sisurl_grade_all = sisurl_grade_all
-
 const sisurl_enroll = 'https://webviews-vue1.herokuapp.com/Enroll'
 
 exports.sisurl_enroll = sisurl_enroll

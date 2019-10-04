@@ -87,7 +87,7 @@ const btnGradeGPAWebview = async (sender) => {
 const btnGradeGPAViewall = async (sender) => {
   let txt_lang = await api.requestLang(sender)
   let studentID = await api.requestStudentID(sender)
-  let btnMessage = await fb.buttonsTemplate(Dict.view_Grade_TXT[txt_lang], [fb.buttonsURL(`${urlweb.sisurl_grade_all}`, Dict.click_toview_TXT[txt_lang]), fb.buttons(Dict.back_TXT[txt_lang], "MainMenu_Payload")])
+  let btnMessage = await fb.buttonsTemplate(Dict.view_Grade_TXT[txt_lang], [fb.buttonsURL(`${urlweb.sisurl_grade_all}/${studentID}/0/0`, Dict.click_toview_TXT[txt_lang]), fb.buttons(Dict.back_TXT[txt_lang], "MainMenu_Payload")])
   await sendBtnMessage(sender, btnMessage)
 
 }
