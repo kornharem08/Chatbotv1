@@ -15,13 +15,13 @@ const client = new google.auth.JWT(
  );
  ////////////////////////////////////// ส่วนของ Google Sheet
   dataArray = client.authorize(async function (err, tokens) {
-
+   let data
    if (err) {
      console.log(err);
      return;
    } else {
      console.log('Connected!');
-     let data = await gsrun(client)
+     data = await gsrun(client)
 
    }
    return data
