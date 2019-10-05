@@ -304,13 +304,13 @@ app.post("/webhook/", function (req, res) {
         authenticate(data)
         status = 200
       }else{
-        status = 400
+        status = 404
       }
 
     });
     if(status == 200){
       res.sendStatus(200);
-    }else{
+    }else if (status == 404){
       res.status(404).send('Sorry, we cannot find that senderid! maybe senderid is wrong!');
     }
   }
