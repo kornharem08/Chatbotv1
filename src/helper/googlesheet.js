@@ -57,8 +57,15 @@ const gsrun = async (cl) => {
 
  async function getCalendar() {
    let dataArray = await gsrun(client)
+   let resultCalendar = null
    console.log("response:"+dataArray)
-   return dataArray
+   for (let i = 0; i < dataArray.length; i++) {
+    if (dataArray[i][2]) {
+      resultCalendar = dataArray[i[2]]
+    }
+  }
+
+   return resultCalendar
 
  }
 
