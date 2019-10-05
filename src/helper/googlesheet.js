@@ -60,11 +60,12 @@ const gsrun = async (cl) => {
    let resultCalendar = null
    console.log("response:"+dataArray)
    for (let i = 0; i < dataArray.length; i++) {
-    if (dataArray[i][2]) {
+    if (dataArray[i][2] != null) {
       resultCalendar = dataArray[i[2]]
+      console.log("resultCalendar:"+resultCalendar)
+
     }
   }
-    console.log("resultCalendar:"+resultCalendar)
    return resultCalendar
 
  }
