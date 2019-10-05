@@ -175,8 +175,7 @@ const messageLanguage = async (sender) => {
 
 const messageCalendar = async (sender) => {
   let calendarlink = await googlesheet.getCalendar()
-  let btnMessage = fb.buttonsTemplate("Download Calendar PDF", [fb.buttonsURL(calendarlink, "Download PDF")])
-  await sendBtnMessage(sender, btnMessage)
+  await sendTextMessage(sender,`คลิกที่ลิงค์ด้านล่างเพื่อดาวน์โหลด ปฏิทิน pdf : ${calendarlink}`)
 }
 
 
