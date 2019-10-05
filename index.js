@@ -313,7 +313,6 @@ app.post("/webhook/", async function (req, res) {
     }else if (status == 404){
       res.status(404).send('Sorry, we cannot find that senderid! maybe senderid is wrong!');
     }
-    console.log("status:"+status)
   }
 });
 

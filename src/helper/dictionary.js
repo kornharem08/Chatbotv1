@@ -4,11 +4,17 @@ LANG_TXT["th"]= "ภาษาไทย"
 
 exports.LANG_TXT = LANG_TXT
 
-var Welcome_TXT = []
-Welcome_TXT["en_EN"] = "Welcome!"
-Welcome_TXT["th_TH"] = "ยินดีต้อนรับ!"
+var MainMenu_TXT = []
+MainMenu_TXT["ENG"] = "Main Menu"
+MainMenu_TXT["TH"] = "หน้าเมนูหลัก"
 
-exports.Welcome_TXT = Welcome_TXT;
+exports.MainMenu_TXT = MainMenu_TXT;
+
+var Hello_TXT = []
+Hello_TXT["ENG"] = "Would you like some help ?"
+Hello_TXT["TH"] = "มีอะไรให้น้อง sisbot ช่วยบ้าง ?"
+
+exports.Hello_TXT = Hello_TXT
 
 var StudentInfo_TXT = []
 StudentInfo_TXT["ENG"] = "Student Information"
