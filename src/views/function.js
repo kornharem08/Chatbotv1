@@ -9,11 +9,21 @@ const redis = new Redis(process.env.REDIS_URL);
 //fb.buttons(Dict.Cancle_Exam_notification_TXT[txt_lang], "Cancle-Exam-notification-day")
 const mainmenu = async (sender) => {
   let txt_lang = await api.requestLang(sender)
-  let elementsMenu = [
+  let noti = await api.checkhasNoti(sender)
+  let elementsMenu
+  if(noti == true){
+  elementsMenu = [
     fb.carouselTemplate(Dict.MainMenu_TXT[txt_lang], "https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png", Dict.Hello_TXT[txt_lang], [fb.buttons(Dict.StudentInfo_TXT[txt_lang], "Student-information"), fb.buttons(Dict.Grade_TXT[txt_lang], "Grade&GPA"), fb.buttons(Dict.Class_Examiantion_Schedule_TXT[txt_lang], "Class&Examination-Schedule")]),
     fb.carouselTemplate(Dict.MainMenu_TXT[txt_lang], "https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png", Dict.Hello_TXT[txt_lang], [fb.buttons(Dict.Exam_notification_TXT[txt_lang], "Exam-notification-day"), fb.buttons(Dict.Academic_Calendar_TXT[txt_lang], "Academic_Calendar_Payload")]),
 
   ];
+}else{
+  elementsMenu = [
+    fb.carouselTemplate(Dict.MainMenu_TXT[txt_lang], "https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png", Dict.Hello_TXT[txt_lang], [fb.buttons(Dict.StudentInfo_TXT[txt_lang], "Student-information"), fb.buttons(Dict.Grade_TXT[txt_lang], "Grade&GPA"), fb.buttons(Dict.Class_Examiantion_Schedule_TXT[txt_lang], "Class&Examination-Schedule")]),
+    fb.carouselTemplate(Dict.MainMenu_TXT[txt_lang], "https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png", Dict.Hello_TXT[txt_lang], [fb.buttons(Dict.Cancle_Exam_notification_TXT[txt_lang], "Cancle-Exam-notification-day"), fb.buttons(Dict.Academic_Calendar_TXT[txt_lang], "Academic_Calendar_Payload")]),
+
+  ];
+}
 
  //let replies = fb.quickreplyTemplate("", [fb.quickreply("TH", "test", null), fb.quickreply("ENG", "test", null)])
 

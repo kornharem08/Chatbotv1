@@ -256,6 +256,28 @@ const requestAllSenderID = async () => {
   return listSender
 }
 
+const checkhasNoti = async (senderId) => {
+  let noti = null
+  const url = `https://sisconnect-db.herokuapp.com/checkhasNoti`
+    await axios({
+      method: 'get',
+      url: url,
+      data: {
+        senderId: senderId,
+      }
+    })
+      .then(function (response) {
+        if (response.status = 200) {
+          noti = response.data.notification
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+  return noti
+}
+
 
 
 module.exports = {
@@ -270,5 +292,6 @@ module.exports = {
   requestTimeExam,
   requestAllSenderID,
   requestLang,
-  updateLang
+  updateLang,
+  checkhasNoti
 }
