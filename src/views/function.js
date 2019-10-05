@@ -14,13 +14,13 @@ const mainmenu = async (sender) => {
   if(noti == true){
   elementsMenu = [
     fb.carouselTemplate(Dict.MainMenu_TXT[txt_lang], "https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png", Dict.Hello_TXT[txt_lang], [fb.buttons(Dict.StudentInfo_TXT[txt_lang], "Student-information"), fb.buttons(Dict.Grade_TXT[txt_lang], "Grade&GPA"), fb.buttons(Dict.Class_Examiantion_Schedule_TXT[txt_lang], "Class&Examination-Schedule")]),
-    fb.carouselTemplate(Dict.MainMenu_TXT[txt_lang], "https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png", Dict.Hello_TXT[txt_lang], [fb.buttons(Dict.Exam_notification_TXT[txt_lang], "Exam-notification-day"), fb.buttons(Dict.Academic_Calendar_TXT[txt_lang], "Academic_Calendar_Payload")]),
+    fb.carouselTemplate(Dict.MainMenu_TXT[txt_lang], "https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png", Dict.Hello_TXT[txt_lang], [fb.buttons(Dict.Cancle_Exam_notification_TXT[txt_lang], "Cancle-Exam-notification-day"), fb.buttons(Dict.Academic_Calendar_TXT[txt_lang], "Academic_Calendar_Payload")]),
 
   ];
 }else{
   elementsMenu = [
     fb.carouselTemplate(Dict.MainMenu_TXT[txt_lang], "https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png", Dict.Hello_TXT[txt_lang], [fb.buttons(Dict.StudentInfo_TXT[txt_lang], "Student-information"), fb.buttons(Dict.Grade_TXT[txt_lang], "Grade&GPA"), fb.buttons(Dict.Class_Examiantion_Schedule_TXT[txt_lang], "Class&Examination-Schedule")]),
-    fb.carouselTemplate(Dict.MainMenu_TXT[txt_lang], "https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png", Dict.Hello_TXT[txt_lang], [fb.buttons(Dict.Cancle_Exam_notification_TXT[txt_lang], "Cancle-Exam-notification-day"), fb.buttons(Dict.Academic_Calendar_TXT[txt_lang], "Academic_Calendar_Payload")]),
+    fb.carouselTemplate(Dict.MainMenu_TXT[txt_lang], "https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png", Dict.Hello_TXT[txt_lang], [fb.buttons(Dict.Exam_notification_TXT[txt_lang], "Exam-notification-day"), fb.buttons(Dict.Academic_Calendar_TXT[txt_lang], "Academic_Calendar_Payload")]),
 
   ];
 }
@@ -142,7 +142,7 @@ const MessageExamnotif = async (sender) => {
     Message = Dict.examnoti_TXT[txt_lang]
   }
   else{
-    Message = Dict.disexamnoti_TXT[txt_lang]
+    Message = "เปิดไม่สำเร็จ"
   }  
 
   await sendTextMessage(sender, Message)
@@ -150,9 +150,20 @@ const MessageExamnotif = async (sender) => {
 }
 
 const MessageCancleExamnotif = async (sender) => {
-
-  let Message = "Cancle Exam notification day Successfully"
-
+  let txt_lang = await api.requestLang(sender)
+  let Message = ""
+  let notiform = {
+    senderId: sender,
+    notification: false
+  }
+  let responeNoti = await api.requestNotification(notiform)
+  let Message = ""
+  if(responeNoti == 200){
+    Message = Dict.disexamnoti_TXT[txt_lang]
+  }
+  else{
+    Message = "ปิดไม่สำเร็จ 404"
+  }  
   await sendTextMessage(sender, Message)
 
 
