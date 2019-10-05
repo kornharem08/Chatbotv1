@@ -48,7 +48,7 @@ exports.Academic_Calendar_TXT = Academic_Calendar_TXT
 
 var Cancle_Exam_notification_TXT = []
 Cancle_Exam_notification_TXT["ENG"] = "Cancle Exam notification day"
-Cancle_Exam_notification_TXT["TH"] = "ยกเลิกแจ้งเตือนวันเวลาสอบ"
+Cancle_Exam_notification_TXT["TH"] = "ยกเลิกแจ้งเตือนสอบ"
 
 exports.Cancle_Exam_notification_TXT = Cancle_Exam_notification_TXT
 
