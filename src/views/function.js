@@ -121,6 +121,7 @@ const messageEditinfo = async (sender) => {
 }
 
 const MessageExamnotif = async (sender) => {
+  let txt_lang = await api.requestLang(sender)
   let notiform = {
     senderId: sender,
     notification: true
@@ -128,10 +129,10 @@ const MessageExamnotif = async (sender) => {
   let responeNoti = await api.requestNotification(notiform)
   let Message = ""
   if(responeNoti == 200){
-    Message = "Exam notification day Successfully"
+    Message = Dict.examnoti_TXT[txt_lang]
   }
   else{
-    Message = "Exam notification day Unsuccessfully"
+    Message = Dict.disexamnoti_TXT[txt_lang]
   }  
 
   await sendTextMessage(sender, Message)
@@ -174,8 +175,9 @@ const messageLanguage = async (sender) => {
 }
 
 const messageCalendar = async (sender) => {
+  let txt_lang = await api.requestLang(sender)
   let calendarlink = await googlesheet.getCalendar()
-  await sendTextMessage(sender,`คลิกที่ลิงค์ด้านล่างเพื่อดาวน์โหลด ปฏิทิน pdf : ${calendarlink}`)
+  await sendTextMessage(sender,`${Dict.download_calendar_TXT[txt_lang]} : ${calendarlink}`)
 }
 
 

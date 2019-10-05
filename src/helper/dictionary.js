@@ -141,3 +141,21 @@ back_TXT["ENG"] = "<< Back"
 back_TXT["TH"] = "<< กลับ"
 
 exports.back_TXT = back_TXT
+
+var download_calendar_TXT = []
+download_calendar_TXT["ENG"] = "click the link below to download academic calendar pdf"
+download_calendar_TXT["TH"] = "คลิกที่ลิงค์ด้านล่างเพื่อดาวน์โหลด ปฏิทินการศึกษา pdf"
+
+exports.download_calendar_TXT = download_calendar_TXT
+
+var examnoti_TXT = []
+examnoti_TXT["ENG"] = "Enable exam notification day successfully"
+examnoti_TXT["TH"] = "เปิดใช้งานการแจ้งเตือนการสอบเรียบร้อยแล้ว"
+
+exports.examnoti_TXT = examnoti_TXT
+
+var disexamnoti_TXT = []
+disexamnoti_TXT["ENG"] = "Disable exam notification day successfully"
+disexamnoti_TXT["TH"] = "ปิดใช้งานการแจ้งเตือนการสอบเรียบร้อยแล้ว"
+
+exports.disexamnoti_TXT = disexamnoti_TXT

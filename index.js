@@ -296,18 +296,23 @@ app.post("/webhook/", function (req, res) {
     // You must send back a 200, within 20 seconds
     res.sendStatus(200);
   } else if (data.type == "authenticate") {
+    let status = null
     redis.get(`${data.senderid}`, function (err, result) {
       let auth = JSON.parse(result)
       console.log("auth:" + auth.status)
       if (auth.status == "authenticate") {
         authenticate(data)
-        res.sendStatus(200);
+        status = 200
       }else{
-        res.status(404).send('Sorry, we cannot find that senderid! maybe senderid is wrong!');
+        status = 400
       }
 
     });
-    res.sendStatus(200);
+    if(status == 200){
+      res.sendStatus(200);
+    }else{
+      res.status(404).send('Sorry, we cannot find that senderid! maybe senderid is wrong!');
+    }
   }
 });
 
