@@ -64,7 +64,7 @@ const gsrun = async (cl) => {
       resultCalendar = dataArray[i[2]]
     }
   }
-
+    console.log("resultCalendar:"+resultCalendar)
    return resultCalendar
 
  }
