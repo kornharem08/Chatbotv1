@@ -30,7 +30,7 @@ async function captureInit() {
             "attachment": {
                 "type": "image",
                 "payload": {
-                    "is_reusable": true
+                    "is_reusable": false
                 }
             }
         }),
