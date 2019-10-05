@@ -157,7 +157,6 @@ const MessageCancleExamnotif = async (sender) => {
     notification: false
   }
   let responeNoti = await api.requestNotification(notiform)
-  let Message = ""
   if(responeNoti == 200){
     Message = Dict.disexamnoti_TXT[txt_lang]
   }
