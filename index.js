@@ -257,7 +257,7 @@ function sendToApiAi(sender, text) {
 
 
 
-app.post("/webhook/", function (req, res) {
+app.post("/webhook/", async function (req, res) {
   var data = req.body;
   var data2 = JSON.stringify(req.body);
   var name = data2.timezone;
@@ -296,8 +296,8 @@ app.post("/webhook/", function (req, res) {
     // You must send back a 200, within 20 seconds
     res.sendStatus(200);
   } else if (data.type == "authenticate") {
-    var status = null
-    redis.get(`${data.senderid}`, function (err, result) {
+    let status = null
+    await redis.get(`${data.senderid}`, function (err, result) {
       let auth = JSON.parse(result)
       console.log("auth:" + auth.status)
       if (auth.status == "authenticate") {
