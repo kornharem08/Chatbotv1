@@ -33,7 +33,8 @@ const handleAiPostback = async (
             func.btnExScheduleView(sender);
             break;
         case "Academic_Calendar_Payload":
-            googlesheet.getCalendar()
+            func.messageCalendar(sender)
+            //googlesheet.getCalendar()
             break;
         case "Class-schedule":
             func.messageClassSc(sender);

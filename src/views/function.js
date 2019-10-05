@@ -4,6 +4,7 @@ const Dict = require("../helper/dictionary");
 const urlweb = require("../helper/webview.js");
 const Redis = require('ioredis');
 const captureSchedule = require("../helper/captureSchedule");
+const googlesheet = require("../helper/googlesheet")
 const redis = new Redis(process.env.REDIS_URL);
 
 const mainmenu = async (sender) => {
@@ -172,7 +173,10 @@ const messageLanguage = async (sender) => {
   await sendQuickReply(sender, replies);
 }
 
-
+const messageCalendar = async (sender) => {
+  let calendarlink = await googlesheet.getCalendar()
+  await sendTextMessage(sender,calendarlink)
+}
 
 
 const sendGenericMessage = async (recipientId, elements) => {
@@ -307,6 +311,7 @@ module.exports = {
   btnGradeGPAWebview,
   authenticated,
   messageLanguage,
-  btnGradeGPAViewall
+  btnGradeGPAViewall,
+  messageCalendar
 }
 

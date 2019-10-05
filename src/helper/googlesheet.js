@@ -14,16 +14,15 @@ const client = new google.auth.JWT(
 const getDataSheet = () => {
 // let status = null
  ////////////////////////////////////// ส่วนของ Google Sheet
- let status = client.authorize(function (err, tokens) {
+ client.authorize(function (err, tokens) {
    if (err) {
      console.log(err);
      return;
    } else {
      console.log('Connected!');
-     //data = gsrun(client)
-     return "Connect"
+     //gsrun(client)
+     
    }
-   console.log("status:"+this.status)
  });
 //  console.log("dataCalendar:"+status)
 //  return status
@@ -41,12 +40,8 @@ const gsrun = async (cl) => {
    let data = await gsapi.spreadsheets.values.get(opt);
    let dataArray = data.data.values
    console.log("dataArray:"+dataArray)
-   // let newDataArray = dataArray.map(function(r){
-   //   //console.log("datafromGoogleSheet:"+r[0])
-   //   return r
-   // })
-   // console.log("datafromGoogleSheetNew:"+dataArray[0][0])
-   return dataArray 
+   return dataArray
+  //  checkCalendar(dataArray)
  }
 
 
@@ -61,8 +56,9 @@ const gsrun = async (cl) => {
  }
 
  async function getCalendar() {
-   let dataArray = await getDataSheet()
+   let dataArray = await gsrun(client)
    console.log("response:"+dataArray)
+   return dataArray
 
  }
 
