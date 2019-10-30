@@ -271,7 +271,6 @@ const sendBtnMessage = async (recipientId, payload) => {  /// https://developers
   };
   await api.callSendAPI(messageData);
 }
-fb.quickreply("1/2561", '{"campagin":"Grade_Semester_quickreply","data":"1/2561"}',null)
 async function setQuickreplyforgrade(senderid) {
   let studentID = await api.requestStudentID(senderid)
   let oldgrade = await api.requestinfoAllgrade(studentID)
