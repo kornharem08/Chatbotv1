@@ -4,7 +4,7 @@ const config = require("../../config");
 
 const callSendAPI = async (messageData) => {
 
-  const url = "https://graph.facebook.com/v3.0/me/messages?access_token=" + config.FB_PAGE_TOKEN;
+  const url = "https://graph.facebook.com/v5.0/me/messages?access_token=" + config.FB_PAGE_TOKEN;
   await axios.post(url, messageData)
     .then(function (response) {
       if (response.status == 200) {
