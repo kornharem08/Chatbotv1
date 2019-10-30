@@ -299,7 +299,7 @@ async function setQuickreplyforgrade(senderid) {
     }
   }
 
-  console.log("setQuickreplyforgrade:"+text)
+  console.log("setQuickreplyforgrade:"+JSON.stringify(text))
   return text
 }
 
