@@ -278,13 +278,13 @@ async function setQuickreplyforgrade(senderid) {
   let oldgrade = await api.requestinfoAllgrade(studentID)
   let eduyear = groupBy(oldgrade, 'EduYearTH')
   let text = []
-
+  
   for (let i = 0; i < Object.keys(eduyear).length; i++) {
     let eduterm = groupBy(eduyear[`${Object.keys(eduyear)[i]}`], 'EduTerm')
     // console.log(`${Object.keys(eduyear)[i]}/`+Object.keys(eduterm))
     if (Object.keys(eduterm)[0] == 1) {
-
-      text.push(`${Object.keys(eduterm)[0]}/${Object.keys(eduyear)[i]}`)
+      let text_term = `${Object.keys(eduterm)[0]}/${Object.keys(eduyear)[i]}`
+      text.push(fb.quickreply(text_term, `{"campagin":"Grade_Semester_quickreply","data":${text_term}}`,null))
     }
     if (Object.keys(eduterm)[1] == 2) {
 
