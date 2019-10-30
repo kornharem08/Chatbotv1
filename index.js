@@ -171,29 +171,30 @@ function receivedMessage(event) {
 function receivedQuickRp(event) {
   var senderID = event.sender.id;
   var postback = JSON.parse(event.message.quick_reply.payload)
-  var value
-  var campagin
+  console.log("receivedQuickRp:"+postback)
+  // var value
+  // var campagin
 
-  if(postback.data){
-  value = postback.data
-  }
+  // if(postback.data){
+  // value = postback.data
+  // }
 
-  if(postback.campagin){
-  campagin = postback.campagin
-  }
-  // var title = postback.title
-  // var payload = postback.payload
+  // if(postback.campagin){
+  // campagin = postback.campagin
+  // }
+  // // var title = postback.title
+  // // var payload = postback.payload
 
 
-  if (!sessionIds.has(senderID)) {
-    sessionIds.set(senderID, uuid.v1());
-  }
+  // if (!sessionIds.has(senderID)) {
+  //   sessionIds.set(senderID, uuid.v1());
+  // }
 
-  if (postback) {
+  // if (postback) {
 
-    sendToPostbackAi(senderID, campagin, value)
+  //   sendToPostbackAi(senderID, campagin, value)
 
-  }
+  // }
 
 }
 
