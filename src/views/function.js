@@ -287,16 +287,16 @@ async function setQuickreplyforgrade(senderid) {
     // console.log(`${Object.keys(eduyear)[i]}/`+Object.keys(eduterm))
     if (Object.keys(eduterm)[0] == 1) {
       text_term = `${Object.keys(eduterm)[0]}/${Object.keys(eduyear)[i]}`
-      text.push(fb.quickreply(text_term, '{"campagin":"Grade_Semester_quickreply","data":"'+text_term,null))
+      text.push(fb.quickreply(text_term, '{"campagin":"Grade_Semester_quickreply","data":'+text_term+'}',null))
     }
     if (Object.keys(eduterm)[1] == 2) {
       text_term2 = `${Object.keys(eduterm)[1]}/${Object.keys(eduyear)[i]}`
-      text.push(fb.quickreply(text_term2, '{"campagin":"Grade_Semester_quickreply","data":"'+text_term2,null))
+      text.push(fb.quickreply(text_term2, '{"campagin":"Grade_Semester_quickreply","data":'+text_term2+'}',null))
 
     }
     if (Object.keys(eduterm)[2] == 3) {
       text_term3 = `${Object.keys(eduterm)[2]}/${Object.keys(eduyear)[i]}`
-      text.push(fb.quickreply(text_term3, '{"campagin":"Grade_Semester_quickreply","data":"'+text_term3,null))
+      text.push(fb.quickreply(text_term3, '{"campagin":"Grade_Semester_quickreply","data":'+text_term3+'}',null))
 
     }
   }
