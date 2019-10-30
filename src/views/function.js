@@ -67,7 +67,7 @@ const quickreplyGradeGPAsemester = async (sender) => {
   let txt_lang = await api.requestLang(sender)
   let testquickreply = fb.quickreply("1/2561", '{"campagin":"Grade_Semester_quickreply","data":"1-2561"}',null)
 
-  let replies = fb.quickreplyTemplate(Dict.semester_TXT[txt_lang], testquickreply)
+  let replies = fb.quickreplyTemplate(Dict.semester_TXT[txt_lang], [testquickreply])
   // console.log("quickreplyGradeGPAsemester:"+JSON.stringify(replies))
   await sendQuickReply(sender, replies);
 }
