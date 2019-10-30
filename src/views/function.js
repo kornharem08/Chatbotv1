@@ -278,21 +278,24 @@ async function setQuickreplyforgrade(senderid) {
   let oldgrade = await api.requestinfoAllgrade(studentID)
   let eduyear = groupBy(oldgrade, 'EduYearTH')
   let text = []
-  
+  let text_term,text_term2,text_term3
+
   for (let i = 0; i < Object.keys(eduyear).length; i++) {
     let eduterm = groupBy(eduyear[`${Object.keys(eduyear)[i]}`], 'EduTerm')
     // console.log(`${Object.keys(eduyear)[i]}/`+Object.keys(eduterm))
     if (Object.keys(eduterm)[0] == 1) {
-      let text_term = `${Object.keys(eduterm)[0]}/${Object.keys(eduyear)[i]}`
+      text_term = `${Object.keys(eduterm)[0]}/${Object.keys(eduyear)[i]}`
       text.push(fb.quickreply(text_term, `{"campagin":"Grade_Semester_quickreply","data":${text_term}}`,null))
     }
     if (Object.keys(eduterm)[1] == 2) {
+      text_term2 = `${Object.keys(eduterm)[1]}/${Object.keys(eduyear)[i]}`
+      text.push(fb.quickreply(text_term2, `{"campagin":"Grade_Semester_quickreply","data":${text_term2}}`,null))
 
-      text.push(`${Object.keys(eduterm)[1]}/${Object.keys(eduyear)[i]}`)
     }
     if (Object.keys(eduterm)[2] == 3) {
+      text_term3 = `${Object.keys(eduterm)[2]}/${Object.keys(eduyear)[i]}`
+      text.push(fb.quickreply(text_term3, `{"campagin":"Grade_Semester_quickreply","data":${text_term3}}`,null))
 
-      text.push(`${Object.keys(eduterm)[2]}/${Object.keys(eduyear)[i]}`)
     }
   }
 
