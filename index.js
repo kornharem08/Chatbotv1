@@ -170,7 +170,8 @@ function receivedMessage(event) {
 
 function receivedQuickRp(event) {
   let senderID = event.sender.id;
-  let postback = JSON.parse(event.message.quick_reply.payload)
+  let qr = messagingEvent.message.quick_reply.payload
+  let postback = JSON.parse(qr)
   console.log("receivedQuickRp:"+postback)
   let value
   let campagin
@@ -278,12 +279,12 @@ app.post("/webhook/", async function (req, res) {
           receivedPostback(messagingEvent)
         } else if (messagingEvent.message.quick_reply) {
           console.log("Quick-Reply:"+messagingEvent.message.quick_reply)
-         let qr = messagingEvent.message.quick_reply.payload
-         let jsonparse = JSON.parse(qr)
-           console.log("qr:" +jsonparse.campagin)
+        //  let qr = messagingEvent.message.quick_reply.payload
+        //  let jsonparse = JSON.parse(qr)
+        //    console.log("qr:" +jsonparse.campagin)
           
           /// ต้องทำ session อีกทีนึง
-          // receivedQuickRp(messagingEvent)
+          receivedQuickRp(messagingEvent)
 
 
 
