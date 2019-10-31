@@ -62,7 +62,8 @@ const btnMessageclassEx = async (sender) => {
 }
 
 const quickreplyGradeGPAsemester = async (sender) => {
-   let quickreply = await setQuickreplyforgrade(sender)
+ //  let quickreply = await setQuickreplyforgrade(sender)
+ let quickreply = await setQuickreplySimple()
   // console.log("setQuickreplyforgrade:" + quickreply[0])
   let txt_lang = await api.requestLang(sender)
   //let testquickreply = [fb.quickreply(Dict.back_TXT[txt_lang], '{"campagin":"MainMenu_Payload","data":"null"}', null),fb.quickreply("1/2561", '{"campagin":"Grade_Semester_quickreply","data":"1-2561"}',null),fb.quickreply("2/2561", '{"campagin":"Grade_Semester_quickreply","data":"2-2561"}', null),fb.quickreply("1/2560", '{"campagin":"Grade_Semester_quickreply","data":"1-2560"}', null),fb.quickreply("2/2560", '{"campagin":"Grade_Semester_quickreply","data":"2-2560"}',null),fb.quickreply("1/2559", '{"campagin":"Grade_Semester_quickreply","data":"1-2559"}', null),fb.quickreply("2/2559", '{"campagin":"Grade_Semester_quickreply","data":"2-2559"}', null)]
@@ -273,25 +274,35 @@ const sendBtnMessage = async (recipientId, payload) => {  /// https://developers
   await api.callSendAPI(messageData);
 }
 
-async function setQuickreplyforgrade(senderid) {
-  let studentID = await api.requestStudentID(senderid)
-  let oldgrade = await api.requestinfoAllgrade(studentID)
-  let eduyear = groupBy(oldgrade, 'EduYearTH')
+async function setQuickreplySimple(){
   let text = []
-  let term_text,term_text2,term_text3
+
+  for(let i = 0; i< 5;i++){
+    text.push(fb.quickreply("Test", '{"campagin":"Grade_Semester_quickreply","data":"test"}',null))
+  }
+
+  return text
+}
+
+async function setQuickreplyforgrade(senderid) {
+ // let studentID = await api.requestStudentID(senderid)
+ // let oldgrade = await api.requestinfoAllgrade(studentID)
+//  let eduyear = groupBy(oldgrade, 'EduYearTH')
+  let text = []
+//  let term_text,term_text2,term_text3
   for (let i = 0; i < Object.keys(eduyear).length; i++) {
     let eduterm = groupBy(eduyear[`${Object.keys(eduyear)[i]}`], 'EduTerm')
     // console.log(`${Object.keys(eduyear)[i]}/`+Object.keys(eduterm))
     if (Object.keys(eduterm)[0] == 1) {
-      term_text = `${Object.keys(eduterm)[0]}-${Object.keys(eduyear)[i]}`
+  //    term_text = `${Object.keys(eduterm)[0]}-${Object.keys(eduyear)[i]}`
       text.push(fb.quickreply(term_text, `{"campagin":"Grade_Semester_quickreply","data":${term_text}}`,null))
     }
     if (Object.keys(eduterm)[1] == 2) {
-      term_text2 = `${Object.keys(eduterm)[1]}-${Object.keys(eduyear)[i]}`
+  //    term_text2 = `${Object.keys(eduterm)[1]}-${Object.keys(eduyear)[i]}`
       text.push(fb.quickreply(term_text2, `{"campagin":"Grade_Semester_quickreply","data":${term_text2}}`,null))
     }
     if (Object.keys(eduterm)[2] == 3) {
-      term_text3 = `${Object.keys(eduterm)[2]}-${Object.keys(eduyear)[i]}`
+ //     term_text3 = `${Object.keys(eduterm)[2]}-${Object.keys(eduyear)[i]}`
       text.push(fb.quickreply(term_text3, `{"campagin":"Grade_Semester_quickreply","data":${term_text3}}`,null))
     }
   }
