@@ -280,7 +280,8 @@ app.post("/webhook/", async function (req, res) {
           console.log("Quick-Reply:"+messagingEvent.message.quick_reply)
          let qr = messagingEvent.message.quick_reply.payload
          let jsonparse = JSON.parse(qr)
-           console.log("qr:" +JSON.stringify(jsonparse))
+           console.log("qr:" +jsonparse.campagin)
+          
           /// ต้องทำ session อีกทีนึง
           // receivedQuickRp(messagingEvent)
 
