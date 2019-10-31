@@ -170,7 +170,7 @@ function receivedMessage(event) {
 
 function receivedQuickRp(event) {
   let senderID = event.sender.id;
-  let qr = messagingEvent.message.quick_reply.payload
+  let qr = event.message.quick_reply.payload
   let postback = JSON.parse(qr)
   console.log("receivedQuickRp:"+postback)
   let value
