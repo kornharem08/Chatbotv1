@@ -169,11 +169,11 @@ function receivedMessage(event) {
 }
 
 function receivedQuickRp(event) {
-  var senderID = event.sender.id;
-  var postback = JSON.parse(event.message.quick_reply.payload)
+  let senderID = event.sender.id;
+  let postback = JSON.parse(event.message.quick_reply.payload)
   console.log("receivedQuickRp:"+postback)
-  var value
-  var campagin
+  let value
+  let campagin
 
   if(postback.data){
   value = postback.data
@@ -201,12 +201,12 @@ function receivedQuickRp(event) {
 
 
 function receivedPostback(event) {
-  var senderID = event.sender.id;
-  var postback = event.postback;
+  let senderID = event.sender.id;
+  let postback = event.postback;
 
 
-  var title = postback.title
-  var payload = postback.payload
+  let title = postback.title
+  let payload = postback.payload
 
 
   if (!sessionIds.has(senderID)) {
