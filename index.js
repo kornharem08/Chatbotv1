@@ -171,7 +171,11 @@ function receivedMessage(event) {
 function receivedQuickRp(event) {
   let senderID = event.sender.id;
   let qr = event.message.quick_reply.payload
+  try {
   let postback = JSON.parse(qr)
+  }catch(err) {
+    console.log("can not parse quick reply object")
+  }
   console.log("receivedQuickRp:"+postback)
   let value
   let campagin
