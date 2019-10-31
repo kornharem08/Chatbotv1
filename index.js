@@ -171,11 +171,7 @@ function receivedMessage(event) {
 function receivedQuickRp(event) {
   let senderID = event.sender.id;
   let qr = event.message.quick_reply.payload
-  try {
-  let postback = JSON.parse(qr)
-  }catch(err) {
-    console.log("can not parse quick reply object")
-  }
+  let postback = JSON.parse(qr)  
   console.log("receivedQuickRp:"+postback)
   let value
   let campagin
@@ -288,8 +284,11 @@ app.post("/webhook/", async function (req, res) {
         //    console.log("qr:" +jsonparse.campagin)
           
           /// ต้องทำ session อีกทีนึง
+          try{
           receivedQuickRp(messagingEvent)
-
+          }catch{
+            console.log("receivedQuickRp error")
+          } 
 
 
 
