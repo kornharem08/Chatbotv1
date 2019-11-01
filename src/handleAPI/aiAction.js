@@ -41,6 +41,9 @@ const handleApiAiAction = async (
       func.mainmenu(sender);
       // handleCardMessages(elements, sender)
       break;
+    case "look-grade":
+      func.messageGradeGPA(sender);
+      break;
     default:
       // unhandled action, just send back the text
        func.sendTextMessage(sender, responseText);
