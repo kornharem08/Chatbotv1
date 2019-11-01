@@ -50,6 +50,8 @@ const handleApiAiAction = async (
     case "look-exam-schedule":
       func.btnExScheduleView(sender);
       break;
+    case "change-language":
+      func.messageLanguage(sender);
     default:
       // unhandled action, just send back the text
        func.sendTextMessage(sender, responseText);
