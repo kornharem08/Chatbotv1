@@ -41,7 +41,7 @@ const handleApiAiAction = async (
       func.mainmenu(sender);
       // handleCardMessages(elements, sender)
       break;
-    case "look-grade":
+    case "lookgrade":
       func.messageGradeGPA(sender);
       break;
     default:
