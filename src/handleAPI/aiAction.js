@@ -47,6 +47,9 @@ const handleApiAiAction = async (
     case "look-grade-all":
       func.btnGradeGPAViewall(sender);
       break;
+    case "look-exam-schedule":
+      func.btnExScheduleView(sender);
+      break;
     default:
       // unhandled action, just send back the text
        func.sendTextMessage(sender, responseText);
