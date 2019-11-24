@@ -43,7 +43,16 @@ const Messageinfo = async (sender) => {
   let studentID = await api.requestStudentID(sender)
   let personal = await api.requestPersonalinfo(studentID)
   console.log("personal:"+personal.FirstNameTH)
-  let Message = "Name\nTanakorn Pitakchaichan\n======================\nEmail\nTana_korn01@hotmail.com\n======================\nPhone number\n090-9858754\n======================\nAdvisor Name\nKorawit Prutsachainimmit\n======================"
+  let fname,lname
+  let psupassport = personal.PSUPassport
+  if(txt_lang == "TH"){
+    fname = personal.FirstNameTH
+    lname = personal.FirstNameTH
+  }else{
+    fname = personal.FirstNameEN
+    lname = personal.FirstNameEN
+  }
+  let Message = `Name\n${fname} ${lname}\n======================\nPSU Passport\n${psupassport}\n======================\n`
 
   await sendTextMessage(sender, Message)
 
