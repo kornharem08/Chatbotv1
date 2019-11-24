@@ -42,7 +42,7 @@ const Messageinfo = async (sender) => {
   let txt_lang = await api.requestLang(sender)
   let studentID = await api.requestStudentID(sender)
   let personal = await api.requestPersonalinfo(studentID)
-  console.log("personal:"+personal.data)
+  console.log("personal:"+JSON.stringify(personal))
   let Message = "Name\nTanakorn Pitakchaichan\n======================\nEmail\nTana_korn01@hotmail.com\n======================\nPhone number\n090-9858754\n======================\nAdvisor Name\nKorawit Prutsachainimmit\n======================"
 
   await sendTextMessage(sender, Message)
