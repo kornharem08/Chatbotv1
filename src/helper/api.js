@@ -178,6 +178,21 @@ const requestinfoAllgrade = async (studentID) =>{
     return oldgrade
 }
 
+const requestPersonalinfo = async (studentID) =>{
+  let personalInfo
+  await axios.get(`https://sispsu.herokuapp.com/api/student/${studentID}`)
+    .then(function (response) {
+      // handle success
+      personalInfo = response.data.data
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+   
+    return personalInfo
+}
+
 const requestNotification = async (notiForm) =>{
 
   let status
@@ -280,6 +295,8 @@ const checkhasNoti = async (senderId) => {
 
 
 
+
+
 module.exports = {
   callSendAPI,
   requestUserinfo,
@@ -293,5 +310,6 @@ module.exports = {
   requestAllSenderID,
   requestLang,
   updateLang,
-  checkhasNoti
+  checkhasNoti,
+  requestPersonalinfo
 }

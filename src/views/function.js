@@ -39,7 +39,10 @@ const btnMessage = async (sender) => {
 
 }
 const Messageinfo = async (sender) => {
-
+  let txt_lang = await api.requestLang(sender)
+  let studentID = await api.requestStudentID(sender)
+  let personal = await api.requestPersonalinfo(studentID)
+  console.log("personal:"+personal)
   let Message = "Name\nTanakorn Pitakchaichan\n======================\nEmail\nTana_korn01@hotmail.com\n======================\nPhone number\n090-9858754\n======================\nAdvisor Name\nKorawit Prutsachainimmit\n======================"
 
   await sendTextMessage(sender, Message)
@@ -109,7 +112,7 @@ const btnGradeGPAViewall = async (sender) => {
 const btnExScheduleView = async (sender) => {
   let txt_lang = await api.requestLang(sender)
   let studentID = await api.requestStudentID(sender)
-  let btnMessage = await fb.buttonsTemplate(Dict.view_Exam_Schedule_TXT[txt_lang], [fb.buttonsURL(`${urlweb.sisurl_exam}/${studentID}/2562/1/M`, Dict.click_toview_TXT[txt_lang]), fb.buttons(Dict.back_TXT[txt_lang], "MainMenu_Payload")])
+  let btnMessage = await fb.buttonsTemplate(Dict.view_Exam_Schedule_TXT[txt_lang], [fb.buttonsURL(`${urlweb.sisurl_exam}/${studentID}/2562/1/F`, Dict.click_toview_TXT[txt_lang]), fb.buttons(Dict.back_TXT[txt_lang], "MainMenu_Payload")])
   await sendBtnMessage(sender, btnMessage)
 
 }
