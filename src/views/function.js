@@ -47,12 +47,12 @@ const Messageinfo = async (sender) => {
   let psupassport = personal.PSUPassport
   if(txt_lang == "TH"){
     fname = personal.FirstNameTH
-    lname = personal.FirstNameTH
+    lname = personal.LastNameTH
   }else{
     fname = personal.FirstNameEN
-    lname = personal.FirstNameEN
+    lname = personal.LastNameEN
   }
-  let Message = `Name\n${fname} ${lname}\n======================\nPSU Passport\n${psupassport}\n======================\n`
+  let Message = `Name\n${fname} ${lname}\n===============\nPSU Passport\n${psupassport}\n===============\n`
 
   await sendTextMessage(sender, Message)
 
