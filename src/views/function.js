@@ -297,6 +297,29 @@ async function setQuickreplySimple(){
   return text
 }
 
+async function requestGPAwithParam(senderid,data){
+  let studentID = await api.requestStudentID(senderid)
+  let checkinfograde = await api.checkinfograde(studentID,data)
+  let text = "ไม่พบข้อมูลนาจา..บอกเทอมปีผิดหรือเปล่า ^^"
+  if(checkinfograde == true){
+    let btnMessage = await fb.buttonsTemplate(Dict.view_Grade_TXT[txt_lang], [fb.buttonsURL(`${urlweb.sisurl_grade}/${studentID}/${data.year}/${data.term}`, Dict.click_toview_TXT[txt_lang]), fb.buttons(Dict.back_TXT[txt_lang], "MainMenu_Payload")])
+    await sendBtnMessage(sender, btnMessage)
+  }else{
+    await sendTextMessage(text)
+  }
+}
+
+async function checkinfograde(studentID,data){
+  let checkinfo = await api.requestAllGPA(studentID)
+  let checkfound = false
+  checkinfo.forEach(element => {
+    if(data.term == element.data.EduTerm && data.year == element.data.EduYearTH){
+      checkfound = true
+    }
+  });
+  return checkfound
+}
+
 async function setQuickreplyforgrade(senderid) {
  let studentID = await api.requestStudentID(senderid)
  let oldgrade = await api.requestinfoAllgrade(studentID)
@@ -360,6 +383,8 @@ module.exports = {
   authenticated,
   messageLanguage,
   btnGradeGPAViewall,
-  messageCalendar
+  messageCalendar,
+  checkinfograde,
+  requestGPAwithParam
 }
 

@@ -293,6 +293,25 @@ const checkhasNoti = async (senderId) => {
   return noti
 }
 
+const requestAllGPA = async (studentID) => {
+  let gpa
+  const url = `https://sispsu.herokuapp.com/api/gpa/${studentID}/`
+    await axios({
+      method: 'get',
+      url: url
+    })
+      .then(function (response) {
+          if (response.status == 200) {
+          gpa = response.data.data
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+  return gpa
+}
+
 
 
 
@@ -311,5 +330,6 @@ module.exports = {
   requestLang,
   updateLang,
   checkhasNoti,
-  requestPersonalinfo
+  requestPersonalinfo,
+  requestAllGPA
 }
