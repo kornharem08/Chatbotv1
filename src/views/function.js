@@ -299,7 +299,7 @@ async function setQuickreplySimple(){
 
 async function requestGPAwithParam(senderid,data){
   let studentID = await api.requestStudentID(senderid)
-  let checkinfograde = await api.checkinfograde(studentID,data)
+  let checkinfograde = await checkinfograde(studentID,data)
   let text = "ไม่พบข้อมูลนาจา..บอกเทอมปีผิดหรือเปล่า ^^"
   if(checkinfograde == true){
     let btnMessage = await fb.buttonsTemplate(Dict.view_Grade_TXT[txt_lang], [fb.buttonsURL(`${urlweb.sisurl_grade}/${studentID}/${data.year}/${data.term}`, Dict.click_toview_TXT[txt_lang]), fb.buttons(Dict.back_TXT[txt_lang], "MainMenu_Payload")])
