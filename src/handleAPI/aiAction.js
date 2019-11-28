@@ -36,6 +36,9 @@ const handleApiAiAction = async (
     case "lookgrade":
       func.messageGradeGPA(sender);
       break;
+    case "lookgrade_parameter":
+      console.log("parameter:"+parameters)
+      break;
     case "look-grade-all":
       func.btnGradeGPAViewall(sender);
       break;
