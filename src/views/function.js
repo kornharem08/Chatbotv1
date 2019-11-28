@@ -305,7 +305,7 @@ async function requestGPAwithParam(senderid,data){
     let btnMessage = await fb.buttonsTemplate(Dict.view_Grade_TXT[txt_lang], [fb.buttonsURL(`${urlweb.sisurl_grade}/${studentID}/${data.year}/${data.term}`, Dict.click_toview_TXT[txt_lang]), fb.buttons(Dict.back_TXT[txt_lang], "MainMenu_Payload")])
     await sendBtnMessage(sender, btnMessage)
   }else{
-    await sendTextMessage(text)
+    await sendTextMessage(sender, text)
   }
 }
 
