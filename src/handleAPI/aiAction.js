@@ -41,6 +41,8 @@ const handleApiAiAction = async (
         term:parameters.term,
         year:parameters.year
       }
+      let waitText = "ขอหาข้อมูลก่อนน๊าาา.. ^^'"
+      func.sendTextMessage(sender,waitText)
       func.requestGPAwithParam(sender,dataparam)
       break;
     case "look-grade-all":
