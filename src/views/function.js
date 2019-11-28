@@ -301,7 +301,7 @@ async function requestGPAwithParam(sender,data){
   let studentID = await api.requestStudentID(sender)
   let txt_lang = await api.requestLang(sender)
   let checkinfo = await checkinfograde(studentID,data)
-  let text = "ไม่พบข้อมูลนาจา..บอกเทอมปีผิดหรือเปล่า ^^"
+  let text = "ไม่พบข้อมูลนาจา..บอกเทอมปีผิดหรือเปล่า ^^ ตัวอย่างข้อมูลที่ใช้บอกน้อง sis เช่น 'ดูเกรดเทอม 2 ปี 2559' "
   if(checkinfo == true){
     let btnMessage = await fb.buttonsTemplate(Dict.view_Grade_TXT[txt_lang], [fb.buttonsURL(`${urlweb.sisurl_grade}/${studentID}/${data.year}/${data.term}`, Dict.click_toview_TXT[txt_lang]), fb.buttons(Dict.back_TXT[txt_lang], "MainMenu_Payload")])
     await sendBtnMessage(sender, btnMessage)
