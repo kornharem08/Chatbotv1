@@ -297,8 +297,8 @@ async function setQuickreplySimple(){
   return text
 }
 
-async function requestGPAwithParam(senderid,data){
-  let studentID = await api.requestStudentID(senderid)
+async function requestGPAwithParam(sender,data){
+  let studentID = await api.requestStudentID(sender)
   let checkinfo = await checkinfograde(studentID,data)
   let text = "ไม่พบข้อมูลนาจา..บอกเทอมปีผิดหรือเปล่า ^^"
   if(checkinfo == true){
