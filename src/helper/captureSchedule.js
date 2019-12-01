@@ -20,7 +20,7 @@ async function captureInit() {
         }
     });
     const page = await browser.newPage();
-    await page.goto('https://webviews-vue1.herokuapp.com/Schedule');
+    await page.goto('http://nuxtsiscon.herokuapp.com/Schedule/5930213055/2562/1');
     await page.screenshot({ path: 'schedule.png' });
     let fileReaderStream = await fs.createReadStream('./schedule.png')
     let formData = await {
