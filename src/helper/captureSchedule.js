@@ -20,8 +20,8 @@ async function captureInit() {
         }
     });
     const page = await browser.newPage();
-    await page.goto('http://nuxtsiscon.herokuapp.com/Schedule/5930213055'{
-        waitUntil: 'networkidle0',
+    await page.goto('http://nuxtsiscon.herokuapp.com/Schedule/5930213055',{
+        waitUntil: 'networkidle0'
     });
     await page.waitForNavigation({
         waitUntil: 'networkidle0',
