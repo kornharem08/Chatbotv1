@@ -14,8 +14,8 @@ async function captureInit() {
             '--single-process'
         ],
         defaultViewport: {
-            width: 1800,
-            height: 800,
+            width: 1920,
+            height: 1080,
             isLandscape: true
         }
     });
