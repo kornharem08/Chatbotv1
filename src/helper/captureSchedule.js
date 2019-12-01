@@ -25,6 +25,7 @@ async function captureInit() {
     });
     await page.waitForNavigation({
         waitUntil: 'networkidle0',
+        timeout: 0
       });
       
     await page.screenshot({ path: 'schedule.png' });
