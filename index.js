@@ -358,7 +358,7 @@ const examNotification = async () => {
     }
     studentid.push(studentinfo)
   });
-  let setExam = await setExamcurrently(listwho[0].element.senderId)
+  let setExam = await setExamcurrently(listwho[0].senderId)
   for (let index = 0; index < studentid.length; index++) {
 
     examtime = await api.requestTimeExam(studentid[index].studentID,setExam.eduyear,setExam.eduterm,setExam.miniterm)
