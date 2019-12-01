@@ -364,7 +364,7 @@ const examNotification = async () => {
 
     examtime = await api.requestTimeExam(studentid[index].studentID,setExam.eduyear,setExam.eduterm,setExam.miniterm)
     for (let indexE = 0; indexE < examtime.length; indexE++) {
-      if (examtime[indexE].ExamDate == "4/12/2562") {
+      if (examtime[indexE].ExamDate == today) {
         let From = examtime[indexE].From
         let To = examtime[indexE].To
         let SubjectNameEN = examtime[indexE].SubjectNameEN
