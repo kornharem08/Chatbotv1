@@ -397,7 +397,7 @@ async function setExamcurrently(senderid) {
        text.push({eduyear:eduyear,eduterm:eduterm})
    }
    text.forEach(element => {
-    console.log("Exam:"+element.eduyear+"/"+element.eduterm)
+    console.log("Exam:"+JSON.stringify(element.eduyear)+"/"+JSON.stringify(element.eduterm))
 
    });
    lastterm = text[text.length-1].eduterm
