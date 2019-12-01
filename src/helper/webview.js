@@ -18,3 +18,7 @@ exports.sisurl_exam = sisurl_exam
 const sisurl_signin = 'https://nuxtsiscon.herokuapp.com/login'
 
 exports.sisurl_signin = sisurl_signin
+
+const sisurl_class_schedule = 'http://nuxtsiscon.herokuapp.com/Schedule'
+
+exports.sisurl_class_schedule = sisurl_class_schedule

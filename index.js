@@ -132,7 +132,7 @@ app.get("/notihook", async (req, res) => {
   //////////////////////////////////////// ส่วนของ Exam Notification
   await examNotification()
 
-  res.sendStatus(200)
+  res.send(200)
 
 });
 

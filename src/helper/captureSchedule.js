@@ -2,8 +2,9 @@ const puppeteer = require('puppeteer');
 const request = require('request');
 const fs = require('fs');
 const config = require("../../config");
+const urlweb = require("../helper/webview.js");
 
-async function captureInit() {
+async function captureInit(studentID) {
 
     const browser = await puppeteer.launch({
         headless: true,
@@ -20,7 +21,7 @@ async function captureInit() {
         }
     });
     const page = await browser.newPage();
-    await page.goto('http://nuxtsiscon.herokuapp.com/Schedule/5930213055');
+    await page.goto(`${urlweb.sisurl_class_schedule}/${studentID}`);
     await page.waitForSelector('#Showtable', {visible: true})
     await page.screenshot({ path: 'schedule.png' });
     let fileReaderStream = await fs.createReadStream('./schedule.png')
