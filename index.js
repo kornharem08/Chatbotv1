@@ -400,7 +400,7 @@ async function setExamcurrently(senderid) {
         term = 1
       }else if(Object.keys(eduterm) == "1,2"){
         term = 2
-      }else if(Ojbect.keys(eduterm) == "1,2,3"){
+      }else if(Object.keys(eduterm) == "1,2,3"){
         term = 3
       }
        text.push({eduyear:Object.keys(eduyear)[i],eduterm:term})
