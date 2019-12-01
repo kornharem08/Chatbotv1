@@ -359,27 +359,28 @@ const examNotification = async () => {
     studentid.push(studentinfo)
   });
   let setExam = await setExamcurrently(listwho[0].senderId)
-  for (let index = 0; index < studentid.length; index++) {
+  console.log("setExam:"+setExam.eduyear+"/"+setExam.eduterm+"/"+setExam.miniterm)
+  // for (let index = 0; index < studentid.length; index++) {
 
-    examtime = await api.requestTimeExam(studentid[index].studentID,setExam.eduyear,setExam.eduterm,setExam.miniterm)
-    for (let indexE = 0; indexE < examtime.length; indexE++) {
-      if (examtime[indexE].ExamDate == today) {
-        let From = examtime[indexE].From
-        let To = examtime[indexE].To
-        let SubjectNameEN = examtime[indexE].SubjectNameEN
-        let ExamRoom = ""
-        if (examtime[indexE].ExamRooms[0]) {
-          ExamRoom = examtime[indexE].ExamRooms[0]
-        } else {
-          ExamRoom = "ยังไม่ระบุ"
-        }
-        console.log("ExamRoom:" + examtime[0].ExamRooms[0])
-        message += `เริ่มสอบ ${From} ถึง ${To} วิชา ${SubjectNameEN} ห้อง ${ExamRoom}`
-        func.sendTextMessage(studentid[index].senderId, message)
-      }
-    }
+  //   examtime = await api.requestTimeExam(studentid[index].studentID,setExam.eduyear,setExam.eduterm,setExam.miniterm)
+  //   for (let indexE = 0; indexE < examtime.length; indexE++) {
+  //     if (examtime[indexE].ExamDate == today) {
+  //       let From = examtime[indexE].From
+  //       let To = examtime[indexE].To
+  //       let SubjectNameEN = examtime[indexE].SubjectNameEN
+  //       let ExamRoom = ""
+  //       if (examtime[indexE].ExamRooms[0]) {
+  //         ExamRoom = examtime[indexE].ExamRooms[0]
+  //       } else {
+  //         ExamRoom = "ยังไม่ระบุ"
+  //       }
+  //       console.log("ExamRoom:" + examtime[0].ExamRooms[0])
+  //       message += `เริ่มสอบ ${From} ถึง ${To} วิชา ${SubjectNameEN} ห้อง ${ExamRoom}`
+  //       func.sendTextMessage(studentid[index].senderId, message)
+  //     }
+  //   }
 
-  }
+  // }
 }
 
 async function setExamcurrently(senderid) {
