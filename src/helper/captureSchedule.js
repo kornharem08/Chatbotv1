@@ -20,12 +20,9 @@ async function captureInit() {
         }
     });
     const page = await browser.newPage();
-    await page.goto('http://nuxtsiscon.herokuapp.com/Schedule/5930213055',{
-        waitUntil: 'networkidle0'
-    });
+    await page.goto('http://nuxtsiscon.herokuapp.com/Schedule/5930213055');
     await page.waitForNavigation({
-        waitUntil: 'networkidle0',
-        timeout: 0
+        waitUntil: 'load'
       });
       
     await page.screenshot({ path: 'schedule.png' });
