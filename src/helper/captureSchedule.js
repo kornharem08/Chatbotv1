@@ -21,7 +21,7 @@ async function captureInit() {
     });
     const page = await browser.newPage();
     await page.goto('http://nuxtsiscon.herokuapp.com/Schedule/5930213055');
-    await timeout(5000)    
+    await page.waitForSelector('#Showtable', {visible: true})
     await page.screenshot({ path: 'schedule.png' });
     let fileReaderStream = await fs.createReadStream('./schedule.png')
     let formData = await {
