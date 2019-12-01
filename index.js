@@ -359,6 +359,7 @@ const examNotification = async () => {
     studentid.push(studentinfo)
   });
   let setExam = await setExamcurrently(listwho[0].senderId)
+  console.log("setExam:"+setExam.eduyear+"/"+setExam.eduterm+"/"+setExam.miniterm)
   // for (let index = 0; index < studentid.length; index++) {
 
   //   examtime = await api.requestTimeExam(studentid[index].studentID,setExam.eduyear,setExam.eduterm,setExam.miniterm)
@@ -409,19 +410,19 @@ async function setExamcurrently(senderid) {
     console.log("Exam:"+element.eduyear+"/"+element.eduterm)
 
    });
-  //  lastterm = Object.keys(text[text.length-1].eduterm)
+   lastterm = text[text.length-1].eduterm
     
-  //  if(lastterm == 1 && month < 11 && month > 7 ){
-  //     miniterm = "M"
-  //   }else if(lastterm == 2 && month <= 4 && month > 1){
-  //     miniterm = "M"
-  //   }else if(lastterm == 1 && month >=11 && month < 13){
-  //     miniterm = "F"
-  //   }else if(lastterm == 2 && month > 4 && month <= 7){
-  //     miniterm = "F"
-  //   }
+   if(lastterm == 1 && month < 11 && month > 7 ){
+      miniterm = "M"
+    }else if(lastterm == 2 && month <= 4 && month > 1){
+      miniterm = "M"
+    }else if(lastterm == 1 && month >=11 && month < 13){
+      miniterm = "F"
+    }else if(lastterm == 2 && month > 4 && month <= 7){
+      miniterm = "F"
+    }
 
-  // lastelement = { eduyear:Object.keys(text[text.length-1].eduyear), eduterm:Object.keys(text[text.length-1].eduterm), miniterm:miniterm }
+  lastelement = { eduyear:text[text.length-1].eduyear, eduterm:lastterm, miniterm:miniterm }
    return lastelement
  }
  
