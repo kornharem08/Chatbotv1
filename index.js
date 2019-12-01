@@ -394,11 +394,19 @@ async function setExamcurrently(senderid) {
    let text = []
    for (let i = 0; i < Object.keys(eduyear).length; i++) {
      let eduterm = groupBy(eduyear[`${Object.keys(eduyear)[i]}`], 'EduTerm')
-       text.push({eduyear:Object.keys(eduyear)[i],eduterm:eduterm})
+     let term
+      if(Object.keys(eduterm) == "1"){
+        term = 1
+      }else if(Object.keys(eduterm) == "1,2"){
+        term = 2
+      }else if(Ojbect.keys(eduterm) == "1,2,3"){
+        term = 3
+      }
+       text.push({eduyear:Object.keys(eduyear)[i],eduterm:term})
       
    }
    text.forEach(element => {
-    console.log("Exam:"+element.eduyear+"/"+Object.keys(element.eduterm))
+    console.log("Exam:"+element.eduyear+"/"+element.eduterm)
 
    });
   //  lastterm = Object.keys(text[text.length-1].eduterm)
