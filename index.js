@@ -398,7 +398,7 @@ async function setExamcurrently(senderid) {
       
    }
    text.forEach(element => {
-    console.log("Exam:"+Object.keys(element.eduyear)+"/"+Object.keys(element.eduterm))
+    console.log("Exam:"+element.eduyear+"/"+Object.keys(element.eduterm))
 
    });
   //  lastterm = Object.keys(text[text.length-1].eduterm)
