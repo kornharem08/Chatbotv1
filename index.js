@@ -349,8 +349,8 @@ const examNotification = async () => {
   let month = d.getMonth() + 1
   let year = d.getFullYear() + 543
   let today = `${date}/${month}/${year}`
-  let message = ""
-
+  let message = "วันนี้มีสอบนะจ๊ะ: "
+  
   await listwho.forEach(element => {
     let studentinfo = {
       senderId: element.senderId,
@@ -358,10 +358,10 @@ const examNotification = async () => {
     }
     studentid.push(studentinfo)
   });
-
+  let setExam = await setExamcurrently(listwho[0].element.senderId)
   for (let index = 0; index < studentid.length; index++) {
 
-    examtime = await api.requestTimeExam(studentid[index].studentID)
+    examtime = await api.requestTimeExam(studentid[index].studentID,setExam.eduyear,setExam.eduterm,setExam.miniterm)
     for (let indexE = 0; indexE < examtime.length; indexE++) {
       if (examtime[indexE].ExamDate == today) {
         let From = examtime[indexE].From
@@ -374,13 +374,58 @@ const examNotification = async () => {
           ExamRoom = "ยังไม่ระบุ"
         }
         console.log("ExamRoom:" + examtime[0].ExamRooms[0])
-        message = `ทดสอบการแจ้งเตือน: วันนี้มีสอบนะจ๊ะ เริ่มสอบ ${From} ถึง ${To} วิชา ${SubjectNameEN} ห้อง ${ExamRoom}`
+        message += `เริ่มสอบ ${From} ถึง ${To} วิชา ${SubjectNameEN} ห้อง ${ExamRoom}`
         func.sendTextMessage(studentid[index].senderId, message)
       }
     }
 
   }
 }
+
+async function setExamcurrently(senderid) {
+  let studentID = await api.requestStudentID(senderid)
+  let oldgrade = await api.requestinfoAllgrade(studentID)
+  let eduyear = groupBy(oldgrade, 'EduYearTH')
+  let d = new Date()
+  let month = d.getMonth() + 1
+  let lastelement
+  let lastterm
+  let miniterm
+   let text = []
+   for (let i = 0; i < Object.keys(eduyear).length; i++) {
+     let eduterm = groupBy(eduyear[`${Object.keys(eduyear)[i]}`], 'EduTerm')
+       text.push({eduyear:eduyear,eduterm:eduterm})
+   }
+   text.forEach(element => {
+    console.log("Exam:"+element.eduyear+"/"+element.eduterm)
+
+   });
+   lastterm = text[text.length-1].eduterm
+    
+   if(lastterm == 1 && month < 11 && month > 7 ){
+      miniterm = "M"
+    }else if(lastterm == 2 && month <= 4 && month > 1){
+      miniterm = "M"
+    }else if(lastterm == 1 && month >=11 && month < 13){
+      miniterm = "F"
+    }else if(lastterm == 2 && month > 4 && month <= 7){
+      miniterm = "F"
+    }
+
+   lastelement = { eduyear:text[text.length-1].eduyear, eduterm:text[text.length-1].eduterm, miniterm:miniterm }
+   return lastelement
+ }
+ 
+ function groupBy(objectArray, property) {
+   return objectArray.reduce(function (acc, obj) {
+     var key = obj[property]
+     if (!acc[key]) {
+       acc[key] = []
+     }
+     acc[key].push(obj)
+     return acc;
+   }, {})
+ }
 
 
 const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {

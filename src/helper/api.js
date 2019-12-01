@@ -233,9 +233,9 @@ const findWhohaveExamNoti = async () => {
   return ListWho
 }
 
-const requestTimeExam = async (studentID) => {
+const requestTimeExam = async (studentID,year,eduterm,miniterm) => {
   let examtime
-  const url = `https://sispsu.herokuapp.com/api/examschedule/${studentID}/2562/1/M`
+  const url = `https://sispsu.herokuapp.com/api/examschedule/${studentID}/${year}/${eduterm}/${miniterm}`
     await axios({
       method: 'get',
       url: url
