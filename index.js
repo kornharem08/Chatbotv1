@@ -395,25 +395,25 @@ async function setExamcurrently(senderid) {
    for (let i = 0; i < Object.keys(eduyear).length; i++) {
      let eduterm = groupBy(eduyear[`${Object.keys(eduyear)[i]}`], 'EduTerm')
        text.push({eduyear:eduyear,eduterm:eduterm})
-       console.log("Exam:"+JSON.stringify(eduterm))
+      
    }
-  //  text.forEach(element => {
-  //   console.log("Exam:"+JSON.stringify(element.eduyear)+"/"+JSON.stringify(element.eduterm))
+   text.forEach(element => {
+    console.log("Exam:"+JSON.Object.keys(element.eduyear)+"/"+Object.keys(element.eduterm))
 
-  //  });
-  //  lastterm = text[text.length-1].eduterm
+   });
+   lastterm = Object.keys(text[text.length-1].eduterm)
     
-  //  if(lastterm == 1 && month < 11 && month > 7 ){
-  //     miniterm = "M"
-  //   }else if(lastterm == 2 && month <= 4 && month > 1){
-  //     miniterm = "M"
-  //   }else if(lastterm == 1 && month >=11 && month < 13){
-  //     miniterm = "F"
-  //   }else if(lastterm == 2 && month > 4 && month <= 7){
-  //     miniterm = "F"
-  //   }
+   if(lastterm == 1 && month < 11 && month > 7 ){
+      miniterm = "M"
+    }else if(lastterm == 2 && month <= 4 && month > 1){
+      miniterm = "M"
+    }else if(lastterm == 1 && month >=11 && month < 13){
+      miniterm = "F"
+    }else if(lastterm == 2 && month > 4 && month <= 7){
+      miniterm = "F"
+    }
 
-  //  lastelement = { eduyear:text[text.length-1].eduyear, eduterm:text[text.length-1].eduterm, miniterm:miniterm }
+   lastelement = { eduyear:Object.keys(text[text.length-1].eduyear), eduterm:Object.keys(text[text.length-1].eduterm), miniterm:miniterm }
    return lastelement
  }
  
