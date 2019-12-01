@@ -394,7 +394,7 @@ async function setExamcurrently(senderid) {
    let text = []
    for (let i = 0; i < Object.keys(eduyear).length; i++) {
      let eduterm = groupBy(eduyear[`${Object.keys(eduyear)[i]}`], 'EduTerm')
-       text.push({eduyear:eduyear,eduterm:eduterm})
+       text.push({eduyear:eduyear[`${Object.keys(eduyear)[i]}`],eduterm:eduterm})
       
    }
    text.forEach(element => {
