@@ -364,7 +364,7 @@ const examNotification = async () => {
 
     examtime = await api.requestTimeExam(studentid[index].studentID,setExam.eduyear,setExam.eduterm,setExam.miniterm)
     for (let indexE = 0; indexE < examtime.length; indexE++) {
-      if (examtime[indexE].ExamDate == today) {
+      if (examtime[indexE].ExamDate == "04/12/2562") {
         let From = examtime[indexE].From
         let To = examtime[indexE].To
         let SubjectNameEN = examtime[indexE].SubjectNameEN
@@ -406,10 +406,7 @@ async function setExamcurrently(senderid) {
        text.push({eduyear:Object.keys(eduyear)[i],eduterm:term})
       
    }
-   text.forEach(element => {
-    console.log("Exam:"+element.eduyear+"/"+element.eduterm)
-
-   });
+  
    lastterm = text[text.length-1].eduterm
     
    if(lastterm == 1 && month < 11 && month > 7 ){
