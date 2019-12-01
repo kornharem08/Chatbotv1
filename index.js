@@ -359,27 +359,27 @@ const examNotification = async () => {
     studentid.push(studentinfo)
   });
   let setExam = await setExamcurrently(listwho[0].senderId)
-  for (let index = 0; index < studentid.length; index++) {
+  // for (let index = 0; index < studentid.length; index++) {
 
-    examtime = await api.requestTimeExam(studentid[index].studentID,setExam.eduyear,setExam.eduterm,setExam.miniterm)
-    for (let indexE = 0; indexE < examtime.length; indexE++) {
-      if (examtime[indexE].ExamDate == today) {
-        let From = examtime[indexE].From
-        let To = examtime[indexE].To
-        let SubjectNameEN = examtime[indexE].SubjectNameEN
-        let ExamRoom = ""
-        if (examtime[indexE].ExamRooms[0]) {
-          ExamRoom = examtime[indexE].ExamRooms[0]
-        } else {
-          ExamRoom = "ยังไม่ระบุ"
-        }
-        console.log("ExamRoom:" + examtime[0].ExamRooms[0])
-        message += `เริ่มสอบ ${From} ถึง ${To} วิชา ${SubjectNameEN} ห้อง ${ExamRoom}`
-        func.sendTextMessage(studentid[index].senderId, message)
-      }
-    }
+  //   examtime = await api.requestTimeExam(studentid[index].studentID,setExam.eduyear,setExam.eduterm,setExam.miniterm)
+  //   for (let indexE = 0; indexE < examtime.length; indexE++) {
+  //     if (examtime[indexE].ExamDate == today) {
+  //       let From = examtime[indexE].From
+  //       let To = examtime[indexE].To
+  //       let SubjectNameEN = examtime[indexE].SubjectNameEN
+  //       let ExamRoom = ""
+  //       if (examtime[indexE].ExamRooms[0]) {
+  //         ExamRoom = examtime[indexE].ExamRooms[0]
+  //       } else {
+  //         ExamRoom = "ยังไม่ระบุ"
+  //       }
+  //       console.log("ExamRoom:" + examtime[0].ExamRooms[0])
+  //       message += `เริ่มสอบ ${From} ถึง ${To} วิชา ${SubjectNameEN} ห้อง ${ExamRoom}`
+  //       func.sendTextMessage(studentid[index].senderId, message)
+  //     }
+  //   }
 
-  }
+  // }
 }
 
 async function setExamcurrently(senderid) {
@@ -395,24 +395,25 @@ async function setExamcurrently(senderid) {
    for (let i = 0; i < Object.keys(eduyear).length; i++) {
      let eduterm = groupBy(eduyear[`${Object.keys(eduyear)[i]}`], 'EduTerm')
        text.push({eduyear:eduyear,eduterm:eduterm})
+       console.log("Exam:"+eduterm)
    }
-   text.forEach(element => {
-    console.log("Exam:"+JSON.stringify(element.eduyear)+"/"+JSON.stringify(element.eduterm))
+  //  text.forEach(element => {
+  //   console.log("Exam:"+JSON.stringify(element.eduyear)+"/"+JSON.stringify(element.eduterm))
 
-   });
-   lastterm = text[text.length-1].eduterm
+  //  });
+  //  lastterm = text[text.length-1].eduterm
     
-   if(lastterm == 1 && month < 11 && month > 7 ){
-      miniterm = "M"
-    }else if(lastterm == 2 && month <= 4 && month > 1){
-      miniterm = "M"
-    }else if(lastterm == 1 && month >=11 && month < 13){
-      miniterm = "F"
-    }else if(lastterm == 2 && month > 4 && month <= 7){
-      miniterm = "F"
-    }
+  //  if(lastterm == 1 && month < 11 && month > 7 ){
+  //     miniterm = "M"
+  //   }else if(lastterm == 2 && month <= 4 && month > 1){
+  //     miniterm = "M"
+  //   }else if(lastterm == 1 && month >=11 && month < 13){
+  //     miniterm = "F"
+  //   }else if(lastterm == 2 && month > 4 && month <= 7){
+  //     miniterm = "F"
+  //   }
 
-   lastelement = { eduyear:text[text.length-1].eduyear, eduterm:text[text.length-1].eduterm, miniterm:miniterm }
+  //  lastelement = { eduyear:text[text.length-1].eduyear, eduterm:text[text.length-1].eduterm, miniterm:miniterm }
    return lastelement
  }
  
