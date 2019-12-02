@@ -159,10 +159,6 @@ function receivedMessage(event) {
   if (messageText) {
     //send message to api.ai
     sendToApiAi(senderID, messageText);
-  } else if (messageSticker) {    /////เพิ่ม messageSticker เข้าไป
-
-    sendToApiAi(senderID, messageSticker);
-
   } else if (messageAttachments) {
     handleMessageAttachments(messageAttachments, senderID);
   }
