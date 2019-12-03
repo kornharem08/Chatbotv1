@@ -45,11 +45,17 @@ const handleApiAiAction = async (
       func.sendTextMessage(sender,waitText)
       func.requestGPAwithParam(sender,dataparam)
       break;
+    case "lookgrade_lastest":
+      func.messageGradeLastest(sender)
+      break;
     case "look-grade-all":
       func.btnGradeGPAViewall(sender);
       break;
     case "look-exam-schedule":
       func.btnExScheduleView(sender);
+      break;
+    case "Class_Schedule":
+      func.messageClassSc(sender);
       break;
     case "change-language":
       func.messageLanguage(sender);

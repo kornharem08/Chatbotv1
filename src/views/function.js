@@ -217,6 +217,17 @@ const messageCalendar = async (sender) => {
   await sendTextMessage(sender,`${Dict.download_calendar_TXT[txt_lang]} : ${calendarlink}`)
 }
 
+const messageGradeLastest = async (sender) => {
+  let lastgrade = await lastestGrade(sender)
+  let data = {
+    term:lastgrade.term,
+    year:lastgrade.year
+  }
+  let waitText = "ขอหาข้อมูลก่อนน๊าาา.. ^^'"
+  await sendTextMessage(sender,waitText)
+  await requestGPAwithParam(sender,data)
+}
+
 
 const sendGenericMessage = async (recipientId, elements) => {
   var messageData = {
@@ -324,6 +335,34 @@ async function checkinfograde(studentID,data){
   return checkfound
 }
 
+async function lastestGrade(senderid){
+  let studentID = await api.requestStudentID(senderid)
+  let oldgrade = await api.requestAllGPA(studentID)
+  let eduyear = groupBy(oldgrade, 'EduYearTH')
+  let lastterm
+  let lastelement
+
+   let text = []
+   for (let i = 0; i < Object.keys(eduyear).length; i++) {
+     let eduterm = groupBy(eduyear[`${Object.keys(eduyear)[i]}`], 'EduTerm')
+     let term
+      if(Object.keys(eduterm) == "1"){
+        term = 1
+      }else if(Object.keys(eduterm) == "1,2"){
+        term = 2
+      }else if(Object.keys(eduterm) == "1,2,3"){
+        term = 3
+      }
+       text.push({eduyear:Object.keys(eduyear)[i],eduterm:term})
+      
+   }
+  
+   lastterm = text[text.length-1].eduterm
+   lastelement = { year:text[text.length-1].eduyear, term:lastterm}
+
+   return lastelement
+}
+
 async function setQuickreplyforgrade(senderid) {
  let studentID = await api.requestStudentID(senderid)
  let oldgrade = await api.requestinfoAllgrade(studentID)
@@ -389,6 +428,7 @@ module.exports = {
   btnGradeGPAViewall,
   messageCalendar,
   checkinfograde,
-  requestGPAwithParam
+  requestGPAwithParam,
+  messageGradeLastest
 }
 
