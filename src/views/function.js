@@ -223,8 +223,7 @@ const messageGradeLastest = async (sender) => {
     term:lastgrade.term,
     year:lastgrade.year
   }
-  let waitText = "ขอหาข้อมูลก่อนน๊าาา.. ^^'"
-  await sendTextMessage(sender,waitText)
+
   await requestGPAwithParam(sender,data)
 }
 
