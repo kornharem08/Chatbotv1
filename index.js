@@ -98,7 +98,7 @@ app.get("/", function (req, res) {
 
 app.get('/webhook', function (req, res) {
   if (req.query['hub.mode'] === 'subscribe' &&
-    req.query['hub.verify_token'] === 'sis_bot') {
+    req.query['hub.verify_token'] === FB_VERIFY_TOKEN) {
     console.log("Validating webhook");
     res.status(200).send(req.query['hub.challenge']);
   } else {
