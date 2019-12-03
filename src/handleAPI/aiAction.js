@@ -33,6 +33,18 @@ const handleApiAiAction = async (
       func.mainmenu(sender);
       // handleCardMessages(elements, sender)
       break;
+    case "look-information":
+      func.Messageinfo(sender);
+      break;
+    case "Exam-notification-day":
+      func.MessageExamnotif(sender);
+      break;
+    case "Cancle-Exam-notification-day":
+      func.MessageCancleExamnotif(sender);
+      break;
+    case "Academic_Calendar_Payload":
+      func.messageCalendar(sender)
+      break;
     case "lookgrade":
       func.messageGradeGPA(sender);
       break;
