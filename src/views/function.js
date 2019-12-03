@@ -218,6 +218,8 @@ const messageCalendar = async (sender) => {
 }
 
 const messageGradeLastest = async (sender) => {
+  let waitText = "ขอหาข้อมูลก่อนน๊าาา.. ^^'"
+  await sendTextMessage(sender,waitText)
   let lastgrade = await lastestGrade(sender)
   let data = {
     term:lastgrade.term,

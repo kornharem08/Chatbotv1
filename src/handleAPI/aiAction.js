@@ -46,8 +46,6 @@ const handleApiAiAction = async (
       func.requestGPAwithParam(sender,dataparam)
       break;
     case "lookgrade_lastest":
-      let waitText = "ขอหาข้อมูลก่อนน๊าาา.. ^^'"
-      func.sendTextMessage(sender,waitText)
       func.messageGradeLastest(sender)
       break;
     case "look-grade-all":
