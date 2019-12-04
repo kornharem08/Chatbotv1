@@ -159,9 +159,10 @@ function receivedMessage(event) {
   if (messageText) {
     //send message to api.ai
     sendToApiAi(senderID, messageText);
-  } else if (messageAttachments) {
-    handleMessageAttachments(messageAttachments, senderID);
   }
+  // } else if (messageAttachments) {
+  //   handleMessageAttachments(messageAttachments, senderID);
+  // }
 }
 
 function receivedQuickRp(event) {
