@@ -262,7 +262,7 @@ const sendToApiAi = async (sender, text) => {
     } else {
       console.log(`  No intent matched.`);
     }
-
+    ///
   // apiaiRequest.on("response", response => {
   //   if (isDefined(response.result)) {
   //     handleApiAiResponse(sender, response);
