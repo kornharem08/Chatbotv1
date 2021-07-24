@@ -2,7 +2,7 @@ const apiai = require('dialogflow');
 const express = require("express");
 const bodyParser = require("body-parser");
 const uuid = require("uuid");
-const projectId = "newagent-63447"
+const projectId = 'newagent-63447'
 
 // const request = require('request')
 const app = express();
@@ -241,7 +241,7 @@ function handlePostback(senderID, postback, value) {
 
 
 const sessionClient = new apiai.SessionsClient();
-const sessionPath = sessionClient.sessionPath(projectId, sessionIds);
+const sessionPath = sessionClient.sessionPath(projectId, sessionIds.get(sender));
 
 const sendToApiAi = async (sender, text) => {
   sendTypingOn(sender);
