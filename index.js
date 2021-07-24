@@ -142,7 +142,7 @@ app.get("/notihook", async (req, res) => {
 });
 
 
-function receivedMessage(event) {
+const receivedMessage = async (event) => {
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
   var timeOfMessage = event.timestamp;
@@ -163,7 +163,7 @@ function receivedMessage(event) {
 
   if (messageText) {
     //send message to api.ai
-    sendToApiAi(senderID, messageText);
+    await sendToApiAi(senderID, messageText);
   }
   // } else if (messageAttachments) {
   //   handleMessageAttachments(messageAttachments, senderID);
@@ -241,7 +241,7 @@ function handlePostback(senderID, postback, value) {
 
 
 
-function sendToApiAi(sender, text) {
+const sendToApiAi = async (sender, text) => {
   sendTypingOn(sender);
    // Create a new session
   const sessionClient = new dialogflow.SessionsClient();
@@ -262,7 +262,7 @@ function sendToApiAi(sender, text) {
     } else {
       console.log(`  No intent matched.`);
     }
-
+    ///
   // apiaiRequest.on("response", response => {
   //   if (isDefined(response.result)) {
   //     handleApiAiResponse(sender, response);
@@ -312,7 +312,7 @@ app.post("/webhook/", async function (req, res) {
 
 
         } else if (messagingEvent.message) {
-          receivedMessage(messagingEvent);
+          await receivedMessage(messagingEvent);
         } else {
           console.log("Webhook received unknown messagingEvent: ", messagingEvent);
         }
