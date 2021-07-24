@@ -17,6 +17,7 @@ const cors = require('cors');
 //const assets = require("./src/assets");
 const { google } = require('googleapis');
 const keys = require('./src/helper/keyapi/SISCONNECT-0779c8454af1.json')
+const sessionIds = new Map();
 
 ////////////////////////////////// Redis
 var Redis = require('ioredis');
@@ -476,7 +477,6 @@ const sendTypingOn = (recipientId) => {
   };
   api.callSendAPI(messageData);
 }
-const sessionIds = new Map();
 
 const isDefined = (obj) => {
   if (typeof obj == "undefined") {
