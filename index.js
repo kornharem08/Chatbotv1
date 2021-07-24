@@ -248,7 +248,15 @@ const sendToApiAi = async (sender, text) => {
   const sessionPath = sessionClient.sessionPath(projectId, sessionIds);
 
   let apiaiRequest = {
-    session: sessionPath
+    session: sessionPath,
+    queryInput: {
+      text: {
+        // The query to send to the dialogflow agent
+        text: text,
+        // The language used by the client (en-US)
+        languageCode: 'th-TH',
+      },
+    },
   }
 
     // Send request and log result
