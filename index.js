@@ -244,7 +244,7 @@ function handlePostback(senderID, postback, value) {
 const sendToApiAi = async (sender, text) => {
   sendTypingOn(sender);
    // Create a new session
-  const sessionClient = new dialogflow.SessionsClient();
+  const sessionClient = new apiai.SessionsClient();
   const sessionPath = sessionClient.sessionPath(projectId, sessionIds);
 
   let apiaiRequest = {
@@ -312,7 +312,7 @@ app.post("/webhook/", async function (req, res) {
 
 
         } else if (messagingEvent.message) {
-          await receivedMessage(messagingEvent);
+           receivedMessage(messagingEvent);
         } else {
           console.log("Webhook received unknown messagingEvent: ", messagingEvent);
         }
