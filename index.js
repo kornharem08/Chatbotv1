@@ -320,7 +320,7 @@ app.post("/webhook/", async function (req, res) {
 
 
         } else if (messagingEvent.message) {
-           receivedMessage(messagingEvent);
+           receivedMessage(messagingEvent).then(() => {})
         } else {
           console.log("Webhook received unknown messagingEvent: ", messagingEvent);
         }
