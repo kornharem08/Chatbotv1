@@ -149,7 +149,7 @@ const receivedMessage = async (event) => {
   var message = event.message;
 
   if (!sessionIds.has(senderID)) {
-    sessionIds.set(senderID, uuid.v4());
+    sessionIds.set(senderID, uuid.v1());
   }
 
   var messageId = message.mid;
@@ -190,7 +190,7 @@ function receivedQuickRp(event) {
 
 
   if (!sessionIds.has(senderID)) {
-    sessionIds.set(senderID, uuid.v4());
+    sessionIds.set(senderID, uuid.v1());
   }
 
   if (postback) {
@@ -213,7 +213,7 @@ function receivedPostback(event) {
 
 
   if (!sessionIds.has(senderID)) {
-    sessionIds.set(senderID, uuid.v4());
+    sessionIds.set(senderID, uuid.v1());
   }
 
   if (payload) {
