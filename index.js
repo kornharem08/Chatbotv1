@@ -1,7 +1,9 @@
-const apiai = require("apiai");
+const apiai = require('dialogflow');
 const express = require("express");
 const bodyParser = require("body-parser");
 const uuid = require("uuid");
+const projectId = "newagent-63447"
+
 // const request = require('request')
 const app = express();
 //Import Config file
@@ -147,7 +149,7 @@ function receivedMessage(event) {
   var message = event.message;
 
   if (!sessionIds.has(senderID)) {
-    sessionIds.set(senderID, uuid.v1());
+    sessionIds.set(senderID, uuid.v4());
   }
 
   var messageId = message.mid;
@@ -188,7 +190,7 @@ function receivedQuickRp(event) {
 
 
   if (!sessionIds.has(senderID)) {
-    sessionIds.set(senderID, uuid.v1());
+    sessionIds.set(senderID, uuid.v4());
   }
 
   if (postback) {
@@ -211,7 +213,7 @@ function receivedPostback(event) {
 
 
   if (!sessionIds.has(senderID)) {
-    sessionIds.set(senderID, uuid.v1());
+    sessionIds.set(senderID, uuid.v4());
   }
 
   if (payload) {
@@ -241,17 +243,34 @@ function handlePostback(senderID, postback, value) {
 
 function sendToApiAi(sender, text) {
   sendTypingOn(sender);
-  let apiaiRequest = apiAiService.textRequest(text, {
-    sessionId: sessionIds.get(sender)
-  });
-  apiaiRequest.on("response", response => {
-    if (isDefined(response.result)) {
-      handleApiAiResponse(sender, response);
-    }
-  });
+   // Create a new session
+  const sessionClient = new dialogflow.SessionsClient();
+  const sessionPath = sessionClient.sessionPath(projectId, sessionIds);
 
-  apiaiRequest.on("error", error => console.error(error));
-  apiaiRequest.end();
+  let apiaiRequest = {
+    session: sessionPath
+  }
+
+    // Send request and log result
+    const responses = await sessionClient.detectIntent(apiaiRequest);
+    console.log('Detected intent');
+    const result = responses[0].queryResult;
+    console.log(`  Query: ${result.queryText}`);
+    console.log(`  Response: ${result.fulfillmentText}`);
+    if (result.intent) {
+      console.log(`  Intent: ${result.intent.displayName}`);
+    } else {
+      console.log(`  No intent matched.`);
+    }
+
+  // apiaiRequest.on("response", response => {
+  //   if (isDefined(response.result)) {
+  //     handleApiAiResponse(sender, response);
+  //   }
+  // });
+
+  // apiaiRequest.on("error", error => console.error(error));
+  // apiaiRequest.end();
 }
 
 
@@ -435,10 +454,11 @@ async function setExamcurrently(senderid) {
  }
 
 
-const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
-  language: "th",
-  requestSource: "fb"
-});
+
+// const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
+//   language: "th",
+//   requestSource: "fb"
+// });
 
 const sendTypingOn = (recipientId) => {
   var messageData = {
