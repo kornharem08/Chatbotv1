@@ -1,4 +1,4 @@
-const apiai = require('dialogflow');
+const apiai = require('@google-cloud/dialogflow');
 const express = require("express");
 const bodyParser = require("body-parser");
 const uuid = require("uuid");
