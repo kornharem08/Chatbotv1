@@ -276,6 +276,7 @@ const sendToApiAi = async (sender, text) => {
     console.log(`  Response: ${result.fulfillmentText}`);
     if (result.intent) {
       console.log(`  Intent: ${result.intent.displayName}`);
+      handleApiAiResponse(sender, result);
     } else {
       console.log(`  No intent matched.`);
     }
@@ -497,35 +498,23 @@ const isDefined = (obj) => {
   return obj != null;
 }
 function handleApiAiResponse(sender, response) {
-  let responseText = response.result.fulfillment.speech;
-  let responseData = response.result.fulfillment.data;
-  let messages = response.result.fulfillment.messages;
-  let action = response.result.action;
-  let contexts = response.result.contexts;
-  let parameters = response.result.parameters;
-  console.log("Contexts:" + contexts)
-  console.log("Parameters:" + JSON.stringify(parameters))
+  let messages = response.queryText
+  let action = response.action;
+  let contexts = response.outputContexts;
+  let parameters = JSON.parse(response.parameters);
+ 
   sendTypingOff(sender);
 
-  if (responseText == "" && !isDefined(action)) {
+  if (action === 'input.unknown') {
     //api ai could not evaluate input.
-    console.log("Unknown query" + response.result.resolvedQuery);
     func.sendTextMessage(
       sender,
       "I'm not sure what you want. Can you be more specific?"
     );
-  } else if (isDefined(action)) {
+  } else if (action !== 'input.unknown' ) {
     handle.handleApiAiAction(sender, action, responseText, contexts, parameters);
-  } else if (isDefined(responseData) && isDefined(responseData.facebook)) {
-    try {
-      console.log("Response as formatted message" + responseData.facebook);
-      func.sendTextMessage(sender, responseData.facebook);
-    } catch (err) {
-      func.sendTextMessage(sender, err.message);
-    }
-  } else if (isDefined(responseText)) {
-    func.sendTextMessage(sender, responseText);
-  }
+  } 
+
 }
 
 /*
