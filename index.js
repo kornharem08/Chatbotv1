@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const uuid = require("uuid");
 const projectId = 'newagent-63447'
 
+const credentials = require('./src/helper/keyapi/newagent-63447-00038505ad99.json')
 // const request = require('request')
 const app = express();
 //Import Config file
@@ -245,7 +246,10 @@ function handlePostback(senderID, postback, value) {
 const sendToApiAi = async (sender, text) => {
   sendTypingOn(sender);
    // Create a new session
-   const sessionClient = new apiai.SessionsClient();
+   const sessionClient = new apiai.SessionsClient({
+    projectId,
+    credentials,
+  });
    const sessionPath = sessionClient.sessionPath(projectId, sessionIds.get(sender));
   let apiaiRequest = {
     session: sessionPath,
