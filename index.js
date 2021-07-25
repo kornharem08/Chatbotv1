@@ -501,8 +501,8 @@ function handleApiAiResponse(sender, response) {
   let messages = response.queryText
   let action = response.action;
   let contexts = response.outputContexts;
-  let parameters = JSON.parse(response.parameters);
- 
+  let parameters = response.parameters;
+
   sendTypingOff(sender);
 
   if (action === 'input.unknown') {
