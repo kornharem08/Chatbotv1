@@ -498,7 +498,7 @@ const isDefined = (obj) => {
   return obj != null;
 }
 function handleApiAiResponse(sender, response) {
-  let messages = response.queryText
+  let responseText = response.queryText
   let action = response.action;
   let contexts = response.outputContexts;
   let parameters = response.parameters;
