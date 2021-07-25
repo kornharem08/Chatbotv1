@@ -248,10 +248,34 @@ const sessionClient = new apiai.SessionsClient({
   credentials:credentials,
 });
 
+
+
 const sendToApiAi = async (sender, text) => {
   sendTypingOn(sender);
    // Create a new session
   
+   const aiClient = new google.auth.JWT(
+
+    credentials.client_email,
+    null,
+    credentials.private_key,
+    ['https://www.googleapis.com/auth/cloud-platform']
+  
+  );
+  ////////////////////////////////////// ส่วนของ Google Sheet
+  await aiClient.authorize(function (err, tokens) {
+  
+    if (err) {
+      console.log(err);
+      return;
+    } else {
+      console.log('Connected!');
+      let sessionClient = new apiai.SessionsClient();
+    }
+  
+  });
+
+
    const sessionPath = sessionClient.sessionPath(projectId, sessionIds.get(sender));
   let apiaiRequest = {
     session: sessionPath,
