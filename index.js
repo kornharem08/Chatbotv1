@@ -248,7 +248,7 @@ function handlePostback(senderID, postback, value) {
 //   credentials:credentials,
 // });
 
-const googleAuth = () => {
+const googleAuth = async () => {
   const aiClient = new google.auth.JWT(
 
     credentials.client_email,
@@ -272,7 +272,7 @@ const googleAuth = () => {
   });
 }
 
-const aiDetect = (sessionClient) => {
+const aiDetect = async (sessionClient) => {
 
 
   const sessionPath = sessionClient.sessionPath(projectId, sessionIds.get(sender));
