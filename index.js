@@ -250,7 +250,6 @@ const sendToApiAi = async (sender, text) => {
   sendTypingOn(sender);
    // Create a new session
    const sessionClient = new apiai.SessionsClient({
-    projectId,
     credentials,
   });
    const sessionPath = sessionClient.sessionPath(projectId, sessionIds.get(sender));
