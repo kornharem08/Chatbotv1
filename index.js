@@ -253,6 +253,8 @@ const sendToApiAi = async (sender, text) => {
    // Create a new session
   
    const sessionPath = sessionClient.projectAgentSessionPath(projectId, sessionIds.get(sender));
+    console.log("sessionPath: ",sessionPath)
+   console.log()
   let apiaiRequest = {
     session: sessionPath,
     queryInput: {
