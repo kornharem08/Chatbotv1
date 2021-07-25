@@ -244,14 +244,14 @@ function handlePostback(senderID, postback, value) {
 }
 
 
-
+const sessionClient = new apiai.SessionsClient({
+  credentials:credentials,
+});
 
 const sendToApiAi = async (sender, text) => {
   sendTypingOn(sender);
    // Create a new session
-   const sessionClient = new apiai.SessionsClient({
-    credentials,
-  });
+  
    const sessionPath = sessionClient.sessionPath(projectId, sessionIds.get(sender));
   let apiaiRequest = {
     session: sessionPath,
