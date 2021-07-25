@@ -248,7 +248,7 @@ function handlePostback(senderID, postback, value) {
 //   credentials:credentials,
 // });
 
-const googleAuth = async () => {
+const googleAuth = async (sender,text) => {
   const aiClient = new google.auth.JWT(
 
     credentials.client_email,
@@ -266,13 +266,13 @@ const googleAuth = async () => {
     } else {
       console.log('Connected!');
       let sessionClient = new apiai.SessionsClient();
-      aiDetect(sessionClient)
+      aiDetect(sessionClient,sender,text)
     }
 
   });
 }
 
-const aiDetect = async (sessionClient) => {
+const aiDetect = async (sessionClient,sender,text) => {
 
 
   const sessionPath = sessionClient.sessionPath(projectId, sessionIds.get(sender));
@@ -306,7 +306,7 @@ const sendToApiAi = async (sender, text) => {
   sendTypingOn(sender);
   // Create a new session
 
-  googleAuth()
+  googleAuth(sender,text)
 
 
   ///
